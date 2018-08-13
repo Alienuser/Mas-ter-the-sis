@@ -1,0 +1,10 @@
+#IntelliJ
+.idea/
+*.iml
+
+# Output Windows
+/auxil/
+/out/
+
+# Output Linux
+/*.pdf

@@ -1,0 +1,219 @@
+\documentclass[
+BCOR=5mm,           % Binderkorrektur von 5mm vorsehen
+DIV10,              % Seite in X Kästchen einteilen (Siehe Koma-Script Guide)
+%DIVcalc,           % Besten DIV Wert berechnen (Siehe Koma-Script Guide)
+fontsize=11pt,      % Schriftgröße 11 Punkte
+oneside,            % Einseitig
+parskip,            % Paragraphen nicht einrücken
+headsepline,        % Kopfzeile nach unten durch Linie abgrenzen (scrheadings)
+%footbotline,       % Fußzeile nach unten durch Linie abgrenzen (scrheadings)
+plainheadsepline,   % Kopfzeile nach unten durch Linie abgrenzen (scrplain)
+plainfootbotline,   % Fußzeile nach unten durch Linie abgrenzen (scrplain)
+%headtopline,       % Kopfzeile nach oben durch Linie abgrenzen (scrheadings)
+footsepline,        % Fußzeile nach oben durch Linie abgrenzen (scrheadings)
+plainheadtopline,   % Kopfzeile nach oben durch Linie abgrenzen (scrplain)
+plainfootsepline,   % Fußzeile nach oben durch Linie abgrenzen (scrplain)
+headexclude,        % Kopfzeile nicht als Teil des Inhalts setzen
+footexclude,        % Fußzeile nicht als Teil des Inhalts setzen
+%bibtotocnumbered,  % Literaturverzeichnis nummeriert ins Inhaltsverzeichnis aufnehmen
+bibtotoc,           % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
+%liststotocnumbered,% Sonstige Verzeichnise nummeriert ins Inhaltsverzeichnis aufnehmen
+liststotoc,         % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
+idxtotocnumbered    % Index nummeriert ins Inhaltsverzeichnis aufnehmen
+%idxtotoc           % Index ins Inhaltsverzeichnis aufnehmen
+]{scrbook}          % Koma-Script Klasse zum setzen eines Buchs
+
+% Die "Standard-Header" für deutsche Dokumente
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}         % T1 Schriften verwenden (sieht besser aus)
+\usepackage[ngerman]{babel}      % Neue deutsche Rechtschreibung und Übersetzungenq
+
+% Für URLs und Path
+\usepackage[hyphens,spaces,obeyspaces]{url}
+
+% "Schönere" Schriften einbinden
+\usepackage{mathpazo}            % Serifen-Font mit passendem Math-Font
+\usepackage[scaled=.95]{helvet}  % Serifenloser Font passend zu mathpazo
+\usepackage{courier}             % "Schönerer" Festbreiten-Font
+
+% Koma-Script Paket zum setzen vom Kopf- und Fußzeilen einbinden
+\usepackage{scrpage2}
+% Seitenstil für normale Seiten auf scrheadings setzen
+% Für Kapitelanfang und ähnliches wird scrplain verwendet
+\pagestyle{scrheadings}
+% Kopf- und Fußzeile löschen
+\clearscrheadfoot
+% Automarkierungen verwenden \automark[rechts]{links}
+% Statt \leftmark und \rightmark kann dann bei
+% Koma-Script einfach \headmark verwendet werden
+\automark[section]{chapter}
+% Kopfzeile für scrplain und scrheadings setzen
+% \*head[scrplain]{scrheadings}
+%\ihead[Innen]{Innen}
+%\chead[Mitte]{Mitte}
+\ohead[\sffamily\scshape\bfseries\large\headmark]
+{\sffamily\scshape\bfseries\large\headmark}
+% Fußzeile für scrplain und scrheadings setzen
+% \*foot[scrplain]{scrheadings}
+%\ifoot[Innen]{Innen}
+%\cfoot[Mitte]{Mitte}
+\ofoot[\sffamily\thepage]{\sffamily\thepage}
+% Trennlinien für Kopf- und Fußzeile formatieren
+% Siehe Optionen der Dokumentklasse
+%\setheadtopline{2pt}
+\setheadsepline{.4pt}
+\setfootsepline{.4pt}
+%\setfootbotline{2pt}
+
+% Paket zum Einbinden von Quellcode als Listings
+% Hinweis: UTF-8 Encoding führt zu Problemen mit Umlauten
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{soul}
+
+% Formatierung der Listings
+\lstset{
+    captionpos=b,                % Beschriftung unterhalb (bottom)
+    frame=trbl,                  % Rahmen zeichnen (top, right, bottom, left)
+    basicstyle=\small\ttfamily,  % Festbreitenschrift verwenden (small)
+    breaklines=true,
+    showstringspaces=false,
+    commentstyle=\color{red},
+    keywordstyle=\color{blue},
+    emphstyle={\color{blue}},
+    emph={
+        wget, sudo, dpkg, touch, cf, POST, nano, git
+    }
+}
+
+% Paket für definierte Übersetzungen einbinden
+\usepackage[ngerman]{translator}
+
+% Paket für Stichwort- Abkürzungs- und sonstige Verzeichnisse einbinden
+\usepackage[
+nonumberlist, % Keine Seitenzahlen anzeigen
+acronym,      % Abkürzungsverzeichnis erstellen
+%toc,          % In Inhaltsverzeichnis aufnehmen
+%section       % Verzeichniseintrag als Section
+]{glossaries}
+
+% Ein eigenes Verzeichnis definieren (Smbolverzeichnis)
+% Das Stichwort- und Abkürzungsverzeichnis wird analog vordefiniert
+% Siehe makeindex Aufrufe - Hier werden die Dateiendungen festgelegt
+\newglossary[slg]{symbolslist}{syi}{syg}{Symbolverzeichnis}
+
+% Den Punkt am Ende der Beschreibung deaktivieren
+% \renewcommand*{\glspostdescription}{}
+
+% Stichwort-, Abkürzungs- und Symbolverzeichnis erzeugen
+\makeglossaries
+
+% Paket für Wortindex einbinden
+\usepackage{makeidx}
+
+% Wortindex erzeugen
+\makeindex
+
+% Paket zum generieren von Blindtext
+\usepackage{blindtext}
+
+% Paket zum Einbinden von Bildern
+\usepackage{graphicx}
+
+%
+% WORKAROUND, damit lstlistoflistings funktioniert:
+% Quelle: http://www.komascript.de/node/477
+%
+\makeatletter
+\@ifundefined{float@listhead}{}{%
+    \renewcommand*{\lstlistoflistings}{%
+        \begingroup
+    	    \if@twocolumn
+                \@restonecoltrue\onecolumn
+            \else
+                \@restonecolfalse
+            \fi
+            \float@listhead{\lstlistlistingname}%
+            \setlength{\parskip}{\z@}%
+            \setlength{\parindent}{\z@}%
+            \setlength{\parfillskip}{\z@ \@plus 1fil}%
+            \@starttoc{lol}%
+            \if@restonecol\twocolumn\fi
+        \endgroup
+    }%
+}
+\makeatother
+
+% Andere packages
+\usepackage{hyperref}
+\usepackage{eurosym}
+
+% PDF-Metadaten
+\AfterPreamble{
+    \hypersetup {
+      pdftitle = {},
+    	pdfsubject = {},
+    	pdfauthor = {Lars Helmuth Probst},
+    	pdfkeywords = {Master, Lars, Helmuth, Probst},
+    	pdfcreator = {Lars Helmuth Probst},
+    	pdfproducer = {Lars Helmuth Probst},
+    	pdfstartpage = 1,
+    	pdffitwindow = true,
+    	pdfpagelayout = SinglePage
+    }
+}
+
+% Numbering
+\setcounter{secnumdepth}{5}
+\setcounter{tocdepth}{5}
+
+\lstset{aboveskip=20pt,belowskip=0pt}
+
+% Define language javascript
+\lstdefinelanguage{JavaScript}{
+  keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+  keywordstyle=\color{blue}\bfseries,
+  ndkeywords={class, export, boolean, throw, implements, import, this},
+  ndkeywordstyle=\color{darkgray}\bfseries,
+  identifierstyle=\color{black},
+  sensitive=false,
+  comment=[l]{//},
+  morecomment=[s]{/*}{*/},
+  commentstyle=\color{purple}\ttfamily,
+  stringstyle=\color{red}\ttfamily,
+  morestring=[b]',
+  morestring=[b]"
+}
+
+% Define language html
+\lstdefinelanguage{HTML}{
+    sensitive=true,
+    keywords={%
+    % JavaScript
+    typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break,
+    % HTML
+    html, title, meta, style, head, body, script, canvas, domain, allowedOrigins, allowedMethods, allowedHeaders, allowCredentials, maxAge,
+    % CSS
+    border:, transform:, -moz-transform:, transition-duration:, transition-property:,
+    transition-timing-function:
+    },
+    % http://texblog.org/tag/otherkeywords/
+    otherkeywords={<, >, \/},
+    ndkeywords={class, export, boolean, throw, implements, import, this, cors},
+    comment=[l]{//},
+    % morecomment=[s][keywordstyle]{<}{>},
+    morecomment=[s]{/*}{*/},
+    morecomment=[s]{<!}{>},
+    morestring=[b]',
+    morestring=[b]",
+    alsoletter={-},
+    alsodigit={:}
+}
+
+% Define language json
+\lstdefinelanguage{json}{
+    string=[s]{"}{"},
+    stringstyle=\color{blue},
+    comment=[l]{:},
+    commentstyle=\color{black},
+}

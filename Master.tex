@@ -1,0 +1,129 @@
+\include{preamble}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\include{content/Glossary}
+
+% Beginn des eigentlichen Dokuments
+\begin{document}
+
+% Titelseite (verwendet pagestyle=empty)
+\begin{titlepage}
+\begin{center}
+\includegraphics[scale=2.5]{images/he_logo.pdf}\\
+\vspace{1cm} Fakultät Informationstechnik\\
+\vspace{1.5cm} \Large Abschlussarbeit \\
+\vspace{1.5cm} \Huge Faszination Informatik: Masterarbeit im Bereich Künstliche Intelligenz und Machine Learning\\
+\vspace{1.5cm} \Large Lars Helmuth Probst\\\normalsize
+\vspace{0.5cm} Wintersemester 2018\\\normalsize
+\vfill{}
+\begin{tabular}{rl}
+Firma: & Robert Bosch Packaging GmbH\\[0.5cm]
+Betreuer: & Sebastian Stöcklmeier\\[0.5cm]
+Erstprüfer: & Prof. Dr. Harald Melcher\\[0.5cm]
+Zweitprüfer: & tbd\\
+\end{tabular}
+\end{center}
+\end{titlepage}
+
+% Widmung
+\thispagestyle{empty}
+\vspace*{2cm}
+\begin{center}
+\begin{minipage}{12cm}
+\begin{center}
+% Inhalt
+\end{center}
+\end{minipage}
+
+\vfill{}
+
+% Zitat
+\begin{minipage}{10cm}
+\begin{quote}
+\textit{"`Scientists investigate that which already is;\\ engineers create that which has never been."'}
+\end{quote}
+\hfill Albert Einstein
+\end{minipage}
+\end{center}
+
+% Erklärung
+\chapter*{Ehrenwörtliche Erklärung}
+\thispagestyle{empty}
+Hiermit versichere ich, die vorliegende Arbeit selbstständig und unter ausschließlicher Verwendung der angegebenen Literatur und Hilfsmittel erstellt zu haben.\\\\
+Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht.\\
+\begin{tabbing}
+          Esslingen, den \today ~~	\= \rule{6cm}{0.3mm}\\
+                                                                                     \> Unterschrift
+\end{tabbing}
+
+% Danksagung
+\include{content/0_Danksagung}
+
+% "Frontmatter" beginnen (Formatierung umschalten)
+% Platz für Inhaltsverzeichnis und anderes
+\frontmatter
+
+% Inhaltsverzeichnis ausgeben
+\tableofcontents
+
+% Die Überschrift für den Eintrag mit title= Überschreiben
+% Ohne Angabe des type wird type "glossary" verwendet
+% Ausser "altlist" existieren einige andere Stile wie z.B. "long"
+%\printglossary[style=altlist, title=Stichwortverzeichnis]
+%\newpage
+
+% Das Abkürzungsverzeichnis hat den Typ \acronymtype
+\printglossary[type=\acronymtype, style=long, title=Abkürzungsverzeichnis]
+\newpage
+
+% Das selbstdefinierte Verzeichnis ausgeben
+%\printglossary[type=symbolslist, style=long, title=Symbolverzeichnis]
+%\newpage
+
+% Hauptteil beginnen (Formatierung umschalten)
+\mainmatter
+
+%------------------------------------------------------------------
+%                      Kapitelstruktur einfügen
+%------------------------------------------------------------------
+\include{content/1_Einleitung}
+\include{content/2_Grundlagen}
+\include{content/3_Kapitel/30_Kapitel}
+\include{content/3_Kapitel/31_Analyse}
+\include{content/3_Kapitel/32_Vorbereitung}
+\include{content/3_Kapitel/33_Umsetzung}
+\include{content/3_Kapitel/34_Abschluss}
+\include{content/7_Ausblick}
+\include{content/8_Zusammenfassung}
+
+% Alle Einträge der BibTeX Datenbank "zitieren"
+\nocite{*}
+% Einstellen des Bibliography-Stils für das Literaturverzeichnis
+\bibliographystyle{abbrvdin}
+% Auswahl der BibTeX Datenbank für das Literaturverzeichnis
+\bibliography{literatur}
+
+% Abbildungsverzeichnis ausgeben
+\listoffigures
+
+% Tabellenverzeichnis ausgeben
+%\listoftables
+
+% Das Listings-Verzeichnis scheint mit manchen Versionen vom Koma-Script
+% bzw. des Listings Pakets nicht ohne weiteres zu funktionieren
+\lstlistoflistings
+
+% Anhang beginnen (Formatierung umschalten)
+\appendix
+\include{content/9_Anhang}
+
+% Ausgabe des Wortindex
+% idxtotoc Option scheint nicht zu funktionieren
+%\clearpage
+%\addcontentsline{toc}{chapter}{Index}
+%\printindex
+
+\end{document}
