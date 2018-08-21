@@ -1,11 +1,33 @@
 \section{Vorbereitung}
-Was muss vorbereitet werden, damit ich das umsetzen kann was ich will?
+In diesem Kapitel werden Vorkehrungen für die Entwicklung des Neuronalen Netzes getroffen. Dabei muss ein kostenloses IBM
+Cloud Konto erstellt, ein Programm auf dem Entwicklungsrechner installiert und zwei Services eingerichtet werden.
 
 \subsection{Bluemix Konto}
-Einrichten des Bluemix Kontos
+Um mit der IBM Cloud arbeiten zu können wird ein kostenloses Konto benötigt. Dies kann auf der
+Registrieruns-Seite\footnote{https://console.bluemix.net/registration} erstellt werden.
 
-\subsection{Cloud Foundry CLI}
-Installation der Cloud Foundry CLI
+Nach erfolgreicher aktivierung des Kontos, mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink,
+kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes genutzt werden.
+
+Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation gefragt.
+Dieser spielt für die Umsetzung keine Rolle und die Organisation kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden.
+Ein Beispiel für den Organisationsnamen ist \path{Machine-Learning}.
+
+\subsection{IBM Cloud CLI}
+Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz CLI) zu installieren.
+Die Installation unter Linux und MacOS erfolgt durch die Eingabe des folgenden Kommandos:
+
+\begin{lstlisting}[language=bash, caption=Installation des IBM Cloud CLI, label=Installation des IBM Cloud CLI]
+    $ curl -sL http://ibm.biz/idt-installer | bash
+\end{lstlisting}
+
+Anschließend kann die erfolgreiche Installation über das folgende Kommando überprüft werden:
+
+\begin{lstlisting}[language=bash, caption=Installation des CLI überprüfen, label=Installation des CLI überprüfen]
+    $ ibmcloud dev help
+\end{lstlisting}
+
+Die Ausgabe sollte eine Übersicht über alle möglichen Befehle des \textit{ibmcloud}-Tools geben.
 
 \subsection{Tensorflow Runtime}
 Einrichten der Runtime für Tensorflow
