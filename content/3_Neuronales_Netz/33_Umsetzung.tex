@@ -3,13 +3,30 @@ Hier noch generell was beschreiben. - Zielarchitekturbild darstellen (komplette 
 
 \subsection{Cloud}
 Wie habe ich das nun in der Cloud umgesetzt?\\
-Es gibt vier Möglichkeiten:
-- Machine Learning Models (Aus Daten generrieren)\\
+Es gibt vier Möglichkeiten:\\
+- Machine Learning Models (Autoamtisch aus Daten generrieren)\\
 - Model flows (SPSS) - Make Deployment\\
-- Model flows (SPSS) - Download Model - Import Tensorflow\\
-- Notebooks (Pythin)\\
+- Model flows (SPSS) - Download Model - Import Tensorflow/Tensorflow.JS\\
+- Notebooks (Python)\\
+
+Wenn fertig, kann man das auch mal mit cURL probieren das Deployment. Ob das auch geht!
 
 \url{https://console.bluemix.net/docs/cli/index.html#overview}
 
 \subsection{Tensorflow}
-Wie habe ich das nun mit Tensorflow umgesetzt?
+Einrichten der NodeJS-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im vorangegangenen
+Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden und nutzen. Also einen Wrapper bauen.
+
+Gerade interessant für On The Edge Sachen oder für Mobile.
+
+\subsubsection{Toolchain einrichten}
+Der einfachste Weg, seinen geschriebenen Quellcode in der Nod.JS-Runtime (Cloud Foundry-Container) zu installieren ist es,
+diesen mittels DevOPS über eine Toolchain automatisiert zu installieren.
+
+\subsection{API Connect}
+Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Beide Applikationen müssen abgefangen werden können. Also
+auch zwei Routen. Das ist wichtig. Wie sieht das dann aus etc.
+\\ \\
+While this mechanism works for smaller teams and projects I’d guess that at some point you’d want API management
+capabilities so that developers don’t have to have the credentials of the machine learning service and so that you can
+better track the REST API invocations.

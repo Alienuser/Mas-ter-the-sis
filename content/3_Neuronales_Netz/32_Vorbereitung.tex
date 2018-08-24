@@ -1,11 +1,11 @@
 \section{Vorbereitung}
 In diesem Kapitel werden Vorkehrungen für die Entwicklung eines Neuronalen Netzes und der Tensorflow-Applikation
-getroffen. Dafür muss ein kostenloses IBM Cloud Konto erstellt, ein Programm auf dem Entwicklungsrechner installiert und
-zwei Services eingerichtet werden.
+getroffen. Dafür muss ein kostenloses IBM Cloud Konto erstellt, zwei Services eingerichtet und ein Programm auf dem
+Entwicklungsrechner installiert werden.
 
 \subsection{Bluemix Konto}
 Um mit der IBM Cloud arbeiten zu können wird ein kostenloses Konto benötigt. Dies kann auf der
-Registrieruns-Seite\footnote{https://console.bluemix.net/registration} erstellt werden.
+Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt werden.
 
 Nach erfolgreicher aktivierung des Kontos, mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink,
 kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes genutzt werden.
@@ -14,11 +14,15 @@ Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die
 Dieser spielt für die Umsetzung keine Rolle und die Organisation kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden.
 Ein Beispiel für den Organisationsnamen ist \path{Machine-Learning}.
 
-In einer Organisation werden Runtimes uns Services gruppiert. Eine Organisation kann mehrere \path{Spaces} beinhalten.
+Im Anschluss wird nach einem Namen für den ersten \path{Space} in der erstellten Organisation gefragt. Auch dieser spielt
+für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für die
+benamung des ersten Spaces ist \path{dev}. Dies ist eine Abkürzung für developper.
+
+In einem \path{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \path{Spaces} beinhalten.
 
 \subsection{IBM Cloud CLI}
-Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz CLI) zu installieren.
-Die Installation unter Linux und macOS erfolgt durch die Eingabe des folgenden Kommandos:
+Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz \textit{CLI}) zu
+installieren. Die Installation unter Linux und macOS erfolgt durch die Eingabe des folgenden Kommandos in eine Shell:
 
 \begin{lstlisting}[language=bash, caption=Installation des IBM Cloud CLI, label=Installation des IBM Cloud CLI]
     $ curl -sL http://ibm.biz/idt-installer | bash
@@ -30,38 +34,40 @@ Anschließend kann die erfolgreiche Installation über das folgende Kommando üb
     $ ibmcloud dev help
 \end{lstlisting}
 
-Die Ausgabe sollte eine Übersicht über alle möglichen Befehle des \textit{ibmcloud}-Tools geben.
+Die Ausgabe sollte eine Übersicht über alle möglichen Befehle des \textit{ibmcloud}-Tools geben. Sollte eine Fehlermeldung
+erscheinen, hat die Installation nicht geklappt. Weitere Informationen gibt es auf der betreffenden
+Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluemix\_cli/get\_started.html}.
 
 \subsection{Watson Studio}
-Für die Erarbeitung des Neuronalen Netzes wird der Service \path{Watson Studio} benötigt. Es gibt zwei Möglichkeiten diesen
-in die erstellte Organisation einzubinden.
+Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \path{Watson Studio} benötigt. Aktuell gibt
+zwei Möglichkeiten diesen in den erstellten Space einzubinden.
 
 \subsubsection*{Über das IBM Cloud Dashboard}
 Auf dem IBM Cloud Dashbaord können mit einem Klick auf \path{Katalog} alle Services und Runtimes, welche aktuell genutzt
-werden können, aufgelistet werden. In der Kategorie \path{K\"Unstliche Intelligenz} kann der Service \path{Watson Studio}
+werden können, aufgelistet werden. In der Kategorie \path{Künstliche Intelligenz} kann der Service \path{Watson Studio}
 ausgewählt werden.
 
-Auf der sich öffnenden Seite kann der \path{Servicename}, welcher frei gewählt werden kann, eingetragen werden. Anschließend
-kann noch die Region, in welcher der Service zur verfügung gestellt werden soll soll und die Ressourengruppe definiert werden.
+Auf der sich öffnenden Seite kann der \textit{Servicename}, welcher frei gewählt werden kann, eingetragen werden. Anschließend
+kann noch die Region, in welcher der Service zur verfügung gestellt werden soll und die Ressourengruppe definiert werden.
 
 Mit einem Klick auf \path{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung auf das Dashbaord
 zurück. Dort sollte der Service mit dem definierten Name sichtbar sein.
 
-Auf dem Dashboard kann der Watson Studio Service nun angeklickt werden. Auf der folgenden Seite kann mit \path{Get Startet}
+Auf dem Dashboard kann der Watson Studio Service nun angeklickt werden. Auf der folgenden Seite kann mit \path{Get Started}
 in das Watson Studio gewechselt werden.
 
 \subsubsection*{Über die CLI}
-Alternatic kann der Service auch mittels dem installierten CLI eingerichtet werden. Dazu muss das CLI mit dem IBM
+Alternativ kann der Service mittels dem installierten CLI eingerichtet werden. Dazu muss das CLI mit dem IBM
 Cloud-Konto verknüpft werden. Mittels dem folgenden Befehl wird die api gesetzt:
 
 \begin{lstlisting}[language=bash, caption=Setzen des API Targets, label=Setzen des API Targets]
-$  ibmcloud api https://api.ng.bluemix.net
+    $ ibmcloud api https://api.ng.bluemix.net
 \end{lstlisting}
 
 Anschließend kann der Benutzer sich mit dem folgenden Befehl einloggen:
 
 \begin{lstlisting}[language=bash, caption=Login über CLI und SSO, label=Login über CLI und SSO]
-$   ibmcloud login --sso
+    $ ibmcloud login --sso
 \end{lstlisting}
 
 Der Parameter \path{sso} bewirkt, dass sich ein Browserfenster öffnet, das einen bequemen Login ohne Kommandozeile
@@ -71,50 +77,56 @@ Nach einem erfolgreichen login, kann die genutzte Organisation ausgewählt werde
 
 Im weiteren kann ein \path{Watson Studio}-Service mit dem folgenden Befehl erstellt werden:
 
-\begin{lstlisting}[language=bash, caption=Instanziierten des Watson Studio Services, label=Instanziierten des Watson Studio Services]
-$   ibmcloud cf create-service Watson-Studio lite sercive_name
+\begin{lstlisting}[language=bash, caption=Instanziierung des Watson Studio Services, label=Instanziierung des Watson Studio Services]
+    $ ibmcloud cf create-service Watson-Studio lite sercive_name
 \end{lstlisting}
 
 Für den Parameter \path{service_name} muss ein Name eingegeben werden, unter welchem der Service gefunden werden kann.
 Über den Befehl \path{cf services} können alle instantiierten Services aufgelistet werden.
 
 \begin{lstlisting}[language=bash, caption=Auflisten aller Services, label=Auflisten aller Services]
-$   ibmcloud cf services
+    $ ibmcloud cf services
 \end{lstlisting}
 
-\subsection{Notebook für Tensorflow}
-Für die Entwicklung des neuronalen Netzes mittels Tensorflow wird ein Notebook eingerichtet, welches un Anschluss gestartet
-werden kann. Für die Einrichtung muss der \path{Watson Studio}-Service gestartet werden. Dazu wird im IBM Cloud Dashboard
-der Service ausgewählt und im folgenden mit \path{Get Started} in den Service gewechselt.
+Der erstellte Service sollte mit dem definierten Namen in der Liste erscheinen.
 
-Nun muss über \path{New Project} ein neues Projekt angelegt werden. Das neue Projekt wird als \path{Basic} angelegt und
-die Benamung spielt keine Rolle. Gegebenenfalls muss noch ein Cloud Object Storage angelegt werden.
+\subsection{Node.JS Runtime}
+\label{ssc:nodejs_runtime}
+Für die Erstellung der Node.JS-Applikation wird eine entsprechende Runtime in der IBM Cloud benötigt. Dafür wird ein
+Cloud Foundry-Container mit Node.JS-Konfiguration erstellt. Dieser kann ebenfalls auf zwei unterschiedliche weisen erstellt
+werden.
 
-Mit \path{Create} werden die Einstellungen gespeichert und das neue Projekt erfolgreich angelegt.
+Im vorangegangenen Kapitel wurden beide Varianten (Über den IBM Cloud Katalog und über die Kommandozeile) ausführlich
+erläutert. Im folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
 
-Nun kann das neue Projekt geöffnet und im Reiter \path{Assets} in der Kategorie \path{Notebooks} auf \path{New Notebook}
-geklickt werden. Es öffnet sich eine Eingabemaske für den Namen und die Beschreibung. Auch hier spielen beide keine Rolle.
-
-Als Runtime wird \path{Default Python 3.5 Free} ausgewählt, damit keine Kosten entstehen. Die 1vCPU und die 4GB RAM
-reichen für das kleine neuronale Netz vollkommen aus.
-
-Ein klick auf \path{Create Notebook} bestätigt die getätigen Einstellungen und es erfolgt eine Weiterleitung auf das Watson
-Studio Projekt.
-
-Nun kann das erstellte Notebook über ein Klick geöffnet werden. Nach wenigen Augenblicken öffnet sich eine Eingabemaske.
-
-Das Notebook kann über den das folgende Beispiel getestet werden. Nach dem Start sollte der entsprechende Satz unter dem
-Codebeispiel und keine Fehlermeldungen erscheinen.
-
-\begin{lstlisting}[language=Python, caption=Hello World für Notebook, label=Hello World für Notebook]
-# Import Tensorflow
-import tensorflow as tf
-
-# Create TensorFlow object and call it hello
-hello = tf.constant('Hello World!')
-
-# Run the tf.constant operation in the session
-with tf.Session() as sess:
-    output = sess.run(hello)
-    print(output)
+\begin{lstlisting}[language=bash, caption=Instanziierung der Node.JS Runtime, label=Instanziierung der Node.JS Runtime]
+    $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
+
+Auch hier muss über den Parameter \path{service_name} ein Name für die Applikation vergeben werden. Die URL, über die der
+Container später aufruf bar ist folgt dem Schema \path{https://service_name.mybluemix.net}.
+
+\subsection{Git}
+Für die Verwaltung und den späteren, automatisierten Installationsvorgang des Geschriebenen Quellcodes wird Git verwendet.
+Dies kann unter Linux über das folgenden Kommando erreicht werden:
+
+\begin{lstlisting}[language=bash, caption=Installation von Git, label=Installation von Git]
+    $ sudo apt-get install git
+\end{lstlisting}
+
+Unter macOS kann das grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} genutzt
+werden.
+
+\subsection{Node.JS und npm}
+Für die Entwicklung und den damit verbundenen Ausführungen auf dem eigenen Rechner wird ein installiertes Node.JS
+benötigt. Die aktuellste LTS-Version kann unter Linux wie folgt installiert werden:
+
+\begin{lstlisting}[language=bash, caption=Installation von Node.JS, label=Installation von Node.JS]
+    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    $ sudo apt-get install -y nodejs
+\end{lstlisting}
+
+Für macOS gibt es ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.11.4/node-v8.11.4.pkg}
+heruntergeladen werden kann.
+
+Bei der Installation von Node.JS wir npm automatisch mitinstalliert. Dieser ist der Node.JS eigene Paketmanager.

@@ -1,17 +1,22 @@
 \section{Vorbereitung}
-Was muss vorbereitet werden, damit ich das umsetzen kann was ich will?
-
-\subsection{Git}
-Muss installiert und eingerichtet werden
-
-\subsection{NodeJS und NPM}
-Muss installiert und eingerichtet werden
+Damit im Weiteren das Frontend entwickelt und gebaut werden kann, müssen ein Programm auf dem Entwicklungsrechner
+installiert sowie ein IBM Cloud Service instanziiert werden. Die Vorgehensweise wird im folgenden Kapitel erläutert.
 
 \subsection{Angular CLI}
-Muss installiert und eingerichtet werden
+Für die Erstellung, Verwaltung und Aktualisierung einer Angular-Applikation, wird die Hauseigene Command Line Interface
+(kurz Angular CLI) genutzt. Diese kann über den folgenden Befehl auf Linux und macOS installiert und eingerichtet werden:
 
-\subsection{NodeJS Runtime}
-Einrichten der Runtime
+\begin{lstlisting}[language=bash, caption=Installation Angular CLI, label=Installation Angular CLI]
+$ npm install -g @angular/cli
+\end{lstlisting}
 
-\subsection{Toolchain}
-Einrichten der Toolchain
+Anschließend steht die Applikation über das Kommando \path{ng} zur Verfügung.
+
+\subsection{Node.JS Runtime}
+Damit auch das erstellte Frontend in der Cloud laufen kann, wird in der IBM Cloud eine Node.JS-Runtime benötigt. Genau
+wie in Kapitel \ref{ssc:nodejs_runtime} auf Seite \pageref{ssc:nodejs_runtime} kann diese mit dem folgenden Befehl
+eingerichtet werden:
+
+\begin{lstlisting}[language=bash, caption=Instanziierung der Node.JS Runtime, label=Instanziierung der Node.JS Runtime]
+$ ibmcloud cf create-service nodejs service_name
+\end{lstlisting}
