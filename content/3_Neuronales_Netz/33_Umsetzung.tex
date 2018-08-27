@@ -20,8 +20,18 @@ Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden u
 Gerade interessant für On The Edge Sachen oder für Mobile.
 
 \subsection{Toolchain einrichten}
-Der einfachste Weg, seinen geschriebenen Quellcode in der Nod.JS-Runtime (Cloud Foundry-Container) zu installieren ist es,
-diesen mittels DevOPS über eine Toolchain automatisiert zu installieren.
+Da die Node.JS-Applikation nun entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und abrufbar
+gemacht werden. Damit dies nicht händisch über \path{cf push} gemacht werden muss, kann eine Toolchain aus der IBM Cloud
+genutzt werden.
+
+Für die Nutzung der Toolchain wird ein Git-Repository angelegt. Nach jedem \path{commit}, welcher in dieses Repository
+geladen wird, aktiviert sich die Toolchain selbstständig und lädt den aktuellsten Quellcode herunter.
+
+Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Steps durchlaufen, um die Applikation
+in einen Cloud Foundry-Container zu installieren.
+
+Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in welcher die entwickelte Applikation laufen
+soll, in der IBM Cloud ausgewählt werden.
 
 \subsection{API Connect}
 Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Beide Applikationen müssen abgefangen werden können. Also
