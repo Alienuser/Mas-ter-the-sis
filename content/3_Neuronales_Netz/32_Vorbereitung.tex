@@ -12,13 +12,13 @@ kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtime
 
 Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation gefragt.
 Dieser spielt für die Umsetzung keine Rolle und die Organisation kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden.
-Ein Beispiel für den Organisationsnamen ist \path{Machine-Learning}.
+Ein Beispiel für den Organisationsnamen ist \texttt{Machine-Learning}.
 
-Im Anschluss wird nach einem Namen für den ersten \path{Space} in der erstellten Organisation gefragt. Auch dieser spielt
+Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstellten Organisation gefragt. Auch dieser spielt
 für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für die
-benamung des ersten Spaces ist \path{dev}. Dies ist die Abkürzung für \textit{developper}.
+benamung des ersten Spaces ist \texttt{dev}. Dies ist die Abkürzung für \textit{developper}.
 
-In einem \path{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \path{Spaces} beinhalten.
+In einem \texttt{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \texttt{Spaces} beinhalten.
 
 \subsection{IBM Cloud CLI}
 Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz \textit{CLI}) zu
@@ -39,22 +39,22 @@ erscheinen, hat die Installation nicht geklappt. Weitere Informationen gibt es a
 Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluemix\_cli/get\_started.html}.
 
 \subsection{Watson Studio}
-Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \path{Watson Studio} benötigt. Aktuell gibt
+Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \texttt{Watson Studio} benötigt. Aktuell gibt
 zwei Möglichkeiten diesen in den erstellten Space einzubinden.
 
 \subsubsection*{Über das IBM Cloud Dashboard}
-Auf dem IBM Cloud Dashbaord können mit einem Klick auf \path{Katalog} alle Services und Runtimes, welche aktuell genutzt
-werden können, aufgelistet werden. In der Kategorie \path{Künstliche Intelligenz} kann der Service \path{Watson Studio}
+Auf dem IBM Cloud Dashbaord können mit einem Klick auf \texttt{Katalog} alle Services und Runtimes, welche aktuell genutzt
+werden können, aufgelistet werden. In der Kategorie \texttt{Künstliche Intelligenz} kann der Service \texttt{Watson Studio}
 ausgewählt werden.
 
 Auf der sich öffnenden Seite kann der \textit{Servicename}, welcher frei gewählt werden kann, eingetragen werden. Anschließend
 kann noch die Region, in welcher der Service zur Verfügung gestellt werden soll und die Ressourengruppe definiert werden.
 
-Mit einem Klick auf \path{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
+Mit einem Klick auf \texttt{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
 Dashbaord. Dort sollte der Service mit dem eingetragenen Name sichtbar sein.
 
 Auf dem Dashboard kann der Watson Studio Service durch einen klick ausgewählt werden. Auf der folgenden Seite über die
-Schaltfläche \path{Get Started} in das Watson Studio gewechselt werden.
+Schaltfläche \texttt{Get Started} in das Watson Studio gewechselt werden.
 
 \subsubsection*{Über die CLI}
 Alternativ kann der Service mittels dem installierten CLI eingerichtet werden. Dazu muss das CLI mit dem IBM
@@ -70,20 +70,20 @@ Anschließend kann sich der Benutzer mit dem folgenden Befehl einloggen:
     $ ibmcloud login --sso
 \end{lstlisting}
 
-Der Parameter \path{sso} bewirkt, dass sich ein Browserfenster öffnet, das einen bequemen Login ohne Kommandozeile
+Der Parameter \texttt{sso} bewirkt, dass sich ein Browserfenster öffnet, das einen bequemen Login ohne Kommandozeile
 ermöglicht.
 
 Nach einem erfolgreichen login, kann die genutzte Organisation ausgewählt werden. Dies geschieht über die Eingabe der
 entsprechenden Nummer der Organisation. Der Login-Vogang ist damit abgeschlossen.
 
-Im Weiteren kann ein \path{Watson Studio}-Service mit dem folgenden Befehl erstellt werden:
+Im Weiteren kann ein \texttt{Watson Studio}-Service mit dem folgenden Befehl erstellt werden:
 
 \begin{lstlisting}[language=bash, caption=Instanziierung des Watson Studio Services, label=Instanziierung des Watson Studio Services]
     $ ibmcloud cf create-service Watson-Studio lite sercive_name
 \end{lstlisting}
 
-Für den Parameter \path{service_name} muss ein Name eingegeben werden, unter welchem der Service gefunden werden kann.
-Über den Befehl \path{cf services} können alle instantiierten Services, welche sich in der vorher ausgewählten Organisation
+Für den Parameter \texttt{service\_name} muss ein Name eingegeben werden, unter welchem der Service gefunden werden kann.
+Über den Befehl \texttt{cf services} können alle instantiierten Services, welche sich in der vorher ausgewählten Organisation
 befinden, aufgelistet werden.
 
 \begin{lstlisting}[language=bash, caption=Auflisten aller Services, label=Auflisten aller Services]
@@ -105,8 +105,8 @@ erläutert. Im folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
-Auch hier muss über den Parameter \path{service_name} ein Name für die Applikation vergeben werden. Die URL, über die der
-Container später aufrufbar ist folgt dem Schema \path{https://service_name.mybluemix.net}.
+Auch hier muss über den Parameter \texttt{service\_name} ein Name für die Applikation vergeben werden. Die URL, über die der
+Container später aufrufbar ist folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
 
 \subsection{Git}
 Für die Verwaltung und den späteren, automatisierten Installationsvorgang des Geschriebenen Quellcodes wird Git verwendet.

@@ -7,15 +7,29 @@ Es gibt vier Möglichkeiten:\\
 - Machine Learning Models (Autoamtisch aus Daten generrieren)\\
 - Model flows (SPSS) - Make Deployment\\
 - Model flows (SPSS) - Download Model - Import Tensorflow/Tensorflow.JS\\
-- Notebooks (Python)\\
+- Notebooks (Python)
 
-Wenn fertig, kann man das auch mal mit cURL probieren das Deployment. Ob das auch geht!
+Volgende Schritte müssen durchgeführt werden:\\
+- Daten zusammenstellen\\
+- Daten überprüfen\\
+- Daten in Watson Studio importieren\\
+- Daten in CSV überführen (Data flows)\\
+- Watson Machine Learning model anlegen\\
+- Model bearbeiten und neuronales Netz hinzufügen\\
+- Modell trainieren lassen\\
+- Modell exportieren (Tabelle)\\
+- Deployment machen\\
+- REST-Schnittstelle austesten und Daten hinschicken
 
 \url{https://console.bluemix.net/docs/cli/index.html#overview}
 
+\subsubsection{Testen mit Postman}
+Hier wird das mit Postman getestet.
+
 \subsection{Tensorflow}
-Einrichten der NodeJS-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im vorangegangenen
-Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden und nutzen. Also einen Wrapper bauen.
+Einrichten der NodeJS-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im
+vorangegangenen Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden und nutzen. Also einen
+Wrapper bauen.
 
 Gerade interessant für On The Edge Sachen oder für Mobile.
 
@@ -25,10 +39,10 @@ Kapitel werden die dafür nötigen Schritte erläutert.
 
 \subsection{Toolchain einrichten}
 Da die Node.JS-Applikation nun entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und abrufbar
-gemacht werden. Damit dies nicht händisch über \path{cf push} gemacht werden muss, kann eine Toolchain aus der IBM Cloud
-genutzt werden.
+gemacht werden. Damit dies nicht manuell nach jeder Änderung im Quellcode über \texttt{cf push} gemacht werden muss, kann
+eine Toolchain aus der IBM Cloud genutzt werden.
 
-Für die Nutzung der Toolchain wird ein Git-Repository angelegt. Nach jedem \path{commit}, welcher in dieses Repository
+Für die Nutzung der Toolchain wird ein Git-Repository angelegt. Nach jedem \texttt{commit}, welcher in dieses Repository
 geladen wird, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
 
 Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Toolchain-Schritte durchlaufen, um
@@ -39,31 +53,32 @@ Dabei können die einzelnen Schritte selbst definiert, oder eine vorkonfiguriert
 Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in welcher die entwickelte Applikation laufen
 soll, in der IBM Cloud ausgewählt werden.
 
-Auf der folgenden Seite, im Tab \path{Übersicht}, erscheinen 5 Karten mit unterschiedlichen Informationen. Für die
-Toolchain ist die Karte mit der Aufschritf \path{Continous Delivery} entscheiden. Dort erscheint ein Button mit der
-Aufschrift \path{Aktivieren}.
+Auf der folgenden Seite, im Tab \texttt{Übersicht}, erscheinen 5 Karten mit unterschiedlichen Informationen. Für die
+Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheiden. Dort erscheint ein Button mit der
+Aufschrift \texttt{Aktivieren}.
 
 Ein klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
 Name eingetragen und die Region ausgewählt werden. Da die Standardkonfiguration vorerst völlig ausreichend ist, kann diese
-direkt übernommen werden. Dafür genügt ein klick auf \path{Erstellen}.
+direkt übernommen werden. Dafür genügt ein klick auf \texttt{Erstellen}.
 
 Nach einem kurzen Ladevorgang wurde die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
 unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann.
 
-Im Bereich \path{Nachdenken}, wir dein Issue-Tracker konfiguriert, in dem Probleme mit der Anwendug eingetragen, verwaltet
+Im Bereich \texttt{Nachdenken}, wir dein Issue-Tracker konfiguriert, in dem Probleme mit der Anwendug eingetragen, verwaltet
 und gelöst werden können.
 
-In \path{Codieren} können auf zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository, bei dem
+In \texttt{Codieren} können auf zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository, bei dem
 es sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis von
 Eclipse Orion.
 
-Im der letzten Kategorie, \path{Bereitstellen}, findet sich die Toolchain, welche im nächsten Schritt Konfiguriert werden
-muss. Ein klick auf die Kachel \path{Delivery Pipeling} öffnet diese.
+Im der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Toolchain, welche im nächsten Schritt Konfiguriert werden
+muss. Ein klick auf die Kachel \texttt{Delivery Pipeling} öffnet diese.
 
-Nach dem Laden der Seite erscheinen zwei sogenannte \path{Phasen}. Jeder Schritt in der Delivery Pipeline wird durch eine
-Phase symbolisiert. In einer Phase kann zum Beispiel der Quellcode aus dem Git-Repository geladen, oder die
-geschriebenen Tests können durchgeführt werden. Die Standardkonfiguration sieht in der \path{Build Stage} das herunterladen
-des Quellcodes aus dem Git-Repository vor und in der \path{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
+Nach dem Laden der Seite erscheinen zwei sogenannte \texttt{Phasen} (engl. Stages). Jeder Schritt in der Delivery Pipeline
+wird durch eine Phase symbolisiert. In einer Phase kann zum Beispiel der Quellcode aus dem Git-Repository geladen, oder
+die geschriebenen Tests können durchgeführt werden. Die Standardkonfiguration sieht in der \texttt{Build Stage} das
+herunterladen des Quellcodes aus dem Git-Repository vor und in der \texttt{Deploy Stage} das Einrichten eines Cloud
+Foundy-Containers.
 
 Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen durchgeführt
 werden müssen.
