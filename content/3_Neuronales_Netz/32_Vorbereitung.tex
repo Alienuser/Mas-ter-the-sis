@@ -10,15 +10,16 @@ Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt 
 Nach erfolgreicher aktivierung des Kontos, mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink,
 kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes genutzt werden.
 
-Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation gefragt.
-Dieser spielt für die Umsetzung keine Rolle und die Organisation kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden.
-Ein Beispiel für den Organisationsnamen ist \texttt{Machine-Learning}.
+Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation
+gefragt. Dieser spielt für die Umsetzung keine Rolle und die Organisation kann zu jedem Zeitpunkt umbenannt oder auch
+gelöscht werden. Ein Beispiel für den Organisationsnamen ist \texttt{Machine-Learning}.
 
-Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstellten Organisation gefragt. Auch dieser spielt
-für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für die
-benamung des ersten Spaces ist \texttt{dev}. Dies ist die Abkürzung für \textit{developper}.
+Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstellten Organisation gefragt. Auch dieser
+spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
+die benamung des ersten Spaces ist \texttt{dev}. Dies ist die Abkürzung für \textit{developper}.
 
-In einem \texttt{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \texttt{Spaces} beinhalten.
+In einem \texttt{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \texttt{Spaces}
+beinhalten.
 
 \subsection{IBM Cloud CLI}
 Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz \textit{CLI}) zu
@@ -47,8 +48,9 @@ Auf dem IBM Cloud Dashbaord können mit einem Klick auf \texttt{Katalog} alle Se
 werden können, aufgelistet werden. In der Kategorie \texttt{Künstliche Intelligenz} kann der Service \texttt{Watson Studio}
 ausgewählt werden.
 
-Auf der sich öffnenden Seite kann der \textit{Servicename}, welcher frei gewählt werden kann, eingetragen werden. Anschließend
-kann noch die Region, in welcher der Service zur Verfügung gestellt werden soll und die Ressourengruppe definiert werden.
+Auf der sich öffnenden Seite kann der \textit{Servicename}, welcher frei gewählt werden kann, eingetragen werden.
+Anschließend kann noch die Region, in welcher der Service zur Verfügung gestellt werden soll und die Ressourengruppe
+definiert werden.
 
 Mit einem Klick auf \texttt{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
 Dashbaord. Dort sollte der Service mit dem eingetragenen Name sichtbar sein.
@@ -83,8 +85,8 @@ Im Weiteren kann ein \texttt{Watson Studio}-Service mit dem folgenden Befehl ers
 \end{lstlisting}
 
 Für den Parameter \texttt{service\_name} muss ein Name eingegeben werden, unter welchem der Service gefunden werden kann.
-Über den Befehl \texttt{cf services} können alle instantiierten Services, welche sich in der vorher ausgewählten Organisation
-befinden, aufgelistet werden.
+Über den Befehl \texttt{cf services} können alle instantiierten Services, welche sich in der vorher ausgewählten
+Organisation befinden, aufgelistet werden.
 
 \begin{lstlisting}[language=bash, caption=Auflisten aller Services, label=Auflisten aller Services]
     $ ibmcloud cf services
@@ -105,8 +107,8 @@ erläutert. Im folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
-Auch hier muss über den Parameter \texttt{service\_name} ein Name für die Applikation vergeben werden. Die URL, über die der
-Container später aufrufbar ist folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
+Auch hier muss über den Parameter \texttt{service\_name} ein Name für die Applikation vergeben werden. Die URL, über die
+der Container später aufrufbar ist folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
 
 \subsection{Git}
 Für die Verwaltung und den späteren, automatisierten Installationsvorgang des Geschriebenen Quellcodes wird Git verwendet.
@@ -121,7 +123,7 @@ werden.
 
 \subsection{Node.JS und npm}
 Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem eigenen Rechner wird ein installiertes Node.JS
-benötigt. Die aktuellste LTS-Version kann unter Linux wie folgt installiert werden:
+benötigt. Die aktuellste LTS-Version (8.11.4) kann unter Linux wie folgt installiert werden:
 
 \begin{lstlisting}[language=bash, caption=Installation von Node.JS, label=Installation von Node.JS]
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -

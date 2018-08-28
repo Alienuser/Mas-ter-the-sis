@@ -34,8 +34,8 @@ Wrapper bauen.
 Gerade interessant für On The Edge Sachen oder für Mobile.
 
 Damit die Applikation auch im Internet zur Verfügung steht und vom Frontend über das API Connect aufgerufen werden kann,
-muss diese in einen Cloud Foundry-Container, welcher in der IBM Cloud laufen wird, installiert werden. Im folgenden
-Kapitel werden die dafür nötigen Schritte erläutert.
+muss diese in einen Cloud Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folgenden Kapitel
+werden die dafür nötigen Schritte erläutert.
 
 \subsection{Toolchain einrichten}
 Da die Node.JS-Applikation nun entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und abrufbar
@@ -48,45 +48,55 @@ geladen wird, aktiviert sich die Toolchain selbstständig und lädt den entsprec
 Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Toolchain-Schritte durchlaufen, um
 die Applikation in einen Cloud Foundry-Container zu installieren.
 
-Dabei können die einzelnen Schritte selbst definiert, oder eine vorkonfigurierte Toolchain genutzt werden.
+Dabei können die einzelnen Schritte, welche beim Deployment durchlaufen werden, selbst definiert, oder eine
+vorkonfigurierte Toolchain genutzt werden. Die vorkonfigurierte Toolchain kann im Nachgang allerdings individuell
+angepasst werden. Sie dient lediglich dem schnelleren Start.
 
 Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in welcher die entwickelte Applikation laufen
-soll, in der IBM Cloud ausgewählt werden.
+soll, in dem IBM Cloud Dashboard ausgewählt werden.
 
-Auf der folgenden Seite, im Tab \texttt{Übersicht}, erscheinen 5 Karten mit unterschiedlichen Informationen. Für die
+Auf der folgenden Seite, im Tab \texttt{Übersicht}, erscheinen fünf Kacheln mit unterschiedlichen Informationen. Für die
 Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheiden. Dort erscheint ein Button mit der
 Aufschrift \texttt{Aktivieren}.
 
 Ein klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
-Name eingetragen und die Region ausgewählt werden. Da die Standardkonfiguration vorerst völlig ausreichend ist, kann diese
-direkt übernommen werden. Dafür genügt ein klick auf \texttt{Erstellen}.
+Name eingetragen und die Region ausgewählt werden, in der die Toolchain installiert werden soll. Da die Standardkonfiguration
+vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein klick auf \texttt{Erstellen}.
 
 Nach einem kurzen Ladevorgang wurde die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
 unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann.
 
-Im Bereich \texttt{Nachdenken}, wir dein Issue-Tracker konfiguriert, in dem Probleme mit der Anwendug eingetragen, verwaltet
-und gelöst werden können.
+Im Bereich \texttt{Nachdenken}, wird ein Issue-Tracker konfiguriert, in dem zum Beispiel Bugs (Softwarefehler), welche
+in der Software entdeckt werden, eingetragen, verwaltet und diskutiert werden können.
 
-In \texttt{Codieren} können auf zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository, bei dem
-es sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis von
-Eclipse Orion.
+In \texttt{Codieren} kann auf gleich zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository,
+bei dem es sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis
+von Eclipse Orion, mit der der Quellcode der Anwendung online editiert werden kann.
 
 Im der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Toolchain, welche im nächsten Schritt Konfiguriert werden
-muss. Ein klick auf die Kachel \texttt{Delivery Pipeling} öffnet diese.
+muss. Ein klick auf die Kachel \texttt{Delivery Pipeline} öffnet diese.
 
 Nach dem Laden der Seite erscheinen zwei sogenannte \texttt{Phasen} (engl. Stages). Jeder Schritt in der Delivery Pipeline
 wird durch eine Phase symbolisiert. In einer Phase kann zum Beispiel der Quellcode aus dem Git-Repository geladen, oder
-die geschriebenen Tests können durchgeführt werden. Die Standardkonfiguration sieht in der \texttt{Build Stage} das
-herunterladen des Quellcodes aus dem Git-Repository vor und in der \texttt{Deploy Stage} das Einrichten eines Cloud
-Foundy-Containers.
+die geschriebenen Tests können durchgeführt werden.
+
+Die Standardkonfiguration sieht in der \texttt{Build Stage} das herunterladen des Quellcodes aus dem Git-Repository vor
+und in der \texttt{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
 
 Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen durchgeführt
 werden müssen.
 
+Jetzt muss der geschriebene Quellcode lediglich noch in das, in der Toolchain hinzugefügte Git-Repository, eingecheckt
+werden. Die URL für das Repository kann in der Toolchain-Übersicht mit einem klick auf die Kachel \texttt{Git} angezeigt
+werden.
+
+Nach erfolgreichem hochladen der Anwendung startet der Deployvorgang in der Toolchain automatisch. Nach wenigen Minuten
+sollte die Anwendung über ihre URL aufrufbar sein.
+
 Da die Applikation nun im Internet über ein Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
 mit dem API Connect Service verbunden werden. Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom
-Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:webseite} beschrieben wird, aufgerufen werden
-kann.
+Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:webseite} beschrieben wird, und über Postman
+vereinfacht und aufgerufen werden kann.
 
 \subsection{API Connect}
 Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Beide Applikationen müssen abgefangen werden können. Also
