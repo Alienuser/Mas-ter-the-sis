@@ -1,5 +1,6 @@
 \section{Umsetzung}
 Hier noch generell was beschreiben. - Zielarchitekturbild darstellen (komplette Architektur)
+Was wird im folgenden gemacht.
 
 \subsection{Cloud}
 Wie habe ich das nun in der Cloud umgesetzt?\\
@@ -20,6 +21,8 @@ Volgende Schritte müssen durchgeführt werden:\\
 - Modell exportieren (Tabelle)\\
 - Deployment machen\\
 - REST-Schnittstelle austesten und Daten hinschicken
+
+Man braucht Cloud wegen performance zum erstellen des Models.
 
 \url{https://console.bluemix.net/docs/cli/index.html#overview}
 
@@ -96,11 +99,12 @@ sollte die Anwendung über ihre URL aufrufbar sein.
 Da die Applikation nun im Internet über ein Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
 mit dem API Connect Service verbunden werden. Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom
 Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:webseite} beschrieben wird, und über Postman
-vereinfacht und aufgerufen werden kann.
+vereinfacht aufgerufen werden kann.
 
 \subsection{API Connect}
-Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Beide Applikationen müssen abgefangen werden können. Also
-auch zwei Routen. Das ist wichtig. Wie sieht das dann aus etc.
+Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Auch wegen Token, damit man im Frontend das nicht
+holen muss. Und Nutzername und Passwort dann nicht drinnen stehen müssen. Beide Applikationen müssen abgefangen werden
+können. Also auch zwei Routen. Das ist wichtig. Wie sieht das dann aus etc. (Watson Studio und Tensorflow.JS Applikation)
 \\ \\
 While this mechanism works for smaller teams and projects I’d guess that at some point you’d want API management
 capabilities so that developers don’t have to have the credentials of the machine learning service and so that you can

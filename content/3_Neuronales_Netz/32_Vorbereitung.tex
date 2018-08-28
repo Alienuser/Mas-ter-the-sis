@@ -7,7 +7,7 @@ Entwicklungsrechner installiert werden.
 Um mit der IBM Cloud arbeiten zu können wird ein kostenloses Konto benötigt. Dies kann auf der
 Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt werden.
 
-Nach erfolgreicher aktivierung des Kontos, mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink,
+Nach erfolgreicher Aktivierung des Kontos, mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink,
 kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes genutzt werden.
 
 Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation
@@ -16,7 +16,7 @@ gelöscht werden. Ein Beispiel für den Organisationsnamen ist \texttt{Machine-L
 
 Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstellten Organisation gefragt. Auch dieser
 spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
-die benamung des ersten Spaces ist \texttt{dev}. Dies ist die Abkürzung für \textit{developper}.
+die Benamung des ersten Spaces ist \texttt{dev}, was eine Abkürzung für \textit{developper} ist.
 
 In einem \texttt{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \texttt{Spaces}
 beinhalten.
@@ -41,7 +41,7 @@ Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluem
 
 \subsection{Watson Studio}
 Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \texttt{Watson Studio} benötigt. Aktuell gibt
-zwei Möglichkeiten diesen in den erstellten Space einzubinden.
+es zwei Möglichkeiten einen Service oder eine Runtime in den erstellten Space einzubinden.
 
 \subsubsection*{Über das IBM Cloud Dashboard}
 Auf dem IBM Cloud Dashbaord können mit einem Klick auf \texttt{Katalog} alle Services und Runtimes, welche aktuell genutzt
@@ -53,7 +53,7 @@ Anschließend kann noch die Region, in welcher der Service zur Verfügung gestel
 definiert werden.
 
 Mit einem Klick auf \texttt{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
-Dashbaord. Dort sollte der Service mit dem eingetragenen Name sichtbar sein.
+Dashbaord. Dort sollte der Service mit dem eingetragenen Name aufgelistet werden.
 
 Auf dem Dashboard kann der Watson Studio Service durch einen klick ausgewählt werden. Auf der folgenden Seite über die
 Schaltfläche \texttt{Get Started} in das Watson Studio gewechselt werden.
@@ -84,7 +84,7 @@ Im Weiteren kann ein \texttt{Watson Studio}-Service mit dem folgenden Befehl ers
     $ ibmcloud cf create-service Watson-Studio lite sercive_name
 \end{lstlisting}
 
-Für den Parameter \texttt{service\_name} muss ein Name eingegeben werden, unter welchem der Service gefunden werden kann.
+Für den Parameter \texttt{service\_name} muss ein Name eingetragen werden, unter welchem der Service gefunden werden kann.
 Über den Befehl \texttt{cf services} können alle instantiierten Services, welche sich in der vorher ausgewählten
 Organisation befinden, aufgelistet werden.
 
@@ -97,11 +97,11 @@ Der erstellte Service sollte mit dem eingegebenen Namen in der Liste aller Servi
 \subsection{Node.JS Runtime}
 \label{ssc:nodejs_runtime}
 Für die Erstellung der Node.JS-Applikation wird eine entsprechende Runtime in der IBM Cloud benötigt. Dafür wird ein
-Cloud Foundry-Container mit Node.JS-Konfiguration erstellt. Dieser kann ebenfalls auf zwei unterschiedliche weisen erstellt
+Cloud Foundry-Container mit Node.JS-Konfiguration erstellt. Dieser kann ebenfalls auf zwei unterschiedliche Weisen erstellt
 werden.
 
-Im vorangegangenen Kapitel wurden die zwei Varianten (Über den IBM Cloud Katalog und über die Kommandozeile) ausführlich
-erläutert. Im folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
+Im vorangegangenen Kapitel wurden die zwei Varianten (über den IBM Cloud Katalog und über die Kommandozeile) ausführlich
+erläutert. Im Folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
 
 \begin{lstlisting}[language=bash, caption=Instanziierung der Node.JS Runtime, label=Instanziierung der Node.JS Runtime]
     $ ibmcloud cf create-service nodejs service_name
@@ -112,7 +112,7 @@ der Container später aufrufbar ist folgt dem Schema \texttt{https://service\_na
 
 \subsection{Git}
 Für die Verwaltung und den späteren, automatisierten Installationsvorgang des Geschriebenen Quellcodes wird Git verwendet.
-Das Programm kann unter Linux über das folgenden Kommando installiert werden:
+Das Programm kann unter Linux über das folgenden Kommando auf dem Entwicklnugsrechner installiert werden:
 
 \begin{lstlisting}[language=bash, caption=Installation von Git, label=Installation von Git]
     $ sudo apt-get install git
