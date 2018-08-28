@@ -19,19 +19,59 @@ Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden u
 
 Gerade interessant für On The Edge Sachen oder für Mobile.
 
+Damit die Applikation auch im Internet zur Verfügung steht und vom Frontend über das API Connect aufgerufen werden kann,
+muss diese in einen Cloud Foundry-Container, welcher in der IBM Cloud laufen wird, installiert werden. Im folgenden
+Kapitel werden die dafür nötigen Schritte erläutert.
+
 \subsection{Toolchain einrichten}
 Da die Node.JS-Applikation nun entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und abrufbar
 gemacht werden. Damit dies nicht händisch über \path{cf push} gemacht werden muss, kann eine Toolchain aus der IBM Cloud
 genutzt werden.
 
 Für die Nutzung der Toolchain wird ein Git-Repository angelegt. Nach jedem \path{commit}, welcher in dieses Repository
-geladen wird, aktiviert sich die Toolchain selbstständig und lädt den aktuellsten Quellcode herunter.
+geladen wird, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
 
-Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Steps durchlaufen, um die Applikation
-in einen Cloud Foundry-Container zu installieren.
+Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Toolchain-Schritte durchlaufen, um
+die Applikation in einen Cloud Foundry-Container zu installieren.
+
+Dabei können die einzelnen Schritte selbst definiert, oder eine vorkonfigurierte Toolchain genutzt werden.
 
 Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in welcher die entwickelte Applikation laufen
 soll, in der IBM Cloud ausgewählt werden.
+
+Auf der folgenden Seite, im Tab \path{Übersicht}, erscheinen 5 Karten mit unterschiedlichen Informationen. Für die
+Toolchain ist die Karte mit der Aufschritf \path{Continous Delivery} entscheiden. Dort erscheint ein Button mit der
+Aufschrift \path{Aktivieren}.
+
+Ein klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
+Name eingetragen und die Region ausgewählt werden. Da die Standardkonfiguration vorerst völlig ausreichend ist, kann diese
+direkt übernommen werden. Dafür genügt ein klick auf \path{Erstellen}.
+
+Nach einem kurzen Ladevorgang wurde die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
+unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann.
+
+Im Bereich \path{Nachdenken}, wir dein Issue-Tracker konfiguriert, in dem Probleme mit der Anwendug eingetragen, verwaltet
+und gelöst werden können.
+
+In \path{Codieren} können auf zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository, bei dem
+es sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis von
+Eclipse Orion.
+
+Im der letzten Kategorie, \path{Bereitstellen}, findet sich die Toolchain, welche im nächsten Schritt Konfiguriert werden
+muss. Ein klick auf die Kachel \path{Delivery Pipeling} öffnet diese.
+
+Nach dem Laden der Seite erscheinen zwei sogenannte \path{Phasen}. Jeder Schritt in der Delivery Pipeline wird durch eine
+Phase symbolisiert. In einer Phase kann zum Beispiel der Quellcode aus dem Git-Repository geladen, oder die
+geschriebenen Tests können durchgeführt werden. Die Standardkonfiguration sieht in der \path{Build Stage} das herunterladen
+des Quellcodes aus dem Git-Repository vor und in der \path{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
+
+Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen durchgeführt
+werden müssen.
+
+Da die Applikation nun im Internet über ein Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
+mit dem API Connect Service verbunden werden. Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom
+Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:webseite} beschrieben wird, aufgerufen werden
+kann.
 
 \subsection{API Connect}
 Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Beide Applikationen müssen abgefangen werden können. Also
