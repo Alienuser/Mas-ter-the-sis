@@ -26,82 +26,139 @@ Man braucht Cloud wegen performance zum erstellen des Models.
 
 \url{https://console.bluemix.net/docs/cli/index.html#overview}
 
-\subsubsection{Testen mit Postman}
-Hier wird das mit Postman getestet.
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Aufruf mit Postman}
+\label{subsec:Aufruf mit Postman}
+Im Weiteren soll das erstellte Model, welches über ein Deployment in einem Web-Service zur Verfügung gestellt wurde,
+mit dem Programm Postman\footnote{https://www.getpostman.com} getestet werden.
+
+So kann sichergestellt werden, dass das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufbar ist.
+Außerdem können so die Übergabeparameter getestet werden.
+
+Um auf die Schnittstelle des Web-Services zugreifen zu können, muss bei jedem Request an diesen ein Authentication Token
+(kurz Auth-Token) mitgeschickt werden. Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
+
+Der Token kann über eine REST-Schnittstelle des Watson Studio erstellt werden. Dabei handelt es sich um eine andere
+Schnittstelle als beim Web-Service. Der Token ist immer nur für maximal vier Stunden gültig.
+
+Um einen Auth-Token zu erstellen, muss der Watson Studio Benutzername und das zugehörige Passwort an die Schnittstelle
+übergeben werden. Ein Beispielaufruf ist in Listing~\ref{Abruf des Auth-Tokens} auf Seite~\pageref{Abruf des Auth-Tokens}
+zu sehen. Der Token ist dabei der Rückgabeparameter.
+
+\begin{lstlisting}[language=bash, caption=Abruf des Auth-Tokens, label=Abruf des Auth-Tokens]
+$ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identity/token
+\end{lstlisting}
+
+In Postman kann dieser Aufruf durch die Eingabe der URL und dem HTTP-Type \texttt{GET} gemacht werden. Im Reiter
+\texttt{Authentication} muss als Type \texttt{Basic-Auth} ausgewählt werden.
+
+Rechts davon sollten die beiden Eingabefelder für Benutzername und Passwort erscheinen. Nach der Eingabe der geforderten
+Felder kann mit \texttt{Send} der Request abgeschickt werden und nach wenigen Sekunden sollte der Token in einem
+JSON-Object als Rückgabeparameter erscheinen.
+
+Anschließend kann ein neuer Postman-Tab geäffnet werden, welcher das eigentliche Deployment aufrufen soll. Der
+REST-Endpunkt ist in Watson Studio unter Deployments zu finden und heißt \texttt{Scoring End-point}.
+
+Dieser Scoring End-point kann als URL in Postman eingetragen und als HTTP-Type muss Request \texttt{POST} ausgewählt
+werden. Im Bereich \texttt{Authentication} wird der Type mit \texttt{Baerer} angegeben. Somit kann im rechten Bereich der
+gespeicherte Token eingetragen werden.
+
+Durch die Auswahl des HTTP-Types \textit{POST} kann der \texttt{Body} des Requests definiert werden. Dabei handelt es
+sich um Parameter, welche an die Schnittstelle mitgeschickt werden. Hier werden dafür die PArameter, welche das
+neuronale Netz für die Auswertung benötigt, eingetragen.
+
+Abschließend kann mit \texttt{Send} der Request abgeschickt werden. Nach wenigen Sekunden erhält man den Response des
+neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vorhersagen enthalten sein.
 
 \subsection{Tensorflow}
+Da die Watson Studio Applikation nun erfolgreich in einem Deployment zur Verfügung gestellt und der Aufruf über
+Postman verifiziert wurde, kann nun das trainierte Model in eine Tensorflow-JS Applikation eingebettet werden.
+
+\colorbox{yellow}{Hier fehlt was}
+
 Einrichten der NodeJS-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im
 vorangegangenen Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden und nutzen. Also einen
 Wrapper bauen.
 
 Gerade interessant für On The Edge Sachen oder für Mobile.
 
-Damit die Applikation auch im Internet zur Verfügung steht und vom Frontend über das API Connect aufgerufen werden kann,
-muss diese in einen Cloud Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folgenden Kapitel
-werden die dafür nötigen Schritte erläutert.
+Damit die Applikation über eine Domain aus dem Internet aus aufrufbar ist, muss diese zum Beispiel in einen Cloud
+Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folgenden Kapitel werden die dafür nötigen
+Schritte erläutert.
 
 \subsection{Toolchain einrichten}
-Da die Node.JS-Applikation nun entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und abrufbar
-gemacht werden. Damit dies nicht manuell nach jeder Änderung im Quellcode über \texttt{cf push} gemacht werden muss, kann
-eine Toolchain aus der IBM Cloud genutzt werden.
+Da die Node.JS-Applikation fertig entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und über eine
+Domain abrufbar gemach werden. Damit dies nicht manuell nach jeder Änderung im Quellcode über \texttt{cf push} gemacht
+werden muss, kann eine Toolchain aus der IBM Cloud genutzt werden.
 
 Für die Nutzung der Toolchain wird ein Git-Repository angelegt. Nach jedem \texttt{commit}, welcher in dieses Repository
-geladen wird, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
+geschrieben wird, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
 
-Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Toolchain-Schritte durchlaufen, um
-die Applikation in einen Cloud Foundry-Container zu installieren.
+Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Schritte (Phasen) in der Toolchain
+durchlaufen, um die Applikation in einen Cloud Foundry-Container zu installieren.
 
 Dabei können die einzelnen Schritte, welche beim Deployment durchlaufen werden, selbst definiert, oder eine
 vorkonfigurierte Toolchain genutzt werden. Die vorkonfigurierte Toolchain kann im Nachgang allerdings individuell
-angepasst werden. Sie dient lediglich dem schnelleren Start.
+angepasst werden und dient lediglich einem schnelleren Start.
 
 Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in welcher die entwickelte Applikation laufen
 soll, in dem IBM Cloud Dashboard ausgewählt werden.
 
-Auf der folgenden Seite, im Tab \texttt{Übersicht}, erscheinen fünf Kacheln mit unterschiedlichen Informationen. Für die
-Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheiden. Dort erscheint ein Button mit der
-Aufschrift \texttt{Aktivieren}.
+Auf der folgenden Seite, im Tab \texttt{Übersicht} (linke Seite), erscheinen fünf Kacheln mit unterschiedlichen Informationen.
+Für die Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheiden. Dort gibt es einen Button
+mit der Aufschrift \texttt{Aktivieren}.
 
-Ein klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
+Ein Klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
 Name eingetragen und die Region ausgewählt werden, in der die Toolchain installiert werden soll. Da die Standardkonfiguration
-vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein klick auf \texttt{Erstellen}.
+vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein Klick auf \texttt{Erstellen}.
 
 Nach einem kurzen Ladevorgang wurde die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
 unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann.
 
-Im Bereich \texttt{Nachdenken}, wird ein Issue-Tracker konfiguriert, in dem zum Beispiel Bugs (Softwarefehler), welche
+Im Bereich \texttt{Nachdenken} wird ein Issue-Tracker konfiguriert, in dem zum Beispiel Bugs (Softwarefehler), welche
 in der Software entdeckt werden, eingetragen, verwaltet und diskutiert werden können.
 
 In \texttt{Codieren} kann auf gleich zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository,
 bei dem es sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis
 von Eclipse Orion, mit der der Quellcode der Anwendung online editiert werden kann.
 
-Im der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Toolchain, welche im nächsten Schritt Konfiguriert werden
-muss. Ein klick auf die Kachel \texttt{Delivery Pipeline} öffnet diese.
+Im der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Pipeline, welche im nächsten Schritt näher Erläutert
+und eingerichtet wird. Ein Klick auf die Kachel mit der Aufschrift \texttt{Delivery Pipeline} öffnet diese.
 
 Nach dem Laden der Seite erscheinen zwei sogenannte \texttt{Phasen} (engl. Stages). Jeder Schritt in der Delivery Pipeline
-wird durch eine Phase symbolisiert. In einer Phase kann zum Beispiel der Quellcode aus dem Git-Repository geladen, oder
-die geschriebenen Tests können durchgeführt werden.
+wird durch eine Phase symbolisiert. In einer Phase können zum Beispiel der Quellcode aus dem Git-Repository geladen, oder
+die geschriebenen Tests durchgeführt werden.
 
 Die Standardkonfiguration sieht in der \texttt{Build Stage} das herunterladen des Quellcodes aus dem Git-Repository vor
 und in der \texttt{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
 
-Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen durchgeführt
-werden müssen.
+Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder Einrichtungen
+durchgeführt werden müssen.
 
-Jetzt muss der geschriebene Quellcode lediglich noch in das, in der Toolchain hinzugefügte Git-Repository, eingecheckt
-werden. Die URL für das Repository kann in der Toolchain-Übersicht mit einem klick auf die Kachel \texttt{Git} angezeigt
-werden.
+Als nächstes muss der geschriebene Quellcode der Applikation lediglich noch in das, in der Toolchain hinzugefügte,
+Git-Repository eingecheckt werden. Die URL für das Repository kann in der Toolchain-Übersicht mit einem Klick auf die
+Kachel \texttt{Git} angezeigt werden.
 
-Nach erfolgreichem hochladen der Anwendung startet der Deployvorgang in der Toolchain automatisch. Nach wenigen Minuten
-sollte die Anwendung über ihre URL aufrufbar sein.
+Nach erfolgreichem \texttt{push} der Anwendung in das Git-Repository startet der deployment Vorgang in der Toolchain
+selbstständig. Nach wenigen Minuten sollte die Anwendung über ihre URL, welche in der Node.JS Runtime definiert ist,
+aufrufbar sein.
 
-Da die Applikation nun im Internet über ein Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
+Da die Applikation nun im Internet in einem Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
 mit dem API Connect Service verbunden werden. Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom
 Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:webseite} beschrieben wird, und über Postman
 vereinfacht aufgerufen werden kann.
 
 \subsection{API Connect}
+Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Testen mit Postman} beschrieben, braucht das
+REST-Interface des erstellten Deployments einen Auth-Token. Dieser kann nur über den Aufruf einer anderen
+REST-Schnittstelle zur Verfügung gestellt werden.
+
+Damit dies vereinfacht werden und das im weiteren Verlauf erstellte Frontend ebenfalls das Deployment aufrufen kann,
+werden beide Abfragen in API Connect gebündelt.
+
+\colorbox{yellow}{Hier fehlt was}
+
 Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Auch wegen Token, damit man im Frontend das nicht
 holen muss. Und Nutzername und Passwort dann nicht drinnen stehen müssen. Beide Applikationen müssen abgefangen werden
 können. Also auch zwei Routen. Das ist wichtig. Wie sieht das dann aus etc. (Watson Studio und Tensorflow.JS Applikation)
