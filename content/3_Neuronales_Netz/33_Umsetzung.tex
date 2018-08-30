@@ -2,39 +2,59 @@
 Hier noch generell was beschreiben. - Zielarchitekturbild darstellen (komplette Architektur)
 Was wird im folgenden gemacht.
 
+\colorbox{yellow}{Hier fehlt was}
+
 \subsection{Cloud}
-Wie habe ich das nun in der Cloud umgesetzt?\\
-Es gibt vier Möglichkeiten:\\
+Hier beschreiben, was ich nun in der Cloud umsetzen will und warum man die Cloud eigentlich braucht. Vorteil der
+Geschwindigkeit. Dabei würde es insgesamt vier Möglichkeiten geben das umzusetzen. Für welche habe ich mich
+entschieden?
+
 - Machine Learning Models (Autoamtisch aus Daten generrieren)\\
 - Model flows (SPSS) - Make Deployment\\
 - Model flows (SPSS) - Download Model - Import Tensorflow/Tensorflow.JS\\
 - Notebooks (Python)
 
-Volgende Schritte müssen durchgeführt werden:\\
-- Daten zusammenstellen\\
-- Daten überprüfen\\
-- Daten in Watson Studio importieren\\
-- Daten in CSV überführen (Data flows)\\
-- Watson Machine Learning model anlegen\\
-- Model bearbeiten und neuronales Netz hinzufügen\\
-- Modell trainieren lassen\\
-- Modell exportieren (Tabelle)\\
-- Deployment machen\\
-- REST-Schnittstelle austesten und Daten hinschicken
-
-Man braucht Cloud wegen performance zum erstellen des Models.
-
 \url{https://console.bluemix.net/docs/cli/index.html#overview}
 
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Daten zusammenstellen}
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Daten importieren}
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Daten umwandeln}
+Data flows
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Watson Maschine Learning einrichten}
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Neuronales Netz aufbauen}
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Modell trainieren}
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Modell exportieren}
+Tables
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Deployment erstellen}
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Deployment testen}
 \colorbox{yellow}{Hier fehlt was}
 
 \subsubsection{Aufruf mit Postman}
 \label{subsec:Aufruf mit Postman}
 Im Weiteren soll das erstellte Model, welches über ein Deployment in einem Web-Service zur Verfügung gestellt wurde,
-mit dem Programm Postman\footnote{https://www.getpostman.com} getestet werden.
+mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
 So kann sichergestellt werden, dass das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufbar ist.
-Außerdem können so die Übergabeparameter getestet werden.
+Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem können
+so die Übergabeparameter und die Rückgabewerte der Schnittstelle überprüft werden.
 
 Um auf die Schnittstelle des Web-Services zugreifen zu können, muss bei jedem Request an diesen ein Authentication Token
 (kurz Auth-Token) mitgeschickt werden. Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
@@ -44,7 +64,7 @@ Schnittstelle als beim Web-Service. Der Token ist immer nur für maximal vier St
 
 Um einen Auth-Token zu erstellen, muss der Watson Studio Benutzername und das zugehörige Passwort an die Schnittstelle
 übergeben werden. Ein Beispielaufruf ist in Listing~\ref{Abruf des Auth-Tokens} auf Seite~\pageref{Abruf des Auth-Tokens}
-zu sehen. Der Token ist dabei der Rückgabeparameter.
+zu sehen. Der Token ist dabei in einem JSON-Object im Rückgabewert.
 
 \begin{lstlisting}[language=bash, caption=Abruf des Auth-Tokens, label=Abruf des Auth-Tokens]
 $ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identity/token
@@ -53,23 +73,25 @@ $ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identi
 In Postman kann dieser Aufruf durch die Eingabe der URL und dem HTTP-Type \texttt{GET} gemacht werden. Im Reiter
 \texttt{Authentication} muss als Type \texttt{Basic-Auth} ausgewählt werden.
 
-Rechts davon sollten die beiden Eingabefelder für Benutzername und Passwort erscheinen. Nach der Eingabe der geforderten
-Felder kann mit \texttt{Send} der Request abgeschickt werden und nach wenigen Sekunden sollte der Token in einem
-JSON-Object als Rückgabeparameter erscheinen.
+Im rechten Bereich sollten dann die beiden Eingabefelder für Benutzername und Passwort erscheinen. Nach der Eingabe der
+geforderten Daten kann mit \texttt{Send} der Request abgeschickt werden und nach wenigen Sekunden sollte der Token in
+einem JSON-Object als Rückgabeparameter erscheinen.
 
 Anschließend kann ein neuer Postman-Tab geäffnet werden, welcher das eigentliche Deployment aufrufen soll. Der
 REST-Endpunkt ist in Watson Studio unter Deployments zu finden und heißt \texttt{Scoring End-point}.
 
-Dieser Scoring End-point kann als URL in Postman eingetragen und als HTTP-Type muss Request \texttt{POST} ausgewählt
-werden. Im Bereich \texttt{Authentication} wird der Type mit \texttt{Baerer} angegeben. Somit kann im rechten Bereich der
-gespeicherte Token eingetragen werden.
+Dieser Scoring End-point kann als URL in Postman eingetragen und als HTTP-Type muss \texttt{POST} ausgewählt werden. Im
+Bereich \texttt{Authentication} wird der Type mit \texttt{Baerer} angegeben. Somit kann im rechten Bereich nicht der
+Benutzername und das Passwort angegeben werden, sondern gespeicherte Token.
 
 Durch die Auswahl des HTTP-Types \textit{POST} kann der \texttt{Body} des Requests definiert werden. Dabei handelt es
-sich um Parameter, welche an die Schnittstelle mitgeschickt werden. Hier werden dafür die PArameter, welche das
-neuronale Netz für die Auswertung benötigt, eingetragen.
+sich um Parameter, welche an die Schnittstelle mitgeschickt werden. Für das Deployment ist es wichtig, dass die Daten
+in Postman als \texttt{raw} und Type \texttt{JSON (application/json)} geschickt werden. Nun können in das Feld eigene
+Testparameter eingetragen werden. Im Anhang \ref{sec:postmanTestparameter} auf Seite \pageref{sec:postmanTestparameter}
+findet sich dafür ein Beispiel.
 
-Abschließend kann mit \texttt{Send} der Request abgeschickt werden. Nach wenigen Sekunden erhält man den Response des
-neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vorhersagen enthalten sein.
+Abschließend kann mit Button \texttt{Send} der Request abgeschickt werden. Nach wenigen Sekunden erhält man den Response
+des neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vorhersagen enthalten sein.
 
 \subsection{Tensorflow}
 Da die Watson Studio Applikation nun erfolgreich in einem Deployment zur Verfügung gestellt und der Aufruf über
@@ -150,7 +172,7 @@ Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:web
 vereinfacht aufgerufen werden kann.
 
 \subsection{API Connect}
-Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Testen mit Postman} beschrieben, braucht das
+Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Aufruf mit Postman} beschrieben, braucht das
 REST-Interface des erstellten Deployments einen Auth-Token. Dieser kann nur über den Aufruf einer anderen
 REST-Schnittstelle zur Verfügung gestellt werden.
 

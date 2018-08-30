@@ -1,7 +1,9 @@
 \section{Vorbereitung}
-In diesem Kapitel werden Vorkehrungen für die Entwicklung eines Neuronalen Netzes und der Tensorflow-Applikation
-getroffen. Dafür muss ein kostenloses IBM Cloud Konto erstellt, zwei Services eingerichtet und ein Programm auf dem
-Entwicklungsrechner installiert werden.
+In diesem Kapitel werden Vorkehrungen für die Entwicklung eines Neuronalen Netzes und einer Tensorflow-Applikation
+getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und zwei Services eingerichtet werden.
+Desweiteren werden zwei Programme auf dem Entwicklungsrechner installiert, die zur Entwicklung benötigt werden.
+
+Im Weiteren werden die dafür notwendigen einzelnen Schritte erläutert.
 
 \subsection{Bluemix Konto}
 Um mit der IBM Cloud arbeiten zu können wird ein kostenloses Konto benötigt. Dies kann auf der
@@ -18,8 +20,8 @@ Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstell
 spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
 die Benamung des ersten Spaces ist \texttt{dev}, was eine Abkürzung für \textit{developper} ist.
 
-In einem \texttt{Space} werden mehrere Runtimes uns Services gruppiert. Eine Organisation kann mehrere \texttt{Spaces}
-beinhalten.
+In einem \texttt{Space} werden mehrere Runtimes uns Services in einem Rechenzentrum gruppiert. Eine \texttt{Organisation}
+kann mehrere Spaces beinhalten.
 
 \subsection{IBM Cloud CLI}
 Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz \textit{CLI}) zu
@@ -41,7 +43,7 @@ Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluem
 
 \subsection{Watson Studio}
 Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \texttt{Watson Studio} benötigt. Aktuell gibt
-es zwei Möglichkeiten einen Service oder eine Runtime in den erstellten Space einzubinden.
+es zwei Möglichkeiten einen Service oder eine Runtime in einen erstellten Space einzubinden.
 
 \subsubsection*{Über das IBM Cloud Dashboard}
 Auf dem IBM Cloud Dashbaord können mit einem Klick auf \texttt{Katalog} alle Services und Runtimes, welche aktuell genutzt
@@ -123,7 +125,7 @@ werden.
 
 \subsection{Node.JS und npm}
 Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem eigenen Rechner wird ein installiertes Node.JS
-benötigt. Die aktuellste LTS-Version (8.11.4) kann unter Linux wie folgt installiert werden:
+benötigt. Die zur Zeit aktuellste LTS-Version (8.11.4) kann unter Linux wie folgt installiert werden:
 
 \begin{lstlisting}[language=bash, caption=Installation von Node.JS, label=Installation von Node.JS]
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
