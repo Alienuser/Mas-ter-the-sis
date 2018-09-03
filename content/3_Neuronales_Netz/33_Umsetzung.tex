@@ -11,7 +11,7 @@ entschieden?
 
 - Machine Learning Models (Autoamtisch aus Daten generrieren)\\
 - Model flows (SPSS) - Make Deployment\\
-- Model flows (SPSS) - Download Model - Import Tensorflow/Tensorflow.JS\\
+- Model flows (SPSS) - Download Model - Import TensorFlow/TensorFlow.js\\
 - Notebooks (Python)
 
 \url{https://console.bluemix.net/docs/cli/index.html#overview}
@@ -94,12 +94,12 @@ findet sich dafür ein Beispiel.
 Abschließend kann mit Button \texttt{Send} der Request abgeschickt werden. Nach wenigen Sekunden erhält man den Response
 des neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vorhersagen enthalten sein.
 
-\subsection{Tensorflow}
+\subsection{TensorFlow.js}
 Da die Watson Studio Applikation nun erfolgreich in einem Deployment zur Verfügung gestellt und der Aufruf über
-Postman verifiziert wurde, kann nun das trainierte Model in eine Tensorflow-JS Applikation eingebettet werden.
+Postman verifiziert wurde, kann nun das trainierte Model in eine TensorFlow.js Applikation eingebettet werden.
 
-Einrichten der NodeJS-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im
-vorangegangenen Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden und nutzen. Also einen
+Einrichten der Node.js-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im
+vorangegangenen Kapitel erstellt wurde heruntergeladen werden. Dann in TensorFlow.js einbinden und nutzen. Also einen
 Wrapper bauen. Gerade interessant für On The Edge Sachen oder für Mobile.
 
 \colorbox{yellow}{Hier fehlt was}
@@ -112,7 +112,7 @@ Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folge
 Schritte erläutert.
 
 \subsection{Toolchain einrichten}
-Da die Node.JS-Applikation fertig entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und über eine
+Da die Node.js-Applikation fertig entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und über eine
 Domain abrufbar gemach werden. Damit dies nicht manuell nach jeder Änderung im Quellcode über \texttt{cf push} gemacht
 werden muss, kann eine Toolchain aus der IBM Cloud genutzt werden.
 
@@ -126,7 +126,7 @@ Dabei können die einzelnen Schritte, welche beim Deployment durchlaufen werden,
 vorkonfigurierte Toolchain genutzt werden. Die vorkonfigurierte Toolchain kann im Nachgang allerdings individuell
 angepasst werden und dient lediglich einem schnelleren Start.
 
-Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in welcher die entwickelte Applikation laufen
+Für die Konfiguration der Toolchain muss die instanziierte Node.js-Runtime, in welcher die entwickelte Applikation laufen
 soll, in dem IBM Cloud Dashboard ausgewählt werden.
 
 Auf der folgenden Seite, im Tab \texttt{Übersicht} (linke Seite), erscheinen fünf Kacheln mit unterschiedlichen Informationen.
@@ -157,7 +157,7 @@ die geschriebenen Tests durchgeführt werden.
 Die Standardkonfiguration sieht in der \texttt{Build Stage} das Herunterladen des Quellcodes aus dem Git-Repository vor
 und in der \texttt{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
 
-Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder Einrichtungen
+Für die Node.js-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder Einrichtungen
 notwendig sind.
 
 Als nächstes muss der geschriebene Quellcode der Applikation lediglich noch in das, in der Toolchain hinzugefügte,
@@ -165,7 +165,7 @@ Git-Repository eingecheckt werden. Die URL für das Repository kann in der Toolc
 Kachel \texttt{Git} angezeigt werden.
 
 Nach erfolgreichem \texttt{push} der Anwendung in das Git-Repository startet der deployment Vorgang in der Toolchain
-selbstständig. Nach wenigen Minuten sollte die Anwendung über ihre URL, welche in der Node.JS Runtime definiert ist,
+selbstständig. Nach wenigen Minuten sollte die Anwendung über ihre URL, welche in der Node.js Runtime definiert ist,
 aufrufbar sein.
 
 Da die Applikation nun im Internet in einem Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
@@ -189,7 +189,7 @@ Das hat den Vorteil, dass sie bei Bedarf nur an einer Stelle abgeändert werden 
 Anwendung hinterlegt, in der sie relativ einfach abgefangen und zu anderen Zwecken genutzt werden können.
 
 Ein weiterer Vorteil für die Nutzung von API Connect ist die Tatsache, dass es zwei Möglichkeiten gibt, Vorhersagen zu
-beziehen. Nebem dem Deployment des Watson Models kann auch die Schnittstelle der Node.JS-Applikation mit Tensorflow.JS
+beziehen. Nebem dem Deployment des Watson Models kann auch die Schnittstelle der Node.js-Applikation mit TensorFlow.js
 genutzt werden.
 
 Mittels API Connect können Aufrufe optimal verteilt und Änderungen können schnell und komfortabel mit einem Online-Editor

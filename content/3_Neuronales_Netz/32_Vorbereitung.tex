@@ -103,16 +103,16 @@ Der erstellte Service sollte mit dem eingegebenen Namen in der Liste aller Servi
 \label{subsec:apiconnect}
 \colorbox{yellow}{Hier fehlt was}
 
-\subsection{Node.JS Runtime}
+\subsection{Node.js Runtime}
 \label{ssc:nodejs_runtime}
-Für die Erstellung der Node.JS-Applikation wird eine entsprechende Runtime in der IBM Cloud benötigt. Dafür wird ein
-Cloud Foundry-Container mit Node.JS-"-Konfiguration erstellt. Dieser kann ebenfalls auf zwei unterschiedliche Weisen erstellt
+Für die Erstellung der Node.js-Applikation wird eine entsprechende Runtime in der IBM Cloud benötigt. Dafür wird ein
+Cloud Foundry-Container mit Node.js-"-Konfiguration erstellt. Dieser kann ebenfalls auf zwei unterschiedliche Weisen erstellt
 werden.
 
 Im vorangegangenen Kapitel wurden die zwei Varianten (über den IBM Cloud Katalog und über die Kommandozeile) ausführlich
 erläutert. Im Folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
 
-\begin{lstlisting}[language=bash, caption=Instanziierung der Node.JS Runtime, label=Instanziierung der Node.JS Runtime]
+\begin{lstlisting}[language=bash, caption=Instanziierung der Node.js Runtime, label=Instanziierung der Node.JS Runtime]
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
@@ -130,11 +130,11 @@ Das Programm kann unter Linux über das folgenden Kommando auf dem Entwicklnugsr
 Unter macOS steht ein grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
 Verfügung.
 
-\subsection{Node.JS und npm}
-Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Entwicklungsrechner wird ein installiertes Node.JS
-benötigt. Die zur Zeit aktuellste LTS-Version (8.11.4) kann unter Linux wie folgt installiert werden:
+\subsection{Node.js und npm}
+Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Entwicklungsrechner wird ein installiertes
+Node.js benötigt. Die zur Zeit aktuellste LTS-Version (8.11.4) kann unter Linux wie folgt installiert werden:
 
-\begin{lstlisting}[language=bash, caption=Installation von Node.JS, label=Installation von Node.JS]
+\begin{lstlisting}[language=bash, caption=Installation von Node.js, label=Installation von Node.js]
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 \end{lstlisting}
@@ -142,5 +142,5 @@ benötigt. Die zur Zeit aktuellste LTS-Version (8.11.4) kann unter Linux wie fol
 Für macOS gibt es ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.11.4/node-v8.11.4.pkg}
 heruntergeladen werden kann.
 
-Bei der Installation von Node.JS wir npm automatisch mitinstalliert. Dieser ist der Node.JS eigene Paketmanager und wird
+Bei der Installation von Node.js wir npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und wird
 für die spätere Installation von Abhängigkeiten für die Applikation benötigt.
