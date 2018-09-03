@@ -3,7 +3,7 @@ In diesem Kapitel werden Vorkehrungen für die Entwicklung eines Neuronalen Netz
 getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und zwei Services eingerichtet werden.
 Desweiteren werden zwei Programme auf dem Entwicklungsrechner installiert, die zur Entwicklung benötigt werden.
 
-Im Weiteren werden die dafür notwendigen einzelnen Schritte erläutert.
+Im Weiteren werden die dafür notwendigen Schritte einzelnd erläutert.
 
 \subsection{Bluemix Konto}
 Um mit der IBM Cloud arbeiten zu können wird ein kostenloses Konto benötigt. Dies kann auf der
@@ -20,7 +20,7 @@ Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstell
 spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
 die Benamung des ersten Spaces ist \texttt{dev}, was eine Abkürzung für \textit{developper} ist.
 
-In einem \texttt{Space} werden mehrere Runtimes uns Services in einem Rechenzentrum gruppiert. Eine \texttt{Organisation}
+In einem \texttt{Space} werden mehrere Runtimes und Services in einem Rechenzentrum gruppiert. Eine \texttt{Organisation}
 kann mehrere Spaces beinhalten.
 
 \subsection{IBM Cloud CLI}
@@ -120,11 +120,11 @@ Das Programm kann unter Linux über das folgenden Kommando auf dem Entwicklnugsr
     $ sudo apt-get install git
 \end{lstlisting}
 
-Unter macOS kann das grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} genutzt
-werden.
+Unter macOS steht ein grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
+Verfügung.
 
 \subsection{Node.JS und npm}
-Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem eigenen Rechner wird ein installiertes Node.JS
+Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Entwicklungsrechner wird ein installiertes Node.JS
 benötigt. Die zur Zeit aktuellste LTS-Version (8.11.4) kann unter Linux wie folgt installiert werden:
 
 \begin{lstlisting}[language=bash, caption=Installation von Node.JS, label=Installation von Node.JS]

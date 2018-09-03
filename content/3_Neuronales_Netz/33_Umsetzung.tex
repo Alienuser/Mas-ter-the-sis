@@ -52,12 +52,13 @@ Tables
 Im Weiteren soll das erstellte Model, welches über ein Deployment in einem Web-Service zur Verfügung gestellt wurde,
 mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
-So kann sichergestellt werden, dass das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufbar ist.
+So ist sichergestellt, dass das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufbar ist.
 Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem können
 so die Übergabeparameter und die Rückgabewerte der Schnittstelle überprüft werden.
 
-Um auf die Schnittstelle des Web-Services zugreifen zu können, muss bei jedem Request an diesen ein Authentication Token
-(kurz Auth-Token) mitgeschickt werden. Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
+Um auf die Schnittstelle des Web-Services zugreifen zu können, muss bei jedem Request an diesen ein
+\textit{Authentication Token} (kurz Auth-Token) mitgeschickt werden. Dieser Token stellt sicher, dass es sich um einen
+gültigen Aufruf handelt.
 
 Der Token kann über eine REST-Schnittstelle des Watson Studio erstellt werden. Dabei handelt es sich um eine andere
 Schnittstelle als beim Web-Service. Der Token ist immer nur für maximal vier Stunden gültig.
@@ -97,13 +98,14 @@ des neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vo
 Da die Watson Studio Applikation nun erfolgreich in einem Deployment zur Verfügung gestellt und der Aufruf über
 Postman verifiziert wurde, kann nun das trainierte Model in eine Tensorflow-JS Applikation eingebettet werden.
 
-\colorbox{yellow}{Hier fehlt was}
-
 Einrichten der NodeJS-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im
 vorangegangenen Kapitel erstellt wurde heruntergeladen werden. Dann in Tensorflow.JS einbinden und nutzen. Also einen
-Wrapper bauen.
+Wrapper bauen. Gerade interessant für On The Edge Sachen oder für Mobile.
 
-Gerade interessant für On The Edge Sachen oder für Mobile.
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Modell Downloaden}
+\colorbox{yellow}{Hier fehlt was}
 
 Damit die Applikation über eine Domain aus dem Internet aus aufrufbar ist, muss diese zum Beispiel in einen Cloud
 Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folgenden Kapitel werden die dafür nötigen
@@ -128,7 +130,7 @@ Für die Konfiguration der Toolchain muss die instanziierte Node.JS-Runtime, in 
 soll, in dem IBM Cloud Dashboard ausgewählt werden.
 
 Auf der folgenden Seite, im Tab \texttt{Übersicht} (linke Seite), erscheinen fünf Kacheln mit unterschiedlichen Informationen.
-Für die Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheiden. Dort gibt es einen Button
+Für die Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheidend. Dort gibt es einen Button
 mit der Aufschrift \texttt{Aktivieren}.
 
 Ein Klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
@@ -141,9 +143,9 @@ unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen 
 Im Bereich \texttt{Nachdenken} wird ein Issue-Tracker konfiguriert, in dem zum Beispiel Bugs (Softwarefehler), welche
 in der Software entdeckt werden, eingetragen, verwaltet und diskutiert werden können.
 
-In \texttt{Codieren} kann auf gleich zwei Kacheln zugegriffen werden. Einerseits auf das konfigurierte Git-Repository,
-bei dem es sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis
-von Eclipse Orion, mit der der Quellcode der Anwendung online editiert werden kann.
+In \texttt{Codieren} stehen gleich zwei Kacheln zur Verfügung. Einerseits das konfigurierte Git-Repository, bei dem es
+sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE, auf Basis von Eclipse
+Orion, mit der der Quellcode der Anwendung online editiert werden kann.
 
 Im der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Pipeline, welche im nächsten Schritt näher Erläutert
 und eingerichtet wird. Ein Klick auf die Kachel mit der Aufschrift \texttt{Delivery Pipeline} öffnet diese.
@@ -152,11 +154,11 @@ Nach dem Laden der Seite erscheinen zwei sogenannte \texttt{Phasen} (engl. Stage
 wird durch eine Phase symbolisiert. In einer Phase können zum Beispiel der Quellcode aus dem Git-Repository geladen, oder
 die geschriebenen Tests durchgeführt werden.
 
-Die Standardkonfiguration sieht in der \texttt{Build Stage} das herunterladen des Quellcodes aus dem Git-Repository vor
+Die Standardkonfiguration sieht in der \texttt{Build Stage} das Herunterladen des Quellcodes aus dem Git-Repository vor
 und in der \texttt{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
 
 Für die Node.JS-Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder Einrichtungen
-durchgeführt werden müssen.
+notwendig sind.
 
 Als nächstes muss der geschriebene Quellcode der Applikation lediglich noch in das, in der Toolchain hinzugefügte,
 Git-Repository eingecheckt werden. Die URL für das Repository kann in der Toolchain-Übersicht mit einem Klick auf die
