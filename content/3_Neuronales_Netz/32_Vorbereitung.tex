@@ -1,6 +1,6 @@
 \section{Vorbereitung}
 In diesem Kapitel werden Vorkehrungen für die Entwicklung eines Neuronalen Netzes und einer Tensorflow-Applikation
-getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und zwei Services eingerichtet werden.
+getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet werden.
 Desweiteren werden zwei Programme auf dem Entwicklungsrechner installiert, die zur Entwicklung benötigt werden.
 
 Im Weiteren werden die dafür notwendigen Schritte einzelnd erläutert.
@@ -40,6 +40,9 @@ Anschließend kann die erfolgreiche Installation über das folgende Kommando üb
 Die Ausgabe sollte eine Übersicht über alle möglichen Befehle des \textit{ibmcloud}-Tools geben. Sollte eine Fehlermeldung
 erscheinen, hat die Installation nicht geklappt. Weitere Informationen gibt es auf der betreffenden
 Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluemix\_cli/get\_started.html}.
+
+Mit der Installation des IBM Cloud-CLI wird ein symbolischer Link über das Kommando \texttt{bx} angelegt. Somit kann der
+Befehl \textit{ibmcloud} auch immer durch \textit{bx} ersetzt werden.
 
 \subsection{Watson Studio}
 Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \texttt{Watson Studio} benötigt. Aktuell gibt
@@ -95,6 +98,10 @@ Organisation befinden, aufgelistet werden.
 \end{lstlisting}
 
 Der erstellte Service sollte mit dem eingegebenen Namen in der Liste aller Services erscheinen.
+
+\subsection{API Connect}
+\label{subsec:apiconnect}
+\colorbox{yellow}{Hier fehlt was}
 
 \subsection{Node.JS Runtime}
 \label{ssc:nodejs_runtime}

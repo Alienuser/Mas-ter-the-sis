@@ -174,19 +174,29 @@ Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:web
 vereinfacht aufgerufen werden kann.
 
 \subsection{API Connect}
-Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Aufruf mit Postman} beschrieben, braucht das
+Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Aufruf mit Postman} beschrieben, benötigt das
 REST-Interface des erstellten Deployments einen Auth-Token. Dieser kann nur über den Aufruf einer anderen
 REST-Schnittstelle zur Verfügung gestellt werden.
 
 Damit dies vereinfacht werden und das im weiteren Verlauf erstellte Frontend ebenfalls das Deployment aufrufen kann,
 werden beide Abfragen in API Connect gebündelt.
 
-\colorbox{yellow}{Hier fehlt was}
+Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das mitschicken des Benutzernamens und
+des zugehörigen Passwortes zum generrieren des Tokens. Damit diese nicht in der zu entwickelnden Anwendung hinterlegt
+werden müssen, können diese Zentral in API-Connect gespeichert werden.
 
-Aufbauen von API Connect. Warum braucht man das? CORS-Problem. Auch wegen Token, damit man im Frontend das nicht
-holen muss. Und Nutzername und Passwort dann nicht drinnen stehen müssen. Beide Applikationen müssen abgefangen werden
-können. Also auch zwei Routen. Das ist wichtig. Wie sieht das dann aus etc. (Watson Studio und Tensorflow.JS Applikation)
-\\ \\
-While this mechanism works for smaller teams and projects I’d guess that at some point you’d want API management
-capabilities so that developers don’t have to have the credentials of the machine learning service and so that you can
-better track the REST API invocations.
+Das hat den Vorteil, dass sie bei Bedarf nur an einer Stelle abgeändert werden müssen. Auch werden sie nicht in einer
+Anwendung hinterlegt, in der sie relativ einfach abgefangen und zu anderen Zwecken genutzt werden können.
+
+Ein weiterer Vorteil für die Nutzung von API Connect ist die Tatsache, dass es zwei Möglichkeiten gibt, Vorhersagen zu
+beziehen. Nebem dem Deployment des Watson Models kann auch die Schnittstelle der Node.JS-Applikation mit Tensorflow.JS
+genutzt werden.
+
+Mittels API Connect können Aufrufe optimal verteilt und Änderungen können schnell und komfortabel mit einem Online-Editor
+angepasst werden.
+
+\subsubsection{API Connect einrichten}
+Da der Service, wie in Kapitel \ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} beschrieben, schon
+eingerichtet wurde, kann dieser nun über IBM Bluemix Dashboard aufgerufen werden.
+
+\colorbox{yellow}{Hier fehlt was}
