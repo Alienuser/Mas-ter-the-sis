@@ -99,9 +99,13 @@ Organisation befinden, aufgelistet werden.
 
 Der erstellte Service sollte mit dem eingegebenen Namen in der Liste aller Services erscheinen.
 
-\subsection{API Connect}
-\label{subsec:apiconnect}
-\colorbox{yellow}{Hier fehlt was}
+Abschließend muss im Watson Studio noch ein Projekt angelegt werden, in dem alle Daten und Informationen gesammelt werden
+können. Dies kann über das Watson Studio Dashboard gemacht werden. Dazu wird dies über das IBM Bluemix Dashboard
+aufgerufen.
+
+Im Watson Studio Dashboard kann über den Menüpunkt \texttt{New project} ein solches angelegt werden. Nach der eingabe eines
+Namens und der Einrichtung eines Local Storages (dies geschicht über den Mini-Wizzard) kann das Projekt über den Button
+\texttt{Create} angelegt werden.
 
 \subsection{Node.js Runtime}
 \label{ssc:nodejs_runtime}
@@ -118,6 +122,20 @@ erläutert. Im Folgenden wird lediglich die Erstellung über das CLI aufgezeigt:
 
 Auch hier muss über den Parameter \texttt{service\_name} ein Name für die Applikation vergeben werden. Die URL, über die
 der Container später aufrufbar ist folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
+
+\subsection{API Connect}
+\label{subsec:apiconnect}
+Um im weiteren Verlauf den API Gateway \texttt{API Connect} nutzen zu können, muss dieser ebenfalls in Bluemix instanziiert
+werden. Wie auch in den beiden vorangegangenen Kapiteln kann dies über die CLI als auch über den Bluemix Katalog geschehen.
+
+Einfachheitshalber wird im folgenden die Instanziierung des Services mittels Bluemix CLI aufgezeigt.
+
+\begin{lstlisting}[language=bash, caption=Instanziierung von API Connect, label=Instanziierung von API Connect]
+$ ibmcloud cf create-service API-Connect lite service_name
+\end{lstlisting}
+
+Als Parameter \texttt{service\_name} muss ein Name für den Service vergeben werden, mit dem er im Bluemix Dashboard angezeigt
+werden soll.
 
 \subsection{Git}
 Für die Verwaltung und den späteren, automatisierten Installationsvorgang des Geschriebenen Quellcodes wird Git verwendet.
