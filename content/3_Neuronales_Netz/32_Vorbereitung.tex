@@ -1,5 +1,5 @@
 \section{Vorbereitung}
-In diesem Kapitel werden Vorkehrungen für die Entwicklung eines Neuronalen Netzes und einer Tensorflow-Applikation
+In diesem Kapitel werden Vorkehrungen für die Entwicklung eines neuronalen Netzes und einer Tensorflow-Applikation
 getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet werden.
 Desweiteren werden zwei Programme auf dem Entwicklungsrechner installiert, die zur Entwicklung benötigt werden.
 
@@ -24,7 +24,7 @@ In einem \texttt{Space} werden mehrere Runtimes und Services in einem Rechenzent
 kann mehrere Spaces beinhalten.
 
 \subsection{IBM Cloud CLI}
-Für die einfache Verwaltung der IBM Cloud empfiehlt es sich das zugehörige Command Line Interface (kurz \textit{CLI}) zu
+Für die einfache Verwaltung der IBM Cloud empfiehlt sich, dass zugehörige Command Line Interface (kurz \textit{CLI}) zu
 installieren. Die Installation unter Linux und macOS erfolgt durch die Eingabe des folgenden Kommandos in eine Shell:
 
 \begin{lstlisting}[language=bash, caption=Installation des IBM Cloud CLI, label=Installation des IBM Cloud CLI]
@@ -45,7 +45,7 @@ Mit der Installation des IBM Cloud-CLI wird ein symbolischer Link über das Komm
 Befehl \textit{ibmcloud} auch immer durch \textit{bx} ersetzt werden.
 
 \subsection{Watson Studio}
-Für den Aufbau und die Konfiguration des Neuronalen Netzes wird der Service \texttt{Watson Studio} benötigt. Aktuell gibt
+Für den Aufbau und die Konfiguration des neuronalen Netzes wird der Service \texttt{Watson Studio} benötigt. Aktuell gibt
 es zwei Möglichkeiten einen Service oder eine Runtime in einen erstellten Space einzubinden.
 
 \subsubsection*{Über das IBM Cloud Dashboard}
@@ -58,13 +58,13 @@ Anschließend kann noch die Region, in welcher der Service zur Verfügung gestel
 definiert werden.
 
 Mit einem Klick auf \texttt{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
-Dashbaord. Dort sollte der Service mit dem eingetragenen Name aufgelistet werden.
+Dashbaord. Dort erscheint der Service mit dem eingetragenen Name.
 
 Auf dem Dashboard kann der Watson Studio Service durch einen Klick ausgewählt werden. Auf der folgenden Seite über die
 Schaltfläche \texttt{Get Started} in das Watson Studio gewechselt werden.
 
 \subsubsection*{Über die CLI}
-Alternativ kann der Service mittels dem installierten CLI eingerichtet werden. Dazu muss das CLI mit dem IBM
+Alternativ erfolgt die Installation des Services mittels dem installierten CLI. Dazu muss das CLI mit dem IBM
 Cloud-Konto verknüpft werden. Mittels dem folgenden Befehl wird der dafür nötige API-Endpunkt gesetzt:
 
 \begin{lstlisting}[language=bash, caption=Setzen des API Targets, label=Setzen des API Targets]
@@ -99,11 +99,10 @@ Organisation befinden, aufgelistet werden.
 
 Der erstellte Service sollte mit dem eingegebenen Namen in der Liste aller Services erscheinen.
 
-Abschließend muss im Watson Studio noch ein Projekt angelegt werden, in dem alle Daten und Informationen gesammelt werden
-können. Dies kann über das Watson Studio Dashboard gemacht werden. Dazu wird dies über das IBM Bluemix Dashboard
-aufgerufen.
+Abschließend wird im Watson Studio ein Projekt angelegt Dieses sammelt alle Daten und Informationen und kann im Watson
+Studio Dashboard erstellt werden. Dazu wird das Watson Studio Dashboard über das IBM Bluemix Dashboard aufgerufen.
 
-Im Watson Studio Dashboard kann über den Menüpunkt \texttt{New project} ein solches angelegt werden. Nach der eingabe eines
+Im Watson Studio Dashboard kann über den Menüpunkt \texttt{New project} ein solches angelegt werden. Nach der Eingabe eines
 Namens und der Einrichtung eines Local Storages (dies geschicht über den Mini-Wizzard) kann das Projekt über den Button
 \texttt{Create} angelegt werden.
 
@@ -138,14 +137,14 @@ Als Parameter \texttt{service\_name} muss ein Name für den Service vergeben wer
 werden soll.
 
 \subsection{Git}
-Für die Verwaltung und den späteren, automatisierten Installationsvorgang des Geschriebenen Quellcodes wird Git verwendet.
-Das Programm kann unter Linux über das folgenden Kommando auf dem Entwicklnugsrechner installiert werden:
+Für die Verwaltung und den späteren, automatisierten Installationsvorgang des geschriebenen Quellcodes wird Git verwendet.
+Das Programm kann unter Linux über das Folgenden Kommando auf dem Entwicklnugsrechner installiert werden:
 
 \begin{lstlisting}[language=bash, caption=Installation von Git, label=Installation von Git]
     $ sudo apt-get install git
 \end{lstlisting}
 
-Unter macOS steht ein grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
+Unter macOS steht ein Grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
 Verfügung.
 
 \subsection{Node.js und npm}
@@ -160,5 +159,5 @@ Node.js benötigt. Die zur Zeit aktuellste LTS-Version (8.11.4) kann unter Linux
 Für macOS gibt es ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.11.4/node-v8.11.4.pkg}
 heruntergeladen werden kann.
 
-Bei der Installation von Node.js wir npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und wird
+Bei der Installation von Node.js wird npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und wird
 für die spätere Installation von Abhängigkeiten für die Applikation benötigt.
