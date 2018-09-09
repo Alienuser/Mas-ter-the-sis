@@ -177,6 +177,34 @@ Model flows visualisiert.
 \subsubsection{Informationen zum Model}
 \colorbox{yellow}{Beschreiben von den ganzen Informationen von dem Model. Rechte Maustaste - View}
 
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.26]{images/kapitel_3/model_evaluation.png}
+    \caption{Kompletter Model flow}
+    \label{fig:umsetzung_model_flow}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.26]{images/kapitel_3/model_information.png}
+    \caption{Kompletter Model flow}
+    \label{fig:umsetzung_model_flow}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.26]{images/kapitel_3/model_predictor.png}
+    \caption{Kompletter Model flow}
+    \label{fig:umsetzung_model_flow}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.26]{images/kapitel_3/model_network_diagram.png}
+    \caption{Kompletter Model flow}
+    \label{fig:umsetzung_model_flow}
+\end{figure}
+
 \subsubsection{Deployment erstellen}
 Das im vorangegangenen Kapitel erstellte und trainierte Model kann im weiteren durch ein Deployment über eine
 REST-Schnittstelle verfügbar gemacht werden. Dazu ist es erforderlich, das Model in einen \texttt{Web service} zu
@@ -215,6 +243,17 @@ Werte entsprechen den Vorhersagen des trainierten Models.
 
 Sollte das Array \textit{values} kleiner sein als das Array \textit{fields}, war das trainieren des Models nicht
 erfolgreich.
+
+Unter dem Menüpunkt \texttt{Implementation} werden wichtige Informationen und erforderliche Schritte aufgezeigt, damit
+die Schnittstelle in das eigene Programm integriert werden kann. Dafür werden die Schritte für mehrere Programmiersprachen
+aufgezeigt.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.26]{images/kapitel_3/deployment_test.png}
+    \caption{Kompletter Model flow}
+    \label{fig:umsetzung_model_flow}
+\end{figure}
 
 \subsubsection{Aufruf mit Postman}
 \label{subsec:Aufruf mit Postman}
@@ -266,6 +305,13 @@ des neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vo
 Auf der Übersichtsseite des REST-Interfaces des
 Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, können noch weitere
 Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte eingesehen werden.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.26]{images/kapitel_3/deployment_postman.png}
+\caption{Kompletter Model flow}
+\label{fig:umsetzung_model_flow}
+\end{figure}
 
 \subsection{TensorFlow.js}
 Da die Watson Studio Applikation nun erfolgreich in einem Deployment zur Verfügung gestellt und der Aufruf über
@@ -346,6 +392,13 @@ mit dem API Connect Service verbunden werden. Dieser Schritt ist nötig, damit d
 Frontend, welches in Kapitel~\ref{subsec:webseite} auf Seite~\pageref{subsec:webseite} beschrieben wird, und über Postman
 vereinfacht aufgerufen werden kann.
 
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.26]{images/kapitel_3/toolchain_pipeline.png}
+\caption{Kompletter Model flow}
+\label{fig:umsetzung_model_flow}
+\end{figure}
+
 \subsection{API Connect}
 Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Aufruf mit Postman} beschrieben, benötigt das
 REST-Interface des erstellten Deployments einen Auth-Token. Dieser kann nur über den Aufruf einer anderen
@@ -371,5 +424,12 @@ angepasst werden.
 \subsubsection{API Connect einrichten}
 Da der Service, wie in Kapitel \ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} beschrieben, schon
 eingerichtet wurde, kann dieser nun über IBM Bluemix Dashboard aufgerufen werden.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.26]{images/kapitel_3/api_connect.png}
+\caption{Kompletter Model flow}
+\label{fig:umsetzung_model_flow}
+\end{figure}
 
 \colorbox{yellow}{Hier fehlt was}
