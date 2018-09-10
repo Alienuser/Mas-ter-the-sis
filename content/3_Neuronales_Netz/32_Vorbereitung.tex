@@ -1,27 +1,27 @@
 \section{Vorbereitung}
-In diesem Kapitel werden Vorkehrungen für die Entwicklung eines neuronalen Netzes und einer Tensorflow-Applikation
+In diesem Kapitel werden Vorkehrungen für die Entwicklung eines neuronalen Netzes und einer TensorFlow-Applikation
 getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet werden.
-Desweiteren werden zwei Programme auf dem Entwicklungsrechner installiert, die zur Entwicklung benötigt werden.
+Für die Entwicklung werden zwei Programme auf dem Entwicklungsrechner installiert.
 
 Im Weiteren werden die dafür notwendigen Schritte einzelnd erläutert.
 
 \subsection{Bluemix Konto}
-Um mit der IBM Cloud arbeiten zu können wird ein kostenloses Konto benötigt. Dies kann auf der
+Damit mit der IBM Cloud gearbeitet werden kann, wird ein kostenlose Konto benötigt. Dieses kann auf der zugehörigen
 Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt werden.
 
-Nach erfolgreicher Aktivierung des Kontos, mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink,
+Nachdem das Konto erfolgreich mit einem an die hinterlegte E"=Mail"=Adresse verschickten Bestätigungslink aktiviert ist,
 kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes genutzt werden.
 
-Beim erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation
+Nach dem erstmaligen Aufruf des IBM Cloud Dashboards, wird nach einem Namen für die automatisch erstellte Organisation
 gefragt. Dieser spielt für die Umsetzung keine Rolle und die Organisation kann zu jedem Zeitpunkt umbenannt oder auch
-gelöscht werden. Ein Beispiel für den Organisationsnamen ist \texttt{Machine-Learning}.
+gelöscht werden. Ein Beispiel für den Organisationsnamen ist \textit{Machine-Learning}.
 
-Im Anschluss wird nach einem Namen für den ersten \texttt{Space} in der erstellten Organisation gefragt. Auch dieser
+Im Anschluss wird nach einem Namen für den ersten Space in der erstellten Organisation gefragt. Auch dieser
 spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
-die Benamung des ersten Spaces ist \texttt{dev}, was eine Abkürzung für \textit{developper} ist.
+die Benamung des ersten Spaces ist \textit{dev}, was eine Abkürzung für \textit{developper} ist.
 
-In einem \texttt{Space} werden mehrere Runtimes und Services in einem Rechenzentrum gruppiert. Eine \texttt{Organisation}
-kann mehrere Spaces beinhalten.
+Ein \textit{Space} gruppiert mehrere Runtimes und Services in einem Rechenzentrum. Von diesen Rechenzentren gibt es in
+der IBM Cloud aktuell sechs. Eine \textit{Organisation} kann mehrere Spaces beinhalten.
 
 \subsection{IBM Cloud CLI}
 Für die einfache Verwaltung der IBM Cloud empfiehlt sich, dass zugehörige Command Line Interface (kurz \textit{CLI}) zu
@@ -37,9 +37,9 @@ Anschließend kann die erfolgreiche Installation über das folgende Kommando üb
     $ ibmcloud dev help
 \end{lstlisting}
 
-Die Ausgabe sollte eine Übersicht über alle möglichen Befehle des \textit{ibmcloud}-Tools geben. Sollte eine Fehlermeldung
-erscheinen, hat die Installation nicht geklappt. Weitere Informationen gibt es auf der betreffenden
-Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluemix\_cli/get\_started.html}.
+Die Ausgabe gibt eine Übersicht über alle möglichen Befehle des \textit{ibmcloud}-Tools. Eine Fehlermeldung gibt an, dass
+die Installation fehlgeschlagen ist. Weitere Informationen sind auf der betreffenden
+Installationsseite\footnote{https://console.bluemix.net/docs/cli/reference/bluemix\_cli/get\_started.html} zu finden.
 
 Mit der Installation des IBM Cloud-CLI wird ein symbolischer Link über das Kommando \texttt{bx} angelegt. Somit kann der
 Befehl \textit{ibmcloud} auch immer durch \textit{bx} ersetzt werden.
