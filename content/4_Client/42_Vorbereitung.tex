@@ -1,12 +1,12 @@
 \section{Vorbereitung}
-Damit im Weiteren das Frontend entwickelt und gebaut werden kann, müssen ein Programm auf dem Entwicklungsrechner
-installiert sowie ein IBM Cloud Service instanziiert werden. Die Vorgehensweise wird im folgenden Kapitel erläutert.
+Damit im Weiteren das Frontend entwickelt und gebaut werden kann, wird ein Programm auf dem Entwicklungsrechner
+installiert und zwei Services in der IBM Cloud instanziiert. Die Vorgehensweise wird im folgenden Kapitel erläutert.
 
 \subsection{Angular CLI}
-Für die Erstellung, Verwaltung und Aktualisierung einer Angular-Applikation, wird das Hauseigene Command Line Interface
-(kurz Angular CLI) genutzt. Diese kann über den folgenden Befehl auf Linux und macOS installiert und eingerichtet werden:
+Für die Erstellung, Verwaltung und Aktualisierung einer Angular-Applikation, empfiehlt es sich das Hauseigene Command
+Line Interface zu nutzen. Über den folgenden Befehl wird dieses auf einem Linux oder macOS Rchner installiert.
 
-\begin{lstlisting}[language=bash, caption=Installation Angular CLI, label=Installation Angular CLI]
+\begin{lstlisting}[language=bash, caption=Installation des Angular CLI, label=Installation des Angular CLI]
 $ npm install -g @angular/cli
 \end{lstlisting}
 
@@ -14,10 +14,12 @@ Anschließend steht die Applikation über das Kommando \texttt{ng} zur Verfügun
 \textit{A\textbf{ng}ular}.
 
 \subsection{Node.js Runtime}
-Damit auch das erstellte Frontend in der Cloud laufen kann, wird in der IBM Cloud eine zusätzliche Node.js-Runtime
-benötigt. Genau wie in Kapitel \ref{ssc:nodejs_runtime} auf Seite \pageref{ssc:nodejs_runtime} beschrieben, kann diese
-mit dem folgenden Befehl eingerichtet werden:
+Damit das erstellte Frontend online aufgerufen werden kann, wird in der IBM Cloud eine zusätzliche Node.js-Runtime
+benötigt. Genau wie in Kapitel \ref{ssc:nodejs_runtime} auf Seite \pageref{ssc:nodejs_runtime} beschrieben, ist die
+Einrichtung und Konfiguration der Runtime über den folgenden Befehl möglich.
 
 \begin{lstlisting}[language=bash, caption=Instanziierung der Node.js Runtime, label=Instanziierung der Node.js Runtime]
 $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
+
+Anschließend steht die Runtime in der Kategorie \textit{Cloud Foundry-Anwendungen} im IBM Cloud Dashboard zur Verfügung.
