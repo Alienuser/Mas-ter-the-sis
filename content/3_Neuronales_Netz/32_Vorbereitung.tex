@@ -1,13 +1,13 @@
 \section{Vorbereitung}
-In diesem Kapitel werden Vorkehrungen für die Entwicklung eines neuronalen Netzes und einer TensorFlow-Applikation
-getroffen. Dafür muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet werden.
-Für die Entwicklung werden zwei Programme auf dem Entwicklungsrechner installiert.
+Dieses Kapitel beschreibt die benötigten Vorkehrungen für die Entwicklung eines neuronalen Netzes und einer
+TensorFlow-Applikation. Dazu muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet
+werden. Für die Entwicklung werden zwei Programme auf dem Entwicklungsrechner installiert.
 
 Im Weiteren werden die dafür notwendigen Schritte einzelnd erläutert und getestet.
 
 \subsection{IBM Cloud Konto}
-Damit mit der IBM Cloud gearbeitet werden kann, wird ein kostenlose Konto benötigt. Dieses kann auf der zugehörigen
-Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt werden.
+Für die Arbeit mit der IBM Cloud wird ein kostenloses Benutzerkonto benötigt. Dieses wird auf der zugehörigen
+Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt und eingerichtet.
 
 Nachdem das Konto erfolgreich mit einem an die hinterlegte E-Mail-Adresse verschickten Bestätigungslink aktiviert ist,
 kann das Konto 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes genutzt werden.
@@ -53,9 +53,9 @@ Auf dem IBM Cloud Dashboard können mit einem Klick auf \textit{Katalog} alle Se
 sind, aufgelistet werden. Der Service \textit{Watson Studio} befindet sich in der Kategorie
 \textit{Künstliche Intelligenz}. Ein klick auf diesen öffnet die Konfigurationsseite.
 
-Auf der Konfigurationsseite muss der \textit{Servicename}, welcher frei gewählt werden kann, eingetragen werden.
-Anschließend kann noch die Region, in welcher der Service zur Verfügung stehen soll und die Ressourengruppe definiert
-werden.
+Auf der Konfigurationsseite wird der frei wählbare \textit{Servicename} für den Service definiert. Über diesen erscheint
+er später im IBM Cloud Dashboard. Anschließend kann die Region, in welcher der Service zur Verfügung stehen soll, die
+Ressourengruppe und die Organisation definiert werden.
 
 Mit einem Klick auf \texttt{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
 Dashbaord. Dort erscheint der Service mit dem eingetragenen Namen in der Liste der \textit{Services}.
@@ -84,14 +84,14 @@ bequemen Login ohne Kommandozeile.
 Nach einem erfolgreichen Login, wird die genutzte Organisation ausgewählt. Dies geschieht über die Eingabe der
 entsprechenden Nummer der Organisation, welche am linken Rand zu sehen ist. Der Login-Vogang ist damit abgeschlossen.
 
-Im Weiteren wird eine Instanz des \texttt{Watson Studio}-Service mit dem folgenden Befehl erstellt:
+Im Weiteren wird eine Instanz des \textit{Watson Studio}-Service mit dem folgenden Befehl erstellt:
 
 \begin{lstlisting}[language=bash, caption=Instanziierung des Watson Studio Services, label=Instanziierung des Watson Studio Services]
     $ ibmcloud cf create-service Watson-Studio lite sercive_name
 \end{lstlisting}
 
 Für den Parameter \texttt{service\_name} wird ein Name eingetragen, unter welchem der Service aufgerufen werden kann.
-Über den Befehl \texttt{cf services} können alle instantiierten Services, welche sich in der vorher ausgewählten
+Über den Befehl \texttt{cf services} können alle instanziierten Services, welche sich in der vorher ausgewählten
 Organisation befinden, aufgelistet werden.
 
 \begin{lstlisting}[language=bash, caption=Auflisten aller Services in einer Organisation, label=Auflisten aller Services in einer Organisation]
@@ -120,7 +120,7 @@ ausführlich erläutert. Im Folgenden wird lediglich die Erstellung über das CL
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
-Auch hier wird über den Parameter \textit{service\_name} der Name für die Applikation vergeben. Die URL, über die
+Auch hier wird über den Parameter \texttt{service\_name} der Name für die Applikation vergeben. Die URL, über die
 der Container später aufrufbar ist, folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
 
 Dies bedeutet, dass der Name nur ein Mal im kompletten System vergeben sein darf. Eine Meldung gibt Hinweise darauf, ob
@@ -138,7 +138,7 @@ Einfachheitshalber wird im Folgenden die Instanziierung des Services mittels IBM
 $ ibmcloud cf create-service API-Connect lite service_name
 \end{lstlisting}
 
-Über den Parameter \textit{service\_name} wird der Name für den Service definiert. Über diesen ist er im IBM Cloud
+Über den Parameter \texttt{service\_name} wird der Name für den Service definiert. Über diesen ist er im IBM Cloud
 Dashboard auffindbar.
 
 \subsection{Git}

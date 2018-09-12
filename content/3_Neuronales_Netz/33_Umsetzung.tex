@@ -22,37 +22,39 @@ entschieden?
 \colorbox{yellow}{Hier fehlt was}
 
 \subsubsection{Daten importieren}
-Nachdem die Daten zusammengestellt sind, können diese nun in das Watson Studio importiert werden. Dazu gibt es im Watson
-Studio einen Menüpunkt \texttt{Assets}. Dieser beinhaltet alle hochgeladenen, generierten oder gesamelten Daten, Modelle,
-Dashboards, Notebooks oder Flows. Die oberste Kategorie, \texttt{Data Assets}, beinhaltet alle Tabellen für die
-Weiterverarbeitung.
+Nachdem die Trainingsdaten zusammengestellt sind, können diese nun in das Watson Studio importiert werden. Dazu existiert
+in Watson Studio einen Menüpunkt mit dem Namen \texttt{Assets}. Dieser beinhaltet alle hochgeladenen, generierten oder
+gesamelten Daten, Modelle, Dashboards, Notebooks oder Flows. Die oberste Kategorie, \texttt{Data Assets}, listet alle
+Trainingsdaten in Form von Excel-Tabellen für die Weiterverarbeitung auf.
 
-In dieser kann über den Menüpunkt \texttt{New data asset} eine neue Datei hochgeladen werden. Ein klick auf diesen
-Menüpunkt öffnet einen seitlichen Arbeitsbereich. In diesem kann über \texttt{browse} eine Datei ausgewählt werden.
-Alternativ kann die Datei auch direkt in das farblich hervorgehobene Feld geschoben werden.
+Über den Menüpunkt \texttt{New data asset} wird eine neue Datei hochgeladen. Ein klick auf diesen Menüpunkt öffnet einen
+seitlichen Arbeitsbereich. Über den dortigen Menüpunkt \texttt{Browse} öffnet sich die Dateiauswahl des Betriebssystems
+und es kann eine Datei ausgewählt werden. Bei der Auswahl handelt es sich um die im vorangegangenen Kapitel erstellte
+Datei mit Trainingsdaten. Alternativ kann die Datei auch in das fabrlich hervorgehobene Feld geschoben werden.
 
-Im Anschluss sollte die Datei binnen weniger Sekunden hochgeladen sein und im Bereich Data assets angezeigt werden. Somit
-ist der Upload fertiggestellt und die Datei kann umgewandelt werden.
+Nach wenigen Sekunden ist die Datei hochgeladen und wird im Bereich \textit{Data assets} angezeigt. Damit ist der
+Uploadvorgang erfolgreich abgeschlossen und die Datei kann im nächsten Schritt umgewandelt werden.
 
 \subsubsection{Daten umwandeln}
-Da die erstellte Datei mit den Trainingssätzen nun in Watson Studio bereit steht, kann diese online in eine csv-Datei
-umgewandelt werden. Dies ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz dienen
-kann. Ein anderes Format wird zur Zeit nicht unterstützt.
+Da die erstellte Datei mit den Trainigsdaten nun in Watson Studio bereitsteht, ist die Umwandlung in eine csv-Datei
+möglich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz dienen
+kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
 
 In Watson Studio liegt mit den \texttt{Data flows} ein einfaches Werkzeug bereit, um Dateien in das benötigte csv-Format
 zu überführen. Dazu wird in der Kategorie Data flows über \texttt{New data flow} ein neuer Flow angelegt.
 
-Im folgenden öffnet sich der Wizzard zum Erstellen des Flows. Als erster Schritt muss im linken Bereich die Datei
-ausgewählt werden, welche konvertiert werden soll. Über \texttt{Add} kann die Auswahl übernommen werden.
+Im folgenden öffnet sich der Wizzard zum Erstellen des Flows. Zuerst wird die umzuwandelnde Datei im linken Bereich
+ausgewählt. Über die Schaltfläche \texttt{Add} wird die Auswahl übernommen.
 
-Nun wird der Inhalt der Datei angezeigt. Es ist darauf zu achten, dass die Werte der einzelnen Spalten als Dezimal-Zahl
-interpretiert werden. Falls dies nicht Voreingestellt ist, kann das in jede Spalte über die drei Punkte (Einstellungen)
-und den Eintrag \texttt{Convert Column} getätigt werden. Der Wert sollte dann auf \texttt{Decimal} gestellt werden.
+Nun ist der Inhalt der Datei sichtbar. Bei der Ansicht ist darauf zu achten, dass die Werte der einzelnen Spalten als
+Dezimal-Zahl interpretiert werden. Sollte diese Einstellung nicht voreingestellt sein, muss dies für jede Spalte über die
+drei Punkte (Einstellungen) und den Eintrag \texttt{Convert Column} manuell abgeändert werden. Im Untermenü wird der Wert
+\texttt{Decimal} bestätigt.
 
-Nachdem nun alle Einträge als Dezimal-Zahl interpretiert werden, kann die Konvertierung über \texttt{Run data flow}
-gestartet werden. Zum Abschluss wird noch eine Übersicht über die einzelnen Schritte gegeben, die zur Konvertierung
-notwendig sind. Hier werden zum Beispiel etwaige Konvertierungen zu Dezimal-Zahlen angezeigt oder sonstige Operationen
-dargestellt. Die Seite kann bestätigt werden und der Flow sollte starten.
+Da es sich nun um Dezimal-Zahlen handelt, wird über die Schaltfläche \texttt{Run data flow} die Konvertierung gestartet.
+Bevor die Konvertierung jedoch startet, zeigt das System eine Übersicht über die einzelnen Schritte, die dazu benötigt
+werden, an. Hier werden zum Beispiel etwaige Konvertierungen zu Dezimal-Zahlen angezeigt oder sonstige Operationen
+dargestellt. Die Seite kann bestätigt werden und der Flow startet.
 
 Nach wenigen Minuten sollte im Watson Studio im Bereich Assets, in der Kategorie Data assets, die neue Datei zur Verfügung
 stehen. Dabei trägt die Datei die Dateiendung csv. Die Konvertiedung der Datei ist somit abgeschlossen und sie kann für
@@ -60,45 +62,45 @@ das neuronale Netz verwendet werden.
 
 \subsubsection{Modeler flow}
 Nach erfolgreicher Konvertierung der Trainingsdaten, können diese für das neuronale Netz genutzt werden. Für die
-Erstellung des neuronalen Netzes und den damit verbundenen Parameterübergaben wird \texttt{Modeler flow} genutzt.
+Erstellung des neuronalen Netzes und den damit verbundenen Parameterübergaben wird der \texttt{Modeler flow} genutzt.
 
-Im Bereich Assets kann dieser über die Schaltfläche \texttt{New flow} erstellt und eingerichtet werden. Nach der definition
-des Namens für den Flow und einer optionalen Beschreibung, sollte \texttt{Modeler flow} und \texttt{IBM SPSS Modeler}
-ausgewählt werden. Nachdem die richtigen Punkte ausgewählt wurden, kann der Modeler flow über \texttt{Create} erstellt
-werden. Nach kurzer Zeit wird ein leerer Arbeitsbereich für das Erstellen des Flows angezeigt.
+Dieser wird über die Schaltfläche \texttt{New flow} im Bereich Assets erstellt und eingerichtet. Nach der Definition
+des Namens für den Flow und einer optionalen Beschreibung, wird \texttt{Modeler flow} und \texttt{IBM SPSS Modeler}
+ausgewählt. Dabei handelt es sich um den Standard-Flow von Watson Studio.
 
-Über den Menüpunkt \texttt{Palette} kann ein linker Arbeitsbereich angezeigt werden, welcher alle Module, die genutzt
-werden können, gruppiert anzeigt. Damit die konvertierten Trainingsdaten vom neuronalen Netz genutzt werden können,
-müssen sie über den Baustein \texttt{Data asset} in der Gruppe Import eingebaut werden. Das Modul kann über Drag\&Drop
-auf dem leeren Arbeitsbereich positioniert werden.
+Anschließend wird der Modeler flow über die Schaltfläche \texttt{Create} erstellt. Nach kurzer Zeit ist der Flow erstellt
+und es erscheint ein leerer Arbeitsbereich.
 
-Im Anschluss muss das Modul konfiguriert werden. Der Konfigurator kann über ein doppelten Klick auf das entsprechende
-Modul angezeigt werden. Die Einstellungen öffnen sich am rechten Seitenrand. Nun muss über den Knopf
-\texttt{Change Data Asset} die konvertierte Datei ausgewählt werden. Mit einem Klick auf Save werden die Informationen
-gespeichert.
+Der Menüpunkt \texttt{Palette} zeigt einen linken Arbeitsbereich an, welcher alle Module, die genutzt werden können,
+gruppiert auflistet. In diesem existiert der Baustein \texttt{Data asset} in der Gruppe \textit{Import}. Dieser ermöglicht
+den Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag\&Drop wird der Baustein auf den noch leeren
+Arbeitsbereich gezogen und anshcließend platziert.
 
-Als nächstes muss das neuronale Netz eingebaut werden. In der Kategorie \texttt{Modeling} gibt es das Modul
-\texttt{Neural Net} welches für die Anwendung die beste Alternative darstellt. Auch dies kann mit der Maus in einen
-freien Bereich des Arbeitsbereiches geschoben werden.
+Ein Doppelklick auf den Baustein öffnet den Konfigurator bzw. die Einstellungen. In diesem wird über die Schaltfläche
+\texttt{Change Data Asset} die Datei mit den Trainingssätzen ausgewählt. Über \texttt{Save} wird die Einstellung
+gespeichert und der Baustein ist fertig konfiguriert.
 
-Damit die Daten, welche durch das Import-Modul geladen, auch im neuronalen Netz genutzt werden können, muss eine
-Verbindung zwischen Import und neuronalem Netz gezogen werden. Dies kann durch einen Klick auch den Ausgang des
-Data Assets gestartet werden. Im Anschluss muss noch der Eingang des neuronalen Netz angeklickt werden. Nun besteht eine
-Verbindung zwischen den beiden Modulen.
+Der nächste Schritt konfiguriert das neuronale Netz. In der Kategorie \texttt{Modeling} gibt es das Modul
+\texttt{Neural Net}, welches für die Anwendung die beste Alternative darstellt. Auch dieses wird mit der Maus an einen
+freien Platz des Arbeitsbereiches geschoben und ist somit teil des Prozesses.
+
+Damit das neuronale Netz die importierten Daten nutzen kann, muss eine Verbindung zwischen dem Import-Modul und dem
+neuronalen Netz aufgebaut werden. Über einen Klick auf den Ausgang des Import-Modules wird der Verbindungs-Modus gestartet.
+Mit einem Klick auf den Eingang des neuronalen Netzes wird die Verbindung bestätigt und durch eine durchgezogene
+Linie symbolisiert. Die beiden Module sind nun verbunden.
 
 Bei einer Verbindung werden die Ausgaben des jeweiligen Modules weiter an die mit einer Linie verbundenen Module
 weitergegeben. Diese Folgemodule können die Werte dann als Eingabevariablen nutzen.
 
-Das hinzugefügte neuronale Netz Modul kann durch einen doppelten Klick konfiguriert werden. Auf der rechten Seite muss
-der Hacken bei \enquote{Use custom field roles} gesetzt werden. Diese Einstellung sorgt dafür, dass die \texttt{Targets}
-und die \texttt{Inputs} manuell konfiguriert werden können.
+Die Konfiguration des neuronalen öffnet sich durch einen doppelten Klick auf das zugehörige Modul. Der Hacken bei
+\enquote{Use custom field roles} ermöglicht es, die \textit{Targets} und die \textit{Inputs} selbst zu definieren. Dies
+ist für die weitere Konfiguration zwingend erforderlich.
 
-Die Tabelle \ref{tab:targets_inputs} auf Seite \pageref{tab:targets_inputs} gibt einen Überblick über die Auszuwählenden
-Variablen in den beiden Feldern \texttt{Targets} und \texttt{Inputs}. Dabei beschreiben die Targets die Variablen, welche
-durch den Watson Service Vorhergesagt werden sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage
-überhaupt möglich ist.
+Die Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} zeigt die auszuwählenden Tabellenspalten für
+die jewielige Kategorie. Dabei beschreiben die Targets die Variablen, welche durch den Watson Service Vorhergesagt werden
+sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage überhaupt möglich ist.
 
-Das Model wird zu einem späteren Zeitpunkt mit den \textit{Inputs} gefüttert und die \textit{Targets} kommen als
+Dem resultierenden, trainierten Model werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen als
 vorhergesagte Rückgabeparameter zurück.
 
 \begin{table}[hb]
@@ -108,15 +110,15 @@ vorhergesagte Rückgabeparameter zurück.
         \textbf{Targets} & \textbf{Inputs}\\
         \hline
         \hline
-        Druckluft & Einlaufbandlänge\\
+        Leistung & Einlaufbandlänge\\
         \hline
-        Impuls & Wägebandlänge\\
+        Druckluft & Wägebandlänge\\
         \hline
-        Totzeit & Auslaufbandlänge\\
+        Impuls & Auslaufbandlänge\\
         \hline
-        Position & Einlaufbandbreite\\
+        Totzeit & Einlaufbandbreite\\
         \hline
-         & Wägebandbreite\\
+        Position & Wägebandbreite\\
         \hline
         & Auslaufbandbreite\\
         \hline
@@ -132,8 +134,6 @@ vorhergesagte Rückgabeparameter zurück.
         \hline
         & Produkthöhe\\
         \hline
-        & Leistung\\
-        \hline
         & Packungsgewicht\\
         \hline
     \end{tabular}
@@ -141,31 +141,35 @@ vorhergesagte Rückgabeparameter zurück.
     \label{tab:targets_inputs}
 \end{table}
 
-Alle anderen Parameter für das neuronale Netz können in der ersten Version erst Mal auf Standardeinsellungen belassen
+Mit dieser Konfiguration werden 13 Parameter als Eingabevariablen genutzt und fünf Parameter durch das neuronale Netz
+vorhergesagt. Vier der Vorhergesagten Parameter (Druckluft, Impuls, Totzeit, Position) beziehen sich auf den
+\textit{Pusher} und der Parameter \textit{Leistung} gibt die tatsächliche Bandgeschwindigkeit an.
+
+Alle anderen Einstellungen für das neuronale Netz können in der ersten Version erst Mal auf Standardeinsellungen belassen
 werden. Zu einem späteren Zeitpunkt, bei wechselnden Testdaten, können diese verändert werden um die Vorhersagen
 genauer zu machen.
 
-Der Flow für das neuronale Netz ist fertiggestellt und kann gestartet werden. Dadruch wird das neuronale Netz trainiert
-und das fertige Model erscheint in der Übersicht. Dies kann durch ein Klick auf den \texttt{Run} Button getätigt werden.
+Der Flow für das neuronale Netz ist somit fertiggestellt. Mit einem klick auf \texttt{Run} startet das Training des
+neuronalen Netzes.
 
-Nach ein paar Minuten wird unterhalb des neuronalen Netz Moduls ein weiteres Modul angezeigt. Dabei handelt es sich um
-das trainierte neuronale Netz. Dies wird auch durch eine gestrichelte Linie symbolisiert, welche sich zwischen dem
-eigentlichen neuronalen Netz und dem trainierten Model befindet, visualisiert.
+Nach dem erfolgreichem training des neuronalen Netzes erscheint das trainierte Model unterhalb des neuronalen Netzes im
+aktuellen Arbeitsbereich. Eine gestrichelte Linie zwischen dem neuronalen Netz und dem trainierten Model zeigt die
+Abhängigkeit der beiden Module an.
 
-Damit das trainierte Model in einem weiteren Schritt in einem deployment verfügbar gemacht werden kann, muss es die
-Möglichkeit der Exportierung geben. Aktuell ist es nicht möglich, dieses über ein Kontextmenü zu tätigen. Für den Export
-wird ein weiteres Modul benötigt, die \texttt{Table}.
+Für die Weiterverarbeitung und ein späteres Deployment des trainierten Models muss dieses mit einem Export-Modul verbunden
+werden. Der Export erfolgt über das Modul \texttt{Table}.
 
-Das Table-Modul befindet sich in der Kategorie \texttt{Outputs} und kann, genau wie alle andere Module, frei auf dem
-Arbeitsbereich platziert werden. Anschließend muss es mit der Ausgabe des trainierten Models verbunden werden. Es ist
-keine Konfiguration des Models notwendig.
+Das Table-Modul befindet sich in der Kategorie \texttt{Outputs} und wird, genau wie alle andere Module, frei auf dem
+Arbeitsbereich platziert. Eine Verbindung zwischen dem trainierten Model und der Table ermöglicht den Datenaustausch.
+Für die Table ist keine weitere Konfiguration notwendig.
 
-Nach der erfolgreichen Verbindung, kann die Table mit der rechten Maustatse angeklickt werden. Im Kontextmenü kann über
-\enquote{Save branch as a model} das neue Model erstellt werden. Nach der Eingabe eines Namens, wird das Model erstellt
-und ist im Watson Studio Dashboard in der Kategorie Assets sichtbar.
+Ein rechtsklick auf das Table-Modul öffnet das Kontextmenü des Moduls. Darüber lässt sich der Punkt
+\enquote{Save branch as a model} anklicken. Dieser ermöglicht es, das trainierte Model zu exportieren. Im sich öffnenden
+Fenster wird ein Name für das neue Model definiert und eine optinale Beschreibung angegeben. Ein klick auf \texttt{Save}
+speichert die Einstellung und das Model erscheint in den Assets des Watson Studio Dashboards.
 
-In Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau des
-Model flows visualisiert.
+In der Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau
+des Model flows visualisiert.
 
 \begin{figure}[h]
     \centering
@@ -175,6 +179,10 @@ Model flows visualisiert.
 \end{figure}
 
 \subsubsection{Informationen zum Model}
+Über ein weiteren rechtsklick auf das trainierte Model und dem Menüpunkt \texttt{View Model} wird eine detaillierte
+Übersicht über das Model angezeigt. In diesem finden sich zahlreiche Informationen die aufschluss über die Verwendbarkeit
+des Models geben.
+
 \colorbox{yellow}{Beschreiben von den ganzen Informationen von dem Model. Rechte Maustaste - View}
 
 \begin{figure}[h]
@@ -210,43 +218,47 @@ Das im vorangegangenen Kapitel erstellte und trainierte Model kann im weiteren d
 REST-Schnittstelle verfügbar gemacht werden. Dazu ist es erforderlich, das Model in einen \texttt{Web service} zu
 installieren. Die spätere Wartung und Verwaltung wird dabei von Bluemix übernommen.
 
-Damit der Web Service erstellt werden kann, muss im Watson Dashboard das Model ausgewählt werden. Das folgende Fenster
-zeigt mehrere Informationen zu diesem. Unter anderem ist sichtbar, welche Eingabe- und Ausgabeparameter für das Model
+Für die Erstellung des Web Services wird im Watson Dashboard das erstellte Model ausgewählt. Das folgende Fenster
+zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe- und Ausgabeparameter für das Model
 wichtig sind.
 
-Über den Reiter \texttt{Evaluation} können vorangeganene Auswertungen angezeigt werden und der Menüpunkt \texttt{Lineage}
-zeigt die Verknüpfungen und Abstammungen des Models an.
+Der Reiter  \texttt{Evaluation} zeigt vorangegangene Auswertungen des Models an. Über den Menüpunkt \texttt{Lineage}
+werden Verknüpfungen und Abstammungen des Models angezeigt.
 
-Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Über diesen können alte Deployments gelöscht oder neue
-hinzugefügt werden. Über den oben rechts befindlichen Link \texttt{Add Deployment} wird ein solches neu hinzugefügt. Als
-Name kann hier ein beliebiger vergeben werden. Als \texttt{Type} sollte Web Service ausgewählt sein. Ein klick auf
-\texttt{Save} speichert die Einstellungen und erstellt das Deployment. Dieser Vorgang kann bis zu zenh Minuten dauern.
+Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des Modules. Das Löschen
+von älteren Deployments oder das Erstellen von neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment} öffnet
+eine Konfigurationsseite zum Erstellen eines neuen Deployments.
 
-Im Anschluss wird in der Spalte \textit{Status} der Wert \texttt{DEPLOY\_SUCCESS} angezeigt. Damit ist das Deployment
-erfolgreich abgeschlossen. Mit einem klick auf den eingerichteten Namen des Deployments öffnet sich eine
-Informationsseite.
+Der \texttt{Type} des Deployments ist Web Service. Der Name des Deployments ist das einzige Pflichtfeld und muss befüllt
+sein. Anschließend wird das Deployment über \texttt{Save} gespeichert und gestartet. Dieser Vorgang kann wenige Minuten
+dauern.
+
+Nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Status} der aktuelle Wert \texttt{DEPLOY\_SUCCESS}
+angezeigt. Die Informationsseite des Deployments öffnet sich über einen klick auf den Namen.
+
+Das Deployment ist somit erfolgreich erstellt und kann im weiteren getestet und genutzt werden.
 
 \subsubsection{Deployment testen}
-Das freigegebene Deployment kann nun über das Watson Studio Dashboard online getestet werden. Dies hat den Vorteil, dass
-das Deployment direkt getestet werden kann um das Model zu überprüfen.
+Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass
+das Deployment direkt getestet und bei Fehlveralten neu trainiert werden kann.
 
-Über den Menüpunkt \textit{Deployments} im eingerichteten Model kann über den Link im Namen das Deployment angeschaut
-werden. Hier stehen neben diversen Informationen auch der Menüpunkt \texttt{Test} zur Verfügung. In diesem öffnet sich
-eine zweispaltige Ansicht auf der im linken Bereich die Eingabefelder befüllt werden können. Nach erfolgreicher Eingabe
-kann über den Button \texttt{Predict} eine Vorhersage gestartet werden.
+Auf der Deploymentseite des gespeicherten Models genügt ein klick auf den Namen um die Deploymentinformationen anzuzeigen.
+Hier steht neben diversen Informationen auch der Menüpunkt \texttt{Test} zur Verfügung. In diesem öffnet sich eine
+zweispaltige Ansicht. In der linken Spalte befinden sich die Eingabefelder für das trainierte Model. Nach der Eingabe
+der Werte startet die Vorhersage über die Schaltfläche \texttt{Predict}.
 
 Nach wenigen Sekunden erscheint auf der rechten Seite ein langes JSON-Object, welches den Rückgabewert des Web Services
-aufzeigt. Das erste Array, \texttt{fields}, listet die Felder auf, welche an den Web-Service gesendet wurden.
+aufzeigt. Das erste Array, \textit{fields}, listet alle an den Web-Service gesendeten Felder auf.
 
-Das zweite Array, \texttt{values}, zeigt anfangs die Werte, welche an den Web Service gesendet wurden. Die letzten fünf
-Werte entsprechen den Vorhersagen des trainierten Models.
+Das zweite Array, \textit{values}, die an den Web-Service gesendeten wie auch die Vorhergesgaten Werte.
+Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Models.
 
 Sollte das Array \textit{values} kleiner sein als das Array \textit{fields}, war das trainieren des Models nicht
 erfolgreich.
 
 Unter dem Menüpunkt \texttt{Implementation} werden wichtige Informationen und erforderliche Schritte aufgezeigt, damit
-die Schnittstelle in das eigene Programm integriert werden kann. Dafür werden die Schritte für mehrere Programmiersprachen
-aufgezeigt.
+die Schnittstelle in das eigene Programm integriert werden kann. Dabei wird auf verschiedene Programmiersprachen
+eingegangen.
 
 \begin{figure}[h]
     \centering
@@ -261,55 +273,52 @@ Im Weiteren soll das erstellte Model, welches über ein Deployment in einem Web-
 mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
 So ist sichergestellt, dass das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufbar ist.
-Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem können
-so die Übergabeparameter und die Rückgabewerte der Schnittstelle überprüft werden.
+Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem ist
+so eine überprüfung der Übergabeparameter sowie der Rückgabewerte an die Schnittstelle möglich.
 
-Um auf die Schnittstelle des Web-Services zugreifen zu können, muss bei jedem Request an diesen ein
-\textit{Authentication Token} (kurz Auth-Token) mitgeschickt werden. Dieser Token stellt sicher, dass es sich um einen
-gültigen Aufruf handelt.
+Jeder Request an den Web-Service des trainierte Models benötigt einen \textit{Authentication Token} (kurz Auth-Token).
+Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
 
-Der Token kann über eine REST-Schnittstelle des Watson Studio erstellt werden. Dabei handelt es sich um eine andere
+Über die REST-Schnittstelle des Watson Studios wird der Token generriert. Dabei handelt es sich um eine andere
 Schnittstelle als beim Web-Service. Der Token ist immer nur für maximal vier Stunden gültig.
 
 Um einen Auth-Token zu erstellen, muss der Watson Studio Benutzername und das zugehörige Passwort an die Schnittstelle
 übergeben werden. Ein Beispielaufruf ist in Listing~\ref{Abruf des Auth-Tokens} auf Seite~\pageref{Abruf des Auth-Tokens}
-zu sehen. Der Token ist dabei in einem JSON-Object im Rückgabewert.
+zu sehen. Der Token ist dabei in einem JSON-Object im Rückgabewert enthalten.
 
 \begin{lstlisting}[language=bash, caption=Abruf des Auth-Tokens, label=Abruf des Auth-Tokens]
 $ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identity/token
 \end{lstlisting}
 
-In Postman kann dieser Aufruf durch die Eingabe der URL und dem HTTP-Type \texttt{GET} gemacht werden. Im Reiter
-\texttt{Authentication} muss als Type \texttt{Basic-Auth} ausgewählt werden.
+In Postman ist dieser Aufruf durch die Eingabe der URL und dem HTTP-Type \texttt{GET} möglich. Im Reiter
+\textit{Authentication} ist der Type \textit{Basic-Auth} auszuwählen.
 
 Im rechten Bereich sollten dann die beiden Eingabefelder für Benutzername und Passwort erscheinen. Nach der Eingabe der
-geforderten Daten kann mit \texttt{Send} der Request abgeschickt werden und nach wenigen Sekunden sollte der Token in
-einem JSON-Object als Rückgabeparameter erscheinen.
+geforderten Daten wird der Request mit \texttt{Send} abgeschickt. Nach wenigen Sekunden erscheint im Bereich
+\textit{Body} der Token in einem JSON-Objekt. Ähnlich dem Aufruf mit \textit{curl}.
 
-Anschließend kann ein neuer Postman-Tab geäffnet werden, welcher das eigentliche Deployment aufrufen soll. Der
-REST-Endpunkt ist in Watson Studio unter Deployments zu finden und heißt \texttt{Scoring End-point}.
+Um nun das eigentliche Deployment aufzurufen, wird ein neuer Postman-Tab geöffnet. Die URL für den Endpunkt ist im
+Deployment des Models zu finden und heißt \texttt{Scoring End-point}.
 
-Dieser Scoring End-point kann als URL in Postman eingetragen und als HTTP-Type muss \texttt{POST} ausgewählt werden. Im
-Bereich \texttt{Authentication} wird der Type mit \texttt{Baerer} angegeben. Somit kann im rechten Bereich nicht der
-Benutzername und das Passwort angegeben werden, sondern gespeicherte Token.
+Nun kann der Scoring End-point als URL in Postman eingetragen werden. Als HTTP-Type ist \texttt{POST} auszuwählen.
+Im Bereich \texttt{Authentication} wird der Typ auf \texttt{Baerer} abgeändert und ermöglicht die Eingabe des Tokens.
 
-Durch die Auswahl des HTTP-Types \textit{POST} kann der \texttt{Body} des Requests definiert werden. Dabei handelt es
-sich um Parameter, welche an die Schnittstelle mitgeschickt werden. Für das Deployment ist es wichtig, dass die Daten
-in Postman als \texttt{raw} und Type \texttt{JSON (application/json)} geschickt werden. Nun können in das Feld eigene
-Testparameter eingetragen werden. Im Anhang \ref{sec:postmanTestparameter} auf Seite \pageref{sec:postmanTestparameter}
-findet sich dafür ein Beispiel.
+Die Auswahl des HTTP-Types \textit{POST} ermöglicht die definition des Bereichs \texttt{Body} für den Request. Dabei
+handelt es sich um Parameter, welche an die Schnittstelle mitgeschickt werden. Als Datentyp wird \textit{raw} und als
+Type \textit{JSON (application/json)} ausgewählt. Im Anhang \ref{sec:postmanTestparameter} auf Seite
+\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche als Eingabe genutzt werden können.
 
-Abschließend kann mit Button \texttt{Send} der Request abgeschickt werden. Nach wenigen Sekunden erhält man den Response
-des neuronalen Netzes als Rückgabeparameter angezeigt. Hier sollten auch die Vorhersagen enthalten sein.
+Abschließend wird über den Button \texttt{Send} der Request an den Web Service abgeschickt. Nach wneigen Sekunden zeigt
+Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten sein.
 
 Auf der Übersichtsseite des REST-Interfaces des
-Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, können noch weitere
-Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte eingesehen werden.
+Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, sind noch weitere
+Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtlich.
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.26]{images/kapitel_3/deployment_postman.png}
-    \caption{Kompletter Model flow}
+    \caption{Beispielrequest von Postman}
     \label{fig:umsetzung_deployment_postman}
 \end{figure}
 
@@ -324,11 +333,11 @@ Wrapper bauen. Gerade interessant für On The Edge Sachen oder für Mobile.
 \colorbox{yellow}{Hier fehlt was}
 
 \subsubsection{Model Exportieren}
-\colorbox{yellow}{Hier fehlt was}
-
 Damit die Applikation über eine Domain aus dem Internet aus aufrufbar ist, muss diese zum Beispiel in einen Cloud
 Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folgenden Kapitel werden die dafür nötigen
 Schritte erläutert.
+
+\colorbox{yellow}{Hier fehlt was}
 
 \subsection{Toolchain einrichten}
 Da die Node.js-Applikation fertig entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und über eine
