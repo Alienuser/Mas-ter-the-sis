@@ -323,29 +323,27 @@ Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtl
 \end{figure}
 
 \subsection{TensorFlow.js}
-Da die Watson Studio Applikation nun erfolgreich in einem Deployment zur Verfügung gestellt und der Aufruf über
-Postman verifiziert wurde, kann nun das trainierte Model in eine TensorFlow.js Applikation eingebettet werden.
-
-Einrichten der Node.js-Umgebung auf dem PC. Dann entwicklen des ganzen. Dazu muss das trainierte Netz, welches im
-vorangegangenen Kapitel erstellt wurde heruntergeladen werden. Dann in TensorFlow.js einbinden und nutzen. Also einen
-Wrapper bauen. Gerade interessant für On The Edge Sachen oder für Mobile.
+Die Watson Studio Applikation ist nun erfolgreich in einem Deployment, online zur Verfügung gestellt. Außerdem ist die
+Funktion über einen Aufruf mittels Postman überprüft worden. Im Weiteren wird das trainierte Model in eine TensorFlow.js
+Applikation eingebaut.
 
 \colorbox{yellow}{Hier fehlt was}
 
 \subsubsection{Model Exportieren}
-Damit die Applikation über eine Domain aus dem Internet aus aufrufbar ist, muss diese zum Beispiel in einen Cloud
-Foundry-Container, welcher in der IBM Cloud läuft, installiert werden. Im folgenden Kapitel werden die dafür nötigen
-Schritte erläutert.
-
 \colorbox{yellow}{Hier fehlt was}
 
-\subsection{Toolchain einrichten}
-Da die Node.js-Applikation fertig entwickelt ist, soll diese in einem Cloud Foundry-Container installiert und über eine
-Domain abrufbar gemach werden. Damit dies nicht manuell nach jeder Änderung im Quellcode über \texttt{cf push} gemacht
-werden muss, kann eine Toolchain aus der IBM Cloud genutzt werden.
+Die Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in einen Cloud
+Foundry-Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür nötigen
+Schritte erläutert.
 
-Für die Nutzung der Toolchain wird ein Git-Repository angelegt. Nach jedem \texttt{commit}, welcher in dieses Repository
-geschrieben wird, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
+\subsection{Toolchain einrichten}
+Die fertig entwickelte Node.js-Applikation wird im nächsten Schritt in einen Cloud Foundry-Container installiert. Dies
+ermöglicht den Aufruf der Applikation über eine Domain. Damit der geschriebene Quellcode nicht nach jeder änderung manuell
+mittels \texttt{cf push} in einen Cloud foundry-Container geladen werden muss, wird hierfür eine Toolchain aus der
+IBM Cloud genutzt.
+
+Die Nutzung der Toolchain erfordert ein eingerichtetes Git-Repository. Nach jedem \texttt{commit}, welcher in dieses
+Repository geschrieben wird, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
 
 Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Schritte (Phasen) in der Toolchain
 durchlaufen, um die Applikation in einen Cloud Foundry-Container zu installieren.
@@ -358,14 +356,15 @@ Für die Konfiguration der Toolchain muss die instanziierte Node.js-Runtime, in 
 soll, in dem IBM Cloud Dashboard ausgewählt werden.
 
 Auf der folgenden Seite, im Tab \texttt{Übersicht} (linke Seite), erscheinen fünf Kacheln mit unterschiedlichen Informationen.
-Für die Toolchain ist die Karte mit der Aufschritf \texttt{Continous Delivery} entscheidend. Dort gibt es einen Button
+Für die Toolchain ist die Karte mit der Aufschrift \texttt{Continous Delivery} entscheidend. Dort gibt es einen Button
 mit der Aufschrift \texttt{Aktivieren}.
 
-Ein Klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann ein
-Name eingetragen und die Region ausgewählt werden, in der die Toolchain installiert werden soll. Da die Standardkonfiguration
-vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein Klick auf \texttt{Erstellen}.
+Ein Klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun kann
+ein Name eingetragen und die Region ausgewählt werden, in der die Toolchain installiert werden soll. Da die
+Standardkonfiguration vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein Klick auf
+\texttt{Erstellen}.
 
-Nach einem kurzen Ladevorgang wurde die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
+Nach einem kurzen Ladevorgang ist die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
 unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann.
 
 Im Bereich \texttt{Nachdenken} wird ein Issue-Tracker konfiguriert, in dem zum Beispiel Bugs (Softwarefehler), welche
@@ -431,8 +430,13 @@ Mittels API Connect können Aufrufe optimal verteilt und Änderungen können sch
 angepasst werden.
 
 \subsubsection{API Connect einrichten}
-Da der Service, wie in Kapitel \ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} beschrieben, schon
-eingerichtet wurde, kann dieser nun über IBM Bluemix Dashboard aufgerufen werden.
+Der in Kapitel \ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} eingerichtete Service wird im folgenden
+konfiguriert und eingerichtet. Dazu muss er aus dem IBM Cloud Dashboard heraus aufgerufen werden.
+
+\colorbox{yellow}{Hier fehlt was}
+
+In der Abbildung \ref{fig:umsetzung_api_connect} auf Seite \pageref{fig:umsetzung_api_connect} ist der fertig
+eingerichtete API Connect Flow dargestellt.
 
 \begin{figure}[h]
     \centering
@@ -440,5 +444,3 @@ eingerichtet wurde, kann dieser nun über IBM Bluemix Dashboard aufgerufen werde
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_api_connect}
 \end{figure}
-
-\colorbox{yellow}{Hier fehlt was}
