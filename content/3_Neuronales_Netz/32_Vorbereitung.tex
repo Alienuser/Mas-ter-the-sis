@@ -21,7 +21,7 @@ spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt ode
 die Benamung des ersten Spaces ist \textit{dev}, was eine Abkürzung für \textit{developper} ist.
 
 Ein \textit{Space} gruppiert mehrere Runtimes und Services in einem Rechenzentrum. Von diesen Rechenzentren gibt es in
-der IBM Cloud aktuell sechs, verteilt in allen Kontinenten. Eine \textit{Organisation} kann mehrere Spaces beinhalten.
+der IBM Cloud aktuell sechs, verteilt auf drei Kontinente. Eine \textit{Organisation} kann mehrere Spaces beinhalten.
 
 \subsection{IBM Cloud CLI}
 Für die einfache Verwaltung der IBM Cloud empfiehlt sich, dass zugehörige Command Line Interface (kurz \textit{CLI}) zu
@@ -49,9 +49,9 @@ Für den Aufbau und die Konfiguration des neuronalen Netzes wird der Service \te
 es zwei Möglichkeiten einen Service oder eine Runtime in einen erstellten Space einzubinden.
 
 \subsubsection*{Über das IBM Cloud Dashboard}
-Auf dem IBM Cloud Dashbaord können mit einem Klick auf \textit{Katalog} alle Services und Runtimes, welche aktuell genutzt
-werden können, aufgelistet werden. Der Service \textit{Watson Studio} ist in der Kategorie \textit{Künstliche Intelligenz}
-zu finden. Ein klick auf diesen öffnet die Konfigurationsseite.
+Auf dem IBM Cloud Dashboard können mit einem Klick auf \textit{Katalog} alle Services und Runtimes, welche aktuell nutzbar
+sind, aufgelistet werden. Der Service \textit{Watson Studio} befindet sich in der Kategorie
+\textit{Künstliche Intelligenz}. Ein klick auf diesen öffnet die Konfigurationsseite.
 
 Auf der Konfigurationsseite muss der \textit{Servicename}, welcher frei gewählt werden kann, eingetragen werden.
 Anschließend kann noch die Region, in welcher der Service zur Verfügung stehen soll und die Ressourengruppe definiert
@@ -66,7 +66,7 @@ das Watson Studio Dashboard gewechselt.
 
 \subsubsection*{Über die CLI}
 Alternativ erfolgt die Installation des Services mittels dem installierten CLI. Dazu wird im ersten Schritt das CLI mit
-dem IBM Cloud-Konto verknüpft. Der folgende Befehl setzt der dafür notwendigen API-Endpunkt:
+dem IBM Cloud-Konto verknüpft. Der folgende Befehl setzt den dafür notwendigen API-Endpunkt:
 
 \begin{lstlisting}[language=bash, caption=Setzen des API Targets, label=Setzen des API Targets]
     $ ibmcloud api https://api.ng.bluemix.net
@@ -103,7 +103,7 @@ Der erstellte Service sollte mit dem definierten Namen in der Liste der Services
 Abschließend wird ein Projekt im Watson Studio angelegt. Dieses bündelt alle Daten und Informationen an einem gemeinsamen
 Ort. Um ein Projekt zu erstellen, wird das Watson Studio Dashboard über das IBM Cloud Dashboard aufgerufen.
 
-Ein solches Projekt wird im Watson Studio Dashboard über den Menüpunkt \texttt{New project} angelegt. Nach der Eingabe
+Die Schlatfläche \texttt{New project} legt im Watson Studio Dashboard ein neues Projekt an. Nach der Eingabe
 eines Namens und der Einrichtung eines Local Storages (dies geschicht über den Mini-Wizzard auf der rechten Seite) kann
 die Eingabe über die Schaltfläche \texttt{Create} bestätigt werden.
 
@@ -120,7 +120,7 @@ ausführlich erläutert. Im Folgenden wird lediglich die Erstellung über das CL
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
-Auch hier wird über den Parameter \texttt{service\_name} der Name für die Applikation vergeben. Die URL, über die
+Auch hier wird über den Parameter \textit{service\_name} der Name für die Applikation vergeben. Die URL, über die
 der Container später aufrufbar ist, folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
 
 Dies bedeutet, dass der Name nur ein Mal im kompletten System vergeben sein darf. Eine Meldung gibt Hinweise darauf, ob
@@ -128,7 +128,7 @@ die Applikation erfolgreich erstellt werden konnte, oder ob ein anderer Name fü
 
 \subsection{API Connect}
 \label{subsec:apiconnect}
-Um im weiteren Verlauf den API Gateway, \textit{API Connect}, nutzen zu können, muss dieser ebenfalls im IBM Cloud
+Um im weiteren Verlauf den API Gateway, \textit{API Connect}, zu nutzen, muss dieser ebenfalls im IBM Cloud
 instanziiert werden. Wie auch in den beiden vorangegangenen Kapiteln kann dies über die CLI als auch über den IBM Cloud
 Katalog geschehen.
 
@@ -138,7 +138,7 @@ Einfachheitshalber wird im Folgenden die Instanziierung des Services mittels IBM
 $ ibmcloud cf create-service API-Connect lite service_name
 \end{lstlisting}
 
-Über den Parameter \texttt{service\_name} wird der Name für den Service definiert. Mit diesem ist er im IBM Cloud
+Über den Parameter \textit{service\_name} wird der Name für den Service definiert. Über diesen ist er im IBM Cloud
 Dashboard auffindbar.
 
 \subsection{Git}
@@ -162,8 +162,8 @@ Kommando:
     $ sudo apt-get install -y nodejs
 \end{lstlisting}
 
-Für macOS existiert es ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.12.0/node-v8.12.0.pkg}
-heruntergeladen werden kann.
+Für macOS existiert ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.12.0/node-v8.12.0.pkg}
+zur Verfügung steht.
 
 Bei der Installation von Node.js wird npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und wird
 für die spätere Installation von Abhängigkeiten für die Applikation benötigt.
