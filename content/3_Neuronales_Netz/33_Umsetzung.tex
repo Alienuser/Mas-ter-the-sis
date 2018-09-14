@@ -470,13 +470,173 @@ Mittels API Connect kann man die Aufrufe optimal verteilen oder eigene Routen f�
 Außerdem können Änderungen schnell und kompfortabel in einem Online-Editor angepasst werden.
 
 \subsubsection{API Connect einrichten}
-Der in Kapitel \ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} eingerichtete Service wird im folgenden
-konfiguriert und eingerichtet. Dazu muss er aus dem IBM Cloud Dashboard heraus aufgerufen werden.
+Der in Kapitel \ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} instanziierte Service wird im folgenden
+konfiguriert und eingerichtet. Dazu muss man ihn aus dem IBM CLoud Dashboard heraus aufrufen. Nach dem klick auf den
+Service-Namen erscheint eine Seite mit hilfreichen Informationen zum Service.
 
-\colorbox{yellow}{Hier fehlt was}
+Über die Schaltfläche \texttt{Open API Connect} gelangt man auf das API Connect Dashboard. In diesem muss zuerst ein
+automatisch angelegtes Projekt benamt werden. In diesem Projekt werden alle Informationen zur API gespeichert. Nach der
+fertigen Einrichtung des Projektes gelangt man über einen klick auf den Projektnamen auf die Projektübersicht.
+
+In dieser muss man über den Menüpunkt \texttt{Entwürfe} die Kategorie \texttt{APIs} auswählen. In dieser Liste werden
+alle APIs, welche im weiteren erstellt werden, aufgelistet. In dem gerade erstellten Projekt existieren noch keine. Dies
+kann der Nutzer über den Button \texttt{Hinzufügen} und dann \texttt{Neue API} ändern.
+
+Nachdem man den Titel, einen Namen und eine beliebige Version hinterlegt hat, kann man die API mit \texttt{API erstellen}
+in die Liste aufnehmen. Sie erscheint nun mit dem definierten Namen. Über einen klick auf diesen lässt sich die
+Konfiguration der API öffnen.
+
+Für die Konfiguration einer API existieren drei wichtige Untermenüs. In \texttt{Gestalten} lassen sich Name, Beschreibung,
+Version, die Sicherheitsdefinitionen sowie die zur Verfügung gestellten Pfade und dafür vorgesehene Parameter definieren.
+
+Der Menüpunkt \texttt{Quelle} zeigt die komplette Konfiguration der API in Swagger-Notation an. Hier getätigte Änderungen
+werden automatisch in den anderen beiden Menüpunkte übernommen.
+
+Im letzten Menüpunkt, \texttt{Assemblieren}, kann man die Funktionen der API definieren. Dazu zählen zum Beispiel die
+einzelnen Schritte, welche bei einem Endpunkt durchlaufen werden müssen. Hier wird der Inhalt der API definiert.
+
+Um mit der Konfiguration zu starten, muss der Nutzer zuallererst die einzelnen Pfade, welche zur Verfügung stehen sollen,
+definieren. Dazu wird in den Menüpunkt \texttt{Gestalten} gewechselt und im linken Menü dann in \texttt{Pfade}.
+
+Über das kleine Plus-Zeichen im rechten Bereich kann der Nutzer einen neuen Pfad hinzufügen. Pfade sind die Endpunkte
+einer REST-Schnittstelle. Jede URL ist ein Endpunkt. Über jeden einzelnen Endpunkt können verschiedene HTTP-Requests
+angesteuert werden. Die häufigsten sind \textit{GET}, \textit{POST}, \textit{PUT} und \textit{DELETE}.
+
+Direkt nach einem klick auf das Plus-Zeichen erscheint ein neuer Pfad mit dem Namen \textit{/pfad-1}. Diesen kann man
+durch einen klick aufklappen. Es erscheinen nun die Konfigurationsparameter für den Endpunkt. Als \textit{Pfad} wird nun
+ein Name vergeben, über den das Watson Studio Deployment aufgerufen werden kann. Ein Beispiel hierfür ist
+\textit{predict-watson}.
+
+Da in der jetzigen Version für die Parameter keine Validierung vorgenommen wird, kann die Einstellung dieser ignoriert
+werden. Allerdings muss man nun eine neue Operation hinzufügen. Dabei handelt es sich um die HTTP-Typen. Da von der
+späteren Anwendung Daten an die Schnittstelle geschickt werden sollen, muss es eine Operation vom Typ \textit{POST} sein.
+
+Über den Button \texttt{Operation hinzufügen} kann man diese hinzufügen. In dem Dropdown-Menü muss der Nutzer dann den
+entsprechenden \texttt{POST}-Eintrag auswählen. Dieser erscheint sogleich in der Liste und wird grün hinterlegt.
+
+Mit einem Klick auf den Eintrag wechselt man in die weitere Konfiguration. Die weitere Konfiguration ist für die
+Schnittstelle uninteressant und kann wieder geschlossen werden.
+
+Diese Schritte muss man nun auch für einen weiteren Pfad mit dem Namen \textit{predict-tensorflow} durchführen. Dieser
+erhält ebenfalls eine Operation \textit{POST}.
+
+Somit sind erfolgreich zwei Endpunkt mit den Namen \textit{predict-watson} und \textit{predict-tensorflow} angelegt worden.
+Diese haben jeweils eine Operation vom Typ \textit{POST}.
+
+Als weitere wichtige Einstellung muss man unter \texttt{Lebenszyklus} den Schalter bei \texttt{CORS} aktivieren und da
+im ersten Schritt mit keiner Sicherheit gearbeitet wird, kann der entsprechende Menüpunkt übersprungen werden.
+
+Über das Disketten-Symbol am oberen Rand kann man die aktuelle Einstellung zur Sicherheit speichern. Eine entsprechende
+Meldung quittiert die Speicherung.
+
+Die Grundeinstellungen der Schnittstelle sind somit getätigt. Im weiteren muss der Entwickler die API über Assemblieren
+mit dem richtigen Verhalten versehen. Dazu wechselt man über den entsprechenden Menüpunkt in einen fast leeren
+Arbeitsbereich.
+
+Hier finden sich im linken Bereich alle möglichen Bausteine um die API mit Funktion zu füllen. Im mittleren Teil, dem
+Arbeitsbereich, ist lediglich ein Punkt hinterlegt. Dies dient als Einstieg bei einem Aufruf der Schnittstelle. Ein
+Aufruf der API landet immer in diesem Knoten und kann dann verteilt werden.
+
+Als einer der ersten Schritte soll die Schnittstelle selbstständig einen Auth-Token vom Watson Studio abgreifen. Dazu
+wird das Modul \texttt{Aufrufen} benötigt. Durch ein Drag\&Drop kann man dieses Modul in den Arbeitsbereich, direkt
+hinter den schon hinterlegten Punkt setzen. Automatisch werden die beiden Module verbunden.
+
+Durch ein doppelten Klick auf das Modul öffnet sich die entsprechende Konfiguration. Als Titel kann man \enquote{Get Token}
+definieren. Als URL dient die Schnittstelle des Watson Studios, \enquote{https://eu-gb.ml.cloud.ibm.com/v3/identity/token}.
+
+Der Benutzername und das zugehörige Passwort sind im instanziierten Watson Studio Service zu sehen. Man gelangt über das
+IBM Cloud Dashbaord auf die Seite. Als \textit{HTTP-Methode} muss \texttt{GET} ausgewählt sein. In der Schnittstelle des
+Watson Studios, existiert auf diesem Endpunkt lediglich diese Operation.
+
+Als letzte Einstellung muss man als \textit{Antwortobjektvariable} die Bezeichnung \enquote{newtoken} eintragen. Die
+Konfiguration des Modules ist damit abgeschlossen und es kann mit den nächsten Modulen fortgefahren werden.
+
+Da die Schnittstelle des Watson Studios den Auth-Token als Rückgabeparameter besitzt, muss man diesen in API Connect
+speichern und allgemein zur Verfügung stellen. Dies kann nur über das Modul \texttt{Zuordnen} erfolgen.
+
+Dieses Modul kann man der Kategorie \textit{Umwandlungen} entnehmen und es direkt nach dem Request-Modul platzieren. Es
+reiht sich somit dahinter ein. Ein doppelter Klick öffnet die Konfiguration des Modules. Da hier nur ein Parameter
+gespeichert werden muss, ist die Konfiguration recht simpel.
+
+In der Spalte Eingabe kann man über den Stift einen neuen Eintrag hinzufügen. Als Kontextvariable ist
+\enquote{newtoken.body.token} zu definieren. Dabei handelt es sich um den Rückgabeparameter des vorangestellten
+Request-Modules und das JSON-Object \enquote{token}, welches von der Schnittstelle zurückgegeben wird.
+
+Als Name der Variable wird \enquote{Token Input} definiert, der Inhaltstyp ist \enquote{text/plain} und die Definition
+ist \enquote{string}. Über \texttt{Fertig} kann man die Konfiguration speichern.
+
+Nun muss in der Spalte Ausgabe eine interne Variable definiert werden, welche den Auth-Token speichert. Dafür wird über
+den Stift ein neuer Eintrag angelegt. Die Kontextvariable ist \enquote{newtoken} und der Name \enquote{Token Output}.
+Als Inhaltstyp wird \enquote{text/plain} ausgewählt, da die Variable auf der Seite der Eingabe als Text definiert ist.
+Somit wird auch die Definition auf \enquote{string} gesetzt.
+
+Nachdem auf beiden Seiten nun ein Eintrag erscheint, muss man diese beiden über die rundlichen Punkte verbinden. Eine
+grüne Linie symbolisiert anschließend die Verbindung. Die Konfiguration der Zuordnung ist damit fertiggestellt.
+
+Da bei der Schnittstelle mir CORS gearbeitet wird, muss man in einem nächsten Schritt den Header setzen, welche Anfragen
+erlaubt sind. Dafür verwendet man einen \textit{Gateway Script}. Dies platziert man einfach hinter dem Zuordnungs-Modul.
+
+Die Konfiguration des Moduls entspricht Quellcode in JavaScript. Die Zeilen in Listing \ref{Gateway Script für CORS} auf
+Seite \pageref{Gateway Script für CORS} definieren die entsprechenden Einstellungen.
+
+\begin{lstlisting}[language=javascript, caption=Gateway Script für CORS, label=Gateway Script für CORS]
+// Set CORS headers
+apim.setvariable('message.headers.Access-Control-Allow-Origin', '*');
+apim.setvariable('message.headers.Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+\end{lstlisting}
+
+Die erste Zeile besagt, dass die nachfolgende Konfiguration für \textit{alle} Requests zählt. Die zweite Zeile besagt,
+dass die Anfragen akzeptiert werden sollen. Somit kann jede Anwendung mit dieser Schnittstelle kommunizieren.
+
+Da es zwei Endpunkte für die Schnittstelle geben wird, braucht man nun einen \textit{Operationsswitch}, um je nach
+gefordertem Endpunkt auch die richtigen Informationen zurückgeben zu können.
+
+Dieser Switch wird direkt nach dem Gateway Script angeordnet. In der Konfiguration des Switches kann der Nutzer über den
+Button \texttt{+ Pfad} einen neuen Zweig hinzufügen. Insgesamt werden zwei Stück benötigt. Der erste Fall ist für
+\textit{predict-watson} da. Der Zweite für \textit{predict-tensorflow}.
+
+\subsubsection*{Pfad für das Watson Deployment}
+Für den Pfad des \textit{predict-watson} wird ein weiteres Gateway Script benötigt, welches den Header für die Anfrage
+an des Watson Studio Deployment setzt. Für die Einstellungen sind die JavaScript Zeilen in Listing
+\ref{Gateway Script für Authorization-Token} auf Seite \pageref{Gateway Script für Authorization-Token} zuständig.
+
+\begin{lstlisting}[language=javascript, caption=Gateway Script für Authorization-Token, label=Gateway Script für Authorization-Token]
+// Set the token
+var token = apim.getvariable('newtoken');
+apim.setvariable('message.headers.authorization', 'Bearer ' + token);
+\end{lstlisting}
+
+In der ersten Zeile wird der Token, welcher in dem Modul \textit{Zuordnung} gespeichert wurde, ausgelesen. Die zweite
+Zeile sorgt dafür, dass ein Header mit dem Key \textit{authorization} und dem Value \textit{Bearer + token} gesetzt wird.
+
+Ein weiteres Gateway Script sorgt dafür, dass die ursprünglich Übergebenen Parameter an den API Connect Service (mit den
+Input-Werten für die Vorhersage) auch an den nächsten Request weitergegeben werden können. Dafür setzt man die alten Werte
+als neue Message-Werte. Das Listing \ref{Gateway Script zum setzen des Message-Bodys} auf Seite
+\pageref{Gateway Script zum setzen des Message-Bodys} veranschaulicht das vorgehen.
+
+\begin{lstlisting}[language=javascript, caption=Gateway Script zum setzen des Message-Bodys, label=Gateway Script zum setzen des Message-Bodys]
+// Get variables
+var request = apim.getvariable('request.body');
+apim.setvariable('message.body', request);
+\end{lstlisting}
+
+Im letzten Schritt muss man ein weiteres Aufruf-Modul hinzufügen. Dies erledigt den eigentlichen Aufruf an das Watson
+Studio Deployment. Dazu wird das Modul als das Nächste in die Reihe eingefügt. In der Konfiguration muss man lediglich
+die URL des Deployments hinzufügen. Diese ist auf der Seite des Deployments ersichtlich.
+
+Damit ist dieser Pfad fertig konfiguriert und kann mit einem Aufruf verifiziert werden.
+
+\subsubsection*{Pfad für den TensorFlow Container}
+Die Einrichtung des TensorFlow-Pfades ist sehr ähnlich zum vorherigen Pfad. Allerdings bedarf es keines Gateway Scriptes
+zum setzen eines Authorization Tokens, da dieser hier nicht benötigt wird. Die anderen Module kann man kopieren und in
+dem Pfad einsetzen. Lediglich das Aufrufen-Modul benötigt weitere Konfiguration.
+
+In diesem muss nicht die URL des Watson Studio Deployments, sondern man muss die des Cloud Foundry-Containers einsetzen.
+Anschließend sollte man die Konfiguration über das Disketten-Symbol speichern. Die Konfiguration des API Conenct Services
+ist somit abgeschlossen und kann über Postman verifiziert werden.
 
 In der Abbildung \ref{fig:umsetzung_api_connect} auf Seite \pageref{fig:umsetzung_api_connect} ist der fertig
-eingerichtete API Connect Flow dargestellt.
+eingerichtete API Connect flow dargestellt.
 
 \begin{figure}[h]
     \centering
@@ -484,3 +644,9 @@ eingerichtete API Connect Flow dargestellt.
     \caption{Kompletter API Connect flow}
     \label{fig:umsetzung_api_connect}
 \end{figure}
+
+Über den Play-Button am linken oberen Rand, kann man die aktuelle Konfiguration des API Connect Services bauen lassen.
+Als Katalog sollte man den anfangs angelegten Katalog definieren. Im Bereich Produkt muss der Nutzer ein neues anlegen.
+
+Nun kann er mit \texttt{Produkt veröffentlichen} dieses veröffentlichen und nutzbar machen. Dieser Vorgang kann bis zu
+wenigen Minuten dauern.
