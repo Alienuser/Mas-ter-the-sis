@@ -579,13 +579,13 @@ erlaubt sind. Dafür verwendet man einen \textit{Gateway Script}. Dies platziert
 Die Konfiguration des Moduls entspricht Quellcode in JavaScript. Die Zeilen in Listing \ref{Gateway Script für CORS} auf
 Seite \pageref{Gateway Script für CORS} definieren die entsprechenden Einstellungen.
 
-\begin{lstlisting}[language=javascript, caption=Gateway Script für CORS, label=Gateway Script für CORS]
+\begin{lstlisting}[language=JavaScript, caption=Gateway Script für CORS, label=Gateway Script für CORS]
 // Set CORS headers
 apim.setvariable('message.headers.Access-Control-Allow-Origin', '*');
 apim.setvariable('message.headers.Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
 \end{lstlisting}
 
-Die erste Zeile besagt, dass die nachfolgende Konfiguration für \textit{alle} Requests zählt. Die zweite Zeile besagt,
+Die zweite Zeile besagt, dass die nachfolgende Konfiguration für \textit{alle} Requests zählt. Die dritte Zeile besagt,
 dass die Anfragen akzeptiert werden sollen. Somit kann jede Anwendung mit dieser Schnittstelle kommunizieren.
 
 Da es zwei Endpunkte für die Schnittstelle geben wird, braucht man nun einen \textit{Operationsswitch}, um je nach
@@ -600,13 +600,13 @@ Für den Pfad des \textit{predict-watson} wird ein weiteres Gateway Script benö
 an des Watson Studio Deployment setzt. Für die Einstellungen sind die JavaScript Zeilen in Listing
 \ref{Gateway Script für Authorization-Token} auf Seite \pageref{Gateway Script für Authorization-Token} zuständig.
 
-\begin{lstlisting}[language=javascript, caption=Gateway Script für Authorization-Token, label=Gateway Script für Authorization-Token]
+\begin{lstlisting}[language=JavaScript, caption=Gateway Script für Authorization-Token, label=Gateway Script für Authorization-Token]
 // Set the token
 var token = apim.getvariable('newtoken');
 apim.setvariable('message.headers.authorization', 'Bearer ' + token);
 \end{lstlisting}
 
-In der ersten Zeile wird der Token, welcher in dem Modul \textit{Zuordnung} gespeichert wurde, ausgelesen. Die zweite
+In der zweiten Zeile wird der Token, welcher in dem Modul \textit{Zuordnung} gespeichert wurde, ausgelesen. Die dritte
 Zeile sorgt dafür, dass ein Header mit dem Key \textit{authorization} und dem Value \textit{Bearer + token} gesetzt wird.
 
 Ein weiteres Gateway Script sorgt dafür, dass die ursprünglich Übergebenen Parameter an den API Connect Service (mit den
@@ -614,7 +614,7 @@ Input-Werten für die Vorhersage) auch an den nächsten Request weitergegeben we
 als neue Message-Werte. Das Listing \ref{Gateway Script zum setzen des Message-Bodys} auf Seite
 \pageref{Gateway Script zum setzen des Message-Bodys} veranschaulicht das vorgehen.
 
-\begin{lstlisting}[language=javascript, caption=Gateway Script zum setzen des Message-Bodys, label=Gateway Script zum setzen des Message-Bodys]
+\begin{lstlisting}[language=JavaScript, caption=Gateway Script zum setzen des Message-Bodys, label=Gateway Script zum setzen des Message-Bodys]
 // Get variables
 var request = apim.getvariable('request.body');
 apim.setvariable('message.body', request);
