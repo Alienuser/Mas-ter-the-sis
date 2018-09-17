@@ -185,7 +185,7 @@ des Model flows visualisiert.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/umsetzung_model_flow.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/umsetzung_model_flow.png}
     \caption{Vollständiger Model flow}
     \label{fig:umsetzung_model_flow}
 \end{figure}
@@ -199,28 +199,28 @@ detaillierte Übersicht über das Model gelangen. Hier finden sich zahlreiche In
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/model_evaluation.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/model_evaluation.png}
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_model_evaluation}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/model_information.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/model_information.png}
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_model_information}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/model_predictor.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/model_predictor.png}
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_model_predictor}
 \end{figure}
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/model_network_diagram.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/model_network_diagram.png}
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_model_network_diagram}
 \end{figure}
@@ -278,7 +278,7 @@ den online Aufruf des trainierten Models sichtbar.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/deployment_test.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/deployment_test.png}
     \caption{Online Test des trainierten Models}
     \label{fig:umsetzung_deployment_test}
 \end{figure}
@@ -334,7 +334,7 @@ Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtl
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/deployment_postman.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/deployment_postman.png}
     \caption{Beispielrequest von Postman}
     \label{fig:umsetzung_deployment_postman}
 \end{figure}
@@ -441,7 +441,7 @@ Postman vereinfacht aufgerufen werden kann.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/toolchain_pipeline.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/toolchain_pipeline.png}
     \caption{Übersicht der Toolchain-Konfiguration}
     \label{fig:umsetzung_toolchain_pipeline}
 \end{figure}
@@ -475,12 +475,13 @@ konfiguriert und eingerichtet. Dazu muss man ihn aus dem IBM CLoud Dashboard her
 Service-Namen erscheint eine Seite mit hilfreichen Informationen zum Service.
 
 Über die Schaltfläche \texttt{Open API Connect} gelangt man auf das API Connect Dashboard. In diesem muss zuerst ein
-automatisch angelegtes Projekt benamt werden. In diesem Projekt werden alle Informationen zur API gespeichert. Nach der
-fertigen Einrichtung des Projektes gelangt man über einen klick auf den Projektnamen auf die Projektübersicht.
+automatisch angelegter Katalog benamt werden. In diesem Katalog werden alle Informationen zur API gespeichert.
+Veröffentlichte APIs werden automatisch in diesem Katalog aufgelistet. Nach der fertigen Einrichtung des Kataloges gelangt
+man über einen klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
 
-In dieser muss man über den Menüpunkt \texttt{Entwürfe} die Kategorie \texttt{APIs} auswählen. In dieser Liste werden
-alle APIs, welche im weiteren erstellt werden, aufgelistet. In dem gerade erstellten Projekt existieren noch keine. Dies
-kann der Nutzer über den Button \texttt{Hinzufügen} und dann \texttt{Neue API} ändern.
+In dieser muss man über den Menüpunkt \texttt{APIs} auswählen. In dieser Liste werden alle APIs, welche im weiteren
+erstellt werden, aufgelistet. Aktuell existieren hier aber noch keine. Dies kann der Nutzer über den Button
+\texttt{Hinzufügen} und dann \texttt{Neue API} ändern.
 
 Nachdem man den Titel, einen Namen und eine beliebige Version hinterlegt hat, kann man die API mit \texttt{API erstellen}
 in die Liste aufnehmen. Sie erscheint nun mit dem definierten Namen. Über einen klick auf diesen lässt sich die
@@ -633,14 +634,15 @@ dem Pfad einsetzen. Lediglich das Aufrufen-Modul benötigt weitere Konfiguration
 
 In diesem muss nicht die URL des Watson Studio Deployments, sondern man muss die des Cloud Foundry-Containers einsetzen.
 Anschließend sollte man die Konfiguration über das Disketten-Symbol speichern. Die Konfiguration des API Conenct Services
-ist somit abgeschlossen und kann über Postman verifiziert werden.
+ist somit abgeschlossen und man kann diese im eingerichteten Katalog veröffentlichen.
 
-In der Abbildung \ref{fig:umsetzung_api_connect} auf Seite \pageref{fig:umsetzung_api_connect} ist der fertig
-eingerichtete API Connect flow dargestellt.
+\subsubsection{API Veröffentlichen}
+In der Abbildung \ref{fig:umsetzung_api_connect} auf Seite \pageref{fig:umsetzung_api_connect} ist der fertig eingerichtete
+API Connect flow dargestellt.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.26]{images/kapitel_3/api_connect.png}
+    \includegraphics[width=\textwidth]{images/kapitel_3/api_connect.png}
     \caption{Kompletter API Connect flow}
     \label{fig:umsetzung_api_connect}
 \end{figure}
@@ -650,3 +652,11 @@ Als Katalog sollte man den anfangs angelegten Katalog definieren. Im Bereich Pro
 
 Nun kann er mit \texttt{Produkt veröffentlichen} dieses veröffentlichen und nutzbar machen. Dieser Vorgang kann bis zu
 wenigen Minuten dauern.
+
+\subsubsection{API Durchsuchen}
+Man kann auf Durchsuchen klicken und dann sieht man die Swgaer UI und kann die API auch testen etc...
+\colorbox{yellow}{Hier fehlt was}
+
+\subsubsection{Developer Toolkit}
+Hier kann man Informationen zur API sehen und sowas...
+\colorbox{yellow}{Hier fehlt was}
