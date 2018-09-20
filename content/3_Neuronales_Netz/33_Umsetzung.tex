@@ -1,22 +1,25 @@
 \section{Umsetzung}
-Hier noch generell was beschreiben. - Zielarchitekturbild darstellen (komplette Architektur)
-Was wird im folgenden gemacht.
+Hier noch generell was beschreiben. Was wird im folgenden gemacht.
 
 \colorbox{yellow}{Hier fehlt was}
+
+Die Abbildung~\ref{fig:uebersicht_zielarchitektur} auf Seite~\pageref{fig:uebersicht_zielarchitektur} veranschaulicht die
+Zielarchitektur, wie sie in diesem Kapitel umgesetzt wird.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.43]{images/kapitel_3/architektur_uebersicht.pdf}
+    \caption{Übersicht der Zielarchitektur}
+    \label{fig:uebersicht_zielarchitektur}
+\end{figure}
 
 \subsection{Cloud}
-Hier beschreiben, was ich nun in der Cloud umsetzen will und warum man die Cloud eigentlich braucht. Vorteil der
-Geschwindigkeit. Dabei würde es insgesamt vier Möglichkeiten geben das umzusetzen. Für welche habe ich mich
-entschieden?
+Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} auf Seite~\pageref{sec:analyse}, beschrieben, wird das neuronale Netz
+in der Cloud erstellt, konfiguriert und trainiert. Wie dort beschrieben, hat dies einen enormen Geschwindigkeitsvorteil
+gegenüber der offline Variante. Im Anschluss daran kann das trainierte Model heruntergeladen und mit einem
+TensorFlow.js-Wrapper nutzbar gemacht werden.
 
-- Machine Learning Models (Autoamtisch aus Daten generrieren)\\
-- Model flows (SPSS) - Make Deployment\\
-- Model flows (SPSS) - Download Model - Import TensorFlow/TensorFlow.js\\
-- Notebooks (Python)
-
-\url{https://console.bluemix.net/docs/cli/index.html#overview}
-
-\colorbox{yellow}{Hier fehlt was}
+Die folgenden Kapitel beschreiben die dafür notwendigen Schritte und Aktionen die dürchgeführt werden müssen.
 
 \subsubsection{Daten zusammenstellen}
 \colorbox{yellow}{Hier fehlt was}
@@ -113,7 +116,7 @@ sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage überha
 Dem resultierenden, trainierten Model werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen als
 vorhergesagte Rückgabeparameter zurück.
 
-\begin{table}[hb]
+\begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
         \hline
@@ -191,11 +194,13 @@ des Model flows visualisiert.
 \end{figure}
 
 \subsubsection{Informationen zum Model}
-Über einen weiteren rechtsklick auf das trainierte Model kann man über den Menüpunkt \texttt{View Model} wird eine
-detaillierte Übersicht über das Model gelangen. Hier finden sich zahlreiche Informationen, die unter anderem aufschluss
+Über einen weiteren rechtsklick auf das trainierte Model kann man über den Menüpunkt \texttt{View Model} auf eine
+detaillierte Übersicht des Models gelangen. Hier finden sich zahlreiche Informationen, die unter anderem Aufschluss
 über die Genauigkeit des Models geben.
 
-\colorbox{yellow}{Hier fehlt was}
+Die erste Information, welche man als Benutzer über das Model zu sehen bekommt, ist in
+Abbildung~\ref{fig:umsetzung_model_evaluation} auf Seite~\pageref{fig:umsetzung_model_evaluation} zu sehen \textendash{}
+die \texttt{Evaluation}.
 
 \begin{figure}[h]
     \centering
@@ -204,12 +209,50 @@ detaillierte Übersicht über das Model gelangen. Hier finden sich zahlreiche In
     \label{fig:umsetzung_model_evaluation}
 \end{figure}
 
+Die große Zahl gibt die Genauigkeit des Models (englisch Model Accuracy) an. Mit 100 Multipliziert erhält man die
+prozentuale Angabe der Genauigkeit. Wenn man mit dem Mauszeiger über die Zahl fährt, erhält man eine genauere Angabe.
+
+Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset entnommen wird. Dabei kann beim
+trainieren des Models angegeben werden, um wie viele es sich handeln soll.
+
+Nachdem das Model fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
+die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
+Genauigkeit.
+
+Im weiteren finden sich Bewertungskreterien für das trainierte Model (englisch Model Evaluation Measures). Diese geben
+Aufschluss darüber, wie gut das Model ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
+handelt es sich um den Determinationskoeffizient. Dieser ist eine wichtige Kennzahl zur formalen Beurteilung der
+Regression. Weitere Informationen sind auf der Wikipedia-Seite\footnote{https://de.wikipedia.org/wiki/Bestimmtheitsmaß}
+ersichtlich.
+
+Der nächste Wert entspricht der Mittleren quadratische Abweichung (englisch Mean Squared Error). Dies ist der Durchschnitt
+der quadrierten Fehler. Als Fehler ist die Differenz der vorhergesagten Werte und der tatsächlichen Werte definiert.
+
+Der letzte Wert gibt die Mittleres Abweichungsquadrat (englisch Root Mean Squared Error) an. Dieser Wert ist ein Maß
+für die Unterschiede zwischen Werten, die von einem Modell vorhergesagt werden, und den tatsächlich beobachteten Werten.
+
+In der nächsten Kategorie, Model Viewer, sind Informationen zu den einzelnen Werten des neuronalen Netzes angegeben.
+Unter dem ersten Menüpunkt, können alle Informationen gefunden werden.
+
+Mit einem Klick auf den Menüpunkt, gelangt man in eine Ansicht wie in Abbildung~\ref{fig:umsetzung_model_information}
+auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_information.png}
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_model_information}
 \end{figure}
+
+Hier findet man Informationen darüber, wie das trainierte Model aufgebaut ist oder um welche Art Model es sich handelt.
+Auch die Hiden Layers, die im neuronalen Netz eingerichtet sind, werden hier angegegeben.
+
+Weiter ist hier angegeben, mit wie vielen Inputparameter (englisch Number of Predictors) das Netz trainiert ist und wie
+viele Ausgabewerte (englisch Number of Neurons in Output Layer) das Netz vorhersagen kann.
+
+Im Menüpunkt \texttt{Predictor Importance} werden alle Input-Parameter aufgelistet. Ein Balken unterhalb jedes Parameters
+gibt an, wie Wichtig dieser für das neuronale Netz ist. In Abbildung~\ref{fig:umsetzung_model_predictor} auf
+Seite~\pageref{fig:umsetzung_model_predictor} ist dies beispielhaft aufgezeigt.
 
 \begin{figure}[h]
     \centering
@@ -218,12 +261,44 @@ detaillierte Übersicht über das Model gelangen. Hier finden sich zahlreiche In
     \label{fig:umsetzung_model_predictor}
 \end{figure}
 
+Beim Überfahren eines Parameters wird der prozentuale Wert am rechten Rand dargestellt. Je wichtiger ein Parameter ist,
+desto mehr Einfluss hat dieser auf die vorhergesagten Ausgabewerte.
+
+Parameter mit der geringsten Gewichtung spielen für das Ergebnis keine große Rolle und könnten bei einer Optimierung des
+neuronalen Netzes weggelassen werden.
+
+Der letzte Menüpunkt, mit der Aufschrift \texttt{Network Diagram}, zeigt das neuronale Netz, wie es beim Traning aufgebaut
+wurde. Dabei sind auf der linken Seite die Parameter zur Eingabe aufgelistet.
+
+Auf der rechten Seite erscheinen die Ausgabeparameter. Dazwischen werden die \textit{Hidden Layers} dargestellt und wie
+diese mit der Eingangs- und Ausgangsseite verbunden sind.
+
+Die Abbildung~\ref{fig:umsetzung_model_network_diagram} auf~\pageref{fig:umsetzung_model_network_diagram} visualisiert
+das vorangegangene, trainierte Model.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_network_diagram.png}
     \caption{Kompletter Model flow}
     \label{fig:umsetzung_model_network_diagram}
 \end{figure}
+
+Die Ansicht kann über einen Slider am rechten Bildschirmrand die Ansicht vergrößern oder verkleinern. Über die Legende
+am unteren Rand, kann man die einzelnen Verbindungen filtern. So ist es zum Beispiel möglich, dass man sich alle
+Verbindungen mit hoher Priorität anzeigen lässt. So hat der Entwickler eine Vorstellung, wie die wichtigsten
+Eingabeparameter für die entsprechende Ausgabe sorgen.
+
+Auch kann man sich so anschauen, wie einzelne Werte auf der Eingabeseite einen direkten Einfluss auf einen Ausgabewert
+haben. Im Beispiel der Abbildung hat der Parameter \textit{Leistung} zum Beispiel einen direkten und sehr großen
+Einfluss auf den Ausgabewert \textit{Bandgeschwindigkeit}. Was bei weiterer Betrachtung Sinn ergibt.
+
+Wenn mehr Produkte über die Waage laufen sollen (es soll die Leistung erhöht werden), muss das Band mit höherer
+Geschwindigkeit (Bandgeschwindigkeit) drehen. Desweiteren hat die Leistung einen niedrigeren Einfluss auf den Parameter
+\textit{Druckluft}. Diese gibt indirekt die Geschwindigkeit an, mit welcher der Pusher ausschlagen soll um ein Produkt
+vom Band zu hauen.
+
+Was bei näherer Betrachtung auch Sinn ergibt, da eine höhere Bandgeschwindigkeit auch ein schnelleren Pusher voraussetzt,
+um das Produkt auch vom Band hauen zu können.
 
 \subsubsection{Deployment erstellen}
 Das in einem vorangegangenen Kapitel erstellte und trainierte Model kann im weiteren durch ein Deployment über eine
