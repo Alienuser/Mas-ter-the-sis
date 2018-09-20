@@ -385,8 +385,9 @@ In Postman kann man diesen Aufruf über die Eingabe der URL und dem HTTP-Type \t
 \textit{Authentication} ist der Type \textit{Basic-Auth} auszuwählen.
 
 Im rechten Bereich sollten dann die beiden Eingabefelder für Benutzername und Passwort erscheinen. Der Nutzer muss die
-geforderten Daten eingeben und kann dann den Request mit der Schaltfläche \texttt{Send} starten. Nach wenigen Sekunden
-erscheint im Bereich \textit{Body} der Token in einem JSON-Objekt. Ähnlich dem Aufruf mit \textit{curl}.
+geforderten Daten eingeben und kann dann den Request mit der Schaltfläche \texttt{Send} starten.
+
+Nach wenigen Sekunden erscheint im Bereich \textit{Body} der Token in einem JSON-Objekt. Ähnlich dem Aufruf mit \textit{curl}.
 
 Um nun das eigentliche Deployment aufzurufen, muss man einen neuen Postman-Tab öffnen. Die URL für den Endpunkt ist im
 Deployment des Models zu finden und heißt \texttt{Scoring End-point}.
@@ -396,16 +397,18 @@ Nachdem die URL des Postman-Requests definiert ist, kann man als HTTP-Type \text
 entspricht dem Rückgabewert des vorangegangenen Postman-Requests.
 
 Die Auswahl des HTTP-Types \textit{POST} ermöglicht die definition des Bereichs \texttt{Body} für den Request. Dabei
-handelt es sich um Parameter, welche an die Schnittstelle geschickt werden. Als Datentyp muss man \textit{raw} und als
-Type \textit{JSON (application/json)} auswählen. Im Anhang \ref{sec:postmanTestparameter} auf Seite
-\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche als Eingabe genutzt werden können.
+handelt es sich um Parameter, welche an die Schnittstelle geschickt werden.
+
+Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)} auswählen. Im Anhang
+\ref{sec:postmanTestparameter} auf Seite \pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche als
+Eingabe genutzt werden können.
 
 Der Nutzer kann abschließend den Request über den Button \texttt{Send} an den Web Service abschicken. Nach wneigen
 Sekunden zeigt Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten sein.
 
-Auf der Übersichtsseite des REST-Interfaces des
-Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, sind noch weitere
-Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtlich.
+In der Abbildung \ref{fig:umsetzung_deployment_postman} auf Seite \pageref{fig:umsetzung_deployment_postman} ist ein
+Beispielrequest aus Postman auf das Deployment zu sehen. Im linken Bereich sieht man das gesendete JSON-Object, mit den
+Eingabevariablen. Dabei hat das JSON-Objekt die beiden geforderten Items \textit{fields} und \textit{values}.
 
 \begin{figure}[h]
     \centering
@@ -413,6 +416,16 @@ Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtl
     \caption{Beispielrequest von Postman}
     \label{fig:umsetzung_deployment_postman}
 \end{figure}
+
+Die Rechte Seite zeigt die Antwort des Web-Service. Dabei werden zu Anfang des JSON-Objektes die Parameter wiederholt,
+die an das Interface gesendet wurden. Am Ende sind die vorhergesagten Parameter durch das trainierte Model zu sehen.
+
+Im Eingabe-Parameter \textit{values} müssen die Output-Parameter definiert werden. Da die Werte keine Rolle spielen,
+werden die Werte \textit{null} initialisiert. Damit werden sie vom System nicht weiter verwendet.
+
+Auf der Übersichtsseite des REST-Interfaces des
+Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, sind noch weitere
+Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtlich.
 
 \subsection{TensorFlow.js}
 Das neuronale Netz ist nun erfolgreich in einem Deployment online zur Verfügung gestellt. Außerdem ist die Funktion
