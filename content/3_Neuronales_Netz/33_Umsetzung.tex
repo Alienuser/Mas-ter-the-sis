@@ -7,10 +7,10 @@ Zum einen gibt es das System für \textit{Watson Studio}. In diesem wird das neu
 training wird es in ein Deployment installiert. Dieses Deployment erhält eine REST-Schnittstelle, damit Anfragen an das
 Model getätigt werden können.
 
-Das andere System enthält ein Cloud Foundry Container, welcher eine Node.js Runtime zur Verfügung stellt. Dieser
+Das andere System enthält ein \textit{Cloud Foundry Container}, welcher eine Node.js Runtime zur Verfügung stellt. Dieser
 Container läuft in der Cloud und erhält eine IP sowie eine Domain über die er aufrufbar ist.
 
-In der Runtime läuft eine TensorFlow.js Applikation, welche das im Watson Studio trainierte Model enthält. Die
+In der Runtime läuft eine \textit{TensorFlow.js} Applikation, welche das im Watson Studio trainierte Model enthält. Die
 Applikation dient als Wrapper für das Model.
 
 Im API Connect wird jeweils eine Route für das Watson Studio Deployment und die TensorFlow.js Applikation
@@ -31,9 +31,9 @@ In den folgenden Kapiteln wird die Architektur Schritt für Schritt umgesetzt, e
 Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} auf Seite~\pageref{sec:analyse}, beschrieben, wird das neuronale Netz
 in der Cloud erstellt, konfiguriert und trainiert. Wie dort beschrieben, hat dies einen enormen Geschwindigkeitsvorteil
 gegenüber der offline Variante. Im Anschluss daran kann das trainierte Model heruntergeladen und mit einem
-TensorFlow.js-Wrapper nutzbar gemacht werden.
+TensorFlow.js Wrapper nutzbar gemacht werden.
 
-Die folgenden Kapitel beschreiben die dafür notwendigen Schritte und Aktionen die dürchgeführt werden müssen.
+Die folgenden Kapitel beschreiben die dafür notwendigen Schritte und Aktionen die dazu dürchgeführt werden müssen.
 
 \subsubsection{Daten zusammenstellen}
 \colorbox{yellow}{Hier fehlt was}
@@ -203,7 +203,7 @@ des Model flows visualisiert.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/umsetzung_model_flow.png}
-    \caption{Vollständiger Model flow}
+    \caption{Vollständiger Model Flow}
     \label{fig:umsetzung_model_flow}
 \end{figure}
 
@@ -219,7 +219,7 @@ die \texttt{Evaluation}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_evaluation.png}
-    \caption{Kompletter Model flow}
+    \caption{Genauigkeit des trainierten Models}
     \label{fig:umsetzung_model_evaluation}
 \end{figure}
 
@@ -254,7 +254,7 @@ auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_information.png}
-    \caption{Kompletter Model flow}
+    \caption{Informtionen zum trinierten Model}
     \label{fig:umsetzung_model_information}
 \end{figure}
 
@@ -271,7 +271,7 @@ Seite~\pageref{fig:umsetzung_model_predictor} ist dies beispielhaft aufgezeigt.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_predictor.png}
-    \caption{Kompletter Model flow}
+    \caption{Wichtigkeit der einzelnen Eingabeparameter}
     \label{fig:umsetzung_model_predictor}
 \end{figure}
 
@@ -293,7 +293,7 @@ das vorangegangene, trainierte Model.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_network_diagram.png}
-    \caption{Kompletter Model flow}
+    \caption{Übersicht des trainierten Netzes}
     \label{fig:umsetzung_model_network_diagram}
 \end{figure}
 
