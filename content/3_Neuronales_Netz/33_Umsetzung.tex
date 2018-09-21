@@ -1,16 +1,30 @@
 \section{Umsetzung}
-Hier noch generell was beschreiben. Was wird im folgenden gemacht.
+Wie in dem Zielarchitekturbild in Abbildung~\ref{fig:umsetzung_zielarchitektur} auf
+Seite~\pageref{fig:umsetzung_zielarchitektur} zu sehen, sollen eingehende Requests an die Anwendung über einen Service
+namens \textit{API Connect} abgefangen werden. Dieser Service verteilt die Anfragen anschließend auf zwei Systeme.
 
-\colorbox{yellow}{Hier fehlt was}
+Zum einen gibt es das System für \textit{Watson Studio}. In diesem wird das neuronale Netz trainiert. Nach erfolgreichem
+training wird es in ein Deployment installiert. Dieses Deployment erhält eine REST-Schnittstelle, damit Anfragen an das
+Model getätigt werden können.
 
-Die Abbildung~\ref{fig:uebersicht_zielarchitektur} auf Seite~\pageref{fig:uebersicht_zielarchitektur} veranschaulicht die
-Zielarchitektur, wie sie in diesem Kapitel umgesetzt wird.
+Das andere System enthält ein Cloud Foundry Container, welcher eine Node.js Runtime zur Verfügung stellt. Dieser
+Container läuft in der Cloud und erhält eine IP sowie eine Domain über die er aufrufbar ist.
+
+In der Runtime läuft eine TensorFlow.js Applikation, welche das im Watson Studio trainierte Model enthält. Die
+Applikation dient als Wrapper für das Model.
+
+Im API Connect wird jeweils eine Route für das Watson Studio Deployment und die TensorFlow.js Applikation
+eingerichtet. So kann ein späteres System selbst entscheiden, welchen Endpunkt sie erreichen möchte um eine Vorhersage
+auszuführen.
+
+In den folgenden Kapiteln wird die Architektur Schritt für Schritt umgesetzt, eingerichtet und die einzelnen Komponenten
+überprüft.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.43]{images/kapitel_3/architektur_uebersicht.pdf}
+    \includegraphics[width=\textwidth]{images/kapitel_3/architektur_uebersicht.pdf}
     \caption{Übersicht der Zielarchitektur}
-    \label{fig:uebersicht_zielarchitektur}
+    \label{fig:umsetzung_zielarchitektur}
 \end{figure}
 
 \subsection{Cloud}
@@ -245,7 +259,7 @@ auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
 \end{figure}
 
 Hier findet man Informationen darüber, wie das trainierte Model aufgebaut ist oder um welche Art Model es sich handelt.
-Auch die Hiden Layers, die im neuronalen Netz eingerichtet sind, werden hier angegegeben.
+Auch die Hiden Layers, die im neuronalen Netz eingerichtet sind, werden hier angegeben.
 
 Weiter ist hier angegeben, mit wie vielen Inputparameter (englisch Number of Predictors) das Netz trainiert ist und wie
 viele Ausgabewerte (englisch Number of Neurons in Output Layer) das Netz vorhersagen kann.
