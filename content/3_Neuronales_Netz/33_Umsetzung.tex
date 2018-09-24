@@ -3,9 +3,9 @@ Wie die Zielarchitektur in Abbildung~\ref{fig:umsetzung_zielarchitektur} auf
 Seite~\pageref{fig:umsetzung_zielarchitektur} zeigt, sollen eingehende Anfragen (englisch Requests) an die Anwendung über
 den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf zwei Systeme.
 
-Zum einen gibt es das System des \textit{Watson Studios}. In diesem wird das neuronale Netz trainiert. Nach erfolgreichem
-training wird es als Modul in ein Deployment installiert. Dieses Deployment enthält eine REST-Schnittstelle, damit Anfragen
-an das Model getätigt werden können.
+In einem System, \textit{Watson Studio}, erfolgt das Training für das neuronale Netz. Nach erfolgreichem Training wird es
+als Modul in ein Deployment installiert. Dieses Deployment enthält eine REST-Schnittstelle, um Anfragen an das Model
+bearbeiten zu können.
 
 Das zweite System enthält einen \textit{Cloud Foundry Container}, welcher eine Node.js Runtime zur Verfügung stellt. Dieser
 Container läuft in der Cloud und erhält eine IP sowie eine Domain über die er aufrufbar ist.
@@ -28,7 +28,7 @@ In den folgenden Kapiteln wird die Architektur Schritt für Schritt umgesetzt, e
 
 \subsection{Cloud}
 Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} auf Seite~\pageref{sec:analyse}, beschrieben, wird das neuronale Netz
-in der Cloud erstellt, konfiguriert und trainiert. Wie dort beschrieben, hat dies einen enormen Geschwindigkeitsvorteil
+in der Cloud erstellt, konfiguriert und trainiert. Wie bereits beschrieben, hat dies einen enormen Geschwindigkeitsvorteil
 gegenüber der offline Variante. Im Anschluss daran kann das trainierte Model heruntergeladen und mit einem
 TensorFlow.js Wrapper nutzbar gemacht werden.
 
@@ -51,7 +51,7 @@ Dieser beinhaltet alle hochgeladenen, generierten oder gesamelten Daten, Modelle
 oberste Kategorie, \textit{Data Assets}, listet alle Trainingsdaten in Form von Excel-Tabellen für die Weiterverarbeitung
 auf.
 
-Über den Menüpunkt \texttt{New data asset} wird eine neue Datei hochgeladen. Ein klick auf diesen Menüpunkt öffnet einen
+Über den Menüpunkt \texttt{New data asset} wird eine neue Datei hochgeladen. Ein Klick auf diesen Menüpunkt öffnet einen
 seitlichen Arbeitsbereich. Der Nutzer kann über den Menüpunkt \texttt{Browse} die Dateiauswahl des Betriebssystems
 öffnen und seine Datei auswählen. Bei der Auswahl handelt es sich um die im vorangegangenen Kapitel erstellte Datei mit
 Trainingsdaten.
@@ -70,13 +70,13 @@ kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
 In Watson Studio liegt mit den \textit{Data flows} ein einfaches Werkzeug bereit, um Dateien in das benötigte CSV-Format
 zu überführen. Dazu wird in der Kategorie Data flows über \texttt{New data flow} ein neuer Flow angelegt.
 
-Im folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss im im linken Bereich die umzuwandelnde Datei
+Im folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss im linken Bereich die umzuwandelnde Datei
 auswählen. Dabei handelt es sich um die hochgeladene Datei. Über die Schaltfläche \texttt{Add} wird die Auswahl dann
 übernommen.
 
-Nun ist der Inhalt der Datei sichtbar. Bei dieser Ansicht ist darauf zu achten, dass die Werte der einzelnen Spalten als
-Dezimal-Zahl interpretiert werden. Sollte diese Einstellung nicht voreingestellt sein, muss dieses manuell abgeändert
-werden.
+Nun ist der Inhalt der Datei sichtbar. Bei dieser Ansicht ist darauf zu achten, dass die Interpretation der Werte der
+einzelnen Spalten als Dezimal-Zahl erfolgt. Sollte diese Einstellung nicht voreingestellt sein, muss dieses manuell
+abgeändert werden.
 
 Dazu klickt man in der entsprechenden Spalte oben auf die drei Punkte (Einstellungen) und selektiert den Eintrag
 \texttt{Convert Column}. Im Untermenü muss man dann den Wert \texttt{Decimal} bestätigen.
@@ -104,22 +104,22 @@ und eine optionale Beschreibung für den Flow eingegeben hat, muss man die Auswa
 Der Nutzer bestätigt die Eingabe über die Schaltfläche \texttt{Create} und nach kurzer Zeit ist der Flow erstellt und es
 erscheint ein leerer Arbeitsbereich.
 
-Der Menüpunkt \texttt{Palette} zeigt einen linken Arbeitsbereich an, welcher alle Module, die genutzt werden können,
-gruppiert auflistet. In diesem muss man den Baustein \textit{Data asset} in der Gruppe \textit{Import} auswählen. Dieser
-Baustein ermöglicht den Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag\&Drop kann der Nutzer
-den Baustein in den noch leeren Arbeitsbereich platzieren.
+Der Menüpunkt \texttt{Palette} zeigt einen linken Arbeitsbereich mit allen aktuell verfügbaren Modulen gruppiert an. In
+diesem muss man den Baustein \textit{Data asset} in der Gruppe \textit{Import} auswählen. Dieser Baustein ermöglicht den
+Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag\&Drop kann der Nutzer den Baustein in den noch
+leeren Arbeitsbereich platzieren.
 
-Um den Baustein zu konfigurieren klickt der Entwickler doppelt auf den Baustein. Dies öffnet einen rechten seitlichen
-Arbeitsbereich. In diesem kann er über die Schaltfläche \texttt{Change Data Asset} die Datei auswählen, welche die
-Trainingssätzen enthält. In dieser Liste steht lediglich die CSV-Datei zur Verfügung. Über \texttt{Save} wird die
+Um den Baustein zu konfigurieren klickt der Entwickler doppelt auf den Baustein. Daraufhin öffnet sich ein rechter
+seitlicher Arbeitsbereich. In diesem kann er über die Schaltfläche \texttt{Change Data Asset} die Datei auswählen, welche
+die Trainingssätzen enthält. In dieser Liste steht lediglich die CSV-Datei zur Verfügung. Über \texttt{Save} wird die
 Einstellung gespeichert und der Baustein ist fertig konfiguriert.
 
-Im nächsten Schritt muss man das neuronale Netz konfigurieren. Dazu existiert in der Kategorie \textit{Modeling} das
-Modul \textit{Neural Net}. Dies stellt für die Anwendung die beste Alternative dar. Genau wie das Import-Modul kann
-man dieses mit der Maus auf ein freies Feld des Arbeitsbereiches platzieren. Somit ist das Modul teil des Prozesses.
+Im nächsten Schritt erfolgt die Konfiguration des neuronalen Netzes. Dazu existiert in der Kategorie \textit{Modeling} das
+Modul \textit{Neural Net}. Das stellt für die Anwendung die beste Alternative dar. Genau wie das Import-Modul kann
+man dieses mit der Maus auf ein freies Feld des Arbeitsbereiches platzieren. Somit ist das Modul Teil des Prozesses.
 
 Damit das neuronale Netz die importierten Daten nutzen kann, wird eine Verbindung zwischen dem \textit{Import-Modul} und
-dem \textit{Neural-Net-Modul} aufgebaut. Mit einen klick auf den Ausgang des Import-Moduls startet man eine
+dem \textit{Neural-Net-Modul} aufgebaut. Mit einen Klick auf den Ausgang des Import-Moduls startet man eine
 Verbindungslinie.
 
 Mit einem anschließenden klick auf den Eingang des Neural-Net-Modul kann man die Verbindung fertig aufbauen. Die Verbindung
@@ -129,13 +129,13 @@ Bei einer Verbindung wird der Output eines Modules an das mit einer visualisiert
 Dieses Folgemodul kann die Werte dann als Eingabevariablen nutzen. Einen Ausgang kann man mit mehreren Eingängen
 verbinden. Dabei stehen dann allen weiteren Modulen die gleichen Werte zur Verfügung.
 
-Die Konfiguration des Neural-Net-Modules erfolgt durch einen doppelten klick auf dieses. Damit man die
+Die Konfiguration des Neural-Net-Modules erfolgt durch einen doppelten Klick auf dieses. Damit man die
 \textit{Targets} und die \textit{Inputs} selbst definieren kann, muss man den Hacken bei \enquote{Use custom field roles}
 setzen. Andernfalls versucht Watson selbst die Inputs und die Outputs zu definieren. Meist sind diese Einstellungen dann
 aber falsch.
 
 Die Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} zeigt die auszuwählenden Tabellenspalten für
-die jeweilige Kategorie. Dabei beschreiben die Targets die Variablen, welche durch den Watson Service Vorhergesagt werden
+die jeweilige Kategorie. Die Targets beschreiben die Variablen, welche durch den Watson Service Vorhergesagt werden
 sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage überhaupt möglich ist.
 
 Dem resultierenden, trainierten Model werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen als
@@ -180,7 +180,7 @@ vorhergesagte Rückgabeparameter zurück.
 \end{table}
 
 Mit dieser Konfiguration werden 13 Parameter als Eingabevariablen genutzt und fünf Parameter durch das neuronale Netz
-vorhergesagt. Vier der Vorhergesagten Parameter (Druckluft, Impuls, Totzeit und Position) beziehen sich auf den
+vorhergesagt. Vier der vorhergesagten Parameter (Druckluft, Impuls, Totzeit und Position) beziehen sich auf den
 \textit{Pusher} und der Parameter \textit{Leistung} gibt die tatsächliche Bandgeschwindigkeit an, mit der das Band in der
 Maschine laufen soll.
 
@@ -188,7 +188,7 @@ Alle anderen Einstellungen des neuronalen Netzes werden im ersten Schritt auf de
 einem späteren Zeitpunkt, wenn sich Testdaten ändern oder Parameter angepasst werden müssen, kann man mit den weiteren
 Einstellungen das neuronale Netz anpassen und gegebenenfalls optimieren.
 
-Der Flow für das neuronale Netz ist somit fertiggestellt. Mit einem klick auf \texttt{Run} startet das Training des
+Der Flow für das neuronale Netz ist somit fertiggestellt. Mit einem Klick auf \texttt{Run} startet das Training des
 neuronalen Netzes.
 
 Nach dem erfolgreichem Training des neuronalen Netzes erscheint das trainierte Model unterhalb des neuronalen Netzes im
@@ -202,11 +202,11 @@ Das Table-Modul befindet sich in der Kategorie \textit{Outputs} und wird, genau 
 Arbeitsbereich platziert. Eine Verbindung zwischen dem trainierten Model und der Table ermöglicht den Datenaustausch.
 Für die Table ist keine weitere Konfiguration notwendig.
 
-Ein rechtsklick auf das Table-Modul öffnet das Kontextmenü des Moduls. Darüber lässt sich der Punkt
+Ein Rechtsklick auf das Table-Modul öffnet das Kontextmenü des Moduls. Darüber lässt sich der Punkt
 \enquote{Save branch as a model} anklicken. Dieser ermöglicht es, das trainierte Model zu exportieren.
 
 In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung für das neue Model definieren. Mit einem
-klick auf den Button \texttt{Save} wird das Model gespeichert und es erscheint im Watson Studio Dashboard.
+Klick auf den Button \texttt{Save} wird das Model gespeichert und es erscheint im Watson Studio Dashboard.
 
 In der Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau
 des Model Flows dargestellt.
@@ -219,7 +219,7 @@ des Model Flows dargestellt.
 \end{figure}
 
 \subsubsection{Informationen zum Model}
-Über einen weiteren rechtsklick auf das trainierte Model kann man über den Menüpunkt \texttt{View Model} auf eine
+Über einen weiteren Rechtsklick auf das trainierte Model kann man über den Menüpunkt \texttt{View Model} auf eine
 detaillierte Übersicht des Models gelangen. Hier finden sich zahlreiche Informationen, die unter anderem Aufschluss
 über die Genauigkeit des Models geben.
 
@@ -234,7 +234,7 @@ die \texttt{Evaluation}.
     \label{fig:umsetzung_model_evaluation}
 \end{figure}
 
-Die große Zahl gibt die tatsächliche Genauigkeit des Models (englisch Model Accuracy) an. Mit 100 Multipliziert erhält
+Die große Zahl gibt die tatsächliche Genauigkeit des Models (englisch Model Accuracy) an. Mit 100 multipliziert, erhält
 man die prozentuale Angabe der Genauigkeit. Wenn man mit dem Mauszeiger über die Zahl fährt, erhält man eine genauere
 Angabe mit Nachkommastellen.
 
@@ -245,7 +245,7 @@ Nachdem das Model fertig trainiert ist, wird es mit den zur Verfügung stehenden
 die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
 Genauigkeit des trainierten Models.
 
-Im Weiteren finden sich Bewertungskreterien für das trainierte Model (englisch Model Evaluation Measures). Diese geben
+Im Weiteren finden sich Bewertungskriterien für das trainierte Model (englisch Model Evaluation Measures). Diese geben
 Aufschluss darüber, wie gut das Model ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
 handelt es sich um den Determinationskoeffizient. Dieser ist eine wichtige Kennzahl zur formalen Beurteilung der
 Regression. Weitere Informationen sind auf der Wikipedia-Seite\footnote{https://de.wikipedia.org/wiki/Bestimmtheitsmaß}
@@ -260,7 +260,7 @@ ein Maß für die Unterschiede zwischen Werten, die von einem Modell vorhergesag
 Werten.
 
 In der nächsten Kategorie, Model Viewer, sind Informationen zu den einzelnen Werten des neuronalen Netzes angegeben.
-Unter dem ersten Menüpunkt, Model Information, kann man alle generellen Informationen finden.
+Im ersten Menüpunkt, Model Information, stehen alle generellen Informationen.
 
 Mit einem Klick auf den Menüpunkt gelangt man in eine Ansicht wie in Abbildung~\ref{fig:umsetzung_model_information}
 auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
@@ -275,10 +275,10 @@ auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
 Hier findet man Informationen darüber, wie das trainierte Model aufgebaut ist oder um welche Art Model es sich handelt.
 Auch die Hiden Layers, die im neuronalen Netz eingerichtet sind, werden hier angegeben.
 
-Weiter ist hier zu finden, mit wie vielen Inputparameter (englisch Number of Predictors) das Netz trainiert ist und wie
+Weiter ist hier zu finden, mit wie vielen Inputparametern (englisch Number of Predictors) das Netz trainiert ist und wie
 viele Ausgabewerte (englisch Number of Neurons in Output Layer) das Netz vorhersagen kann.
 
-Im Menüpunkt \texttt{Predictor Importance} werden alle Input-Parameter aufgelistet. Ein Balken unterhalb jedes Parameters
+Im Menüpunkt \texttt{Predictor Importance} sind alle Input-Parameter aufgelistet. Ein Balken unterhalb jedes Parameters
 gibt an, wie wichtig dieser für das neuronale Netz ist. In Abbildung~\ref{fig:umsetzung_model_predictor} auf
 Seite~\pageref{fig:umsetzung_model_predictor} ist dies beispielhaft aufgezeigt.
 
@@ -319,7 +319,7 @@ Ausgabewert haben. Im Beispiel der Abbildung hat der Parameter \textit{Leistung}
 Einfluss auf den Ausgabewert \textit{Bandgeschwindigkeit}.
 
 Bei weiterer Betrachtung ist diese Zusammenhang einläuchtend. Wenn mehr Produkte über die Waage laufen sollen (es soll
-die Leistung erhöht werden), muss das Band mit höherer Geschwindigkeit (Bandgeschwindigkeit) drehen um die Produkte zu
+die Leistung erhöht werden), muss das Band mit höherer Geschwindigkeit (Bandgeschwindigkeit) laufen um die Produkte zu
 transportieren.
 
 Desweiteren hat die Leistung einen direkten Einfluss auf den Parameter \textit{Druckluft}. Dieser gibt indirekt die
@@ -340,8 +340,8 @@ wichtig sind.
 Der Reiter \texttt{Evaluation} zeigt vorangegangene Auswertungen des Models an. Über den Menüpunkt \texttt{Lineage}
 werden Verknüpfungen und Abstammungen des Models angezeigt.
 
-Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des Modules. Das Löschen
-von älteren Deployments oder das Erstellen von neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment} öffnet
+Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des Moduls. Das Löschen
+von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment} öffnet
 eine Konfigurationsseite zum Erstellen eines neuen Deployments.
 
 Ein Model kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Web-Services zu
@@ -352,7 +352,7 @@ und muss befüllt sein. Anschließend kann man das Deployment über \texttt{Save
 wenige Minuten dauern.
 
 Direkt nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Status} der Wert \texttt{DEPLOY\_SUCCESS}
-angezeigt. Die Informationsseite des Deployments kann man über einen klick auf den Namen öffnen.
+angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf den Namen öffnen.
 
 Das Deployment ist somit erfolgreich erstellt und kann im Weiteren getestet und genutzt werden.
 
@@ -360,7 +360,7 @@ Das Deployment ist somit erfolgreich erstellt und kann im Weiteren getestet und 
 Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass
 man das Deployment direkt testen und bei Fehlveralten neu trainiert kann.
 
-Auf der Deploymentseite des gespeicherten Models genügt ein klick auf den Namen um die Deploymentinformationen anzuzeigen.
+Auf der Deploymentseite des gespeicherten Models genügt ein Klick auf den Namen um die Deploymentinformationen anzuzeigen.
 Hier steht neben diversen Informationen auch der Menüpunkt \texttt{Test} zur Verfügung. In diesem öffnet sich eine
 zweispaltige Ansicht.
 
@@ -370,14 +370,14 @@ Testwerten gefüllt hat, kann man über die Schaltfläche \texttt{Predict} eine 
 Nach wenigen Sekunden erscheint auf der rechten Seite ein großes JSON-Objekt, welches den Rückgabewert des Web Services
 enthält. Das erste Array, \textit{fields}, listet alle an den Web-Service gesendeten Felder auf (die Inputs).
 
-Das zweite Array, \textit{values}, listet alle an den Web-Service gesendeten wie auch die Vorhergesgaten Werte (die
+Das zweite Array, \textit{values}, listet alle an den Web-Service gesendeten, wie auch die vorhergesgaten Werte (die
 Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Models (also
 die Targets).
 
-Sollte das Array \textit{values} kleiner sein als das Array \textit{fields}, war das trainieren des Models nicht
+Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das trainieren des Models nicht
 erfolgreich und muss wiederholt werden.
 
-Unter dem Menüpunkt \texttt{Implementation} werden wichtige Informationen und erforderliche Schritte aufgezeigt, damit
+Unter dem Menüpunkt \texttt{Implementation} sind wichtige Informationen und erforderliche Schritte aufgezeigt, damit
 man die Schnittstelle in ein eigene Programm integriert kann. Dabei wird auf verschiedene Programmiersprachen eingegangen.
 
 In Abbildung~\ref{fig:umsetzung_deployment_test} auf Seite~\pageref{fig:umsetzung_deployment_test} ist ein Beispiel für
@@ -393,11 +393,11 @@ den online Aufruf des trainierten Models sichtbar.
 \subsubsection{Aufruf mit Postman}
 \label{subsec:Aufruf mit Postman}
 Im Weiteren soll das erstellte Model, welches im vorherigen Kapitel als Deployment in einen Web-Service zur Verfügung
-gestellt wurde mit Postman\footnote{https://www.getpostman.com} getestet werden.
+gestellt wurde, mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
 So ist sichergestellt, dass man das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufen kann.
 Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem ist
-so eine Überprüfung der Übergabeparameter sowie der Rückgabewerte an die Schnittstelle möglich.
+so eine Überprüfung der Übergabeparameter, sowie der Rückgabewerte an die Schnittstelle möglich.
 
 Jeder Request an den Web-Service des trainierte Models benötigt einen \textit{Authentication Token} (kurz Auth-Token).
 Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
@@ -434,7 +434,7 @@ Nachdem die URL des Postman-Requests definiert ist, kann man als HTTP-Type \text
 \texttt{Authentication} wird der Typ auf \texttt{Baerer} abgeändert und dies ermöglicht die Eingabe des Tokens. Dieser
 Token entspricht dem Rückgabewert des vorangegangenen Postman-Requests.
 
-Die Auswahl des HTTP-Types \textit{POST} ermöglicht die definition des Bereichs \texttt{Body} für den Request. Dabei
+Die Auswahl des HTTP-Types \textit{POST} ermöglicht die Definition des Bereichs \texttt{Body} für den Request. Dabei
 handelt es sich um Parameter, welche an die Schnittstelle geschickt werden.
 
 Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)} auswählen. Im Anhang
@@ -458,8 +458,8 @@ Eingabevariablen. Dabei hat das JSON-Objekt die beiden geforderten Items \textit
 Die Rechte Seite zeigt die Antwort des Web-Service. Dabei werden zu Anfang des JSON-Objektes die Parameter wiederholt,
 die an das Interface gesendet wurden. Am Ende sind die vorhergesagten Parameter durch das trainierte Model zu sehen.
 
-Im Eingabe-Parameter \textit{values} müssen ebenfalls die Output-Parameter definiert werden. Da die Werte keine Rolle
-spielen, werden die Werte mit \textit{null} initialisiert. Damit werden sie vom System nicht weiter verwendet.
+Im Eingabe-Parameter \textit{values} muss man ebenfalls die Output-Parameter definieren. Da die Werte keine Rolle
+spielen, kann man diese mit den Werten \textit{null} initialisieren. Damit werden sie vom System nicht weiter verwendet.
 
 Auf der Übersichtsseite des REST-Interfaces des
 Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, sind noch weitere
@@ -475,18 +475,18 @@ TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry-Container gel
 von der Plattform auf der die Applikation läuft. Auch kann sie modular und schnell in beliebigen Regionen instanziiert
 werden.
 
-Ein weiterer Vorteil ist die unabhängigkeit, welche damit erreichbar ist. Die Applikation kann selbst verwaltet,
+Ein weiterer Vorteil ist die Unabhängigkeit, welche damit erreichbar ist. Die Applikation kann selbst verwaltet,
 instanziiert oder auch aktualisiert werden. Auch ist es möglich die TensorFlow.js Applikation direkt in die
 eigene Hauptapplikation zu integrieren.
 
-\subsubsection{Model Exportieren}
+\subsubsection{Model exportieren}
 Damit das Model in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert werden.
 Dies erfolgt über den Modeler Flow.
 
 Da das Model in Kapitel \ref{subsub:modeler_flow} auf Seite \pageref{subsub:modeler_flow} komplet trainiert wurde, steht
 es im Modeler Flow als gelbes Modul bereit.
 
-Über einen rechtsklick auf das trainierte Model und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
+Über einen Rechtsklick auf das trainierte Model und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
 Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine pb-Datei. Diese Datei beinhaltet alle wichtigen
 Informationen über das gebaute neuronale Netz.
 
@@ -525,7 +525,7 @@ Informationen. Für die Toolchain ist die Karte mit der Aufschrift \texttt{Conti
 einen Button mit der Aufschrift \texttt{Aktivieren}.
 
 Ein Klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun muss
-man einen Name eingetragen und die Region auswählen, in der die Toolchain installiert wird. Da die Standardkonfiguration
+man einen Name eintragen und die Region auswählen, in der die Toolchain installiert wird. Da die Standardkonfiguration
 vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein Klick auf \texttt{Erstellen}.
 
 Nach einem kurzen Ladevorgang ist die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
@@ -535,7 +535,7 @@ Im Bereich \texttt{Nachdenken} wird ein Issue-Tracker konfiguriert, in dem zum B
 in der Software entdeckt werden, eingetragen, verwaltet und diskutiert werden können.
 
 In \texttt{Codieren} stehen gleich zwei Kacheln zur Verfügung. Einerseits das konfigurierte Git-Repository, bei dem es
-sich um ein auf IBM-Servern gehostetet GitLab handelt. Andererseits findet sich dort eine Web-IDE auf Basis von Eclipse
+sich um ein auf IBM-Servern gehostetes GitLab handelt. Andererseits findet sich dort eine Web-IDE auf Basis von Eclipse
 Orion, mit der der Quellcode der Anwendung online editiert werden kann.
 
 In der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Pipeline, welche im nächsten Schritt näher erläutert
@@ -567,7 +567,7 @@ Als nächstes muss der geschriebene Quellcode der Applikation lediglich noch in 
 Git-Repository eingecheckt werden. Die URL für das Repository kann man sich in der Toolchain-Übersicht mit einem Klick
 auf die Kachel \texttt{Git} anzeigen.
 
-Nach erfolgreichem \texttt{push} der Anwendung in das Git-Repository startet der deployment Vorgang in der Toolchain
+Nach erfolgreichem \texttt{push} der Anwendung in das Git-Repository startet der Deploymentvorgang in der Toolchain
 selbstständig. Nach wenigen Minuten ist die Anwendung über ihre URL, welche in der Node.js Runtime definiert ist,
 aufrufbar.
 
@@ -585,7 +585,7 @@ REST-Schnittstelle zur Verfügung gestellt werden.
 Damit man diese Schritte vereinfachen kann und das im weiteren Verlauf erstellte Frontend ebenfalls das Deployment aufrufen
 kann, werden beide Abfragen in API Connect gebündelt.
 
-Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das mitschicken des Benutzernamens und
+Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das Mitschicken des Benutzernamens und
 des zugehörigen Passwortes zum generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung hinterlegt
 werden müssen, kann man diese Zentral in API Connect speichern. Das hat den Vorteil, dass man sie bei Bedarf nur an einer
 zentralen Stelle abändern muss.
@@ -595,7 +595,7 @@ ermöglicht es Angreifern die Daten für andere Zwecke zu missbrauchen.
 
 Ein weiterer Vorteil für die Nutzung von API Connect ist die Bündelung von mehreren Schnittstellen um Vorhersagen zu
 beziehen. Aktuell ist es möglich, die Vorhersage aus dem Deployment des Watson Studio Models zu beziehen oder die
-Entwickelte Node.js Applikation mit TensorFlow.js zu nutzen.
+entwickelte Node.js Applikation mit TensorFlow.js zu nutzen.
 
 Mittels API Connect kann man die Aufrufe optimal verteilen oder eigene Routen für eine jeweilige Schnittstelle bauen.
 Außerdem kann man Änderungen schnell und kompfortabel in einem Online-Editor angepasst werden.
@@ -603,26 +603,26 @@ Außerdem kann man Änderungen schnell und kompfortabel in einem Online-Editor a
 \subsubsection{API Connect einrichten}
 Der in Kapitel \ref{subsec:vorbereitung_apiconnect} auf Seite \pageref{subsec:vorbereitung_apiconnect} instanziierte
 Service wird im folgenden konfiguriert und eingerichtet. Dazu muss man ihn aus dem IBM Cloud Dashboard heraus aufrufen.
-Nach dem klick auf den Service-Namen erscheint eine Seite mit hilfreichen Informationen zum Service.
+Nach dem Klick auf den Service-Namen erscheint eine Seite mit hilfreichen Informationen zum Service.
 
 Über die Schaltfläche \texttt{Open API Connect} gelangt man auf das API Connect Dashboard. In diesem muss zuerst ein
 automatisch angelegter Katalog benamt werden. In diesem Katalog werden alle Informationen zur API gespeichert.
 Veröffentlichte APIs werden automatisch in diesem Katalog aufgelistet. Nach der fertigen Einrichtung des Kataloges gelangt
-man über einen klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
+man über einen Klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
 
 In dieser muss man den Menüpunkt \texttt{APIs} auswählen. In der erscheinenden Liste werden alle APIs, welche im weiteren
 erstellt werden, aufgelistet. Aktuell existieren hier aber noch keine. Dies kann der Nutzer über den Button
 \texttt{Hinzufügen} und dann \texttt{Neue API} ändern.
 
 Nachdem man den Titel, einen Namen und eine beliebige Version hinterlegt hat, kann man die API mit \texttt{API erstellen}
-in die Liste aufnehmen. Sie erscheint nun mit dem definierten Namen. Über einen klick auf diesen lässt sich die
+in die Liste aufnehmen. Sie erscheint nun mit dem definierten Namen. Über einen Klick auf diesen lässt sich die
 Konfiguration der API öffnen.
 
 Für die Konfiguration einer API existieren drei wichtige Untermenüs. In \texttt{Gestalten} lassen sich Name, Beschreibung,
 Version, die Sicherheitsdefinitionen sowie die zur Verfügung gestellten Pfade und dafür vorgesehene Parameter definieren.
 
 Der Menüpunkt \texttt{Quelle} zeigt die komplette Konfiguration der API in Swagger-Notation an. Hier getätigte Änderungen
-werden automatisch in den anderen beiden Menüpunkte übernommen.
+werden automatisch in den anderen beiden Menüpunkten übernommen.
 
 Im letzten Menüpunkt, \texttt{Assemblieren}, kann man die Funktionen der API definieren. Dazu zählen zum Beispiel die
 einzelnen Schritte, welche bei einem Endpunkt durchlaufen werden müssen. Hier wird der Inhalt der API definiert.
@@ -634,8 +634,8 @@ definieren. Dazu wird in den Menüpunkt \texttt{Gestalten} gewechselt und im lin
 einer REST-Schnittstelle. Jede URL ist ein Endpunkt. Über jeden einzelnen Endpunkt können verschiedene HTTP-Requests
 angesteuert werden. Die häufigsten sind \textit{GET}, \textit{POST}, \textit{PUT} und \textit{DELETE}.
 
-Direkt nach einem klick auf das Plus-Zeichen erscheint ein neuer Pfad mit dem Namen \textit{/pfad-1}. Diesen kann man
-durch einen klick aufklappen. Es erscheinen nun die Konfigurationsparameter für den Endpunkt. Als \textit{Pfad} wird nun
+Direkt nach einem Klick auf das Plus-Zeichen erscheint ein neuer Pfad mit dem Namen \textit{/pfad-1}. Diesen kann man
+durch einen Klick aufklappen. Es erscheinen nun die Konfigurationsparameter für den Endpunkt. Als \textit{Pfad} wird nun
 ein Name vergeben, über den das Watson Studio Deployment aufgerufen werden kann. Ein Beispiel hierfür ist
 \textit{predict-watson}.
 
@@ -652,7 +652,7 @@ Schnittstelle uninteressant und kann wieder geschlossen werden.
 Diese Schritte muss man nun auch für einen weiteren Pfad mit dem Namen \textit{predict-tensorflow} durchführen. Dieser
 erhält ebenfalls eine Operation vom Typ \textit{POST}.
 
-Somit sind erfolgreich zwei Endpunkt mit den Namen \textit{predict-watson} und \textit{predict-tensorflow} angelegt worden.
+Somit sind erfolgreich zwei Endpunkte mit den Namen \textit{predict-watson} und \textit{predict-tensorflow} angelegt worden.
 Diese haben jeweils eine Operation vom Typ \textit{POST}.
 
 Als weitere wichtige Einstellung muss man unter \texttt{Lebenszyklus} den Schalter bei \texttt{CORS} aktivieren und da
@@ -661,12 +661,12 @@ im ersten Schritt mit keiner Sicherheit gearbeitet wird, kann der entsprechende 
 Über das Disketten-Symbol am oberen Rand kann man die aktuelle Einstellung zur Sicherheit speichern. Eine entsprechende
 Meldung quittiert die Speicherung.
 
-Die Grundeinstellungen der Schnittstelle sind somit getätigt. Im Weiteren muss der Entwickler die API über Assemblieren
-mit dem richtigen Verhalten versehen. Dazu wechselt man über den entsprechenden Menüpunkt in einen fast leeren
-Arbeitsbereich.
+Die Grundeinstellungen der Schnittstelle sind somit getätigt. Im Weiteren muss der Entwickler die API über
+\texttt{Assemblieren} mit dem richtigen Verhalten versehen. Dazu wechselt man über den entsprechenden Menüpunkt in einen
+fast leeren Arbeitsbereich.
 
-Hier finden sich im linken Bereich alle möglichen Bausteine um die API mit Funktion zu füllen. Im mittleren Teil, dem
-Arbeitsbereich, ist lediglich ein Punkt hinterlegt. Dies dient als Einstieg bei einem Aufruf der Schnittstelle. Ein
+Hier finden sich im linken Bereich alle möglichen Bausteine um die API mit Funktionen zu füllen. Im mittleren Teil, dem
+Arbeitsbereich, ist lediglich ein Punkt hinterlegt. Dieser dient als Einstieg bei einem Aufruf der Schnittstelle. Ein
 Aufruf der API landet immer in diesem Knoten und kann dann verteilt werden.
 
 Als einer der ersten Schritte soll die Schnittstelle selbstständig einen Auth-Token vom Watson Studio abgreifen. Dazu
@@ -787,7 +787,7 @@ API Connect Flow dargestellt. Dieser umfasst alle notwendigen Module und Einstel
 \end{figure}
 
 Über den Play-Button am linken oberen Rand, kann man die aktuelle Konfiguration des API Connect Services bauen lassen.
-Als Katalog sollte man den anfangs angelegten Katalog definieren. Im Bereich Produkt muss der Nutzer ein neues anlegen.
+Als Katalog sollte man den anfangs angelegten Katalog definieren. Im Bereich Produkt muss der Nutzer ein Neues anlegen.
 
 Bei dem Produkt handelt es sich um einen Namen für den Service. Die API läuft später unter diesem Produkt-Namen und kann
 in dem anfangs erstellten Katalog über das Produkt gefunden werden.
@@ -798,7 +798,7 @@ beziehen und die angelegte API nutzen.
 Nun kann man mit \texttt{Produkt veröffentlichen} dieses veröffentlichen und nutzbar machen. Dieser Vorgang kann bis zu
 wenigen Minuten dauern.
 
-\subsubsection{API Durchsuchen}
+\subsubsection{API durchsuchen}
 Auf dem API Connect Dashboard kann der Benutzer über die rechts oben angelegte Schaltfläche \texttt{Durchsuchen} auf ein
 Untermenü zugreifen. In diesem werden alle Kataloge und Entwürfe aufgelistet, die durch ihn erstellt wurden.
 
@@ -821,7 +821,7 @@ Jede zusätzliche Information, die bei der Konfiguration eingetragen wird, erwei
 um die jeweilige Informationen.
 
 Im rechten Bereich der Ansicht werden Beispielaufrufe angezeigt, wie man die jeweiligen Endpunkte zum Beispiel mit dem
-Befehlsprogramm \textit{curl} aufrufen kann. Dies ist hilfreich um die Endpunkte zu testen oder in erfahrung zu bringen,
+Befehlsprogramm \textit{curl} aufrufen kann. Dies ist hilfreich um die Endpunkte zu testen oder in Erfahrung zu bringen,
 wie die Rückgabewerte aussehen.
 
 Außerdem kann man sich die Aufrufe mit anderen Programmiersprachen anschauen. Dies erleichtert die Entwicklung und
@@ -830,7 +830,7 @@ Einbindung der Schnittstelle in eigene Programme erheblich.
 Als letzte Funktion kann man im rechten Bereich die API-Endpunkte auch direkt online testen. Dies ist hilfreich um die
 Funktion des Endpunktes zu überprüfen ohne ein externes Tool nutzen zu müssen.
 
-Bei der Ansicht handelt es sich um eine Darstellung der automatisch generierten Konfigurations-Datei (\textit{yaml}-Datei)
+Bei der Ansicht handelt es sich um eine Darstellung der automatisch generierten Konfigurationsdatei (\textit{yaml}-Datei)
 mit einer Swagger-UI\footnote{https://swagger.io/tools/swagger-ui}, welche von IBM optisch angepasst wurde.
 
 \subsubsection{Developer Toolkit}
@@ -845,7 +845,7 @@ durch die benötigte Konfiguration.
 Nun kann man die Web-Oberfläche des lokalen API Connect starten und seine erstellte, noch leere API, sehen. Anschließend
 muss man nur noch die Konfigurations-Datei der online erstellten API kopieren und in den lokalen Service einfügen.
 
-Über den Menüpunkt \texttt{Run Yout API}, gelangt man auf eine weitere Anleitung, welche das starten und zur Verfügung
+Über den Menüpunkt \texttt{Run Your API}, gelangt man auf eine weitere Anleitung, welche das starten und zur Verfügung
 stellen der lokal erstellten API erläutert.
 
 Im letzten Schritt, welchen man über die Schaltfläche \texttt{Publish Your API to IBM Cloud} erreicht, wird Schritt für

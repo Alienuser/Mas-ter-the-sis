@@ -3,8 +3,8 @@ Dieses Kapitel beschreibt die benötigten Vorkehrungen für die Entwicklung eine
 TensorFlow.js Applikation. Dazu muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet
 werden. Für die Entwicklung müssen zwei Programme auf dem Entwicklungsrechner installiert.
 
-Diese Schritte werden benötigt, da sonst nicht mit den Systemen gearbeitet werden kann. Im Weiteren werden die dafür
-notwendigen Schritte einzelnd erläutert und getestet.
+Diese Schritte benötigt man, um mit dem Systemen arbeiten zu können. Im Weiteren werden die dafür notwendigen Schritte
+einzelnd erläutert und getestet.
 
 \subsection{IBM Cloud Konto}
 Für die Arbeit mit der IBM Cloud benötigt der Anwender ein kostenloses Benutzerkonto. Dieses wird auf der zugehörigen
@@ -32,7 +32,7 @@ installieren. Die Installation unter Linux und macOS erfolgt durch die Eingabe d
     $ curl -sL http://ibm.biz/idt-installer | bash
 \end{lstlisting}
 
-Anschließend wird die erfolgreiche Installation über das folgende Kommando überprüft:
+Das folgende Kommando überprüft die erfolgreiche Installation auf dem System:
 
 \begin{lstlisting}[language=bash, caption=Installation des CLI überprüfen, label=Installation des CLI überprüfen]
     $ ibmcloud dev help
@@ -52,17 +52,17 @@ es zwei Möglichkeiten einen Service oder eine Runtime in einen erstellten Space
 \subsubsection*{Über das IBM Cloud Dashboard}
 Mit einem Klick auf \textit{Katalog} auf dem IBM Cloud Dashboard öffnet sich dieser und listet alle Services und Runtimes
 auf, die der Anwender aktuell nutzen kann. Der Service \textit{Watson Studio} befindet sich in der Kategorie
-\textit{Künstliche Intelligenz}. Ein klick auf diesen öffnet die entsprechende Konfigurationsseite.
+\textit{Künstliche Intelligenz}. Ein Klick auf diesen öffnet die entsprechende Konfigurationsseite.
 
-Auf der Konfigurationsseite muss man den frei wählbare \textit{Servicename} für den Service definiert. Über diesen
+Auf der Konfigurationsseite muss man den frei wählbaren \textit{Servicename} für den Service definieren. Über diesen
 erscheint er später im IBM Cloud Dashboard. Anschließend muss der Entwickler die Region auswählen, in welcher der Service
 zur Verfügung steht. Über die Region wird das Rechenzentrum und somit auch der Kontinent definiert, in welchem der Service
 läuft.
 
-Auch muss man die Ressourcengruppe und die Organisation auswählen, in die der Service gespeichert wird. Da es aktuell aber
-nur eine Ressourcengruppe und einen Organisation gibt, kann die Standardeinstellung beibehalten werden.
+Ebenso muss man die Ressourcengruppe und die Organisation auswählen, in die der Service gespeichert wird. Da es aktuell
+aber nur eine Ressourcengruppe und eine Organisation gibt, kann die Standardeinstellung beibehalten werden.
 
-Mit einem Klick auf \texttt{Erstellen}, wird der Service Instanziiert und es erfolgt eine Weiterleitung zurück auf das
+Mit einem Klick auf \texttt{Erstellen}, wird der Service instanziiert und es erfolgt eine Weiterleitung zurück auf das
 Dashbaord. Dort erscheint der Service mit dem eingetragenen Namen in der Liste der \textit{Services}.
 
 Über das Dashboard wird die Übersichtsseite des Watson Studio Service durch einen Klick auf diesen geöffnet. Auf der
@@ -73,7 +73,7 @@ wechselt der Nutzer in das Watson Studio Dashboard.
 Alternativ erfolgt die Installation des Services mittels dem installierten CLI. Dazu wird im ersten Schritt das CLI mit
 dem IBM Cloud-Konto verknüpft. Der folgende Befehl setzt den dafür notwendigen API-Endpunkt:
 
-\begin{lstlisting}[language=bash, caption=Setzen des API Targets, label=Setzen des API Targets]
+\begin{lstlisting}[language=bash, caption=Setzen des API-Endpunkt, label=Setzen des API Targets]
     $ ibmcloud api https://api.ng.bluemix.net
 \end{lstlisting}
 
@@ -119,7 +119,7 @@ nutzt man am einfachsten einen vorkonfigurierten Cloud Foundry-Container mit Nod
 existieren ebenfalls zwei Möglichkeiten.
 
 Im vorangegangenen Kapitel wurden die beiden Möglichkeiten (über den IBM Cloud Katalog und über die Kommandozeile)
-ausführlich erläutert. Über das folgende Kommando der CLI erstellt man sich die benötigte Runtime in einem Container.
+ausführlich erläutert. Über das folgende Kommando der CLI erstellt man die benötigte Runtime in einem Container.
 
 \begin{lstlisting}[language=bash, caption=Instanziierung der Node.js Runtime, label=Instanziierung der Node.JS Runtime]
     $ ibmcloud cf create-service nodejs service_name
@@ -133,7 +133,7 @@ die Applikation erfolgreich erstellt werden konnte, oder ob ein anderer Name fü
 
 \subsection{API Connect}
 \label{subsec:vorbereitung_apiconnect}
-Um im weiteren Verlauf den API Gateway, \textit{API Connect}, zu nutzen, muss dieser ebenfalls im IBM Cloud
+Um im weiteren Verlauf den API Gateway \textit{API Connect} zu nutzen, muss dieser ebenfalls im IBM Cloud
 instanziiert werden. Wie auch in den beiden vorangegangenen Kapiteln kann die Instanziierung über die CLI als auch
 über den IBM Cloud Katalog geschehen.
 
@@ -154,7 +154,7 @@ Unter Linux erfolgt die Installation des Programmes über das folgende Kommando:
     $ sudo apt-get install git
 \end{lstlisting}
 
-Unter macOS steht ein Grafische Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
+Unter macOS steht ein grafisches Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
 Verfügung.
 
 \subsection{Node.js und npm}
