@@ -11,15 +11,22 @@ Im letzten Teil des Kapitels folgt die Beschreibung einer Designidee bei Smartph
 Softwareentwicklung und ein Framework zum Entwickeln von Webseiten.
 
 \section{Bosch KWE Waage}
-Die KWE Serie ist ein modulares Kontrollwaagensystem, das speziell für den Einsatz in der pharmazeutischen
-Produktion entwickelt wurde.Dabei wurde sowohl besonderer Wert auf pharmazeutische Sicherheit und die Einhaltung der
-GMP-Vorschriften gelegt, als auch auf die einfache Bedienung und die Flexibilität.
+Die Bosch KWE Serie ist ein modulares Kontrollwaagensystem, welches speziell für den Einsatz in der pharmazeutischen
+Produktion entwickelt wurde. Allerdings findet es auch immer häufiger Verwendung im Bereich der Nahrungsmittel und
+Süßigkeiten.
 
-Die KWE 4000 kann bei einer maximalen Ausbringungsleistung von bis zu 450 P/min eine Genauigkeit ab 50mg erreichen.
-Produktionsstatistiken, Trendkurven und das aktuelle Gewicht werden auf dem Standdarddisplay angezeigt.Durch individuelle
-Konfigurationsmöglichkeiten, können je nach Bedarf auch weitere Informationen angezeigt werden.
+Um das Gewicht eines Produktes zu ermitteln, fahren die Produkte mit einem Förderband waagerecht über die Wiegeeinheit
+der KWE.
 
-Weitere Informationen auf der Übersichtsseite des Herstellers~\cite{online_grundlagen_boschkwe}.
+Die KWE 4000 kann beispielsweise bei einer maximalen Leistung von bis zu 450 Pakete in der Minute eine Genauigkeit von
+50mg erreichen.
+
+Das zugehörige Display kann Produktionsstatistiken, Trendkurven und das aktuelle Gewicht des Produktes anzeigen. Durch
+eigene Konfigurationen können aber auch weitere Informationen auf dem Display dargestellt werden. Auf der
+Herstellerseite\cite{online_grundlagen_boschkwe} sind weitere Informationen zur aktuellen KWE-Serie einzusehen.
+
+Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle KWE 3000 mit
+ihrem grundsätzlichen Aufbau und dem farblichen Display.
 
 \begin{figure}[h]
     \centering
@@ -27,6 +34,10 @@ Weitere Informationen auf der Übersichtsseite des Herstellers~\cite{online_grun
     \caption{Abbildung einer Bosch KWE 3000}
     \label{fig:grundlagen_boschkwe}
 \end{figure}
+
+\section{Bosch Siegelmaschine}
+Was ist das? Vertikale Form-, Füll- und Schließmaschinen (VFFS)
+\colorbox{yellow}{Hier fehlt was}
 
 \section{Künstliche Intelligenz}
 Was ist künstliche Intelligenz?
@@ -69,14 +80,14 @@ Was ist ein Neuronales Netz
 \colorbox{yellow}{Hier fehlt was}
 
 \section{Cloud}
-Der Begriff Cloud hat sich als Kurzform des Cloud Computing etabliert und versteht das Zusammenspiel von mehreren Servern.
-Die Server übernehmen Aufgaben, wie etwa die Datenspeicherung oder komplizierte Programmabläufe. Dabei erkennt der
-Cloud-Nutzer nicht, wie viele Server hinter der Cloud stecken oder wo diese sich befinden.
+Für Cloud Computing hat sich die Kurzform Cloud etabliert. Dies versteht das Zusammenspiel von mehreren Servern in einem
+Verbund. Diese Server übernehmen zum Beispiel Aufgaben wie etwa die Datenspeicherung oder komplizierte Programmabläufe.
+Dabei ist für den Cloud-Nutzer nicht ersichtlich, wie viele Server in dieser Cloud stecken oder wo diese sich befinden.
 
-Selbst wenn ein Server ausfällt, hat dies keine Auswirkungen auf das gesamte System, da die Anfragen und Aufgaben auf
-die anderen Systeme umgeleitet werden.
+Auch wenn ein Server in diesem Gesamtsystem ausfällt, hat dies keine Auswirkungen auf das gesamte System, da die Anfragen
+und Aufgaben auf andere Systeme umgeleitet werden.
 
-Die Cloud zeichnet sich nach NIST~\cite{online_grundlagen_cloud_nist} und~\cite{online_grundlagen_cloud_computing} durch
+Durch NIST~\cite{online_grundlagen_cloud_nist} und~\cite{online_grundlagen_cloud_computing} zeichnet sich die Cloud durch
 fünf wesentliche Eigenschaften aus:
 
 \begin{itemize}
@@ -97,199 +108,214 @@ Auf dem Markt existieren zahlreiche Cloud-Anbieter. Im folgenden wird auf drei d
 Lösungen im Bereich künstliche Intelligenz eingegangen (siehe hierzu~\cite{online_grundlagen_cloud}).
 
 \subsection{Microsoft Azure}
-Die Cloud-Computing-Plattform Azure von Microsoft ist hoch skalierbar und wendet sich mit ihren Services hauptsächlich
-an Unternehmen und Entwickler. Verfügbar ist Azure offiziell seit dem Jahr 2010. Seither erweitert Microsoft das
-Serviceangebot und die Leistungsfähigkeit seiner Cloud-Computing-Umgebung kontinuierlich.
+Azure ist die Cloud-Computing-Plattform von Microsoft. Sie ist hoch skalierbar und wendet sich mit ihren Services
+hauptsächlich an Unternehmen und Entwickler. Offiziell ist Azure seit 2010 verfügbar. Seitdem erscheinen in regelmäßigen
+Abständen neue Services und Funktionen.
 
-User können Services aus den Bereichen Infrastructure as a Service (IaaS), Platform as a Service (PaaS) und Software as
-a Service (SaaS) aus der Cloud beziehen. Auch Datenbanken und Storagesysteme werden bereitgestellt. Ziel ist es,
-Anwendern eine flexible Cloud-Infrastruktur zur Verfügung zu stellen, die sich den individuellen Anforderungen schnell
-anpassen lässt und den Betrieb einer eigenen IT-Infrastruktur überflüssig macht. Zahlreiche Standarddienste wie virtuelle
-Maschinen, SQL-Datenbanken oder VPN-Gateways können genutzt werden.
+Nutzer der Plattform können Services aus den Bereichen Infrastructure as a Service (IaaS), Platform as a Service (PaaS)
+und Software as a Service (SaaS) nutzen. Auch Datenbanken, Storagesysteme sowie virtuelle Maschinen, SQL-Datenbanken und
+VPN-Gateways werden bereitgestellt.
 
-Dank professionell betriebener Rechenzentren in der ganzen Welt stehen die Dienste mit einer hohe Verfügbarkeit überall
-zur Verfügung. Microsoft Azure ermöglicht den Einsatz von Hybrid-Systemen, bei denen nur ein Teil der Services,
-Anwendungen und Daten in die Cloud verlagert sind und der Rest auf lokalen Servern betrieben wird. Dienste von
-Drittanbietern bietet ein eigener Azure Marktplatz an (mehr unter~\cite{online_grundlagen_azure}).
+Microsoft hat sich mit ihrer Platform Azure das Ziel gesetzt, Anwendern eine flexible Cloud-Infrastruktur zur Verfügung
+zu stellen, die sich den individuellen Anforderungen schnell anpassen lässt und den Betrieb einer eigenen IT-Infrastruktur
+überflüssig macht.
+
+Dank weltweit betriebener Rechenzentren stehen die Dienste mit einer hohe Verfügbarkeit auf jedem Kontinent zur Verfügung.
+
+Microsoft Azure ermöglicht den Einsatz von Hybrid-Systemen, bei denen nur ein Teil der Services in die Cloud verlagert
+und der Rest auf lokalen Servern betrieben wird. Dienste von Drittanbietern bietet ein eigener Azure Marktplatz an
+(mehr unter~\cite{online_grundlagen_azure}).
 
 \subsubsection{Azure Machine Learning Studio}
-Microsoft Azure Machine Learning Studio ist ein Tool für die Zusammenarbeit per Drag \& Drop, mit der Sie Lösungen für
-Vorhersageanalysen erstellen, testen und bereitstellen können, die mit Ihren Daten arbeiten. Machine Learning Studio
-veröffentlicht Modelle als Webdienste, die von benutzerdefinierten Apps oder BI-Tools wie Excel problemlos genutzt werden
-können (siehe dazu~\cite{article_grundlagen_azure_studio}).
+Microsoft Azure Machine Learning Studio ist ein Tool mit dem Vorhersageanalysen erstellt, getestet und bereitgestellt
+werden können. Dabei ist es für die Zusammenarbeit mittels Drag \& Drop konzipiert.
 
-In Machine Learning Studio finden Datenwissenschaften, prädiktive Analysen, Cloudressourcen und Ihre Daten zusammen!
+Die erstellten Modelle können als Webdiest zur Verfügung gestellt werden. Andere oder auch eigene Anwendungen können
+diesen Webdienst mittels HTTP-Anfragen ansprechen und nutzen (siehe dazu~\cite{article_grundlagen_azure_studio}).
 
 \subsection{Amazon Web Services}
-AWS, eine Tochterfirma von Amazon.com, ist eine umfangreiche Plattform für Cloud Computing Services. Cloud Computing
-beinhaltet in der Regel die drei Bestandteile Infrastucture as a Service (IaaS), Platform as a Service (PaaS) und
-Software as a Service (SaaS).
+AWS ist eine Tochterfirma von Amazon.com. und bietet eine umfangreiche Plattform für Cloud Computing Services. Genau
+wie in Microsoft Azure können dort Services für Infrastucture as a Service (IaaS), Platform as a Service (PaaS) und
+Software as a Service (SaaS) genutzt werden.
 
-IaaS bedeutet, dass Kunden über das Internet Zugang zu den verfügbaren IT-Services haben, beispielsweise im Bereich
-Datenspeicherung oder Rechenleistung, und diese überall und an verschiedenen Endgeräten nutzen können. Der Begriff PaaS
-beschreibt die Nutzung einer Cloud-Plattform zur Entwicklung von Webanwendungen. SaaS steht für die Bereitstellung
-browserbasierter Software durch einen externen Dienstleister, die von mehreren Usern gleichzeitig genutzt werden kann.
-Ein bekanntes Beispiel hierfür ist Google Docs, das eine standortunabhängige Bearbeitung von Dokumenten ermöglicht.
+Im Bereich IaaS haben Nutzer Zugrifff auf Datenspeicherung oder Rechenleistung. Über PaaS haben sie zugriff auf
+Services zur einfachen Entwicklung von Webanwendungen. Bei SaaS existiert ein Katalog für Softwareanwendugnen von
+externen Dienstleistern.
 
-Für Unternehmen sind Public Clouds beispielsweise nützlich, um schnell und einfach individuelle Anwendungen entwickeln
-zu können, ohne eigene Produktlizenzen oder Serverplätze erwerben zu müssen. Oder anders gesagt: AWS stellt Entwicklern
-eine maßgeschneiderte und zuverlässige IT-Infrastruktur auf Abruf zur Verfügung (= Self Service)
-(mehr unter~\cite{online_grundlagen_aws}).
+Ein bekanntes Beispiel für SaaS ist Google Docs, das eine standortunabhängige und Browserunabhängige Bearbeitung von
+Dokumenten ermöglicht.
+
+Public Clouds sind für Unternehmen nützlich, um beispielsweise schnell und einfach individuelle Anwendungen entwicklen
+zu können ohne notwendige Produktlizenzen anderswoe erwerben zu müssen.
+
+AWS stellt Entwicklern eine maßgeschneiderte und zuverlässige IT-Infrastruktur auf Abruf zur Verfügung (= Self Service)
+(mehr über AWS unter~\cite{online_grundlagen_aws}).
 
 \subsubsection{Amazon Machine Learning}
-Amazon Machine Learning ist ein Service, mit dem Entwickler aller Wissensstufen die Technologie für machinelles Lernen
-problemlos nutzen können. Amazon Machine Learning bietet Visualisierungstools und Assistenten, die Sie durch den
-Aufbauprozess für Machine Learning-Modelle (ML) begleiten, ohne dass Sie komplexe ML-Algorithmen und ‑Technologien
-erlernen müssen. Wenn Ihre Modelle fertig sind, können Sie bei Amazon Machine Learning mithilfe einfacher APIs Prognosen
-für Ihre Anwendung abrufen, ohne benutzerdefinierte Prognosecodes implementieren oder Infrastrukturen verwalten zu müssen.
+Amazon Machine Learning ist ein Service innerhalb von AWS. Es bietet Visualisierungstools und Assistenten die den Aufbau
+von Maschin Learning-Modellen (ML) unterstützen, ohne dabei komplexe Algorithmen oder Technoligien vorauszusetzen.
 
-Amazon Machine Learning basiert auf der gleichen praxisbewährten, hochgradig skalierbaren ML-Technologie, die seit Jahren
-von der internen Community der Amazon-Datenwissenschaftler verwendet wird. Der Service nutzt leistungsstarke Algorithmen,
-um ML-Modelle zu erstellen, indem er in Ihren vorhandenen Daten nach Mustern sucht. Anschließend verwendet Amazon Machine
-Learning diese Modelle, um neue Daten zu verarbeiten und Prognosen für Ihre Anwendung zu generieren.
+Nach dem Aufbau und dem training der Modelle können diese über eine REST-API anderen Anwendungen zugänglich gemacht
+werden, ohne sich dabei selbst um Infrastrukturen kümmern zu müssen.
 
-Amazon Machine Learning ist hochgradig skalierbar und kann Milliarden von Prognosen pro Tag generieren und diese in
-Echtzeit mit hohem Durchsatz bereitstellen. Für die Nutzung von Amazon Machine Learning sind keine Vorab-Investitionen
-für Hardware oder Software erforderlich. Sie bezahlen für das, was Sie nutzen, können also klein beginnen und skalieren,
-wenn Ihre Anwendung wächst (mehr dazu in der Dokumentation~\cite{online_grundlagen_aws_learning})
+Der Service nutzt leistungsstarke Algorithmen um ML-Modelle zu erstellen, indem er in den vorhandenen Daten automatisch
+und selbstständig nach Mustern sucht. Anschließend werden diese Modelle dazu genutzt, um neue Daten zu verarbeiten und
+Prognosen für eigene Anwendung zu generieren.
+
+Der Service ist hochgradig Skalierbar und kann Milliarden Prognosen pro Tag generieren um diese in Echtzeit mit der
+eigenen Anwendung zu teilen (mehr dazu in der Dokumentation~\cite{online_grundlagen_aws_learning}).
 
 \subsection{IBM Cloud (ehemals Bluemix)}
-Bluemix ist die von IBM entwickelte Cloud-Platform. Über Bluemix greifen Entwickler auf mehr als 160 Cloud-Services zu,
-um mobile Apps und Webanwendungen zu entwickeln. In Bluemix gibt es zahlreiche Analysewerkzeuge sowie Services von
-Drittanbietern. Mit Watson Analytics lassen sich beispielsweise intelligente Systeme realisieren, die Daten kognitiv
-(also selbstlernend, ohne für die Problemlösungen programmiert zu sein) auswerten und für die Entscheidungsfindung
-aufbereiten.
+Die IBM Cloud (ehemals Bluemix genannt) ist die von IBM entwickelte Cloud Platform. In dieser sind mehr als 160 Services
+inbegriffen um zum Beispiel mobile Apps oder Webanwendungen zu entwickeln. Weiter existieren zahlreiche Analysewerkzeuge
+sowie Services von Drittanbietern.
 
-Bluemix unterstützt diverse integrierte DevOps-Dienste, um Cloud-Anwendungen zu erstellen, auszuführen, bereitzustellen
-und zu verwalten. Die Entwicklerplattform basiert auf der Technologie von Cloud Foundry und läuft auf IBMs
-Softlayer Cloud Infrastruktur. Sie unterstützt mehrere Programmiersprachen, einschließlich Java, Node.js, Go, PHP,
-Python, Ruby Sinatra, Ruby on Rails und kann auch andere Sprachen wie Scala durch den Einsatz von Buildpacks
-unterstützen~\cite{book_grundlagen_bluemix}.
+Mit Watson Analytics lassen sich beispielsweise intelligente Systeme realisieren, die Daten kognitiv (also selbstlernend,
+ohne für die Problemlösungen programmiert zu sein) auswerten und für die Entscheidungsfindung aufbereiten.
 
-Weitere Informationen üer Bluemix können auf der Webseite\footnote{https://bluemix.net} gefunden werden.
+Die IBM Cloud unterstützt diverse schon integrierte DevOps-Dienste, um Cloud-Anwendungen zu erstellen, auszuführen,
+bereitzustellen und zu verwalten. Die Platform basiert auf der Cloud Foundry Technologie und läuft auf IBMs
+Softlayer Infrastruktur.
+
+Sie unterstützt zahlreiche Programmiersprachen, einschließlich Java, Node.js, Go, PHP, Python, Ruby Sinatra, Ruby on
+Rails und kann auch andere Sprachen wie Scala durch den Einsatz von Buildpacks unterstützen~\cite{book_grundlagen_bluemix}.
+
+Weitere Informationen üer Bluemix finden sich auf der Webseite\footnote{https://bluemix.net} und in der Dokumentation.
 
 \subsubsection{Watson Studio}
-Watson Studio is an integrated environment designed to make it easy to develop, train, manage models and deploy
-AI-powered applications. It is a SaaS solution delivered on the IBM Cloud.
+Watson Studio ist eine SaaS-Lösung der IBM Cloud und für die Erstellung, das Trainieren und das Verwalten von trainierten
+Modellen zuständig. Diese Modelle werden, ähnlich denen von Microsoft Azure und AWS, über Drag \& Drop eingerichtet
+und Versioniert.
 
-Watson Studio provides a suite of tools for data scientists, application developers and subject matter experts to
-collaboratively and easily work with data. They can then use that data to build, train and deploy models at scale. These
-tools are preconfigured, so builders don't have to spend time installing, setting up and maintaining them. The built-in
-catalog function enables knowledge sharing and retention. Watson Studio can infuse AI into your business
-(mehr hierzu unter~\cite{online_grundlagen_watson_studio}).
+Es bietet eine vielzahl von Anwendungen für die Verarbeitung von Daten und kann mit mehreren Endnutzern gleichzeitig
+genutzt werden. In Watson Studio können Modelle erstellt, trainiert und verifiziert werden (mehr hierzu
+unter~\cite{online_grundlagen_watson_studio}).
 
 \subsubsection{Cloud Object Storage}
-Cloud object storage is a format for storing unstructured data in the cloud. Object storage is considered a good fit for
-the cloud because it is elastic, flexible and it can more easily scale into multiple petabytes to support unlimited data
-growth. The architecture stores and manages data as objects compared to block storage, which handles data as blocks, and
-logical volumes and file storage which store data in hierarchical files.
+Der Service Cloud Object Storage ist für die Speicherung von unstrukturierten Daten in der Cloud zuständig. Dieser kann
+sehr einfach erweitert werden um neuen Bedürfnissen gerecht zu genügen.
 
+Die Architektur speichert und managed die Daten über Objekte. Dies hat einen großen Vorteil gegenüber der herkömmlichen
+Speicherung über Blöcke und Volumes auf Festplatten. So finden sich alle Informationen, welche einen Datenstamm zugehörig
+sind, an einer einzelnen Stelle. Diese Objekte können anschließend sehr einfach kopiert, erweitert oder entfernt werden.
 
-The object storage software design includes a globally unique identifier for each object along with rich, customizable
-metadata. The metadata is separated to enable other capabilities such as application- and user-specific data for
-indexing, interfaces that can be directly programmed by the application, a global namespace and more flexible data
-management policies (mehr dazu unter~\cite{book_grundlagen_objectstorage}).
+Jedes Objekt hat eine globale und eindeutigen Identifierierung (ID) über die es gefunden werden kann. Außerdem enthält
+ein Objekt Metadaten für eine Indezierung (mehr dazu unter~\cite{book_grundlagen_objectstorage}).
 
 \subsubsection{Apache Spark}
-Bei Apache Spark handelt es sich um ein Framework, das unter Open-Source-Lizenz öffentlich verfügbar ist. Es ist ein Top
-Level Project der Apache Software Foundation und entstand ursprünglich aus einem Forschungsprojekt an der University of
-California in Berkeley.
+Bei Apache Spark handelt es sich um ein Framework, welches unter der Open-Source-Lizenz verfügbar ist. Es ist ein Projekt
+der Apache Software Foundation\footnote{https://www.apache.org} und entstand aus einem Forschungsprojekt der University
+of California in Berkeley \footnote{https://www.berkeley.edu}.
 
-Spark ermöglicht es, Datenabfragen auf große Datenmengen aus unterschiedlichen Quellen in hoher Geschwindigkeit und
-guter Performance auszuführen. Hierfür nutzt das Framework eine verteilte Architektur und Cluster Computing. Viele
-große Unternehmen unterstützen die Apache Software Foundation und treiben die Entwicklung von Spark weiter voran
+Apache Spark ermöglicht es, Datenabfragen und große Datenmengen aus unterschiedlichen Quellen in hoher Geschwindigkeit
+und guter Perform auszuführen. Dabei wird eine verteilte Architektur und Cluster Computing genutzt.
+
+Viele große Unternehmen unterstützen die Weiterentwicklung von Apache Spark
 (mehr dazu unter~\cite{book_grundlagen_apachespark}).
 
 \subsubsection{API Connect}
-IBM API Connect richtet sich an Unternehmen, die ihren Weg in die API-Economy optimieren und beschleunigen wollen.
-Diese umfassende Managementlösung deckt alle vier Aspekte des API-Lebenszyklus ab: Erstellung, Ausführung, Management
-und Schutz. API Connect ist sehr viel kosteneffizienter als Einzellösungen, die sich nur auf wenige Phasen des
-Lebenszyklus beschränken. Mit API Connect können externe und interne Nutzer das API-Programm eines Unternehmens
-beschleunigen und neuen Umsatz durch attraktive neue Kundenerlebnisse schaffen
-(mehr in der Dokumentation~\cite{book_grundlagen_apiconnect}).
+Mit dem Service IBM API Connect können alle vier Aspekte eines API-Lebenszyklusses abgebildet werden: die Erstellung, die
+Ausführung, das Management und der Schutz einer eigenen API.
+
+Mit diesem Services ist es möglich eine eigene API über ein Drag \& Drop Interface zu definieren und einzurichten. Die
+so erstellte Schnittstellen kann anschließend einfach über einen Webdienst zur Verfügung gestellt werden. Dabei ist es
+möglich verschienede Routen und Endpunkte zu definieren sowie die Schutzmaßnahmen und eventuelle Zugangsverwaltung
+einzurichten (mehr in der Dokumentation~\cite{book_grundlagen_apiconnect}).
 
 \subsubsection{Toolchain}
-Bei einer Toolchain handelt es sich um ein Tool zur Verwaltung von Entwicklung, Bereitstellung sowie Üerwachung einer
-Anwendung. Nach der Einrichtung einer Toolchain stehen verschiedene Services zur Verfügung, welche zum Beispiel eine
-Integration zu einem GitHub-Projekt ermöglichen.
+Bei einer Toolchain handelt es sich um ein Programm zur Verwaltung von Entwicklung, Bereitstellung sowie Überwachung
+einer Anwendung. Verschiedene Services stehen nach der Einrichtung der Toolchain zur Verfügung. So ist es anschließend
+zum Beispiel möglich, eine Integration von vorhandenen GitHub-Projekten einzubauen.
 
-Mit einer eingerichteten Toolchain und einem verbundenen Git-Repository kann der Quelltext gebaut und auf einem System
-installiert werden. Bei der Toolchain handelt es sich unter anderem um ein \textit{Continuous Integration}-Tool (kurz CI)
+Nachdem eine eingerichtete Toolchain mit einem Git-Repository verbunden wurde kann der Quelltext gebaut und auf einem
+System installiert werden. Das Git-Repository kann entweder auf einem externen Service bereitstehen oder ein IBM internes
+GitLab Projekt sein.
+
+Bei der Toolchain handelt es sich unter anderem um ein \textit{Continuous Integration}-Tool (kurz CI)
 (Mehr unter~\cite{online_grundlagen_toolchain}).
 
 \section{TensorFlow.js}
-Tensorflow ist eine Deep Learning Bibliothek welches von Google entwickelt wird und unter der freien Apache 2.0 Open
-Source Lizenz zur Verfügung gestellt. Durch die Repräsentation von Neuronalen Netzwerken in Graphen können diese auf
-verteilte Computersysteme abgebildet werden. Zum Einsatz kommt es in verschiedenen Projekten von Google, wie Google
-Translate und DeepMind und hilft dort z.B. bei der Erkennung von Objekten auf Fotos und Videos. Weiterhin wird es
-beispielsweise für Predictive Analytics, Fraud Detection aber auch als Recommendation Engine verwendet.
+TensorFlow ist eine Deep Learning Bibliothek welche von Google entwickelt wird. Die Bibliothek wird unter der freien
+Apache 2.0 Lizenz vertrieben und ist sowohl unter allen gängigen Betriebssystemem lauffähig als auch bei den meisten
+Cloud-Anbietern. Diese stellen entweder aktuelle Cloud Foundry-Container bereit oder eigene Python-Container.
 
-Tensorflow ist der Nachfolger von Googles erstem Deep Learning Tool DistBelief, das aus Google Brain, einem Deep
-Learning Forschungs-Projekt, hervor ging. Es wurde in verschiedenen internen Projekten von diversen Teams benutzt.
-Allerdings hatte „DistBelief“ einige Fehler im Aufbau und Design, die das Tool unflexibel und schlecht nutzbar machten.
-Mit dem Wissen über diese Fehler wurde das Projekt Tensorflow gestartet und im November 2015 zum ersten Mal vorgestellt.
-Aufgrund der einfachen Handhabung und den vielfältigen Möglichkeiten wurde es schnell in vielen Machine Learning
-Projekten eingesetzt. Beispielsweise bei Natural Language Processing, künstlicher Intelligenz und Predictive Analytics.
+TensorFlow ist der Nachfolger von Googles erstem Deep Learning Tool \enquote{DistBelief}, welcher wiederum aus
+\enquote{Google Brain} hervorging. Uhrsprünglich wurde es zur Erkennung von Objekten auf Fotos und Videos entwickelt.
 
-Für Data Science und Machine Learning Experten stellt es eine geeignete Basis dar, mit dem performante Machine Learning
-Lösungen bereitgestellt werden. In der neuesten Version lässt sich Tensorflow ohne großen Aufwand in Python integrieren,
-dadurch können neue Lösungen einfach zur Verfügung gestellt werden (mehr unter~\cite{book_grundlagen_tensorflow}).
+Die Berechnungen von neuronale Netzen können durch TensorFlow auf verteilte Computersysteme geschehen. Dies ist möglich,
+da diese intern durch Graphen repräsentiert werden.
+
+Aktuell wird es für Predictive Analytics, Fraud Detection oder auch als Recommendation Engine bei Google und vielen
+anderen Firmen verwendet.
+
+In der neuesten Version lässt sich TensorFlow ohne großen Aufwand in Python integrieren. Dadurch können neue Lösungen
+einfach zur Verfügung gestellt werden (mehr unter~\cite{book_grundlagen_tensorflow}).
+
+Mittlerweile existiert eine mobile Lösung, die TensorFlow.js Bibliothek. Diese ist in jedem gängigen Browser oder auch
+in Node.js lauffähig und macht schnelle \enquote{On the Edge}- sowie Offline-Vorhersagen möglich.
 
 \section{Angular}
-Angular ist ein JavaScript-Framework welches von Google entwickelt wurde. Es zielt auf die Entwicklung von
-WebAnwendungen legt großen Wert auf Struktur und Qualität. Es war das erste Framework welches durch den Fokus auf
-Architektur, Testing und isolierte Komponenten im JavaScript-Bereich auch für große Enterprise Anwendungen geeignet war.
+Bei Angular handelt es sich um ein von Google entwickeltes JavaScript-Framework. Es zielt auf die Entwicklung von
+Web-Anwendungen ab und legt großen Wert auf Struktur und Qualität.
+
+Mit seinem großen Fokus auf Architektur, Testing und isolierten Komponenten ist es für große Enterprise Anwendungen
+bestens geeignet. Dabei war es das erste JavaScript-Framework das diesen Fokus hatte.
+
 Durch Methoden wie Dependency Injection und ein ausgereiftes Tooling ermöglicht es effiziente und wartbare
 Softwareentwicklung auf Basis von JavaScript (mehr unter~\cite{book_grundlagen_angular}).
 
 \subsection{Model-View-Controller}
-Model-View-Controller (kurz MVC) wurde um 1978 von Xerox entwickelt und es handelt sich dabei um eine Architektur von
-Programmen.
-
-In MVC wird eine Anwendungskomponente in drei Teile zerlegt. In das oberflächenunabhängige \textit{Model}, das für die
+Die Programmarchitektur Model-View-Controller (kurz MVC) wurde um 1978 von Xerox entwickelt. Dabei wird eine
+Anwendungskomponente in drei Teile zerlegt. In das oberflächenunabhängige \textit{Model}, das für die
 Ausgabe zuständige \textit{View} und den für die Interpretation von Eingabeereignissen zuständigen \textit{Controller}.
 
-Der Controller ist die Steuerungseinheit, das Model der Anwendungskern und die View der Darsteller bzw. die Ansicht der
-Anwendung. Ein View zusammen mit seinem Controller wird hier auch als eine Oberfläche bezeichnet (Mehr hierzu
+Der Controller ist in dieser Architektur die Steuerungseinheit. Das Model beherbergt den Anwendungskern und die View
+die Dargestellten Komponenten auf der Web-App.
+
+Ein Controller zusammen mit einer View wird hier auch als eine Oberfläche bezeichnet. (mehr hierzu
 unter~\cite{book_grundlagen_mvc}).
 
 Es gibt zahlreiche Frameworks, welche das MVC-Patern umsetzen. Angular ist einer der bekanntesten Vertreter.
 
 \subsection{Angular-Material}
-Material Design ist eine von Google stetig weiterentwickelte Designsprache. Sie verbindet die Gestaltungsregeln des
-klassischen Grafik-Designs mit den Möglichkeiten digitaler Benutzeroberflächen. Ziel von Material Design ist u.a. die
-Verbesserung der Benutzerfreundlichkeit. Darüber hinaus hat Material Design einen charakteristischen Look, so dass im
-Material Design gestaltete Interfaces sich ideal kombinieren lassen (mehr dazu~\cite{online_grundlagen_materialdesign}).
+Material Design ist eine von Google entwickelte Designsprache. Durch diese werden die Gestaltungsregeln des klassischen
+Grafik-Designs mit den Möglichkeiten digitaler Benutzeroberflächen verbunden. Ziel ist es unter anderem die Verbesserung
+von Benutzeroberflächen zu ermöglichen.
 
-Mittels der Library \textit{Angular-Material} kann das Material Design in einer Angular Applikation leicht umgesetzt
-werden.
+Material Design hat einen charakteristischen Look der es ermäglicht verschiedene Interfaces, welche im Material Design
+gehalten sind, einfach zu kombinieren (mehr dazu~\cite{online_grundlagen_materialdesign}).
+
+Die JavaScript Library \textit{Angular-Material} ermöglicht eine leichte integration des Material Designs in eine
+Angular-Anwendung.
 
 \subsection{ngx-restangular}
-Ngx-restangular is an Angular 2+ service that simplifies common GET, POST, DELETE, and UPDATE requests with a minimum of
-client code. It's a perfect fit for any WebApp that consumes data from a RESTful API
-(mehr auf deer betreffenden GitHub-Seite~\cite{online_grundlagen_restangular}).
+Mit der JavaScript-Library ngx-restangular können HTTP-Anfragen an REST-Schnitt\-stellen vereinfacht werden. Dabei
+ermöglicht die Library vereinfacht Anfragen mittels den HTTP-Typen \textit{GET}, \textit{POST}, \textit{DELETE} und
+\textit{UPDATE} zu stellen (mehr auf der betreffenden GitHub-Seite~\cite{online_grundlagen_restangular}).
 
 \subsection{Observable}
-Ein Observable ist das zentrale Konzept in Reactive Programming mit ReactiveX (http://reactivex.io/). Ein Observable
-repräsentiert eine Menge von Daten, die in einer noch nicht bekannten Menge zu einem noch nicht bekannten Zeitpunkt
-bereitstehen werden. Ein Observer abonniert ein Observable und damit die später ankommenden Daten. Ein Obserable kann
-gefiltert, gruppiert oder transformiert werden. Berechnungen sind möglich (mehr unter~\cite{book_grundlagen_observable}).
+Ein Observable ist das zentrale Konzept in Reactive Programming mit ReactiveX\footnote{http://reactivex.io}. Ein
+Observable repräsentiert eine Menge von Daten, die in einer noch nicht bekannten Menge zu einem noch nicht bekannten
+Zeitpunkt bereitstehen werden.
+
+Ein Observer abonniert ein Observable und damit die später ankommenden Daten. Ein Obserable kann gefiltert, gruppiert
+oder transformiert werden. Auch Berechnungen sind dabei möglich (mehr unter~\cite{book_grundlagen_observable}).
 
 \subsection{Promise}
-Um Promises verständlich zu machen, fangen wir mit einer groben Umschreibung an und gehen dann auf Details und konkrete
-Anwendungen ein. Wenn ihr euch zunächst unter dem Begriff Promise nichts vorstellen könnt, seid ihr nicht allein.
-Promises sind so etwas wie Callbacks 2.0. Diese Umschreibung trifft auch schon genau den Grund, warum ihr Promises nutzen
-solltet. Dazu machen wir kurz noch einen Ausflug und frischen unser Wissen über Callbacks auf
-(mehr in~\cite{book_grundlagen_promises}).
+Bei Promises handelt es sich um eine Weiterentwicklung von Callbacks. Dabei helfen sie die Arbeit mit asynchronem Code
+zu vereinfachen, indem sie asynchrone Operationen kapseln.
+
+Sie zwängen asynchrone Operationen in eine einheitliche API, können verarbeitet werden bevor die Operation abgeschlossen
+ist und es gibt zahlreiche Möglichkeiten Promises zu kombinieren oder in Sequenzen zu verwenden (mehr
+in~\cite{book_grundlagen_promises} oder unter Matt Greer\footnote{http://www.mattgreer.org/articles/promises-in-wicked-detail}).
 
 \subsection{flex-layout}
-Angular Flex Layout provides a sophisticated layout API using Flexbox CSS + mediaQuery. This module provides Angular
-developers with component layout features using a custom Layout API, mediaQuery observables, and injected DOM
-flexbox-2016 CSS stylings.
+Bei flex-layout handelt es sich um ein Angular-Plugin, welches die Flexbox
+CSS\footnote{https://www.w3schools.com/css/css3\_flexbox.asp}-Library implementiert.
 
-The Flex Layout engine intelligently automates the process of applying appropriate Flexbox CSS to browser view
-hierarchies. This automation also addresses many of the complexities and workarounds encountered with the traditional,
-manual, CSS-only application of box CSS (mehr auf der GitHub-Pages~\cite{online_grundlagen_flexlayout}).
+Es hilft dabei, Webseiten auf verschiedene Browsergegebenheiten anzupassen. Dazu zählt unter anderem die Größe des
+Displays oder die verwendete Version. Das Plugin hilft bei der Erstelltung von responsiven Webseiten (mehr auf der
+GitHub-Page~\cite{online_grundlagen_flexlayout}).
 
 \section{REST}
 REST-API steht für Representational State Transfer - Application Programming Interface. Diese Interfaces machen den
