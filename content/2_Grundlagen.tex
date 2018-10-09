@@ -25,19 +25,35 @@ Das zugehörige Display kann Produktionsstatistiken, Trendkurven und das aktuell
 eigene Konfigurationen können aber auch weitere Informationen auf dem Display dargestellt werden. Auf der
 Herstellerseite\cite{online_grundlagen_boschkwe} sind weitere Informationen zur aktuellen KWE-Serie einzusehen.
 
-Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle KWE 3000 mit
+Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle KWE 4000 mit
 ihrem grundsätzlichen Aufbau und dem farblichen Display.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.3]{images/kapitel_2/bosch_kwe.jpg}
-    \caption{Abbildung einer Bosch KWE 3000}
+    \includegraphics[scale=0.4]{images/kapitel_2/bosch_kwe.jpg}
+    \caption{Abbildung einer Bosch KWE 4000}
     \label{fig:grundlagen_boschkwe}
 \end{figure}
 
 \section{Bosch Siegelmaschine}
-Was ist das? Vertikale Form-, Füll- und Schließmaschinen (VFFS)
-\colorbox{yellow}{Hier fehlt was}
+Die Vertikale Form-, Füll- und Schließmaschinen (kurz VFFS) ist für die Verpackung von  frei fließenden und losen
+Lebensmittel, wie zum Beispiel Pulver, Proteine, Hähnchen sowie frische und gefrorene Produkte geeignet.
+
+Dabei fallen die zu befüllenden Produkte vertikal aus dem oberen Bereich in den unteren Teil der Maschine. Dort baut
+die Siegelmaschine den Behälter aus Folie auf und füllt den Behälter.
+
+Anschließend wird der Behälter durch zwei Siegelbacken verschlossen und durch ein Messer vom Rest des Folienbandes
+getrennt. Der fertig befüllte Behälter fährt dann aus der Maschine heraus und kann weiterverarbeitet werden.
+
+Die Abbildung~\ref{fig:grundlagen_boschvffs} auf Seite~\pageref{fig:grundlagen_boschvffs} zeigt eine Vertikale Form-,
+Füll- und Schließmaschine mit ihrem gläsernen Befüllungsmodul.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.2]{images/kapitel_2/bosch_vffs.jpg}
+    \caption{Abbildung einer Bosch VFFS}
+    \label{fig:grundlagen_boschvffs}
+\end{figure}
 
 \section{Künstliche Intelligenz}
 Was ist künstliche Intelligenz?
@@ -50,7 +66,7 @@ Darstellung frei nach CodesOfInterest\footnote{https://codesofinterest.com/2016/
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.6]{images/kapitel_2/kuenstliche_intelligenz.pdf}
+    \includegraphics[scale=0.55]{images/kapitel_2/kuenstliche_intelligenz.pdf}
     \caption{Unterscheidung der Künstlichen Intelligenz}
     \label{fig:grundlagen_artificialintelligence}
 \end{figure}
@@ -294,12 +310,12 @@ ermöglicht die Library vereinfacht Anfragen mittels den HTTP-Typen \textit{GET}
 \textit{UPDATE} zu stellen (mehr auf der betreffenden GitHub-Seite~\cite{online_grundlagen_restangular}).
 
 \subsection{Observable}
-Ein Observable ist das zentrale Konzept in Reactive Programming mit ReactiveX\footnote{http://reactivex.io}. Ein
-Observable repräsentiert eine Menge von Daten, die in einer noch nicht bekannten Menge zu einem noch nicht bekannten
-Zeitpunkt bereitstehen werden.
+Ein Observable ist das zentrale Konzept in Reactive Programming mit ReactiveX\footnote{http://reactivex.io}. Es
+repräsentiert eine Menge von Daten, die in einer noch nicht bekannten Menge zu einem noch nicht bekannten Zeitpunkt
+bereitstehen werden.
 
-Ein Observer abonniert ein Observable und damit die später ankommenden Daten. Ein Obserable kann gefiltert, gruppiert
-oder transformiert werden. Auch Berechnungen sind dabei möglich (mehr unter~\cite{book_grundlagen_observable}).
+Ein Observer abonniert ein Observable und damit die später ankommenden Daten. Dies kann gefiltert, gruppiert oder
+transformiert werden. Auch Berechnungen sind dabei möglich (mehr unter~\cite{book_grundlagen_observable}).
 
 \subsection{Promise}
 Bei Promises handelt es sich um eine Weiterentwicklung von Callbacks. Dabei helfen sie die Arbeit mit asynchronem Code
@@ -317,64 +333,72 @@ Es hilft dabei, Webseiten auf verschiedene Browsergegebenheiten anzupassen. Dazu
 Displays oder die verwendete Version. Das Plugin hilft bei der Erstelltung von responsiven Webseiten (mehr auf der
 GitHub-Page~\cite{online_grundlagen_flexlayout}).
 
-%% TODO Hier gehts weiter
-
 \section{REST}
-REST-API steht für Representational State Transfer - Application Programming Interface. Diese Interfaces machen den
-Austausch von Informationen uüber unterschiedliche Systeme möglich. Im Zeitalter verteilter Systeme und Cloud-Computing
-trifft man oft auf unterschiedliche Systeme, welche den Einsatz von REST-API notwendig machen.
+Representational State Transfer - Application Programming Interface (kurz REST-API) macht den Austausch von Informationen
+über unterschiedliche Systeme möglich. Im Zeitalter verteilter Systeme und Cloud-Computing ist der Einsatz von REST-APIs
+zur Kommunikation zwischen den Systemen notwendig.
 
-Man spricht bei REST-API auch von der Maschine-Maschine-Kommunikation, da die verschiedenen Systeme und Geräte
-zusammengebracht werden und gewissermaßen die gleiche Sprache sprechen.
+Auch spricht man bei REST-APIs von Maschine-Maschine-Kommunikation, da die verschiedenen Systeme so eine gemeinsame
+Sprache sprechen können.
 
-Mit REST-API ist es möglich geworden, Informationen und Aufgaben auf verschiedene Systeme zu verteilen und diese mit der
-Hilfe von HTTP-Requests anzufordern. Jeder HTTP-Request setzt sich aus dem Endpoint und den entsprechenden Parametern
-zusammen~\cite{online_grundlagen_rest}.
+Mit der Hilfe von REST-APIs ist es möglich geworden, Informationen und Aufgaben auf verschiedene Systeme zu verteilen
+(Microservices). Mit HTTP-Requests können Informationen dann verteilt werden. Jeder HTTP-Request setzt sich aus dem
+Endpoint und den entsprechenden Parametern zusammen~\cite{online_grundlagen_rest}.
 
 \section{Cloud Foundry}
-Cloud Foundry ist eine Open Source Platform as a Service (PaaS) Lösung. Mit Hilfe von Cloud Foundry können Entwickler
-ihre Anwendungen bauen, hochladen und ausführen. Ein großer Vorteil von Cloud Foundry ist die nahezu grenzenlose
-Skalierbarkeit~\cite{book_grundlagen_cloudfoundry}.
+Cloud Foundry ist eine Open Source Platform as a Service (PaaS) Lösung. Damit ist es für Entwickler möglich ihre
+Anwendung zu bauen, hochzuladen und auszuführen. Die nahezu grenzenlose Skalierbarkeit ist einer der größten Vorteile
+von Cloud Foundry~\cite{book_grundlagen_cloudfoundry}.
 
-Die Skalierbarkeit wird durch die Container-Architektur erreicht. Jeder Container beinhaltet eine eigene Anwendungsinstanz.
-Dabei wird sowohl eine horizontale als auch eine vertikale Skalierung unterstützt.
+Diese Skalierbarkeit wird durch die Container-Architektur erreicht. Jeder Container beinhaltet eine eigene
+Anwendungsinstanz. Cloud Foundry unterstützt sowohl eine horizontale als auch eine vertikale Skalierung.
 
-Bei der horizontalen Skalierung werden zusätzliche Container gestartet oder gestoppt und ein Load Balancer vor die
-Container geschaltet. Bei der vertikalen Skalierung werden jeder Instanz individuell z.B. mehr oder weniger Arbeitsspeicher
-zugeteilt.
+Bei der horizontalen Skalierung werden zusätzliche Container gestartet oder gestoppt. Ein Load Balancer kümemrt sich um
+die Verteiltung des Traffics. Bei der vertikalen Skalierung werden jeder Instanz individuell z.B. mehr oder weniger
+Arbeitsspeicher zugeteilt.
 
-Jede Cloud Foundry Instanz besitzt eine IPV4-Adresse wodurch es mittels A-Record (Zuordnung eines DNS-Namens zu IP-Adresse)
-möglich ist, eine eigene Domain mit der Anwendung zu verknüpfen.
+Bei der IBM Cloud erhält jede Cloud Foundry Instanz eine eigene IPV4-Adresse wodurch es mittels A-Record (Zuordnung eines
+DNS-Namens zu IP-Adresse) möglich ist, eine eigene Domain mit der Anwendung zu verknüpfen.
 
 \section{Version Control (Git)}
-Git ist ein verteiltes Versionierungssystem welches frei als Open-Source zur Verfügung gestellt wird. Einige bekannte
-Namen wie der Linux-Kernel, Eclipse oder Android verwenden Git für die Verwaltung ihrer Projekte.[1] Ähnlich zu
-Subversion (SVN) wird Git für die Versionskontrolle (stetige Protokollierung von Änderungen) von Dateien eingesetzt. Im
-Gegensatz zu SVN gibt es jedoch einige grundlegende Unterschiede, andere Begriffe und Schemata können aber auch direkt
-umgelegt werden (mehr unter~\cite{book_grundlagen_git}).
+Git ist ein verteiltes Versionierungssystem, dass frei als Open-Source-Software zur Verfügung steht. Es wird bei der
+Softwareentwicklung für die Versionskontrolle (stetige Protokollierung von Änderungen) von Dateien eingesetzt. (mehr
+unter~\cite{book_grundlagen_git}).
 
 \section{Node Package Manager (npm)}
-Unter NPM (Node Package Manager) versteht man ein Paketmanager für node.js. Mit NPM lassen sich unter anderem
-Software-Pakete für die Entwicklung von Webprojekten verwalten und steuern. Mehrere tausend OpenSource-Pakete lassen sich
-unter dem Namen npm Registry bzw. npm Open Source finden und verwenden (mehr unter~\cite{book_grundlagen_npm}).
+Der Node Package Manager (kurz npm) ist ein Paketmanager für Node.js. Mit diesem lassen sich unter anderem
+Software-Pakete für die Entwicklung von Projekten verwalten und steuern.
+
+Es existiert eine Sammlung von Paketen (Repository) auf der offiziellen Webseite\footnote{https://www.npmjs.com}. Über
+den entsprechenden Namen lassen sich die Pakete finden und im eigenen Projekt verwenden
+(mehr unter~\cite{book_grundlagen_npm}).
 
 \section{Mockups}
-Ein Mockup kommt während der Planung eines Webauftritts zum Einsatz. Mit der Hilfe eines Mockups kannst du deine neue
-Website sehr schnell und einfach visualisieren und erhälst einen ersten Eindruck von der Gestaltung und den
-Funktionalitäten deiner Website. Dazu brauchst du nicht eine Zeile Quellcode schreiben, da Mockups entweder auf Papier
-entworfen oder über sogenannte Mockup-Tools am PC realisiert werden.
+Ein Mockup findet seinen Einsatz bei der Planung von Webauftritten oder sonstigen Softwareprojekten welche eine grafische
+Ausgabe besitzen. Mit diesen ist es möglich einen ersten Eindruck von der Gestaltung und den Funktionalitäten der
+Anwendung zu bekommen. Ein großer Vorteil bei der Entwicklung von Mockups ist die Tatsache, dass kein Quellcode dafür
+notwendig ist.
 
-Bei einem Mockup tritt das Design der Website in den Hintergrund. Hier geht es einzig und alleine darum, die
-verschiedenen Elemente deiner Website anzuordnen und somit einen optimalen Userflow zu realisieren. Im Fokus steht
-dabei die Planung der Interaktionsmöglichkeiten und Funktionen deiner Website (mehr unter~\cite{book_grundlagen_mockups}).
+Mockups können auf dem Papier oder auch Computergestützt mit zahlreichen Programmen erstellt werden. Dazu zählt zum
+Beispiel Balsamiq Mockups\footnote{https://balsamiq.com}.
+
+Bei einem Mockup geht es darum, die verschiedenen Elemente einer Anwendung anzuordnen und einen optimalen Userflow
+zu relaisieren. Das Design und etwaige Farben treten in den Hintergrund (mehr unter~\cite{book_grundlagen_mockups}).
 
 \section{TypeScript}
-TypeScript (kurz: TS) ist ein Superset von JavaScript. Das bedeutet, TS ist ebenfalls eine Implementierung von ECMAScript,
-erweitert aber JavaScript mit zusätzlichen Features. Jeder JavaScript-Code funktioniert auch in TypeScript, aber nicht
-jeder TypeScript-Code funktioniert auch in JavaScript.
+Bei TypeScript (kurz TS) handelt es sich um ein Superset von JavaScript. Dies bedeutet, dass TypeScript ebenfalls eine
+Implementierung von ECMAScript\footnote{https://en.wikipedia.org/wiki/ECMAScript} ist, JavaScript jedoch um zusätzliche
+Features erweitert.
 
-Wie der Name schon verrät, erweitert TypeScript JavaScript um Typings (und Annotations). Das heißt die Programmiersprache
-ist Typsicher. Wie z.B. auch Java (mehr unter~\cite{book_grundlagen_typescript}).
+Jeder geschriebene JavaScript-Code funktioniert auch in TypeScript. Allerdings funktioniert nicht jeder TypeScript-Code
+in JavaScript.
+
+TypeScript erweitert JavaScript um mehrere Typings (und Annotations). Dies bedeutet, dass TypeScript, genau wie zum
+Beispiel Java, Typensicher ist (mehr dazu unter~\cite{book_grundlagen_typescript}).
+
+Im Listing~\ref{Unterschied zwischen JavaScript und TypeScript} auf
+Seite~\pageref{Unterschied zwischen JavaScript und TypeScript} ist ein originaler JavaScript-Code in Zeile 2 zu sehen.
+In der Zeile 5 steht der entsprechende TypeScript-Code. Hier ist die Typensicherheit gut zu erkennen.
 
 \begin{lstlisting}[language=JavaScript, caption=Unterschied zwischen JavaScript und TypeScript, label=Unterschied zwischen JavaScript und TypeScript]
     // JavaScript
@@ -385,9 +409,9 @@ ist Typsicher. Wie z.B. auch Java (mehr unter~\cite{book_grundlagen_typescript})
 \end{lstlisting}
 
 \section{WebView}
-Bei WebView handelt es sich um ein Android- und iOS-Layout, das Webseiten darstellen kann. Über Schnitstellen werden
-Informationen wie Webseite, URL und Größe üergeben. Das Laden, das Anzeigen und die Interaktion mit der Webseite üernimmt
-das Layout selbstständig.
+Ein WebView ist ein Android- und iOS-Layout, welches Webseiten darstellen kann. Über diverse Schnittstellen werden dem
+Layout Informationen wie Domain, Titel oder Größe übergeben. Das Layout kümmert sich anschließend selbstständig um das
+Laden der entsprechenden Webseite und darstellen auf dem Bildschirm.
 
-Das Layout steht sowohl unter Android als auch iOS in den frühesten Versionen zur Verfügung (Weitere Informationen
+Das Layout steht sowohl unter Android als auch unter iOS seit den frühesten Versionen zur Verfügung (Weitere Informationen
 unter~\cite{online_grundlagen_webview}).
