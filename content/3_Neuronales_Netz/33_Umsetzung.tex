@@ -75,18 +75,16 @@ folgenden Kapitel beziehen sich auf diesen Datensatz.
 Da die Daten zusammengestellt sind, kann man sie in einem weiteren Schritt in das Watson Studio importieren um das
 neuronale Netz zu trainieren.
 
-%% TODO Hier gehts weiter
-
 \subsubsection{Daten importieren}
 Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in das Watson Studio importieren. Dazu existiert
-im Watson Studio Dashboard ein Menüpunkt mit dem Namen \textit{Assets}.
+im Watson Studio Dashboard ein Menüpunkt mit dem Namen \textit{Assets} am oberen Menüband.
 
-Dieser beinhaltet alle hochgeladenen, generierten oder gesamelten Daten, Modelle, Dashboards, Notebooks oder Flows. Die
+Dieser beinhaltet alle hochgeladenen, generierten oder gesammelten Daten, Modelle, Dashboards, Notebooks oder Flows. Die
 oberste Kategorie, \textit{Data Assets}, listet alle Trainingsdaten in Form von Excel-Tabellen für die Weiterverarbeitung
-auf.
+auf. In diese Kategorie muss man die zuvor erstellte Tabelle hochladen.
 
-Über den Menüpunkt \texttt{New data asset} wird eine neue Datei hochgeladen. Ein Klick auf diesen Menüpunkt öffnet einen
-seitlichen Arbeitsbereich. Der Nutzer kann über den Menüpunkt \texttt{Browse} die Dateiauswahl des Betriebssystems
+Über den Menüpunkt \texttt{New data asset} kann man die erstellte Datei hochladen. Ein Klick auf diesen Menüpunkt öffnet
+einen seitlichen Arbeitsbereich. Der Nutzer kann über den Menüpunkt \texttt{Browse} die Dateiauswahl des Betriebssystems
 öffnen und seine Datei auswählen. Bei der Auswahl handelt es sich um die im vorangegangenen Kapitel erstellte Datei mit
 Trainingsdaten.
 
@@ -98,33 +96,36 @@ Uploadvorgang erfolgreich abgeschlossen und die Datei kann im nächsten Schritt 
 
 \subsubsection{Daten umwandeln}
 Da die erstellte Datei mit den Trainigsdaten nun in Watson Studio bereitsteht, ist die Umwandlung in eine CSV-Datei
-möglich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz dienen
-kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
+möglich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz
+dienen kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
 
 In Watson Studio liegt mit den \textit{Data flows} ein einfaches Werkzeug bereit, um Dateien in das benötigte CSV-Format
-zu überführen. Dazu wird in der Kategorie Data flows über \texttt{New data flow} ein neuer Flow angelegt.
+zu überführen. Dazu kann der Nutzer in der Kategorie Data Flows über \texttt{New data flow} ein neuer Flow anlegen.
 
 Im folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss im linken Bereich die umzuwandelnde Datei
-auswählen. Dabei handelt es sich um die hochgeladene Datei. Über die Schaltfläche \texttt{Add} wird die Auswahl dann
-übernommen.
+auswählen. Dabei handelt es sich um die hochgeladene Datei. Über die Schaltfläche \texttt{Add} kann man die Auswahl
+übernehmen.
 
-Nun ist der Inhalt der Datei sichtbar. Bei dieser Ansicht ist darauf zu achten, dass die Interpretation der Werte der
-einzelnen Spalten als Dezimal-Zahl erfolgt. Sollte diese Einstellung nicht voreingestellt sein, muss dieses manuell
-abgeändert werden.
+Nun ist der Inhalt der Datei im mittleren Bereich des Displays sichtbar. Bei dieser Ansicht ist darauf zu achten, dass
+die Interpretation der Werte der einzelnen Spalten als Dezimal-Zahl erfolgt. Diese Information steht unterhalb der
+einzelnen Spaltenüberschriften. Sollte diese Einstellung nicht voreingestellt sein, muss man diese manuell abändern.
 
-Dazu klickt man in der entsprechenden Spalte oben auf die drei Punkte (Einstellungen) und selektiert den Eintrag
-\texttt{Convert Column}. Im Untermenü muss man dann den Wert \texttt{Decimal} bestätigen.
+Dazu klickt man in der entsprechenden Spalte oben, rechts neben dem Spaltenname, auf die drei Punkte (Einstellungen) und
+selektiert den Eintrag \texttt{Convert Column}. Im Untermenü muss man dann den Wert \texttt{Decimal} bestätigen. Nun
+werden die Zahlen in der Spalte auch korrekt als Dezimal-Zahl interpretiert.
 
 Da es sich bei allen Zahlen nun um Dezimal-Zahlen handelt, kann man über die Schaltfläche \texttt{Run data flow} die
 Konvertierung starten. Bevor die Konvertierung jedoch startet, zeigt das System eine Übersicht über die einzelnen
 Schritte, die dazu benötigt werden, an.
 
-Hier werden zum Beispiel etwaige Konvertierungen zu Dezimal-Zahlen angezeigt oder sonstige Operationen dargestellt. Der
-Nutzer kann die Seite bestätigen und der Flow startet.
+Hier werden zum Beispiel etwaige Konvertierungen zu Dezimal-Zahlen angezeigt oder sonstige Operationen dargestellt. Da
+es sich hierbei lediglich um Informationen handelt, kann der Nutzer die Seite bestätigen und der Flow startet.
 
-Nach wenigen Minuten sollte im Watson Studio im Bereich Assets, in der Kategorie Data assets, die neue Datei zur
-Verfügung stehen. Dabei trägt die Datei die Dateiendung \textit{.csv}. Die Konvertierung der Datei ist somit abgeschlossen
-und sie kann für das neuronale Netz verwendet werden.
+Nach wenigen Minuten sollte im Watson Studio im Bereich Assets, in der Kategorie Data Assets, die neue Datei zur
+Verfügung stehen. Dabei trägt die Datei die Dateiendung \textit{.csv}. Die Konvertierung der Datei ist somit
+abgeschlossen und man kann sie für das neuronale Netz verwenden.
+
+%% TODO Hier gehts weiter
 
 \subsubsection{Modeler Flow}
 \label{subsub:modeler_flow}
