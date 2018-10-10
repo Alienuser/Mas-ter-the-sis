@@ -32,15 +32,6 @@ Eventuell Plakat darstellen
 
 \colorbox{yellow}{Hier fehlt was}
 
-Wie in dem Comic von Dilbert\footnote{http://dilbert.com/strip/2016-06-20}.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{images/kapitel_1/dilbert_ai.png}
-    \caption{Wie Projekte nicht ablaufen sollten}
-    \label{fig:dilbert_ai}
-\end{figure}
-
 \newpage
 
 %% TODO noch schreiben
@@ -55,30 +46,30 @@ English Version of the motivation.
 Das folgende Kapitel soll eine kleine Übersicht über die Themen geben, welche in der Arbeit behandelt werden. Für die
 leichtere Umsetzung ist die Arbeit in drei größere Themenbereiche unterteilt.
 
-Der erste Teil der Arbeit befasst sich mit dem Aufbau eines neuronalen Netzes, welches in der Cloud trainiert werden
-soll. Ein Nutzer soll anschließend die Möglichkeit haben, das trainierte Netz aus der Cloud heraus zu nutzen oder es
-lokal auf einem eigenen Rechner einzurichten.
+Der erste Teil der Arbeit befasst sich mit dem Aufbau eines neuronalen Netzes, welches in der Cloud trainiert wird. Der
+Nutzer hat anschließend die Möglichkeit, das trainierte Netz aus der Cloud heraus zu nutzen oder es lokal auf einem
+eigenen Rechner einzurichten.
 
-Dabei sollen die Vorteile des Cloud Computings genutzt werden, um das Training eines neuronalen Netzes erheblich zu
+Dabei sollen die Vorteile des Cloud Computings genutzt werden, um das Training des neuronalen Netzes erheblich zu
 beschleunigen. DevOps-Tools sollen dabei helfen, die Bereitstellung des Netzes und erforderliche Schnittstellen zu
-vereinfachen. Cloud-Services erleichtern die Entwicklung indem sie das schreiben von Quellcode eindämmen.
+vereinfachen. Cloud-Services erleichtern die Entwicklung, indem sie das Schreiben von Quellcode verringern.
 
-Im zweiten Teil der Arbeit wird das bereitgestellte neuronale Netz über ein Frontend angesteuert um Daten zu übergeben
-und die resultierenden Vorhersagen zu veranschaulichen. Ebenfalls sollen Smartphone-Apps für Android und iOS entstehen,
-um die Nutzung der Anwendung im Bereich der Maschinenauslieferung zu vereinfachen.
+Im zweiten Teil der Arbeit wird das bereitgestellte neuronale Netz über ein Frontend angesteuert um Parameter zu
+übergeben und die resultierenden Vorhersagen zu veranschaulichen. Ebenfalls sollen Smartphone-Apps für Android und iOS
+entstehen, um die Nutzung der Anwendung im Bereich der Maschinenauslieferung zu vereinfachen.
 
 Diverse Tests sollen die Funktionsweise des erstellten neuronalen Netzes, der Schnittstellen und des Frontends
 sowie den Smartphone-Apps sicherstellen.
 
 Der letzte Teil widmet sich der Adaptierbarkeit auf weitere Systeme, Maschinen und Netze der aufgebauten Architektur.
-Dort werden weitere Szenarios aufgezeigt, die für das automatisieren von Maschinenparametern entscheidend sein können.
-Es soll eine Anleitung entstehen, die das Einbauen der neuen und zukünftigen Szenarios vereinfacht.
+Dort werden weitere Szenarien aufgezeigt, die für das Automatisieren von Maschinenparametern entscheidend sein können.
+Es soll eine Anleitung entstehen, die das Einbauen der neuen und auch zukünftigen Szenarien vereinfacht.
 
 Zum Schluss folgt ein Ausblick mit Anregungen und Erweiterungen sowohl für die Weiterentwicklung des neuronalen Netzes
 als auch für das Web-Frontend und die Smartphone-Apps. Auch sollen weitere Cloud-Services aufgezeigt werden, welche
-zusätzliche Möglichkeiten bieten.
+zusätzliche Möglichkeiten zur Erweiterung bieten.
 
-Ziel ist es der Bosch Packaging GmbH dabei zu helfen, Kundenaufträge, die das Einstellen von Maschinen oder
+Ziel ist es, der Bosch Packaging GmbH dabei zu helfen, Kundenaufträge, die das Einstellen von Maschinen oder
 Maschinenkomponenten beinhalten, zu beschleunigen und so die Wartezeit für den Kunden zu minimieren. Auch soll so
 Fehlern vorgebeut werden und eine Hilfestellung für neue Maschineneinsteller entstehen.
 
@@ -87,20 +78,20 @@ Fehlern vorgebeut werden und eine Hilfestellung für neue Maschineneinsteller en
 \section{Aufbau der Arbeit}
 \label{sec:aufbauDerArbeit}
 Dieses Kapitel dient zur schnelleren Orientierung innerhalb der Arbeit und zeigt auf, welche Themen die jeweiligen
-Kapiteln behandeln.
+Kapitel behandeln.
 
 \begin{description}
 
     \item[Kapitel 2 (Grundlagen)]\hfill \\
     Dieses Kapitel erklärt die Grundlagen. Es wird zum Beispiel der Unterschied zwischen den verschiedenen Cloudanbieter
     im Bereich Machine Learning erläutert, um was es sich bei TensorFlow.js handelt und was ein WebViewer ist. Außerdem
-    wird die genutzten Bosch-Maschinen kurz vorgestellt.
+    werden die genutzten Bosch-Maschinen kurz vorgestellt.
 
     \item[Kapitel 3 (Neuronales Netz)]\hfill \\
-    Das dritte Kapitel erläutert die Entwicklung des Machine Learning Algorithmus in der Cloud. Dabei werden verschiedene
-    Optionen für die einzelnen Teilaufgaben analysiert und im Anschluss die genutzten Programme installiert, eingerichtet
-    und erläutert. Das trainierte Model wird abschließend in TensorFlow.js importiert und über einen Wrapper in einem
-    Container zugänglich gemacht.
+    Das dritte Kapitel erläutert die Entwicklung des Machine Learning Algorithmuses in der Cloud. Dabei werden
+    verschiedene Optionen für die einzelnen Teilaufgaben analysiert und im Anschluss die genutzten Programme installiert,
+    eingerichtet und erläutert. Das trainierte Model wird abschließend in TensorFlow.js importiert und über einen Wrapper
+    in einem Container zugänglich gemacht. Ein API Management soll für die Komunikation sorgen.
 
     \item[Kapitel 4 (Client)]\hfill \\
     Das vierte Kapitel setzt das in der Cloud trainierte Model voraus und implementiert dazu ein prototypisches Frontend.
@@ -109,11 +100,12 @@ Kapiteln behandeln.
 
     \item[Kapitel 5 (Adaptierbarkeit)]\hfill \\
     Hier werden Themen angesprochen, die für die weitere Verwendung oder Erweiterung des Machine Learning Algorithmus
-    oder des Frontends, entscheidend sind. Unter anderem wird erläutert, welche Schritte notwendig sind, um neue Maschinen
-    oder Komponenten in die Architektur einzubauen oder wie optimale Daten zusammengestellt werden müssen.
+    oder des Frontends, entscheidend sind. Unter anderem wird erläutert, welche Schritte notwendig sind, um neue
+    Maschinen oder Komponenten in die Architektur einzubauen oder wie optimale Daten zusammengestellt werden müssen. Die
+    Adaptierbarkeit wird über mehreren Szenarien veranschaulicht.
 
     \item[Kapitel 6 (Ausblick)]\hfill \\
-    Wie sowohl der Machine Learning Algorithmus als auch das Frontend erweitert werden kann, zeigt dieses Kapitel auf.
+    Wie sowohl das neuronale Netz, das Model oder auch das Frontend erweitert werden kann, zeigt dieses Kapitel auf.
     Dabei können neue Cloud-Services hinzugefügt oder auch weitere Funktionen der schon eingesetzten Services verwendet
     werden.
 
