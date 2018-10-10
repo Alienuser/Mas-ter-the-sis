@@ -12,17 +12,15 @@ Softwareentwicklung und ein Framework zum Entwickeln von Webseiten.
 
 \section{Bosch KWE Waage}
 Die Bosch KWE Serie ist ein modulares Kontrollwaagensystem, welches speziell für den Einsatz in der pharmazeutischen
-Produktion entwickelt wurde. Allerdings findet es auch immer häufiger Verwendung im Bereich der Nahrungsmittel und
+Produktion entwickelt wurde. Allerdings findet es immer häufiger Verwendung im Bereich der Nahrungsmittel und
 Süßigkeiten.
 
-Um das Gewicht eines Produktes zu ermitteln, fahren die Produkte mit einem Förderband waagerecht über die Wiegeeinheit
-der KWE.
+Um das Gewicht eines Produktes zu ermitteln, fahren die Produkte auf einem Förderband, waagerecht über die Wiegeeinheit
+des Kontrollwaagensystems. Die KWE 4000 kann beispielsweise bei einer maximalen Leistung von bis zu 450 Pakete in der
+Minute eine Genauigkeit von 50mg erreichen.
 
-Die KWE 4000 kann beispielsweise bei einer maximalen Leistung von bis zu 450 Pakete in der Minute eine Genauigkeit von
-50mg erreichen.
-
-Das zugehörige Display kann Produktionsstatistiken, Trendkurven und das aktuelle Gewicht des Produktes anzeigen. Durch
-eigene Konfigurationen können aber auch weitere Informationen auf dem Display dargestellt werden. Auf der
+Das zugehörige Display zeigt Produktionsstatistiken, Trendkurven und das aktuelle Gewicht des Produktes an. Durch eigene
+Konfigurationen können allerdings auch weitere Informationen auf dem Display dargestellt werden. Auf der
 Herstellerseite\cite{online_grundlagen_boschkwe} sind weitere Informationen zur aktuellen KWE-Serie einzusehen.
 
 Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle KWE 4000 mit
@@ -36,17 +34,22 @@ ihrem grundsätzlichen Aufbau und dem farblichen Display.
 \end{figure}
 
 \section{Bosch Siegelmaschine}
-Die Vertikale Form-, Füll- und Schließmaschinen (kurz VFFS) ist für die Verpackung von  frei fließenden und losen
+Die Vertikale Form-, Füll- und Schließmaschine (kurz VFFS) ist für die Verpackung von  frei fließenden und losen
 Lebensmittel, wie zum Beispiel Pulver, Proteine, Hähnchen sowie frische und gefrorene Produkte geeignet.
 
 Dabei fallen die zu befüllenden Produkte vertikal aus dem oberen Bereich in den unteren Teil der Maschine. Dort baut
-die Siegelmaschine den Behälter aus Folie auf und füllt den Behälter.
+die Siegelmaschine den Behälter aus Folie zusammen, indem sie einen Schlauchbeutel formt und diesen versiegelt. Die
+so geformten Beutel werden anschließend mit dem Produkt befüllt.
 
-Anschließend wird der Behälter durch zwei Siegelbacken verschlossen und durch ein Messer vom Rest des Folienbandes
-getrennt. Der fertig befüllte Behälter fährt dann aus der Maschine heraus und kann weiterverarbeitet werden.
+Der Behälter wird dann durch zwei Siegelbacken am oberen Ende verschlossen und ein Messer trennt ihn vom Rest des
+Folienbandes ab. Der fertig befüllte Behälter fährt dann über ein Förderband aus der Maschine heraus und kann
+weiterverarbeitet werden.
+
+Das farbige Display dient zur Konfiguration der Maschine und kann die aktuelle Tätigkeit visualisieren. So können über
+das Display alle Funktionen überwacht werden.
 
 Die Abbildung~\ref{fig:grundlagen_boschvffs} auf Seite~\pageref{fig:grundlagen_boschvffs} zeigt eine Vertikale Form-,
-Füll- und Schließmaschine mit ihrem gläsernen Befüllungsmodul.
+Füll- und Schließmaschine mit ihrem gläsernen Befüllungsmodul und dem farbigen Display.
 
 \begin{figure}[h]
     \centering
@@ -61,8 +64,9 @@ Künstliche Intelligenz (kurz KI) beziehungsweise Artificial Intelligence (kurz 
 Verwendung der Informationen), die Schlussfolgerung (die Verwendung der Regeln, um ungefähre oder endgültige
 Schlussfolgerungen zu ziehen) und die Selbstkorrektur.
 
-In naher Zukunft werden Maschinen noch nicht mit menschlicher Intelligenz mithalten können, allerdings wird sich KI auf
-viele Arten auf den Alltag auswirken (nach~\cite{article_grundlagen_ki}).
+Wie der KI Bundesverband e.V mitteilt, werden Maschinen in naher Zukunft noch nicht mit menschlicher Intelligenz
+mithalten können. Allerdings wird sich KI auf viele Arten auf den Alltag auswirken, so der
+Verein~\cite{article_grundlagen_ki}.
 
 Die Künstliche Intelligenz kann auf verschiedene Arten kategorisiert werden. Folgend zwei stellvertretende Beispiele:
 
@@ -84,7 +88,7 @@ Darstellung frei nach CodesOfInterest\footnote{https://codesofinterest.com/2016/
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.55]{images/kapitel_2/kuenstliche_intelligenz.pdf}
-    \caption{Unterscheidung der Künstlichen Intelligenz}
+    \caption{Untergruppen der Künstlichen Intelligenz}
     \label{fig:grundlagen_artificialintelligence}
 \end{figure}
 
@@ -210,7 +214,7 @@ Die erstellten Modelle können als Webdiest zur Verfügung gestellt werden. Ande
 diesen Webdienst mittels HTTP-Anfragen ansprechen und nutzen (siehe dazu~\cite{article_grundlagen_azure_studio}).
 
 \subsection{Amazon Web Services}
-AWS ist eine Tochterfirma von Amazon.com. und bietet eine umfangreiche Plattform für Cloud Computing Services. Genau
+AWS ist eine Tochterfirma von Amazon.com und bietet eine umfangreiche Plattform für Cloud-Computing-Services. Genau
 wie in Microsoft Azure können dort Services für Infrastucture as a Service (IaaS), Platform as a Service (PaaS) und
 Software as a Service (SaaS) genutzt werden.
 
@@ -222,17 +226,14 @@ Ein bekanntes Beispiel für SaaS ist Google Docs, das eine standortunabhängige 
 Dokumenten ermöglicht.
 
 Public Clouds sind für Unternehmen nützlich, um beispielsweise schnell und einfach individuelle Anwendungen entwicklen
-zu können ohne notwendige Produktlizenzen anderswoe erwerben zu müssen.
+zu können ohne notwendige Produktlizenzen anderswo erwerben zu müssen.
 
 AWS stellt Entwicklern eine maßgeschneiderte und zuverlässige IT-Infrastruktur auf Abruf zur Verfügung (= Self Service)
 (mehr über AWS unter~\cite{online_grundlagen_aws}).
 
 \subsubsection{Amazon Machine Learning}
 Amazon Machine Learning ist ein Service innerhalb von AWS. Es bietet Visualisierungstools und Assistenten die den Aufbau
-von Maschin Learning-Modellen (ML) unterstützen, ohne dabei komplexe Algorithmen oder Technoligien vorauszusetzen.
-
-Nach dem Aufbau und dem training der Modelle können diese über eine REST-API anderen Anwendungen zugänglich gemacht
-werden, ohne sich dabei selbst um Infrastrukturen kümmern zu müssen.
+von Machine Learning-Modellen (ML) unterstützen, ohne dabei komplexe Algorithmen oder Technoligien vorauszusetzen.
 
 Der Service nutzt leistungsstarke Algorithmen um ML-Modelle zu erstellen, indem er in den vorhandenen Daten automatisch
 und selbstständig nach Mustern sucht. Anschließend werden diese Modelle dazu genutzt, um neue Daten zu verarbeiten und
@@ -240,6 +241,9 @@ Prognosen für eigene Anwendung zu generieren.
 
 Der Service ist hochgradig Skalierbar und kann Milliarden Prognosen pro Tag generieren um diese in Echtzeit mit der
 eigenen Anwendung zu teilen (mehr dazu in der Dokumentation~\cite{online_grundlagen_aws_learning}).
+
+Nach dem Aufbau und dem Training der Modelle können diese über eine REST-API anderen Anwendungen zugänglich gemacht
+werden, ohne sich dabei selbst um Infrastrukturen kümmern zu müssen.
 
 \subsection{IBM Cloud (ehemals Bluemix)}
 Die IBM Cloud (ehemals Bluemix genannt) ist die von IBM entwickelte Cloud Platform. In dieser sind mehr als 160 Services
@@ -256,7 +260,8 @@ Softlayer Infrastruktur.
 Sie unterstützt zahlreiche Programmiersprachen, einschließlich Java, Node.js, Go, PHP, Python, Ruby Sinatra, Ruby on
 Rails und kann auch andere Sprachen wie Scala durch den Einsatz von Buildpacks unterstützen~\cite{book_grundlagen_bluemix}.
 
-Weitere Informationen üer Bluemix finden sich auf der Webseite\footnote{https://bluemix.net} und in der Dokumentation.
+Weitere Informationen über Bluemix finden sich auf der Webseite\footnote{https://bluemix.net} und in der
+Dokumentation\footnote{https://eu-gb.dataplatform.ibm.com/docs}.
 
 \subsubsection{Watson Studio}
 Watson Studio ist eine SaaS-Lösung der IBM Cloud und für die Erstellung, das Trainieren und das Verwalten von trainierten
@@ -269,7 +274,7 @@ unter~\cite{online_grundlagen_watson_studio}).
 
 \subsubsection{Cloud Object Storage}
 Der Service Cloud Object Storage ist für die Speicherung von unstrukturierten Daten in der Cloud zuständig. Dieser kann
-sehr einfach erweitert werden um neuen Bedürfnissen gerecht zu genügen.
+sehr einfach erweitert werden um neuen Bedürfnissen zu genügen.
 
 Die Architektur speichert und managed die Daten über Objekte. Dies hat einen großen Vorteil gegenüber der herkömmlichen
 Speicherung über Blöcke und Volumes auf Festplatten. So finden sich alle Informationen, welche einen Datenstamm zugehörig
@@ -281,48 +286,51 @@ ein Objekt Metadaten für eine Indezierung (mehr dazu unter~\cite{book_grundlage
 \subsubsection{Apache Spark}
 Bei Apache Spark handelt es sich um ein Framework, welches unter der Open-Source-Lizenz verfügbar ist. Es ist ein Projekt
 der Apache Software Foundation\footnote{https://www.apache.org} und entstand aus einem Forschungsprojekt der University
-of California in Berkeley \footnote{https://www.berkeley.edu}.
+of California in Berkeley\footnote{https://www.berkeley.edu}.
 
 Apache Spark ermöglicht es, Datenabfragen und große Datenmengen aus unterschiedlichen Quellen in hoher Geschwindigkeit
-und guter Perform auszuführen. Dabei wird eine verteilte Architektur und Cluster Computing genutzt.
+und guter Performance abzufragen und auszuführen. Dabei wird eine verteilte Architektur und Cluster Computing genutzt.
 
-Viele große Unternehmen unterstützen die Weiterentwicklung von Apache Spark
-(mehr dazu unter~\cite{book_grundlagen_apachespark}).
+Viele große Unternehmen unterstützen die Weiterentwicklung von Apache Spark (mehr zu Apache Spark
+unter~\cite{book_grundlagen_apachespark}).
 
 \subsubsection{API Connect}
-Mit dem Service IBM API Connect können alle vier Aspekte eines API-Lebenszyklusses abgebildet werden: die Erstellung, die
-Ausführung, das Management und der Schutz einer eigenen API.
+Mit dem Service IBM API Connect können alle vier Aspekte eines Application Programming Interfaces (kurz API)
+Lebenszyklusses abgebildet werden: die Erstellung, die Ausführung, das Management und der Schutz einer eigenen API.
 
 Mit diesem Services ist es möglich eine eigene API über ein Drag \& Drop Interface zu definieren und einzurichten. Die
-so erstellte Schnittstellen kann anschließend einfach über einen Webdienst zur Verfügung gestellt werden. Dabei ist es
-möglich verschienede Routen und Endpunkte zu definieren sowie die Schutzmaßnahmen und eventuelle Zugangsverwaltung
-einzurichten (mehr in der Dokumentation~\cite{book_grundlagen_apiconnect}).
+so erstellten Schnittstellen können anschließend einfach über einen Webdienst zur Verfügung gestellt werden.
+
+Dabei ist es möglich, verschienede Routen und Endpunkte zu definieren sowie die Schutzmaßnahmen und eventuelle
+Zugangsverwaltung einzurichten (mehr in der Dokumentation~\cite{book_grundlagen_apiconnect}).
 
 \subsubsection{Toolchain}
-Bei einer Toolchain handelt es sich um ein Programm zur Verwaltung von Entwicklung, Bereitstellung sowie Überwachung
-einer Anwendung. Verschiedene Services stehen nach der Einrichtung der Toolchain zur Verfügung. So ist es anschließend
-zum Beispiel möglich, eine Integration von vorhandenen GitHub-Projekten einzubauen.
+Bei einer Toolchain handelt es sich um ein Service zur Verwaltung von Entwicklung, Bereitstellung sowie Überwachung
+einer Anwendung. Verschiedene Erweiterungen stehen nach der Einrichtung einer Toolchain zur Verfügung.
+
+So ist es anschließend zum Beispiel möglich, eine Integration von einem vorhandenen GitHub-Projekt einzubauen oder eine
+Verknüpfung mit einem Slack-Channel einzurichten, welche die wichtigsten Informationen der Toolchain automatisiert teilt.
 
 Nachdem eine eingerichtete Toolchain mit einem Git-Repository verbunden wurde kann der Quelltext gebaut und auf einem
 System installiert werden. Das Git-Repository kann entweder auf einem externen Service bereitstehen oder ein IBM internes
 GitLab Projekt sein.
 
 Bei der Toolchain handelt es sich unter anderem um ein \textit{Continuous Integration}-Tool (kurz CI)
-(mehr unter~\cite{online_grundlagen_toolchain}).
+(mehr über die Toolchain unter~\cite{online_grundlagen_toolchain}).
 
 \section{TensorFlow.js}
 TensorFlow ist eine Deep Learning Bibliothek welche von Google entwickelt wird. Die Bibliothek wird unter der freien
 Apache 2.0 Lizenz vertrieben und ist sowohl unter allen gängigen Betriebssystemem lauffähig als auch bei den meisten
 Cloud-Anbietern. Diese stellen entweder aktuelle Cloud Foundry-Container bereit oder eigene Python-Container.
 
-TensorFlow ist der Nachfolger von Googles erstem Deep Learning Tool \enquote{DistBelief}, welcher wiederum aus
-\enquote{Google Brain} hervorging. Uhrsprünglich wurde es zur Erkennung von Objekten auf Fotos und Videos entwickelt.
+TensorFlow ist der Nachfolger von Googles erstem Deep Learning Tool \textit{DistBelief}, welcher wiederum aus
+\textit{Google Brain} hervorging. Ursprünglich wurde es zur Erkennung von Objekten auf Fotos und Videos entwickelt.
 
 Die Berechnungen von neuronale Netzen können durch TensorFlow auf verteilte Computersysteme geschehen. Dies ist möglich,
 da diese intern durch Graphen repräsentiert werden.
 
-Aktuell wird es für Predictive Analytics, Fraud Detection oder auch als Recommendation Engine bei Google und vielen
-anderen Firmen verwendet.
+Aktuell wird TensorFlow für Predictive Analytics, Fraud Detection oder auch als Recommendation Engine bei Google und
+vielen anderen Firmen verwendet.
 
 In der neuesten Version lässt sich TensorFlow ohne großen Aufwand in Python integrieren. Dadurch können neue Lösungen
 einfach zur Verfügung gestellt werden (mehr unter~\cite{book_grundlagen_tensorflow}).
@@ -358,10 +366,10 @@ Material Design ist eine von Google entwickelte Designsprache. Durch diese werde
 Grafik-Designs mit den Möglichkeiten digitaler Benutzeroberflächen verbunden. Ziel ist es unter anderem die Verbesserung
 von Benutzeroberflächen zu ermöglichen.
 
-Material Design hat einen charakteristischen Look der es ermäglicht verschiedene Interfaces, welche im Material Design
-gehalten sind, einfach zu kombinieren (mehr dazu~\cite{online_grundlagen_materialdesign}).
+Material Design hat einen charakteristischen Look der es ermöglicht verschiedene Interfaces, welche im Material Design
+gehalten sind, einfach zu kombinieren (mehr dazu in~\cite{online_grundlagen_materialdesign}).
 
-Die JavaScript Library \textit{Angular-Material} ermöglicht eine leichte integration des Material Designs in eine
+Die JavaScript-Library \textit{Angular-Material} ermöglicht eine leichte integration des Material Designs in eine
 Angular-Anwendung.
 
 \subsection{ngx-restangular}
@@ -369,13 +377,16 @@ Mit der JavaScript-Library ngx-restangular können HTTP-Anfragen an REST-Schnitt
 ermöglicht die Library vereinfacht Anfragen mittels den HTTP-Typen \textit{GET}, \textit{POST}, \textit{DELETE} und
 \textit{UPDATE} zu stellen (mehr auf der betreffenden GitHub-Seite~\cite{online_grundlagen_restangular}).
 
+Sie unterstützt in der Entwicklung und vereinfacht das Übergeben von Parametern an die Schnittstellen und die
+Verarbeitung der Rückgabewerte.
+
 \subsection{Observable}
 Ein Observable ist das zentrale Konzept in Reactive Programming mit ReactiveX\footnote{http://reactivex.io}. Es
 repräsentiert eine Menge von Daten, die in einer noch nicht bekannten Menge zu einem noch nicht bekannten Zeitpunkt
 bereitstehen werden.
 
-Ein Observer abonniert ein Observable und damit die später ankommenden Daten. Dies kann gefiltert, gruppiert oder
-transformiert werden. Auch Berechnungen sind dabei möglich (mehr unter~\cite{book_grundlagen_observable}).
+Ein Observer abonniert ein Observable und damit die später ankommenden Daten. Diese können gefiltert, gruppiert oder
+transformiert werden. Auch Berechnungen sind mit den Daten möglich (mehr unter~\cite{book_grundlagen_observable}).
 
 \subsection{Promise}
 Bei Promises handelt es sich um eine Weiterentwicklung von Callbacks. Dabei helfen sie die Arbeit mit asynchronem Code
@@ -387,11 +398,13 @@ in~\cite{book_grundlagen_promises} oder unter Matt Greer\footnote{http://www.mat
 
 \subsection{flex-layout}
 Bei flex-layout handelt es sich um ein Angular-Plugin, welches die Flexbox
-CSS\footnote{https://www.w3schools.com/css/css3\_flexbox.asp}-Library implementiert.
+CSS\footnote{https://www.w3schools.com/css/css3\_flexbox.asp}-Library für Angular implementiert.
 
-Es hilft dabei, Webseiten auf verschiedene Browsergegebenheiten anzupassen. Dazu zählt unter anderem die Größe des
-Displays oder die verwendete Version. Das Plugin hilft bei der Erstelltung von responsiven Webseiten (mehr auf der
-GitHub-Page~\cite{online_grundlagen_flexlayout}).
+Das Plugin hilft dabei, Webseiten auf verschiedene Browsergegebenheiten anzupassen. Dazu zählt unter anderem die Größe
+des Displays oder die verwendete Version des Browsers.
+
+Das Plugin hilft bei der Erstelltung von responsiven Webseiten indem es verschiedene Breakpoints zur Verfügung stellt
+(mehr auf der GitHub-Page~\cite{online_grundlagen_flexlayout}).
 
 \section{REST}
 Representational State Transfer - Application Programming Interface (kurz REST-API) macht den Austausch von Informationen
@@ -399,25 +412,25 @@ Representational State Transfer - Application Programming Interface (kurz REST-A
 zur Kommunikation zwischen den Systemen notwendig.
 
 Auch spricht man bei REST-APIs von Maschine-Maschine-Kommunikation, da die verschiedenen Systeme so eine gemeinsame
-Sprache sprechen können.
+Sprache sprechen können um sich zu verständigen.
 
 Mit der Hilfe von REST-APIs ist es möglich geworden, Informationen und Aufgaben auf verschiedene Systeme zu verteilen
 (Microservices). Mit HTTP-Requests können Informationen dann verteilt werden. Jeder HTTP-Request setzt sich aus dem
 Endpoint und den entsprechenden Parametern zusammen~\cite{online_grundlagen_rest}.
 
 \section{Cloud Foundry}
-Cloud Foundry ist eine Open Source Platform as a Service (PaaS) Lösung. Damit ist es für Entwickler möglich ihre
-Anwendung zu bauen, hochzuladen und auszuführen. Die nahezu grenzenlose Skalierbarkeit ist einer der größten Vorteile
-von Cloud Foundry~\cite{book_grundlagen_cloudfoundry}.
+Cloud Foundry ist eine Open Source Platform as a Service Lösung. Damit ist es für Entwickler möglich Anwendung zu bauen,
+hochzuladen und auszuführen. Die nahezu grenzenlose Skalierbarkeit ist einer der größten Vorteile von Cloud
+Foundry~\cite{book_grundlagen_cloudfoundry}.
 
 Diese Skalierbarkeit wird durch die Container-Architektur erreicht. Jeder Container beinhaltet eine eigene
 Anwendungsinstanz. Cloud Foundry unterstützt sowohl eine horizontale als auch eine vertikale Skalierung.
 
-Bei der horizontalen Skalierung werden zusätzliche Container gestartet oder gestoppt. Ein Load Balancer kümemrt sich um
+Bei der horizontalen Skalierung werden zusätzliche Container gestartet oder gestoppt. Ein Load Balancer kümmert sich um
 die Verteiltung des Traffics. Bei der vertikalen Skalierung werden jeder Instanz individuell z.B. mehr oder weniger
-Arbeitsspeicher zugeteilt.
+Arbeitsspeicher oder CPU Zeit zugeteilt.
 
-Bei der IBM Cloud erhält jede Cloud Foundry Instanz eine eigene IPV4-Adresse wodurch es mittels A-Record (Zuordnung eines
+In der IBM Cloud erhält jede Cloud Foundry Instanz eine eigene IPV4-Adresse wodurch es mittels A-Record (Zuordnung eines
 DNS-Namens zu IP-Adresse) möglich ist, eine eigene Domain mit der Anwendung zu verknüpfen.
 
 \section{Version Control (Git)}
@@ -456,11 +469,11 @@ in JavaScript.
 TypeScript erweitert JavaScript um mehrere Typings (und Annotations). Dies bedeutet, dass TypeScript, genau wie zum
 Beispiel Java, Typensicher ist (mehr dazu unter~\cite{book_grundlagen_typescript}).
 
-Im Listing~\ref{Unterschied zwischen JavaScript und TypeScript} auf
-Seite~\pageref{Unterschied zwischen JavaScript und TypeScript} ist ein originaler JavaScript-Code in Zeile 2 zu sehen.
-In der Zeile 5 steht der entsprechende TypeScript-Code. Hier ist die Typensicherheit gut zu erkennen.
+Im Listing~\ref{listing_grundlagen_typescript} auf Seite~\pageref{listing_grundlagen_typescript} ist ein originaler
+JavaScript-Code in Zeile 2 zu sehen. In der Zeile 5 steht der entsprechende TypeScript-Code. Hier ist die
+Typensicherheit gut zu erkennen.
 
-\begin{lstlisting}[language=JavaScript, caption=Unterschied zwischen JavaScript und TypeScript, label=Unterschied zwischen JavaScript und TypeScript]
+\begin{lstlisting}[language=JavaScript, caption=Unterschied zwischen JavaScript und TypeScript, label=listing_grundlagen_typescript]
     // JavaScript
     var name = "Vorname Nachname";
 
@@ -469,9 +482,9 @@ In der Zeile 5 steht der entsprechende TypeScript-Code. Hier ist die Typensicher
 \end{lstlisting}
 
 \section{WebView}
-Ein WebView ist ein Android- und iOS-Layout, welches Webseiten darstellen kann. Über diverse Schnittstellen werden dem
+Ein WebView ist ein Android- oder iOS-Layout, welches Webseiten darstellen kann. Über diverse Schnittstellen werden dem
 Layout Informationen wie Domain, Titel oder Größe übergeben. Das Layout kümmert sich anschließend selbstständig um das
-Laden der entsprechenden Webseite und darstellen auf dem Bildschirm.
+Laden der entsprechenden Webseite und die Darstellung auf dem Bildschirm.
 
 Das Layout steht sowohl unter Android als auch unter iOS seit den frühesten Versionen zur Verfügung (weitere
 Informationen unter~\cite{online_grundlagen_webview}).
