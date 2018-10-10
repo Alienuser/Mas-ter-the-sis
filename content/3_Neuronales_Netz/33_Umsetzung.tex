@@ -1,7 +1,7 @@
 \section{Umsetzung}
 Wie die Zielarchitektur in Abbildung~\ref{fig:umsetzung_zielarchitektur} auf
-Seite~\pageref{fig:umsetzung_zielarchitektur} zeigt, sollen eingehende Anfragen (englisch Requests) an die Anwendung über
-den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf zwei Systeme.
+Seite~\pageref{fig:umsetzung_zielarchitektur} zeigt, sollen Anfragen (englisch Requests) vom Frontend an die Anwendung
+über den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf zwei Systeme.
 
 In einem System, \textit{Watson Studio}, erfolgt das Training für das neuronale Netz. Nach erfolgreichem Training wird es
 als Modul in ein Deployment installiert. Dieses Deployment enthält eine REST-Schnittstelle, um Anfragen an das Model
@@ -28,21 +28,54 @@ In den folgenden Kapiteln wird die Architektur Schritt für Schritt umgesetzt, e
 
 \subsection{Cloud}
 Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} auf Seite~\pageref{sec:analyse}, beschrieben, wird das neuronale Netz
-in der Cloud erstellt, konfiguriert und trainiert. Wie bereits beschrieben, hat dies einen enormen Geschwindigkeitsvorteil
-gegenüber der offline Variante. Im Anschluss daran kann das trainierte Model heruntergeladen und mit einem
-TensorFlow.js Wrapper nutzbar gemacht werden.
+in der Cloud erstellt, konfiguriert und trainiert. Wie bereits erwähnt hat dies einen enormen Geschwindigkeitsvorteil
+gegenüber der offline trainierten Variante. Im Anschluss daran wird das trainierte Model heruntergeladen und mit einem
+TensorFlow.js Wrapper nutzbar gemacht.
 
 Die folgenden Kapitel beschreiben die notwendigen Schritte für die Erstellung eines neuronalen Netzes in der Cloud, das
-trainierten des Models und das Einrichten eines Deployments.
+trainierten des Models und das Einrichten eines Deployments für die REST-Schnittstelle.
 
-%% TODO noch schreiben
 \subsubsection{Daten zusammenstellen}
 In einem ersten Schritt muss man die Daten, welche man später für das Training des neuronalen Netzes nutzen möchte,
-sammeln und in einer Datei bündeln. Als Format eignet sich dafür eine Excel-Tabelle hervorragend.
+sammeln und in einer Datei bündeln. Als Format eignet sich dafür eine Excel-Tabelle hervorragend, da das Anlegen der
+Datensätze in Zeilen und Spalten sinnvoll ist.
 
-\colorbox{yellow}{Hier fehlt was}
+Um eine Auswahl an Daten zu schaffen muss man sich darüber im klaren sein, welche Parameter existieren und welche Werte
+durch das neuronale Netz vorhergesagt werden sollen. Auch ist wichtig zu wissen, welche Eingaben notwendig sind, um
+überhaupt die Vorhersagen machen zu können.
 
-Da die Daten nun zusammengestellt sind, kann man sie in einem weiteren Schritt in das Watson Studio importieren.
+In diesem Beispiel sollen Daten für das Bosch KWE Kontrollwaagensystem aufbereitet werden. Die vorhersagbaren Parameter
+sind die, welche Angaben über den Pusher und über die Bandgeschwindigkeit zulassen.
+
+Der Pusher wird durch insgesamt vier Parameter bestimmt. Die \textit{Druckluft} gibt darüber auskunft, wie stark oder
+schnell der Pusher aus seiner Warteposition herausfährt. Der \textit{Impuls} gibt die Wucht an, mit der der Pusher
+ausfährt.
+
+Der Parameter \textit{Totzeit} gibt die Zeit an die gewartet wird, bis der Pusher herausfährt obwohl er schon das Signal
+zum ausfahren bekommen hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe wird ab
+dem Mittelpunkt der Wiegeeinheit gerechnet.
+
+Für die Inputparameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind werden alle die
+genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Stück. Sie sind in
+Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} ersichtlich.
+
+Alle Input-Werte sind in diesem Fall vom Kunden abhängig und desshalb problemlos Recherchierbar beziehungsweise abgelegt
+und gespeichert.
+
+In der noch leeren Excel-Tabelle muss man nun in den Spalten die Eingabeparameter aber auch die vorhersagbaren Parameter
+auflisten. Jede leere Zeile wird durch ein Produkt ersetze. So listet man alle historischen Daten untereinander auf und
+befüllt jede Spalte mit den entsprechenden Informationen.
+
+Sollte man für eine Spalte keinen Wert haben, so muss die Zeile leer gelassen und es darf keine null oder sonstiges
+eingetragen werden.
+
+In Anhang~\ref{sec:scaleData} auf Seite~\pageref{sec:scaleData} sind die Beispieldaten für die Waage aufgezeigt. Die
+folgenden Kapitel beziehen sich auf diesen Datensatz.
+
+Da die Daten zusammengestellt sind, kann man sie in einem weiteren Schritt in das Watson Studio importieren um das
+neuronale Netz zu trainieren.
+
+%% TODO Hier gehts weiter
 
 \subsubsection{Daten importieren}
 Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in das Watson Studio importieren. Dazu existiert

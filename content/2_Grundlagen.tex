@@ -23,8 +23,13 @@ Das zugehörige Display zeigt Produktionsstatistiken, Trendkurven und das aktuel
 Konfigurationen können allerdings auch weitere Informationen auf dem Display dargestellt werden. Auf der
 Herstellerseite\cite{online_grundlagen_boschkwe} sind weitere Informationen zur aktuellen KWE-Serie einzusehen.
 
+Die KWE verfügt über mindestens ein Pusher-System, welches vorbeifahrende, schon gewogene Produkte vom Band schieben
+kann. Dies können zum Beispiel Produkte mit falschem Gewicht oder falschen Abmaßen sein oder alle Produkte, damit sie
+auf ein anderes Förderband fallen.
+
 Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle KWE 4000 mit
-ihrem grundsätzlichen Aufbau und dem farblichen Display.
+ihrem grundsätzlichen Aufbau, dem farblichen Display und einem Auffangbehälter für alle Produkte, die von dem Pusher vom
+Förderband geschoben wurden.
 
 \begin{figure}[h]
     \centering
@@ -469,11 +474,11 @@ in JavaScript.
 TypeScript erweitert JavaScript um mehrere Typings (und Annotations). Dies bedeutet, dass TypeScript, genau wie zum
 Beispiel Java, Typensicher ist (mehr dazu unter~\cite{book_grundlagen_typescript}).
 
-Im Listing~\ref{listing_grundlagen_typescript} auf Seite~\pageref{listing_grundlagen_typescript} ist ein originaler
+Im Listing~\ref{ls:grundlagen_typescript} auf Seite~\pageref{ls:grundlagen_typescript} ist ein originaler
 JavaScript-Code in Zeile 2 zu sehen. In der Zeile 5 steht der entsprechende TypeScript-Code. Hier ist die
 Typensicherheit gut zu erkennen.
 
-\begin{lstlisting}[language=JavaScript, caption=Unterschied zwischen JavaScript und TypeScript, label=listing_grundlagen_typescript]
+\begin{lstlisting}[language=JavaScript, caption=Unterschied zwischen JavaScript und TypeScript, label=ls:grundlagen_typescript]
     // JavaScript
     var name = "Vorname Nachname";
 

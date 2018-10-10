@@ -1,7 +1,7 @@
 \section{Vorbereitung}
 Dieses Kapitel beschreibt die benötigten Vorkehrungen für die Entwicklung eines neuronalen Netzes und einer
-TensorFlow.js Applikation. Dazu muss zunächst ein kostenloses IBM Cloud Konto erstellt und drei Services eingerichtet
-werden. Für die Entwicklung müssen zwei Programme auf dem Entwicklungsrechner installiert.
+TensorFlow.js Applikation. Dazu muss man zunächst ein kostenloses IBM Cloud Konto erstellen und drei Services
+einrichten. Außerdem muss man zwei Programme auf dem Entwicklungsrechner installieren.
 
 Diese Schritte benötigt man, um mit dem Systemen arbeiten zu können. Im Weiteren werden die dafür notwendigen Schritte
 einzelnd erläutert und getestet.
@@ -25,16 +25,16 @@ Ein \textit{Space} gruppiert mehrere Runtimes und Services in einem Rechenzentru
 der IBM Cloud aktuell sechs, verteilt auf drei Kontinente. Eine \textit{Organisation} kann mehrere Spaces beinhalten.
 
 \subsection{IBM Cloud CLI}
-Für die einfache Verwaltung der IBM Cloud empfiehlt sich, dass zugehörige Command Line Interface (kurz \textit{CLI}) zu
-installieren. Die Installation unter Linux und macOS erfolgt durch die Eingabe des folgenden Kommandos in eine Shell:
+Für die einfache Verwaltung der IBM Cloud empfiehlt es sich, dass zugehörige Command Line Interface (kurz \textit{CLI})
+zu installieren. Die Installation unter Linux und macOS erfolgt durch die Eingabe des folgenden Kommandos in eine Shell:
 
-\begin{lstlisting}[language=bash, caption=Installation des IBM Cloud CLI, label=Installation des IBM Cloud CLI]
+\begin{lstlisting}[language=bash, caption=Installation des IBM Cloud CLI, label=ls:vorbereitung_ibmcli]
     $ curl -sL http://ibm.biz/idt-installer | bash
 \end{lstlisting}
 
 Das folgende Kommando überprüft die erfolgreiche Installation auf dem System:
 
-\begin{lstlisting}[language=bash, caption=Installation des CLI überprüfen, label=Installation des CLI überprüfen]
+\begin{lstlisting}[language=bash, caption=Installation des CLI überprüfen, label=ls:vorbereitung_ibmclitest]
     $ ibmcloud dev help
 \end{lstlisting}
 
@@ -47,9 +47,9 @@ Befehl \textit{ibmcloud} auch immer durch \textit{bx} ersetzt werden.
 
 \subsection{Watson Studio}
 Für den Aufbau und die Konfiguration des neuronalen Netzes wird der Service \textit{Watson Studio} benötigt. Aktuell gibt
-es zwei Möglichkeiten einen Service oder eine Runtime in einen erstellten Space einzubinden.
+es zwei Möglichkeiten einen Service oder eine Runtime in der IBM-Cloud in einen erstellten Space einzubinden.
 
-\subsubsection*{Über das IBM Cloud Dashboard}
+\subsubsection{Einrichtung über das IBM Cloud Dashboard}
 Mit einem Klick auf \textit{Katalog} auf dem IBM Cloud Dashboard öffnet sich dieser und listet alle Services und Runtimes
 auf, die der Anwender aktuell nutzen kann. Der Service \textit{Watson Studio} befindet sich in der Kategorie
 \textit{Künstliche Intelligenz}. Ein Klick auf diesen öffnet die entsprechende Konfigurationsseite.
@@ -63,23 +63,23 @@ Ebenso muss man die Ressourcengruppe und die Organisation auswählen, in die der
 aber nur eine Ressourcengruppe und eine Organisation gibt, kann die Standardeinstellung beibehalten werden.
 
 Mit einem Klick auf \texttt{Erstellen}, wird der Service instanziiert und es erfolgt eine Weiterleitung zurück auf das
-Dashbaord. Dort erscheint der Service mit dem eingetragenen Namen in der Liste der \textit{Services}.
+Dashboard. Dort erscheint der Service mit dem eingetragenen Namen in der Liste der \textit{Services}.
 
-Über das Dashboard wird die Übersichtsseite des Watson Studio Service durch einen Klick auf diesen geöffnet. Auf der
-folgenden Seite finden sich Hinweise auf die Funktionenweiße des Service. Über die Schaltfläche \texttt{Get Started}
+Über das Dashboard wird die Übersichtsseite des Watson Studio Service durch einen Klick auf den Namen geöffnet. Auf der
+folgenden Seite finden sich Hinweise über die Funktionenweiße des Services. Über die Schaltfläche \texttt{Get Started}
 wechselt der Nutzer in das Watson Studio Dashboard.
 
-\subsubsection*{Über die CLI}
+\subsubsection{Einrichtung über die CLI}
 Alternativ erfolgt die Installation des Services mittels dem installierten CLI. Dazu wird im ersten Schritt das CLI mit
 dem IBM Cloud-Konto verknüpft. Der folgende Befehl setzt den dafür notwendigen API-Endpunkt:
 
-\begin{lstlisting}[language=bash, caption=Setzen des API-Endpunkt, label=Setzen des API Targets]
+\begin{lstlisting}[language=bash, caption=Setzen des API-Endpunkt, label=ls:vorbereitung_apiendpunkt]
     $ ibmcloud api https://api.ng.bluemix.net
 \end{lstlisting}
 
 Anschließend erfolgt ein Login über den folgenden Befehl in der Shell:
 
-\begin{lstlisting}[language=bash, caption=Login über CLI und Single Sign-on, label=Login über CLI und SSO]
+\begin{lstlisting}[language=bash, caption=Login über CLI und Single Sign-on, label=ls:vorbereitung_login]
     $ ibmcloud login --sso
 \end{lstlisting}
 
@@ -91,7 +91,7 @@ entsprechenden Nummer der Organisation, welche am linken Rand zu sehen ist. Der 
 
 Der Benutzer kann eine neue Instanz des \textit{Watson Studio}-Service mit dem folgenden Befehl erstellen:
 
-\begin{lstlisting}[language=bash, caption=Instanziierung des Watson Studio Services, label=Instanziierung des Watson Studio Services]
+\begin{lstlisting}[language=bash, caption=Instanziierung des Watson Studio Services, label=ls:vorbereitung_watsonservice]
     $ ibmcloud cf create-service Watson-Studio lite sercive_name
 \end{lstlisting}
 
@@ -99,47 +99,55 @@ Für den Parameter \texttt{service\_name} muss man einen Name eingetragen, unter
 den Befehl \texttt{cf services} können alle instanziierten Services, welche sich in der vorher ausgewählten Organisation
 befinden, aufgelistet werden.
 
-\begin{lstlisting}[language=bash, caption=Auflisten aller Services in einer Organisation, label=Auflisten aller Services in einer Organisation]
+\begin{lstlisting}[language=bash, caption=Auflisten aller Services in einer Organisation, label=ls:vorbereitung_alleservices]
     $ ibmcloud cf services
 \end{lstlisting}
 
 Der erstellte Service sollte nun mit dem definierten Namen in der Liste der Services erscheinen.
 
-Abschließend muss man ein Projekt im Watson Studio anlegen. Dieses bündelt alle Daten und Informationen an einem
-gemeinsamen Ort. Um ein Projekt zu erstellen, wird das Watson Studio Dashboard über das IBM Cloud Dashboard aufgerufen.
+\subsubsection{Projekt einrichten}
 
-Die Schlatfläche \texttt{New project} legt im Watson Studio Dashboard ein neues Projekt an. Auch hier muss man einen Namen
-für das Projekt definieren und anschließend einen Local Storage einrichten (dies geschicht über den Mini-Wizzard auf der
-rechten Seite). Das Projekt kann man über die Schaltfläche \texttt{Create} speichern und es wird feftig eingerichtet.
+Abschließend muss man ein Projekt im Watson Studio anlegen. Dieses bündelt alle Daten und Informationen an einem
+gemeinsamen Ort um sie besser Verwalten zu können. Um ein Projekt zu erstellen, wird das Watson Studio Dashboard über
+das IBM Cloud Dashboard aufgerufen.
+
+Die Schlatfläche \texttt{New project} legt im Watson Studio Dashboard ein neues Projekt an. Auch hier muss man einen
+Namen für das Projekt definieren und anschließend einen Local Storage einrichten (dies geschicht über den Mini-Wizzard
+auf der rechten Seite). Das Projekt kann man über die Schaltfläche \texttt{Create} speichern und es wird feftig
+eingerichtet.
+
+Ein Projekt kann mit mehreren Personen geteilt werden. So haben alle Teammitglieder zugriff auf alle dort gespeicherten
+Informationen. Auch ein kollaboratives Arbeiten ist so möglich.
 
 \subsection{Node.js Runtime}
 \label{ssc:nodejs_runtime}
 Für die Erstellung der Node.js-Applikation wird eine entsprechende Runtime in der IBM Cloud benötigt. Für die Runtime
-nutzt man am einfachsten einen vorkonfigurierten Cloud Foundry-Container mit Node.js-Konfiguration. Für die Erstellung
-existieren ebenfalls zwei Möglichkeiten.
+nutzt man am einfachsten einen vorkonfigurierten Cloud Foundry-Container mit Node.js-Boilerplate. Für die Erstellung
+des Containers existieren ebenfalls zwei Möglichkeiten.
 
-Im vorangegangenen Kapitel wurden die beiden Möglichkeiten (über den IBM Cloud Katalog und über die Kommandozeile)
+Im vorangegangenen Kapitel wurden beiden Möglichkeiten (über den IBM Cloud Katalog und über die Kommandozeile)
 ausführlich erläutert. Über das folgende Kommando der CLI erstellt man die benötigte Runtime in einem Container.
 
-\begin{lstlisting}[language=bash, caption=Instanziierung der Node.js Runtime, label=Instanziierung der Node.JS Runtime]
+\begin{lstlisting}[language=bash, caption=Instanziierung der Node.js Runtime, label=ls:vorbereitung_nodejstensorflow]
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
 Auch hier wird über den Parameter \texttt{service\_name} der Name für die Applikation vergeben. Die URL, über die
 der Container später aufrufbar ist, folgt dem Schema \texttt{https://service\_name.mybluemix.net}.
 
-Dies bedeutet, dass der Name nur ein Mal im kompletten System vergeben sein darf. Eine Meldung gibt Hinweise darauf, ob
-die Applikation erfolgreich erstellt werden konnte, oder ob ein anderer Name für die Applikation verwendet werden muss.
+Dies bedeutet, dass der Name nur ein Mal im kompletten System vergeben sein darf. Eine Meldung gibt Hinweise darüber, ob
+die Applikation erfolgreich erstellt werden konnte, oder ob zum Beispiel ein anderer Name für die Applikation verwendet
+werden muss.
 
 \subsection{API Connect}
 \label{subsec:vorbereitung_apiconnect}
-Um im weiteren Verlauf den API Gateway \textit{API Connect} zu nutzen, muss dieser ebenfalls im IBM Cloud
+Um im weiteren Verlauf den API Gateway \textit{API Connect} zu nutzen, muss dieser ebenfalls in der IBM Cloud
 instanziiert werden. Wie auch in den beiden vorangegangenen Kapiteln kann die Instanziierung über die CLI als auch
 über den IBM Cloud Katalog geschehen.
 
 Einfachheitshalber wird im Folgenden die Instanziierung des Services mittels IBM Cloud CLI aufgezeigt.
 
-\begin{lstlisting}[language=bash, caption=Instanziierung von API Connect, label=Instanziierung von API Connect]
+\begin{lstlisting}[language=bash, caption=Instanziierung von API Connect, label=ls:vorbereitung_apiconnect]
 $ ibmcloud cf create-service API-Connect lite service_name
 \end{lstlisting}
 
@@ -147,10 +155,10 @@ $ ibmcloud cf create-service API-Connect lite service_name
 Dashboard auffindbar.
 
 \subsection{Git}
-Für die Verwaltung und den späteren, automatisierten Installationsvorgang des geschriebenen Quellcodes wird Git verwendet.
-Unter Linux erfolgt die Installation des Programmes über das folgende Kommando:
+Für die Verwaltung und den späteren, automatisierten Installationsvorgang des geschriebenen Quellcodes wird ein
+Repository mit Git verwendet. Unter Linux erfolgt die Installation des Programmes über das folgende Kommando:
 
-\begin{lstlisting}[language=bash, caption=Installation von Git, label=Installation von Git]
+\begin{lstlisting}[language=bash, caption=Installation von Git, label=ls:vorbereitung_git]
     $ sudo apt-get install git
 \end{lstlisting}
 
@@ -162,7 +170,7 @@ Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Ent
 Node.js benötigt. Eine Installation der zur Zeit aktuellsten LTS-Version (8.12.0) erfolgt unter Linux über die folgenden
 Kommandos:
 
-\begin{lstlisting}[language=bash, caption=Installation von Node.js, label=Installation von Node.js]
+\begin{lstlisting}[language=bash, caption=Installation von Node.js, label=ls:vorbereitung_nodejs]
     $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 \end{lstlisting}
@@ -170,5 +178,9 @@ Kommandos:
 Für macOS existiert ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.12.0/node-v8.12.0.pkg}
 zur Verfügung steht.
 
-Bei der Installation von Node.js wird npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und wird
-für die spätere Installation von Abhängigkeiten für die Applikation benötigt.
+Bei der Installation von Node.js wird npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und
+wird für die spätere Installation von Abhängigkeiten für die Applikation benötigt.
+
+Die erfolgreiche Installation der beiden Anwendungen kann man über die Eingabe der jeweiligen Programmnamen in eine Shell
+verifizieren. Über die Eingabe von \texttt{node} startet man die entsprechende Runtime. Über \texttt{npm} öffnet man
+eine Übersicht über die Funktionen des Paketmanagers.
