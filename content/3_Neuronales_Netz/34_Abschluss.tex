@@ -1,13 +1,33 @@
-%% TODO noch schreiben
 \section{Abschluss}
-So wir sind nun fertig. Man kann es auch schon nutzen.
+Das neuronale Netz ist an dieser Stelle fertig trainiert und erfolgreich als Model exportiert. Auch kann man es als
+Deployment über einen Web-Dienst aufrufen und Vorhersagen triggern.
 
-\colorbox{yellow}{Hier fehlt was}
+Mittels internem Onlinetest und über das externe Programm \textit{Postman} wurde der Aufruf des Web-Dienstes überprüft
+und die Parameter verifiziert.
 
-Die Abfragen auf die entwickelten Möglichkeiten zur Vorhersage der Parameter für die Bosch KWE Waage sollen im nächsten
-Schritt durch ein Frontend verschönert und vereinfacht werden.
+Desweiteren ist das trainierte Model erfolgreich in einen Node.js-Wrapper eingebaut worden, der eine TensorFlow.js
+Anwendung beherbergt. Diese Anwendung lädt beim Ausführen das aktuelle Model in den Speicher und füttert es mit den
+Eingabevariablen.
 
-Außerdem soll so die komplette Konfiguration von dem Watson Studio Deployment, der TensorFlow.js Applikation und des API
-Connect Services aufgezeigt werden. Somit ist ein Test aller beteiligten Komponenten möglich.
+Nach kurzer Zeit werden die vorhergesagten Parameter als Rückgabewert über den Request zurückgegeben und eine Anfrage
+wurde so erfolgreich durchgeführt.
 
-Die dafür notwendige Umsetzung wird in Kapitel~\ref{ch:client} ab Seite~\pageref{ch:client} erläutert und realisiert.
+Sowohl der Web-Dienst als auch der Node.js Wrapper sind in einem API Gateway vereint, sodass Aufrufe an die beiden
+Endpunkte vereinfacht werden können. Auch Authentifizierung und Sicherheitsmechanismen laufen über den API Gateway um
+eine Anpassung zu vereinfachen.
+
+Um dem Endnutzer eine vereinfachte Möglichkeit zu bieten, Anfragen an die beiden Vorhersagemodelle zu schicken, wird
+im nächsten Schritt ein Frontend dafür eingerichtet. Mit diesem ist es Möglich die Inputs für die Bosch KWE einzugeben
+und die vorhergesagten Parameter schön darzustellen.
+
+Außerdem ist so ein Test der komplette Architektur mit Web-Dienst, Node.js Wrapper mit integrierter TensorFlow.js
+Applikation und API Connect möglich.
+
+Denn über das Frontend soll ein Request an den API Gateway gesendet werden, welcher dann weiter an ein Vorhersagemodell
+geschickt wird. Die Antwort des Models gelangt dann zurück zum API Gateway und dann wieder zurück an das Frontend.
+
+In einem Aufruf sind alle bisher gebauten Komponenten involviert, sodass ein Test das Zusammenspiel und der
+Kommunikation der Komponenten möglich ist.
+
+Die dafür notwendige Umsetzung wird in Kapitel~\ref{ch:client} ab Seite~\pageref{ch:client} behandelt und Schritt für
+Schritt realisiert.
