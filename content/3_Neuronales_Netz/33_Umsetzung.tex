@@ -125,46 +125,52 @@ Nach wenigen Minuten sollte im Watson Studio im Bereich Assets, in der Kategorie
 Verfügung stehen. Dabei trägt die Datei die Dateiendung \textit{.csv}. Die Konvertierung der Datei ist somit
 abgeschlossen und man kann sie für das neuronale Netz verwenden.
 
-%% TODO Hier gehts weiter
-
 \subsubsection{Modeler Flow}
 \label{subsub:modeler_flow}
-Nach erfolgreicher Konvertierung der Trainingsdaten, können diese für das neuronale Netz genutzt werden. Für die
-Erstellung des neuronalen Netzes und den damit verbundenen Parameterübergaben wird der \texttt{Modeler Flow} genutzt.
+Nach erfolgreicher Konvertierung der Trainingsdaten kann man diese für das neuronale Netz nutzen. Für die Erstellung
+des neuronalen Netzes und den damit verbundenen Parameterübergaben für die Vorhersage ist der \texttt{Modeler Flow} am
+Besten geeignet.
 
-Über die Schaltfläche \texttt{New flow} im Bereich Assets erstellt man diesen und richtet ihn ein. Nachdem man einen Namen
-und eine optionale Beschreibung für den Flow eingegeben hat, muss man die Auswahl \textit{Modeler flow} und
-\textit{IBM SPSS Modeler} bestätigen. Dabei handelt es sich um den Standard-Flow von Watson Studio.
+Über die Schaltfläche \texttt{New Flow} im Bereich Assets erstellt man diesen und richtet ihn ein. Nachdem man einen Namen
+und eine optionale Beschreibung für den Flow eingegeben hat, muss man die Auswahl \textit{Modeler Flow} und
+\textit{IBM SPSS Modeler} auswählen. Dabei handelt es sich um den Standard-Flow von Watson Studio.
 
 Der Nutzer bestätigt die Eingabe über die Schaltfläche \texttt{Create} und nach kurzer Zeit ist der Flow erstellt und es
-erscheint ein leerer Arbeitsbereich.
+erscheint ein leerer Arbeitsbereich im Browser.
 
-Der Menüpunkt \texttt{Palette} zeigt einen linken Arbeitsbereich mit allen aktuell verfügbaren Modulen gruppiert an. In
-diesem muss man den Baustein \textit{Data asset} in der Gruppe \textit{Import} auswählen. Dieser Baustein ermöglicht den
-Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag\&Drop kann der Nutzer den Baustein in den noch
-leeren Arbeitsbereich platzieren.
+Der Menüpunkt \texttt{Palette} zeigt einen linken Arbeitsbereich mit allen aktuell verfügbaren Modulen, gruppiert an. In
+diesem muss man den Baustein \textit{Data asset} in der Gruppe \textit{Import} auswählen.
 
-Um den Baustein zu konfigurieren klickt der Entwickler doppelt auf den Baustein. Daraufhin öffnet sich ein rechter
+Dieser Baustein ermöglicht den Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag \& Drop kann der
+Nutzer den Baustein in den noch leeren Arbeitsbereich platzieren.
+
+Um den Baustein zu konfigurieren Klickt der Entwickler doppelt auf den Baustein. Daraufhin öffnet sich ein rechter,
 seitlicher Arbeitsbereich. In diesem kann er über die Schaltfläche \texttt{Change Data Asset} die Datei auswählen, welche
-die Trainingssätzen enthält. In dieser Liste steht lediglich die CSV-Datei zur Verfügung. Über \texttt{Save} wird die
-Einstellung gespeichert und der Baustein ist fertig konfiguriert.
+die Trainingsdatensätze enthält.
 
-Im nächsten Schritt erfolgt die Konfiguration des neuronalen Netzes. Dazu existiert in der Kategorie \textit{Modeling} das
-Modul \textit{Neural Net}. Das stellt für die Anwendung die beste Alternative dar. Genau wie das Import-Modul kann
-man dieses mit der Maus auf ein freies Feld des Arbeitsbereiches platzieren. Somit ist das Modul Teil des Prozesses.
+In dieser Liste steht lediglich die vorher erstellte CSV-Datei zur Verfügung, da bisher lediglich CSV-Dateien als
+Eingabeparameter genutzt werden können. Über \texttt{Save} wird die Einstellung gespeichert und der Baustein ist fertig
+konfiguriert.
 
-Damit das neuronale Netz die importierten Daten nutzen kann, wird eine Verbindung zwischen dem \textit{Import-Modul} und
-dem \textit{Neural-Net-Modul} aufgebaut. Mit einen Klick auf den Ausgang des Import-Moduls startet man eine
+Im nächsten Schritt erfolgt die Konfiguration des neuronalen Netzes. Dazu existiert in der Kategorie \textit{Modeling}
+das Modul \textit{Neural Net}. Das stellt für den Anwendungsfall die beste Alternative dar, da es sich hierbei um ein
+allgemeines neuronales Netz handelt. Dies kann allerdings sehr tief konfiguriert werden.
+
+Genau wie das Import-Modul kann man dieses mit der Maus in einen freien Bereich des Arbeitsbereiches platzieren. Somit
+ist das Modul Teil des Prozesses und der Entwickler kann es konfigurieren.
+
+Damit das neuronale Netz die importierten Datensätze nutzen kann, wird eine Verbindung zwischen dem \textit{Import-Modul}
+und dem \textit{Neural-Net-Modul} aufgebaut. Mit einen Klick auf den Ausgang des Import-Moduls startet man eine
 Verbindungslinie.
 
-Mit einem anschließenden klick auf den Eingang des Neural-Net-Modul kann man die Verbindung fertig aufbauen. Die Verbindung
+Mit einem anschließenden Klick auf den Eingang des Neural-Net-Modul kann man die Verbindung fertig aufbauen. Die Verbindung
 wird nun über eine durchgezogene Linie zwischen den beiden Modulen visualisiert.
 
 Bei einer Verbindung wird der Output eines Modules an das mit einer visualisierten Linie verbundenen Modul weitergegeben.
 Dieses Folgemodul kann die Werte dann als Eingabevariablen nutzen. Einen Ausgang kann man mit mehreren Eingängen
 verbinden. Dabei stehen dann allen weiteren Modulen die gleichen Werte zur Verfügung.
 
-Die Konfiguration des Neural-Net-Modules erfolgt durch einen doppelten Klick auf dieses. Damit man die
+Die Konfiguration des Neural-Net-Moduls erfolgt durch einen doppelten Klick auf dieses. Damit man die
 \textit{Targets} und die \textit{Inputs} selbst definieren kann, muss man den Hacken bei \enquote{Use custom field roles}
 setzen. Andernfalls versucht Watson selbst die Inputs und die Outputs zu definieren. Meist sind diese Einstellungen dann
 aber falsch.
@@ -215,9 +221,11 @@ vorhergesagte Rückgabeparameter zurück.
 \end{table}
 
 Mit dieser Konfiguration werden 13 Parameter als Eingabevariablen genutzt und fünf Parameter durch das neuronale Netz
-vorhergesagt. Vier der vorhergesagten Parameter (Druckluft, Impuls, Totzeit und Position) beziehen sich auf den
-\textit{Pusher} und der Parameter \textit{Leistung} gibt die tatsächliche Bandgeschwindigkeit an, mit der das Band in der
-Maschine laufen soll.
+vorhergesagt.
+
+Vier der vorhergesagten Parameter (Druckluft, Impuls, Totzeit und Position) beziehen sich auf den \textit{Pusher} und
+der Parameter \textit{Leistung} gibt die tatsächliche Bandgeschwindigkeit an, mit der das Band in der Maschine laufen
+soll.
 
 Alle anderen Einstellungen des neuronalen Netzes werden im ersten Schritt auf den Standardeinstellungen belassen. Zu
 einem späteren Zeitpunkt, wenn sich Testdaten ändern oder Parameter angepasst werden müssen, kann man mit den weiteren
@@ -244,7 +252,7 @@ In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung
 Klick auf den Button \texttt{Save} wird das Model gespeichert und es erscheint im Watson Studio Dashboard.
 
 In der Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau
-des Model Flows dargestellt.
+des Model Flows dargestellt mit seinem trainierten Model und der Tabellen-Exportierung.
 
 \begin{figure}[h]
     \centering
@@ -265,7 +273,7 @@ die \texttt{Evaluation}.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_evaluation.png}
-    \caption{Genauigkeit des trainierten Models}
+    \caption{Evaluation des trainierten Models}
     \label{fig:umsetzung_model_evaluation}
 \end{figure}
 
@@ -273,8 +281,8 @@ Die große Zahl gibt die tatsächliche Genauigkeit des Models (englisch Model Ac
 man die prozentuale Angabe der Genauigkeit. Wenn man mit dem Mauszeiger über die Zahl fährt, erhält man eine genauere
 Angabe mit Nachkommastellen.
 
-Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset entnommen wird. Dabei kann beim
-trainieren des Models angegeben werden, um wie viele Datenset es sich handeln soll.
+Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset automatisch entnommen wird. Dabei
+kann beim trainieren des Models angegeben werden, um wie viele Datenset es sich handeln soll.
 
 Nachdem das Model fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
 die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
@@ -344,18 +352,19 @@ auf~\pageref{fig:umsetzung_model_network_diagram} visualisiert das vorangegangen
     \label{fig:umsetzung_model_network_diagram}
 \end{figure}
 
-Die Ansicht kann man über einen Slider am rechten Bildschirmrand vergrößern oder verkleinern. Über die Legende am
-unteren Rand, kann man die einzelnen Verbindungen filtern. So ist es zum Beispiel möglich, dass man sich alle
-Verbindungen mit hoher Priorität anzeigen lässt. Damit hat der Entwickler eine Visualisierung, wie die wichtigsten
-Eingabeparameter für die entsprechenden Ausgaben sorgt.
+Die Ansicht kann man über den Slider am rechten Bildschirmrand vergrößern oder verkleinern. Über die Legende am unteren
+Rand, kann man die einzelnen Verbindungen filtern.
+
+So ist es zum Beispiel möglich, dass man sich alle Verbindungen mit hoher Priorität anzeigen lässt. Damit hat der
+Entwickler eine Visualisierung, wie die wichtigsten Eingabeparameter für die entsprechenden Ausgaben sorgt.
 
 Auch kann man sich so anzeigen lassen, wie einzelne Werte auf der Eingabeseite einen direkten Einfluss auf einen
 Ausgabewert haben. Im Beispiel der Abbildung hat der Parameter \textit{Leistung} einen direkten und sehr großen
 Einfluss auf den Ausgabewert \textit{Bandgeschwindigkeit}.
 
-Bei weiterer Betrachtung ist diese Zusammenhang einläuchtend. Wenn mehr Produkte über die Waage laufen sollen (es soll
-die Leistung erhöht werden), muss das Band mit höherer Geschwindigkeit (Bandgeschwindigkeit) laufen um die Produkte zu
-transportieren.
+Bei weiterer Betrachtung ist diese Zusammenhang einläuchtend. Wenn mehr Produkte über die Wiegeeinheit laufen sollen (es
+soll die Leistung erhöht werden), muss das Band mit höherer Geschwindigkeit (Bandgeschwindigkeit) laufen um die Produkte
+zu transportieren.
 
 Desweiteren hat die Leistung einen direkten Einfluss auf den Parameter \textit{Druckluft}. Dieser gibt indirekt die
 Geschwindigkeit an, mit welcher der Pusher ausschlagen soll um ein Produkt vom Band zu hauen.
@@ -365,22 +374,24 @@ Produkt auch vom Band stoßen zu können. Das Timing ist an dieser Stelle von gr
 
 \subsubsection{Deployment erstellen}
 Das in einem vorangegangenen Kapitel erstellte und trainierte Model kann man im Weiteren durch ein Deployment über eine
-REST-Schnittstelle verfügbar machen. Dazu ist es erforderlich, das Model in einen \texttt{Web service} zu
-installieren. Die spätere Wartung und Verwaltung des Deployments wird dabei automatisch von der IBM Cloud übernommen.
+REST-Schnittstelle in einem Web-Dienst verfügbar machen.
 
-Für die Erstellung des Web Services muss man im Watson Dashboard das erstellte Model auswählen. Das folgende Fenster
-zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe- und Ausgabeparameter für das Model
-wichtig sind.
+Dazu ist es erforderlich, das Model in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
+des Deployments wird dabei automatisch von der IBM Cloud übernommen.
+
+Für die Erstellung des Web Services muss man im Watson Dashboard das zuvor erstellte Model auswählen. Das folgende
+Fenster zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe- und Ausgabeparameter für
+das Model wichtig sind.
 
 Der Reiter \texttt{Evaluation} zeigt vorangegangene Auswertungen des Models an. Über den Menüpunkt \texttt{Lineage}
 werden Verknüpfungen und Abstammungen des Models angezeigt.
 
-Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des Moduls. Das Löschen
-von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment} öffnet
-eine Konfigurationsseite zum Erstellen eines neuen Deployments.
+Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des einen Moduls. Das
+Löschen von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment}
+öffnet eine Konfigurationsseite zum Erstellen eines neuen Deployments.
 
 Ein Model kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Web-Services zu
-reduzieren bzw. auf mehrere zu verteilen.
+reduzieren bzw. auf mehrere zu verteilen. Um die Last zu verteilen bedarf es eines Load-Balancers.
 
 Als Type für das Deployment muss man \textit{Web Service} auswählen. Der Name des Deployments ist das einzige Pflichtfeld
 und muss befüllt sein. Anschließend kann man das Deployment über \texttt{Save} speichern und starten. Dieser Vorgang kann
@@ -390,6 +401,8 @@ Direkt nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Sta
 angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf den Namen öffnen.
 
 Das Deployment ist somit erfolgreich erstellt und kann im Weiteren getestet und genutzt werden.
+
+%% TODO Hier gehts weiter
 
 \subsubsection{Deployment testen}
 Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass
