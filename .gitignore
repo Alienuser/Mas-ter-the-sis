@@ -2,9 +2,30 @@
 .idea/
 *.iml
 
-# Output Windows
+# Temp files
 /auxil/
 /out/
+*.aux
+*.acn
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.glo
+*.idx
+*.ilg
+*.ind
+*.ist
+*.lof
+*.log
+*.lol
+*.lot
+*.out
+*.svg
+*.synctex.gz
+*.synctex(busy)
+*.toc
+*.syg
 
-# Output Linux
+# Output
 /*.pdf
