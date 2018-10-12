@@ -1,13 +1,28 @@
 %% TODO noch schreiben
 \section{Umsetzung}
-Hier noch generell was beschreiben. - Zielarchitekturbild darstellen (komplette Architektur)
+Das Architekturbild~\ref{fig:umsetzung_frontendarchitektur_4} auf Seite~\pageref{fig:umsetzung_frontendarchitektur_4}
+zeigt die Architektur des Frontends und die Kommunikation mit dem API Connect Service. Dabei sollen sowohl das Frontend
+als auch die Smartphone-Apps mit dem API Gateway kommunizieren, um die Anfragen zu vereinheitlichen.
 
-\colorbox{yellow}{Hier fehlt was}
+Ein Cloud Foundry-Container wird mit einem Node.js-Boilerplate versehen. Mit Hilfe des Boilerplates lassen sich
+Node.js-Applikationen innerhalb des Containerts verwalten und nutzen. Es stellt eine Runtime zur Verfügung, in welcher
+das Frontend laufen kann.
+
+Die Smartphone-Apps werden auf Basis von Android und auch iOS entwickelt. Beide Systeme erhalten innerhalb der App ein
+WebView-Layout, welche für das Laden und das Darstellen der Webseite zuständig ist. Damit ist es einfach, eine schon
+erstellte, responsive Webseite optimal für ein Smartphone zu nutzen. Zusätzlich können Feinheiten wie angepasste Layouts
+der einzelnen Systeme übernommen werden.
+
+Die Kommunikation zwischen Frontend und API Connect sowie zwischen den entwickelten Smartphone-Apps und dem API Connect
+Service laufen über REST-Aufrufe (englisch REST-Calls).
+
+Da in den Smartphone-Apps lediglich das schon geschriebene Frontend geladen wird, müssen die Aufrufe nur ein Mal
+spezifiziert und umgesetzt werden.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{images/kapitel_4/architektur_frontend.pdf}
-    \caption{Übersicht der Frontendarchitektur}
+    \includegraphics[width=\textwidth]{images/kapitel_4/architektur_frontend.pdf}
+    \caption{Übersicht der Zielarchitektur}
     \label{fig:umsetzung_frontendarchitektur_4}
 \end{figure}
 

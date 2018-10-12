@@ -19,5 +19,8 @@ $(FILE).pdf: $(FILE_DEPS)
 
 clean:
 	-rm *.pdf
+	-rm content/**/*.aux
+	-rm content/*.aux
+	-rm *.log *.aux *.out *.toc *.lof *.lot *.idx *.acr *.alg *.acn *.glg *.glo *.ind *.idx *.lol *.gls *.ilg *.ist *.syi *.syg *.slg *.blg *.bbl
 
 .PHONY: clean
