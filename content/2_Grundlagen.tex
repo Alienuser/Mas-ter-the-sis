@@ -1,7 +1,7 @@
 \chapter{Grundlagen}
 \label{ch:grundlagen}
 Das folgende Kapitel beschreibt elementare Grundlagen, die zum Verständnis der nachfolgenden Kapitel notwendig sind. Der
-erste Abschnitt befasst sich mit den verwendeten Maschinen und Komponenten der Robert Bosch Packaging GmbH.
+erste Abschnitt befasst sich mit den verwendeten Maschinen und Komponenten der Robert Bosch GmbH.
 
 Der zweite Teil widmet sich der Künstlichen Intelligenz und den verschiedenen Untergruppen und Ausprägungen, welche in
 diesem Bereich existieren. Es wird dabei unter anderem auf die Konfiguration der Produkte und Laufzeitumgebungen
@@ -118,8 +118,8 @@ Die Abbildung~\ref{fig:grundlagen_turingtest} auf Seite~\pageref{fig:grundlagen_
 \end{figure}
 
 Der Computer und die Person B versuchen ihren Gesprächspartner C in aufeinanderfolgenden Konversationen davon zu
-überzeugen, dass sie der denkende Mensch sind. Sobald Person C nicht mehr zweifelsfrei bestätigen kann, welche Konversation
-von der anderen Person und welche von der Maschine geführt wird, gilt der Test als bestanden (mehr
+überzeugen, dass sie der denkende Mensch sind. Sobald Person C nicht mehr zweifelsfrei bestätigen kann, welche
+Konversation von der anderen Person und welche von der Maschine geführt wird, gilt der Test als bestanden (mehr
 unter~\cite{online_grundlagen_turing}).
 
 Jedoch ist dieser Test nicht frei von Kritik. Der Amerikanische Philosoph John Searle kritisiert zum Beispiel, dass mit
@@ -129,52 +129,81 @@ Bewustsein oder eine Intentionalität hat.
 Eine Maschine könnte diesen Test bestehen, wenn sie lediglich menschliches Verhalten imitiert und darauf programmiert
 ist. Sie könnte den Tester so manipulieren, dass sie ihn für den echten Menschen hält.
 
-%% TODO Umschreiben
 \section{Machine Learning}
-Machine Learning steht im Zentrum von KI und umfasst Algorithmen, mit denen Computer mit minimalem Programmieraufwand in
-der Lage sind, aus Daten zu lernen.
+Machine Learning ist ein Teilgebiet der Künstlichen Intelligenz und umfasst Algorithmen, mit denen Computer unter
+minimalem Programmieraufwand in der Lage sind, aus Daten zu lernen.
 
-Der Motor von KI ist eine Technologie namens "Machine Learning", die darauf ausgelegt ist, uns Arbeit abzunehmen und
-produktiver zu machen.
-\colorbox{yellow}{Hier fehlt was}
+Dabei versuchen sie anhand vorhandeneer Datenbestände und vorgegebenen Algorithmen Muster und Gesetzmäßigkeiten zu
+erkennen sowie eigenständige Lösungen zu erarbeiten. Die Erkenntnisse lassen sich anschließend verallgemeinern und für
+neue Problemlösungen oder für die Analyse von bisher unbekannten Daten verwenden.
 
-%% TODO noch schreiben
+Algorithmen nehmen beim maschinellen Lernen eine zentrale Rolle ein. Sie sind für das Erkennen von Mustern und das
+Generieren von Lösungen verantwortlich und lassen sich in verschiedene Lernkategorien einteilen
+(mehr in~\cite{book_grundlagen_machinelearning}).
+
 \subsection{Algorithmen}
-Welche Algorithmen gibt es dafür
+Ein Algorithmus gibt grundsätzlich eine Vorgehensweise vor, um ein Problem zu lösen (mehr zu Algorithmen
+in~\cite{book_grundlagen_algorithmen}).
+
+Machine Learning-Algorithmen ermöglichen es Computern, selbstständig zu lernen. Anstatt eine Vielzahl von Quellcode in
+Form von Regeln zu programmieren, werden dafür statistische Algorithmen verwendet.
+
+Es existieren drei Hauptkategorien für die Algorithmen im Bereich Machine Learning. Das Supervised Learning (überwachtes
+Lernen), das Unsupervised Learning (unüberwachtes Lernen) und das Reinforcement Learning (bestärkendes Lernen).
+
+Die meisten Algorithmen suchen nach Beziehungen und Zusammenhängen zwischen den Input-Daten oder zwischen den Input-
+sowie den Output-Daten.
+
+%% TODO noch schreiben
+\subsubsection{Supervised Learning}
+Supervised Learning, auch Random Forest genannt,\cite{book_grundlagen_learnings}
+
+%% TODO noch schreiben
+\subsubsection{Unsupervised Learning}
+Unsupervised Learning, auch k-Means-Algorithmus genannt,\cite{book_grundlagen_learnings}
 \colorbox{yellow}{Hier fehlt was}
 
 %% TODO noch schreiben
-\subsection{Bewertungskriterien}
-Welche Bewertungskreterien gibt es
+\subsubsection{Reinforcement Learning}
+Reinforcement Learning, auch genetischer Algorithmus genannt,\cite{book_grundlagen_learnings}
 \colorbox{yellow}{Hier fehlt was}
 
-%% TODO noch schreiben
-\subsection{Klassifikation}
-Welche Klassifikationen gibt es
-\colorbox{yellow}{Hier fehlt was}
-
-%% TODO noch schreiben
 \subsection{Neuronale Netze}
-Was ist ein Neuronales Netz
-\colorbox{yellow}{Hier fehlt was}
+Bei Neuronale Netze (englisch Neural Network) handelt es sich um Gruppen von Algorithmen die wie ein menschliches Gehirn
+aufgebaut sind. Sie sind dafür da, um wiederkehrende Muster zu erkennen und diese daraufhin zu ordnen bzw. zu markieren.
 
-%% TODO noch schreiben
+Die erkannten Muster werden anschließend in mathematisch Vektoren übersetzt und alle Informationen der realen Welt wie
+Bilder, Sound, Text oder Zeitfolgen berücksichtigt.
+
+Über mehrere Ebenen hinweg helfen neuronale Netze dabei dem jeweiligen System neue Informationen aufgrund von
+Ähnlichkeiten zu klassifizieren und in Modellgruppen zusammenzufassen.
+
+Die Labels helfen dabei, die einzelnen Gruppen zu benennen. Für Labels gibt es mehrere Beispiele wie \enquote{Spam},
+\enquote{zufriedener Kunde}, \enquote{unzufriedener Kunde}.
+
+Die neuronalen Netzwerke bestehen aus mehreren Ebenen (englisch Layern), die in Reihe geschaltet sind. Sie helfen zur
+Verfeinerung der ursprünglichen Annahme (mehr zu neuronalen Netzen unter~\cite{book_grundlagen_neuronalenetze}).
+
 \section{Deep Learning}
-Deep Learning ist eine KI-Methode, die mithilfe von komplexen Algorithmen Aufgaben in einem bestimmten Bereich
-durchführt und diesen dabei mit geringer oder gänzlich ohne menschliche Überwachung erlernt. Kurzum: Computer lernen das
-Lernen.
-\colorbox{yellow}{Hier fehlt was}
+Deep Learning könnte als Weiterentwicklung des Machine Learnings bezeichnet werden und ist ein Teilbereich dessen.
+Klassische Machine Learning Algorithmen greifen auf feste Modellgruppen zur Erkennung und Klassifizierung zurück. Deep
+Learning Algorithmen entwickeln diese Modelle eigenständig weiter oder erstellen neue Modellebenen innerhalb der
+neuralen Netzwerke.
+
+Für neue Vorhersagen, neuen Datensätzen oder für neue Tests müssen nicht immer manuell neue Modelle entwickelt und
+eingeführt werden, was den Vorgang deutlich beschleuningen kann (mehr über Deep Learning
+unter~\cite{book_grundlagen_machinelearning}).
 
 \section{Cloud}
 Für Cloud Computing hat sich die Kurzform Cloud etabliert. Dies versteht das Zusammenspiel von mehreren Servern in einem
 Verbund. Diese Server übernehmen zum Beispiel Aufgaben wie etwa die Datenspeicherung oder komplizierte Programmabläufe.
 Dabei ist für den Cloud-Nutzer nicht ersichtlich, wie viele Server in dieser Cloud stecken oder wo diese sich befinden.
 
-Auch wenn ein Server in diesem Gesamtsystem ausfällt, hat dies keine Auswirkungen auf das gesamte System, da die Anfragen
-und Aufgaben auf andere Systeme umgeleitet werden.
+Auch wenn ein Server in diesem Gesamtsystem ausfällt, hat dies keine Auswirkungen auf das gesamte System, da die
+Anfragen und Aufgaben auf andere Systeme umgeleitet werden.
 
-Durch NIST~\cite{online_grundlagen_cloud_nist} und~\cite{online_grundlagen_cloud_computing} zeichnet sich die Cloud durch
-fünf wesentliche Eigenschaften aus:
+Durch NIST~\cite{online_grundlagen_cloud_nist} und~\cite{online_grundlagen_cloud_computing} zeichnet sich die Cloud
+durch fünf wesentliche Eigenschaften aus:
 
 \begin{itemize}
     \item \textbf{On-Demand Self Service} \\
