@@ -1,7 +1,7 @@
 \chapter{Grundlagen}
 \label{ch:grundlagen}
 Das folgende Kapitel beschreibt elementare Grundlagen, die zum Verständnis der nachfolgenden Kapitel notwendig sind. Der
-erste Abschnitt befasst sich mit den verwendeten Maschinen und Komponenten der Robert Bosch GmbH.
+erste Abschnitt des Kapitels befasst sich mit den verwendeten Maschinen und Komponenten der Robert Bosch GmbH.
 
 Der zweite Teil widmet sich der Künstlichen Intelligenz und den verschiedenen Untergruppen und Ausprägungen, welche in
 diesem Bereich existieren. Es wird dabei unter anderem auf die Konfiguration der Produkte und Laufzeitumgebungen
@@ -165,10 +165,17 @@ Lernen), das Unsupervised Learning (unüberwachtes Lernen) und das Reinforcement
 Die meisten Algorithmen suchen nach Beziehungen und Zusammenhängen zwischen den Input-Daten oder zwischen den Input-
 sowie den Output-Daten.
 
-%% TODO noch schreiben
 \subsubsection{Supervised Learning}
-Supervised Learning, auch Random Forest genannt,\cite{book_grundlagen_learnings}
-\colorbox{yellow}{Hier fehlt was}
+Supervised Learning, auch Random Forest genannt, basiert auf Entscheidungsbäumen (englisch Decision Trees). Es wird
+sowohl für Regressionen als auch zur Klassifizierungen verwendet, da die Anforderungen an die Hardware sehr viel geringer
+sind als beispielsweise bei neuronalen Netzen (mehr dazu unter~\cite{book_grundlagen_learnings}).
+
+Entscheidungsbäume können mit einem einfachen Beispiel aus der Pflanzenwelt beschrieben werden. Das
+\enquote{Hello World} des maschinellen Lernens ist die Klassifizierung von Schwertlilien (Iris). Diese werden anhand von
+vier Merkmalen klassifiziert: Kelchblattlänge, Kelchblattbreite, Blütenblattlänge und Blütenblattbreite.
+
+In Abbildung~\ref{fig:grundlagen_supervised_learning} auf Seite~\pageref{fig:grundlagen_supervised_learning} ist ein
+Ausschnitt des Entscheidungsbaumes zur klassifizierung von Schwertlilien zu sehen.
 
 \begin{figure}[h]
     \centering
@@ -177,17 +184,55 @@ Supervised Learning, auch Random Forest genannt,\cite{book_grundlagen_learnings}
     \label{fig:grundlagen_supervised_learning}
 \end{figure}
 
-%% TODO noch schreiben
+In der Abbildung wird lediglich auf zwei der vier Merkmale eingegangen. Nun ist es möglich auch für die verbleibenden
+Kombinationsmöglichkeiten jeweilige Entscheidungsbäume zu erstellen. So entsteht ein sogenannter Random Forest, also ein
+Wald von zufälligen Entscheidungsbäumen.
+
 \subsubsection{Unsupervised Learning}
-Unsupervised Learning, auch k-Means-Algorithmus genannt,\cite{book_grundlagen_learnings}
-\colorbox{yellow}{Hier fehlt was}
+Der k-Means-Algorithmus ist einer der bekanntesten Clustering-Algorithmen im Unsupervised Learning (unüberwachtes
+Lernen). In diesem werden Cluster gesucht, denen Merkmalsträger (Objekte, Fälle) anhand ihrer Merkmale (Inputfaktoren)
+zugeordnet werden sollen. Es wird versucht Objekte anhand ihrer Ähnlichkeit zu gruppieren (englisch clustern).
+
+Ein Beispiel ist die Gruppierung von Bier anhand der Merkmale Preis, Alkoholgehalt, Stammgewürzgehalt und Schaumstärke.
+Die Gruppen werden mithilfe des Algorithmus gesucht und definiert. Der Anwender kann lediglich die Anzahl der Cluster
+definieren (mehr hierzu unter~\cite{book_grundlagen_learnings}).
+
+Die Abblidung~\ref{fig:grundlagen_unsupervised_learning} auf Seite~\pageref{fig:grundlagen_unsupervised_learning} zeigt
+die Gruppierung von einzelnen Objekten in drei unabhängige Cluster.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.9]{images/kapitel_2/unsupervised_learning.pdf}
+    \includegraphics[scale=1.2]{images/kapitel_2/unsupervised_learning.pdf}
     \caption{Clusterbildung beim Unsupervised Learning}
     \label{fig:grundlagen_unsupervised_learning}
 \end{figure}
+
+Einer der bekanntesten Einsatzmöglichkeiten für den k-Means-Algorithmus ist die Gruppierung von Kunden anhand
+soziodemografischer Merkmale oder Kaufverhalten um ein besseres Bild der eigenen Kundschaft zu erhalten.
+
+Damit können zum Beispiel Kundengruppen bessere Werbung geschaltet oder Angebote unterbreitet werden. Auch ausreißer
+sind für die Auswertung interessant, da auf diese besser eingegangen werden kann.
+
+Der Algorithmus basiert auf fünf einfachen Schritten die im weiteren näher erläutert werden. Diese basieren auf der
+Anleitung von Golem\footnote{https://bit.ly/2Ev8qNt}.
+
+\begin{itemize}
+    \item \textbf{Schritt 1} \\
+    Der Anwender wählt die Anzahl der Variablen k. Dies ist die Anzahl der Cluster, welche gebildet werden sollen.
+    \item \textbf{Schritt 2} \\
+    Wähle k-Punkte als Anfangszentren der Cluster.
+    \item \textbf{Schritt 3} \\
+    Ordne jeden Punkt, also jeden Merkmalsträger, jenem Zentrum zu, das ihm an nächsten ist. Punkte, die einem Zentrum
+    wegen ihrer Nähe zugeordnet wurden, bilden einen Cluster.
+    \item \textbf{Schritt 4} \\
+    Berechne die k-Clusterzentren neu: Die Zentren sollen sich im Zentrum, also in der Mitte der Cluster, welche in
+    Schritt 3 gebildet wurden, befinden.
+    \item \textbf{Schritt 5} \\
+    Hat sich die Position der Clusterzentren geändert? Wenn ja, springe zu Schritt 3, ansonsten beende das Programm.
+\end{itemize}
+
+Dieser Algorithmus ist in zahlreichen Bibliotheken (Libraries) für diverse Programmiersprachen hinterlegt und kann
+kostenfrei genutzt werden.
 
 %% TODO noch schreiben
 \subsubsection{Reinforcement Learning}
