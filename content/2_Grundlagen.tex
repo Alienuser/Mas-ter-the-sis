@@ -234,10 +234,26 @@ Anleitung von Golem\footnote{https://bit.ly/2Ev8qNt}.
 Dieser Algorithmus ist in zahlreichen Bibliotheken (Libraries) für diverse Programmiersprachen hinterlegt und kann
 kostenfrei genutzt werden.
 
-%% TODO noch schreiben
 \subsubsection{Reinforcement Learning}
-Reinforcement Learning, auch genetischer Algorithmus genannt,\cite{book_grundlagen_learnings}
-\colorbox{yellow}{Hier fehlt was}
+Hinter dem Reinforcement Learning (bestärkendes Lernen) steckt das Prinzip des Trial and Errors verbunden mit einer
+Bewertung, die gutes (zielführendes) Verhalten belohnt und schlechte Verhaltensmuster bestraft. Dabei handelt es sich
+um selbstständiges lernen indem versucht wird Belohnungen zu maximieren beziehungsweise Strafen zu minimieren.
+
+Der Algorithmus durchläuft viele Iterationen bei denen bewährte Verhaltensmuster miteinander verknüpft werden und neue
+ausprobiert werden. Die bekanntesten Algorithmen sind die genetischen Algorithmen, welche sich an der Evolutionstheorie
+von Charles Darwin orientieren (mehr dazu unter~\cite{book_grundlagen_learnings}).
+
+Reinforcement Learning kommt bei Lernprozessen zum Einsatz, bei denen auf sich verändernde Umwelteinflüsse reagiert
+werden soll. Ein Beispiel ist das trainieren eines Ameisenvolkes zur Suche der optimalen Fortbewegung. Jede einzelne
+Ameise würde anfangs irgendwie versuchen sich zu bewegen. Nach und nach würden die einzelnen Ameisen richtiges laufen
+aber lernen.
+
+Der messbare Erfolg wäre in diesem Beispiel die zurückgelegte Strecke der einzelnen Ameise. In der nächsten Iteration
+würden die erfolgreichsten Fortbewegungstechniken dann miteinander kombiniert und es würde sich ein spürbarer
+Fortschritt einstellen.
+
+Die Funktionsweise des Reinforcement Learning ist in Abbildug~~\ref{fig:grundlagen_reinforcement_learning} auf
+Seite~\pageref{fig:grundlagen_reinforcement_learning} zu sehen.
 
 \begin{figure}[h]
     \centering
@@ -245,6 +261,14 @@ Reinforcement Learning, auch genetischer Algorithmus genannt,\cite{book_grundlag
     \caption{Funktionsweise des genetischen Algorithmus}
     \label{fig:grundlagen_reinforcement_learning}
 \end{figure}
+
+Der Algorithmus endet, sofern entweder das Ziel erreicht beziehungsweise die Zielpunktzahl überschritten wurde. Problem
+des bestärkendes Lernens ist es, dass es kein optimales Ergebnis garantiert, sondern lediglich eine Verbesserung von
+Generation zu Generation.
+
+Desweiteren ist das erreichte Ergebnis nicht immer das einzig Mögliche und auch nicht immer wiederholbar. Wenn mit der
+gleichen Anfangspopulation gestartet wird, so ist das Ergebnis oft ein anderes, da Rekombinationen und Mutationen durch
+Zufall beeinflusst werden.
 
 \subsection{Neuronale Netze}
 Bei Neuronale Netze (englisch Neural Network) handelt es sich um Gruppen von Algorithmen die wie ein menschliches Gehirn
