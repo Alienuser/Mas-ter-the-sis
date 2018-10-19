@@ -15,12 +15,12 @@ $(FILE).pdf: $(FILE_DEPS)
 	pdflatex $(FILE)
 	-rm content/**/*.aux
 	-rm content/*.aux
-	-rm *.log *.aux *.out *.toc *.lof *.lot *.idx *.acr *.alg *.acn *.glg *.glo *.ind *.idx *.lol *.gls *.ilg *.ist *.syi *.syg *.slg *.blg *.bbl
+	-rm *.log *.aux *.out *.toc *.lof *.lot *.idx *.acr *.alg *.acn *.glg *.glo *.ind *.idx *.lol *.gls *.ilg *.ist *.syi *.syg *.slg *.blg *.bbl *.fdb_latexmk *.fls
 
 clean:
 	-rm *.pdf
 	-rm content/**/*.aux
 	-rm content/*.aux
-	-rm *.log *.aux *.out *.toc *.lof *.lot *.idx *.acr *.alg *.acn *.glg *.glo *.ind *.idx *.lol *.gls *.ilg *.ist *.syi *.syg *.slg *.blg *.bbl
+	-rm *.log *.aux *.out *.toc *.lof *.lot *.idx *.acr *.alg *.acn *.glg *.glo *.ind *.idx *.lol *.gls *.ilg *.ist *.syi *.syg *.slg *.blg *.bbl *.fdb_latexmk *.fls
 
 .PHONY: clean

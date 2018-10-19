@@ -551,16 +551,63 @@ in andere Anwendungen importiert werden kann.
 Im Weiteren kann mit der Entwicklung des Wrappers für das heruntergeladene neuronale Netz begonnen werden. Dafür wird
 der Inhalt der Datei in einer TensorFlow.js Applikation importiert und ausgewertet.
 
-%% TODO noch schreiben
 \subsubsection{Wrapper entwickeln}
 Da das trainierte Model nun offline zur Verfügung steht, kann es im Weiteren mit TensorFlow.js in einem Node.js-Wrapper
 genutzt werden.
 
-- Bauen einer REST-Schnittstelle
-- Enpunkt nimmt Anfrage mit Parameter entgegen
-- Daten werden an TensorFlow übergeben
-- Vorhersage berechnen
-- Vorhersage zurückgeben
+Die Idee des Wrappers ist es, ein Web-Service zur Verfügung zu stellen, der auf dem Port 80 eine REST-Schnittstelle
+beherbergt. Dort findet sich mindestens ein REST-Endpunkt, welcher die Input-Parametern für das trainiert,
+neuronale Netz annehmen kann.
+
+Die übergebenen Werte werden anschließend von einer Routine extrahiert und über die TensorFlow.js Bibliothek an das
+heruntergeladene neuronale Netz übergeben.
+
+Anschließend übermittelt der Web-Service die durch das neuronale Netz vorhergesagten Parameter zurück an die Applikation,
+welche die Anfrage gestellt hat.
+
+Für die Umsetzung des Wrappers sind also zwei Bestandteile elementar. Einerseits muss die Anwendung eine TensorFlow.js
+Umgebung schaffen, indem man das heruntergeladene und trainierte Netz einbinden kann. Andererseits muss es eine
+REST-Schnittstelle bieten, damit man es von über den API Connect Service ansprechen kann.
+
+Bei der Entwicklung beginnt man am Besten beim REST-Endpunkt, da dieser die Struktur der Anwendung vorgibt. Für die
+Implementierung der Endpunkte sind die Libraries \textit{express}\footnote{https://expressjs.com/de} und
+\textit{body-parser}\footnote{https://github.com/expressjs/body-parser} sehr hilfreich.
+
+Die \textit{express}-Bibliothek unterstützt bei der Entwicklung eines Web-Servers, welchen man anschließend über den
+Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen der übergebenen Parameter an die
+Schnittstelle oder das Bündeln der Rückgabewerte - also um den Umgang mit JSON-Objekten.
+
+%% TODO hier gehts weiter
+
+\begin{lstlisting}[language=json, caption=Die komplette package.json, label=ls:umsetzung_package]
+{
+    "name": "tensorflow_wrapper",
+    "version": "1.0.0",
+    "description": "A rest-wrapper for a tensorflow net.",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js"
+    },
+    "author": "Lars Helmuth Probst <lars@famprobst.de>",
+    "license": "ISC",
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "express": "^4.16.4"
+    }
+}
+\end{lstlisting}
+
+\begin{lstlisting}[language=JavaScript, caption=Die komplette server.js, label=ls:umsetzung_serverjs]
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+require('./app/routes')(app, {});
+
+app.listen(80, () => {
+    console.log('server listening on port 80.');
+});
+\end{lstlisting}
 
 \colorbox{yellow}{Hier fehlt was}
 
