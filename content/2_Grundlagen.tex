@@ -192,12 +192,18 @@ Wald von zufälligen Entscheidungsbäumen.
 
 \subsubsection{Unsupervised Learning}
 Der k-Means-Algorithmus ist einer der bekanntesten Clustering-Algorithmen im Unsupervised Learning (unüberwachtes
-Lernen). In diesem werden Cluster gesucht, denen Merkmalsträger (Objekte, Fälle) anhand ihrer Merkmale (Inputfaktoren)
-zugeordnet werden sollen. Es wird versucht Objekte anhand ihrer Ähnlichkeit zu gruppieren (englisch clustern).
+Lernen).
+
+In diesem werden Cluster gesucht, denen Merkmalsträger (Objekte, Fälle) anhand ihrer Merkmale (Inputfaktoren)
+zugeordnet werden sollen. Es wird versucht Objekte anhand ihrer Ähnlichkeit zu gruppieren (englisch clustern) (mehr
+hierzu unter~\cite{book_grundlagen_learnings})..
 
 Ein Beispiel ist die Gruppierung von Bier anhand der Merkmale Preis, Alkoholgehalt, Stammgewürzgehalt und Schaumstärke.
-Die Gruppen werden mithilfe des Algorithmus gesucht und definiert. Der Anwender kann lediglich die Anzahl der Cluster
-definieren (mehr hierzu unter~\cite{book_grundlagen_learnings}).
+Die Gruppen werden mithilfe des Algorithmus gesucht und anschließend definiert.
+
+Der Anwender kann lediglich die Anzahl der Cluster definieren, die erstellt werden sollen. Wenn der Anwender k zum
+Beispiel mit drei deklariert, werden lediglich drei Cluster aufgebaut, was eine sehr schlechte Unterscheidung zur folge
+haben kann.
 
 Die Abblidung~\ref{fig:grundlagen_unsupervised_learning} auf Seite~\pageref{fig:grundlagen_unsupervised_learning} zeigt
 die Gruppierung von einzelnen Objekten in drei unabhängige Cluster.
@@ -210,12 +216,13 @@ die Gruppierung von einzelnen Objekten in drei unabhängige Cluster.
 \end{figure}
 
 Einer der bekanntesten Einsatzmöglichkeiten für den k-Means-Algorithmus ist die Gruppierung von Kunden anhand
-soziodemografischer Merkmale oder Kaufverhalten um ein besseres Bild der eigenen Kundschaft zu erhalten.
+soziodemografischer Merkmale oder Kaufverhalten um ein besseres Bild der eigenen Kundschaft zu erhalten um darauf
+aufbauend Maßnahmen definieren zu können.
 
 Damit können zum Beispiel Kundengruppen bessere Werbung geschaltet oder Angebote unterbreitet werden. Auch ausreißer
 sind für die Auswertung interessant, da auf diese besser eingegangen werden kann.
 
-Der Algorithmus basiert auf fünf einfachen Schritten die im weiteren näher erläutert werden. Diese basieren auf der
+Der Algorithmus basiert auf fünf einfachen Schritten die im Weiteren näher erläutert werden. Diese basieren auf der
 Anleitung von Golem\footnote{https://bit.ly/2Ev8qNt}.
 
 \begin{itemize}
