@@ -488,14 +488,14 @@ Token entspricht dem Rückgabewert des vorangegangenen Postman-Requests.
 Die Auswahl des HTTP-Types \textit{POST} ermöglicht die Definition des Bereichs \texttt{Body} für den Request. Dabei
 handelt es sich um Parameter, welche an die Schnittstelle geschickt werden.
 
-Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)} auswählen. Im Anhang
-\ref{sec:postmanTestparameter} auf Seite \pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche als
+Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)} auswählen. Im
+Anhang~\ref{sec:postmanTestparameter} auf Seite~\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche als
 Eingabe genutzt werden können.
 
 Der Nutzer kann abschließend den Request über den Button \texttt{Send} an den Web-Service abschicken. Nach wenigen
 Sekunden zeigt Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten sein.
 
-In der Abbildung \ref{fig:umsetzung_deployment_postman} auf Seite \pageref{fig:umsetzung_deployment_postman} ist ein
+In der Abbildung~\ref{fig:umsetzung_deployment_postman} auf Seite~\pageref{fig:umsetzung_deployment_postman} ist ein
 Beispielrequest aus Postman auf das Deployment zu sehen. Im linken Bereich sieht man das gesendete JSON-Objekt, mit den
 Eingabevariablen (Inputs). Dabei hat das JSON-Objekt die beiden geforderten Items \textit{fields} und \textit{values}.
 
@@ -620,7 +620,7 @@ und in der \textit{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
 Für die Node.js Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder Einrichtungen
 notwendig sind.
 
-In Abbildung \ref{fig:umsetzung_toolchain_pipeline} auf Seite \pageref{fig:umsetzung_toolchain_pipeline} ist die
+In Abbildung~\ref{fig:umsetzung_toolchain_pipeline} auf Seite~\pageref{fig:umsetzung_toolchain_pipeline} ist die
 komplette Konfiguration der Toolchain veranschaulicht. Die grünen Balken zeigen einen erfolgreichen Durchlauf einer
 einzelnen Phase an.
 
@@ -647,7 +647,7 @@ auf Seite~\pageref{subsec:webseite} beschrieben wird, und auch über Postman ver
 
 \subsection{API Connect}
 \label{subsec:apiconnect}
-Wie in Kapitel \ref{subsec:Aufruf mit Postman} auf Seite \pageref{subsec:Aufruf mit Postman} beschrieben, benötigt das
+Wie in Kapitel~\ref{subsec:Aufruf mit Postman} auf Seite~\pageref{subsec:Aufruf mit Postman} beschrieben, benötigt das
 REST-Interface des erstellten Deployments einen Auth-Token. Dieser kann nur über den Aufruf einer anderen
 REST-Schnittstelle zur Verfügung gestellt werden.
 
@@ -673,7 +673,7 @@ Die anpassung der Routen in API Connect bedürfen keinerlei Programmierkenntniss
 Echtzeit veröffentlich.
 
 \subsubsection{API Connect einrichten}
-Der in Kapitel \ref{subsec:vorbereitung_apiconnect} auf Seite \pageref{subsec:vorbereitung_apiconnect} instanziierte
+Der in Kapitel~\ref{subsec:vorbereitung_apiconnect} auf Seite~\pageref{subsec:vorbereitung_apiconnect} instanziierte
 Service wird im folgenden konfiguriert und eingerichtet. Dazu muss man ihn aus dem IBM Cloud Dashboard heraus aufrufen.
 Nach dem Klick auf den Service-Namen erscheint eine Seite mit hilfreichen Informationen zum Service.
 
@@ -811,8 +811,8 @@ Button \texttt{+ Pfad} einen neuen Zweig hinzufügen. Insgesamt werden zwei Stü
 
 \subsubsection*{Pfad für das Watson Deployment}
 Für den Pfad des \textit{predict-watson} wird ein weiteres Gateway Script benötigt, welches den Header für die Anfrage
-an des Watson Studio Deployment setzt. Für die Einstellungen sind die JavaScript Zeilen in Listing
-\ref{ls:umsetzung_settoken} auf Seite \pageref{ls:umsetzung_settoken} zuständig.
+an des Watson Studio Deployment setzt. Für die Einstellungen sind die JavaScript Zeilen in
+Listing~\ref{ls:umsetzung_settoken} auf Seite~\pageref{ls:umsetzung_settoken} zuständig.
 
 \begin{lstlisting}[language=JavaScript, caption=Gateway Script für den Authorization-Token, label=ls:umsetzung_settoken]
 // Set the token
@@ -857,7 +857,7 @@ Die Konfiguration des API Conenct Services ist somit abgeschlossen und man kann 
 veröffentlichen.
 
 \subsubsection{API Veröffentlichen}
-In der Abbildung \ref{fig:umsetzung_api_connect} auf Seite \pageref{fig:umsetzung_api_connect} ist der fertig eingerichtete
+In der Abbildung~\ref{fig:umsetzung_api_connect} auf Seite~\pageref{fig:umsetzung_api_connect} ist der fertig eingerichtete
 API Connect Flow dargestellt. Dieser umfasst alle notwendigen Module und Einstellungen.
 
 \begin{figure}[h]
@@ -895,8 +895,8 @@ kann angeklickt werden. Daraufhin wird die mittlere Ansicht, in der Informatione
 Stelle gescrollt.
 
 Auch kann man der mittleren Spalte für jeden Endpunkt Informationen zu den verwendeten und produzierten Datentypen
-entnehmen. Diese Informationen können bei der Konfiguration des API-Endpunktes angegeben werden. Dies ist in Kapitel
-\ref{subsec:apiconnect} auf Seite \pageref{subsec:apiconnect} erklärt.
+entnehmen. Diese Informationen können bei der Konfiguration des API-Endpunktes angegeben werden. Dies ist in
+Kapitel~\ref{subsec:apiconnect} auf Seite~\pageref{subsec:apiconnect} erklärt.
 
 Jede zusätzliche Information, die bei der Konfiguration eingetragen wird, erweitert die Ansicht des mittleren Bereiches
 um die jeweilige Informationen.
