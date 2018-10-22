@@ -690,9 +690,11 @@ const predictions = await mn_model.classify(req.body);
 res.send(predictions);
 \end{lstlisting}
 
-Die Zeilen eins bis drei kümmern sich um das Laden des trainierten Netz von der Festplatte. In der sechsten Zeile werden
-die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weitergegeben um eine Vorhersage zu erhalten. Über 
-die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
+Die Zeilen eins bis drei kümmern sich um das Laden des trainierten Netz von der Festplatte. Dabei ist in der zweiten Zeile
+der Name des heruntergeladenen neuronalen Netzes angegeben. Auch einen eventuellen Pfad kann man dort angeben. 
+
+In der fünften Zeile werden die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weitergegeben um eine
+Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
 
 Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die REST-Schnittstelle
 vollkommen ist. Die Ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man dabei entfernen.
