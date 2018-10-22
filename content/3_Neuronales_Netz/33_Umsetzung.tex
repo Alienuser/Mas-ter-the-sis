@@ -453,9 +453,9 @@ Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
 Über die REST-Schnittstelle des Watson Studios wird ein neuer Token generriert. Dabei handelt es sich um eine andere
 Schnittstelle als beim selbst erstellten Web-Service. Der Token ist immer nur für maximal vier Stunden gültig.
 
-Um einen Auth-Token zu erstellen, muss man den Watson Studio Benutzername und das zugehörige Passwort an die Schnittstelle
-übergeben. Ein Beispielaufruf ist in Listing~\ref{ls:umsetzung_apitoken} auf Seite~\pageref{ls:umsetzung_apitoken}
-zu sehen. Der Token ist dabei in einem JSON-Objekt im Rückgabewert enthalten.
+Um einen Auth-Token zu erstellen, muss man den Watson Studio Benutzername und das zugehörige Passwort an die
+Schnittstelle übergeben. Ein Beispielaufruf ist in Listing~\ref{ls:umsetzung_apitoken} auf
+Seite~\pageref{ls:umsetzung_apitoken} zu sehen. Der Token ist dabei in einem JSON-Objekt im Rückgabewert enthalten.
 
 \begin{lstlisting}[language=bash, caption=Abruf des Auth-Tokens, label=ls:umsetzung_apitoken]
 $ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identity/token
@@ -489,11 +489,12 @@ Die Auswahl des HTTP-Types \textit{POST} ermöglicht die Definition des Bereichs
 handelt es sich um Parameter, welche an die Schnittstelle geschickt werden.
 
 Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)} auswählen. Im
-Anhang~\ref{sec:postmanTestparameter} auf Seite~\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche als
-Eingabe genutzt werden können.
+Anhang~\ref{sec:postmanTestparameter} auf Seite~\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche
+als Eingabe genutzt werden können.
 
 Der Nutzer kann abschließend den Request über den Button \texttt{Send} an den Web-Service abschicken. Nach wenigen
-Sekunden zeigt Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten sein.
+Sekunden zeigt Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten
+sein.
 
 In der Abbildung~\ref{fig:umsetzung_deployment_postman} auf Seite~\pageref{fig:umsetzung_deployment_postman} ist ein
 Beispielrequest aus Postman auf das Deployment zu sehen. Im linken Bereich sieht man das gesendete JSON-Objekt, mit den
@@ -522,9 +523,9 @@ Das neuronale Netz ist nun erfolgreich in einem Deployment online zur Verfügung
 Applikation eingebaut.
 
 Dies hat nun mehrere Vorteile. Zum einen kann man das trainierte Model unabhängig von einer Cloud-Lösung nutzen. Die
-TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry-Container geladen werden und ist somit völlig unabhängig
-von der Plattform auf der die Applikation läuft. Auch kann sie modular und schnell in beliebigen Regionen instanziiert
-werden.
+TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry-Container geladen werden und ist somit völlig
+unabhängig von der Plattform auf der die Applikation läuft. Auch kann sie modular und schnell in beliebigen Regionen
+instanziiert werden.
 
 Ein weiterer Vorteil ist die Unabhängigkeit welche damit erreichbar wird. Die Applikation kann selbst verwaltet,
 instanziiert oder auch aktualisiert werden.
@@ -533,7 +534,8 @@ Natürlich ist es ebenfalls möglich die TensorFlow.js Applikation direkt in die
 ohne sie als Microservice nutzen zu müssen.
 
 \subsubsection{Model exportieren}
-Damit das Model in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert werden.
+Damit das Model in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert
+werden.
 Dies erfolgt über den Modeler Flow.
 
 Da der Entwickler das Model in Kapitel~\ref{subsub:modeler_flow} auf Seite\pageref{subsub:modeler_flow} komplet
@@ -628,19 +630,20 @@ in das Projekt installieren.
 Auch wenn eine selbst benötigte Bibliothek, wie zum Beispiel die express-Library, weitere Abhängigkeiten benötigt, werden 
 diese automatisch mitinstalliert. So ist sichergestellt, dass alle geforderten Bibliotheken einwandfrei funktionieren.
 
-Die Ausführung des Befehls hat zur Folge, dass ein neuer Ordner mit dem Namen \textit{node\_modules} erstellt wird. In diesem 
-finden sich nun alle geforderten Bibliotheken und deren Abhängigkeiten an einem zentralen Ort und sind zur Verwendung bereit.
+Die Ausführung des Befehls hat zur Folge, dass ein neuer Ordner mit dem Namen \textit{node\_modules} erstellt wird. In
+diesem finden sich nun alle geforderten Bibliotheken und deren Abhängigkeiten an einem zentralen Ort und sind zur
+Verwendung bereit.
 
-Als nächstes kann man mit der Entwicklung des REST-Endpunktes beginnen. Dafür wird eine initiale Datei benötigt, in der der
-Express-Server sowie alle REST-Endpunkte definiert sind. 
+Als nächstes kann man mit der Entwicklung des REST-Endpunktes beginnen. Dafür wird eine initiale Datei benötigt, in der
+der Express-Server sowie alle REST-Endpunkte definiert sind.
 
 Diese Datei trägt den Namen \textit{server.js} und ist in Listing~\ref{ls:umsetzung_serverjs} auf 
-Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten drei Zeilen der Datei werden die benötigten Bibliotheken in das 
-Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server, der Body-Parser und die 
+Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten drei Zeilen der Datei werden die benötigten Bibliotheken
+in das Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server, der Body-Parser und die
 TensorFlow.js-Runtime ist somit einsatzbereit.
 
-In der fünften Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man diesen über
-die Variable konfigurieren.
+In der fünften Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man
+diesen über die Variable konfigurieren.
 
 \begin{lstlisting}[language=JavaScript, caption=Die komplette server.js, label=ls:umsetzung_serverjs]
 const express = require('express');
@@ -661,25 +664,25 @@ app.listen(80, () => {
 });
 \end{lstlisting}
 
-Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken kann und man 
-diese dann auch verwenden kann. Andernfalls müssten alle Anfragen durch ein API-Gateway gesondert geparst werden.
+Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken kann und
+man diese dann auch verwenden kann. Andernfalls müssten alle Anfragen durch ein API-Gateway gesondert geparst werden.
 
-Durch die Zeile neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit der
-TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ ist \textit{POST}
-angegeben. Somit kann man Daten an den Endpunkt schicken.
+Durch die Zeile neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit
+der TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ ist
+\textit{POST} angegeben. Somit kann man Daten an den Endpunkt schicken.
 
 Mit der Zeile elf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder zurückgegeben. 
 Dies dient als ein Test für das richtige Versenden und die richtige Funktion des Endpunktes. Man kann dies zum Beispiel
 mit dem Programm Postman verifizieren.
 
-Die letzten drei Zeilen lassen den Express-Server auf Port 80 starten und geben Auskunft darüber, dass der Start des Servers
-erfolgreich war. Diese Information wird in der Konsole ausgegeben.
+Die letzten drei Zeilen lassen den Express-Server auf Port 80 starten und geben Auskunft darüber, dass der Start des
+Servers erfolgreich war. Diese Information wird in der Konsole ausgegeben.
 
-Im Weitern kann man nun die Zeile zehn so erweitern, dass die mitgeschickten Daten auch an das heruntergeladene neuronale
-Netz übergeben werden. Das wird durch die Hilfe der TensorFlow.js und der Body-Parser-Bibliothek ermöglicht.
+Im Weitern kann man nun die Zeile zehn so erweitern, dass die mitgeschickten Daten auch an das heruntergeladene
+neuronale Netz übergeben werden. Das wird durch die Hilfe der TensorFlow.js und der Body-Parser-Bibliothek ermöglicht.
 
-In Listing~\ref{ls:umsetzung_tensorflow} auf Seite~\pageref{ls:umsetzung_tensorflow} sind alle Änderungen für den Einbau des
-TensorFlow.js-Wrappers aufgeführt.
+In Listing~\ref{ls:umsetzung_tensorflow} auf Seite~\pageref{ls:umsetzung_tensorflow} sind alle Änderungen für den Einbau
+des TensorFlow.js-Wrappers aufgeführt.
 
 \begin{lstlisting}[language=JavaScript, caption=Der TensorFlow.js Programmteil, label=ls:umsetzung_tensorflow]
 const mn = new mobilenet.MobileNet(1, 1);
@@ -690,8 +693,8 @@ const predictions = await mn_model.classify(req.body);
 res.send(predictions);
 \end{lstlisting}
 
-Die Zeilen eins bis drei kümmern sich um das Laden des trainierten Netz von der Festplatte. Dabei ist in der zweiten Zeile
-der Name des heruntergeladenen neuronalen Netzes angegeben. Auch einen eventuellen Pfad kann man dort angeben. 
+Die Zeilen eins bis drei kümmern sich um das Laden des trainierten Netz von der Festplatte. Dabei ist in der zweiten
+Zeile der Name des heruntergeladenen neuronalen Netzes angegeben. Auch einen eventuellen Pfad kann man dort angeben.
 
 In der fünften Zeile werden die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weitergegeben um eine
 Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
@@ -699,12 +702,12 @@ Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Paramet
 Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die REST-Schnittstelle
 vollkommen ist. Die Ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man dabei entfernen.
 
-Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner. Anschließend kann
-man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage an das Erstellte REST-Interface machen um die funktion der 
-Anwendung zu überprüfen.
+Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner. Anschließend
+kann man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage an das Erstellte REST-Interface machen um die funktion
+der Anwendung zu überprüfen.
 
-Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in einen
-Cloud Foundry-Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
+Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in
+einen Cloud Foundry-Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
 nötigen Schritte erläutert.
 
 \subsubsection{Toolchain einrichten}
@@ -790,8 +793,8 @@ Wie in Kapitel~\ref{subsec:Aufruf mit Postman} auf Seite~\pageref{subsec:Aufruf 
 REST-Interface des erstellten Deployments einen Auth-Token. Dieser kann nur über den Aufruf einer anderen
 REST-Schnittstelle zur Verfügung gestellt werden.
 
-Damit man diese Schritte vereinfachen kann und das im weiteren Verlauf erstellte Frontend ebenfalls das Deployment aufrufen
-kann, werden beide Abfragen in API Connect gebündelt.
+Damit man diese Schritte vereinfachen kann und das im weiteren Verlauf erstellte Frontend ebenfalls das Deployment
+aufrufen kann, werden beide Abfragen in API Connect gebündelt.
 
 Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das Mitschicken des Benutzernamens und
 des zugehörigen Passwortes zum generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung hinterlegt
