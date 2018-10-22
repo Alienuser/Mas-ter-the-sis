@@ -577,7 +577,26 @@ Die \textit{express}-Bibliothek unterstützt bei der Entwicklung eines Web-Serve
 Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen der übergebenen Parameter an die
 Schnittstelle oder das Bündeln der Rückgabewerte - also um den Umgang mit JSON-Objekten.
 
-%% TODO hier gehts weiter
+Da Node.js und damit der Paketmanager npm schon installiert ist, kann der Entwickler mit \textit{npm init} ein neues 
+Projekt starten. Wenn man diesen Befehl in einem noch leeren Ordner ausführt, erscheint eine neue Datei mit dem Namen
+\textit{package.json}. In dieser Datei werden unter anderem alle benötigten Abhängigkeiten des Projektes aufgelistet 
+um sie später einfach und komfortabel zu installieren.
+
+Hinter den einzelnen Bibliotheken kann man direkt die Version definieren, welche man nutzen möchte. Im Listing ist ein
+\textbf{\^}-Symbol vorangestellt. Dies bedeutet, dass die Version, welche heruntergeladen werden soll, zu der angegebenen
+Version kompatibel sein muss. Das bedeutet, dass durchaus eine andere Version heruntergeladen werden kann, falls eine
+neuere existiert. Allerdings bietet sie mindestens genau die selben Funktionen wie die geforderte.
+
+Auch werden in der Datei der Name, eine Beschreibung und die Version des Projektes angegeben. Außerdem kann man Skripte
+definieren, welche man durch kurze Befehle in ein Terminal ausführen kann. Dazu später mehr.
+
+In Listing~\ref{ls:umsetzung_package} auf Seite~\pageref{ls:umsetzung_package} ist die vollständige package.json-Datei
+ersichtlich, welche die beiden Bibliotheken als Abhängigkeit entählt und ein paar wenige Parameter wie Name, Beschreibung, 
+Version und verwendete Lizenz angibt. 
+
+Auch ist ein script mit dem Namen \textit{start} angegeben. Dies kann später mit dem Befehl \textit{npm start} starten.
+Die definition für den Startbefehl kümmert sich anschließend darum, dass intern der Befehl \textit{node server.js}
+ausgeführt wird. Diese Datei wird im Weiteren erstellt.
 
 \begin{lstlisting}[language=json, caption=Die komplette package.json, label=ls:umsetzung_package]
 {
@@ -592,24 +611,89 @@ Schnittstelle oder das Bündeln der Rückgabewerte - also um den Umgang mit JSON
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.18.3",
-        "express": "^4.16.4"
+        "express": "^4.16.4",
+        "tensorflow/tfjs": "",
+        "ensorflow/tfjs-node": "",
+        "tensorflow/tfjs": "",
+        "tensorflow/tfjs-node-gpu": ""
     }
 }
 \end{lstlisting}
 
+Im selben Ordner wie die angelegte package.json kann man nun mittels des Befehls \textit{npm install} alle Abhängigkeiten 
+in das Projekt installieren. 
+
+Auch wenn eine selbst benötigte Bibliothek, wie zum Beispiel die express-Library, weitere Abhängigkeiten benötigt, werden 
+diese automatisch mitinstalliert. So ist sichergestellt, dass alle geforderten Bibliotheken einwandfrei funktionieren.
+
+Die Ausführung des Befehls hat zur Folge, dass ein neuer Ordner mit dem Namen \textit{node\_modules} erstellt wird. In diesem 
+finden sich nun alle geforderten Bibliotheken und deren Abhängigkeiten an einem zentralen Ort und sind zur Verwendung bereit.
+
+Als nächstes kann man mit der Entwicklung des REST-Endpunktes beginnen. Dafür wird eine initiale Datei benötigt, in der der
+Express-Server sowie alle REST-Endpunkte definiert sind. 
+
+Diese Datei trägt den Namen \textit{server.js} und ist in Listing~\ref{ls:umsetzung_serverjs} auf 
+Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten vier Zeilen der Datei werden die benötigten Bibliotheken in das 
+Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server und der Body-Parser sind somit 
+einsatzbereit.
+
+In der sechsten Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man diesen über
+die Variable konfigurieren.
+
 \begin{lstlisting}[language=JavaScript, caption=Die komplette server.js, label=ls:umsetzung_serverjs]
 const express = require('express');
 const bodyParser = require('body-parser');
+const tf = require('@tensorflow/tfjs')
+require('@tensorflow/tfjs-node')
+
 const app = express();
 
-require('./app/routes')(app, {});
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/predict-tensorflow', (req, res) => {
+    // TODO TensorFlow.js
+    res.send(req.body)
+});
 
 app.listen(80, () => {
     console.log('server listening on port 80.');
 });
 \end{lstlisting}
 
-\colorbox{yellow}{Hier fehlt was}
+Die achte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den REST-Endpunkt schicken kann und man diese dann
+verwenden kann. Andernfalls müssten alle Anfragen gesondert geparst werden.
+
+Mit den Zeile zehn bis 13 wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit der
+TensorFlow.js Logik gefüllt wird. Der Endpunkt hat den Namen \textit{predict-tensorflow} und als HTTP-Typ ist \textit{POST}
+angegeben. Damit können Daten an den Endpunkt geschickt werden.
+
+Mit der Zeile zwölf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder zurückgegeben. Dies
+dient als ein Test für das richtige Versenden und die richtige Funktion des Endpunktes.
+
+Die letzten drei Zeilen lassen den Express-Server auf Port 80 starten und geben Auskunft darüber, dass der Start des Servers
+erfolgreich war.
+
+Im Weitern kann nun die Zeile elf so erweitert werden, dass die mitgeschickten Daten auch an das heruntergeladene neuronale
+Netz übergeben werden können. Dies wird durch die Hilfe von TensorFlow.js ermöglicht.
+
+In Listing~\ref{ls:umsetzung_tensorflow} auf Seite~\pageref{ls:umsetzung_tensorflow} sind alle Änderungen für den Einbau des
+TensorFlow.js-Wrappers aufgeführt.
+
+\begin{lstlisting}[language=JavaScript, caption=Der TensorFlow.js Programmteil, label=ls:umsetzung_tensorflow]
+const mn = new mobilenet.MobileNet(1, 1);
+mn.path = "./neural_net.json"
+await mn.load()
+
+const predictions = await mn_model.classify(req.body);
+res.send(predictions);
+\end{lstlisting}
+
+Die Zeilen eins bis drei kümmern sich um das Laden des trainierten Netz von der Festplatte. In der sechsten Zeile werden
+die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weitergegeben um eine Vorhersage zu erhalten. Über 
+die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
+
+Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die REST-Schnittstelle
+vollkommen ist.
 
 Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in einen
 Cloud Foundry-Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
