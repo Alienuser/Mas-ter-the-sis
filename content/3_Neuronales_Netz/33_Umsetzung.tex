@@ -570,12 +570,16 @@ Umgebung schaffen, indem man das heruntergeladene und trainierte Netz einbinden 
 REST-Schnittstelle bieten, damit man es von über den API Connect Service ansprechen kann.
 
 Bei der Entwicklung beginnt man am Besten beim REST-Endpunkt, da dieser die Struktur der Anwendung vorgibt. Für die
-Implementierung der Endpunkte sind die Libraries \textit{express}\footnote{https://expressjs.com/de} und
-\textit{body-parser}\footnote{https://github.com/expressjs/body-parser} sehr hilfreich.
+Implementierung der Endpunkte sind die Libraries \textit{express}\footnote{https://expressjs.com/de},
+\textit{body-parser}\footnote{https://github.com/expressjs/body-parser}, \textit{tfjs}\footnote{https://github.com/tensorflow/tfjs} 
+und \textit{tfjs-node}\footnote{https://github.com/tensorflow/tfjs-node} sehr hilfreich.
 
 Die \textit{express}-Bibliothek unterstützt bei der Entwicklung eines Web-Servers, welchen man anschließend über den
 Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen der übergebenen Parameter an die
 Schnittstelle oder das Bündeln der Rückgabewerte - also um den Umgang mit JSON-Objekten.
+
+Die TensorFlow-Bibliotheken \textit{tfjs} und \textit{tjfs-node} sind für die Verwarbeitung von neuronalen Netzen,
+die Übergabe von Parametern an Modelle und das bereitstellen von heruntergeladenen neuronalen Netzen verantwortlich.
 
 Da Node.js und damit der Paketmanager npm schon installiert ist, kann der Entwickler mit \textit{npm init} ein neues 
 Projekt starten. Wenn man diesen Befehl in einem noch leeren Ordner ausführt, erscheint eine neue Datei mit dem Namen
