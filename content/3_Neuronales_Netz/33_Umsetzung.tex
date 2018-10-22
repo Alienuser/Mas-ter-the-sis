@@ -612,10 +612,8 @@ ausgeführt wird. Diese Datei wird im Weiteren erstellt.
     "dependencies": {
         "body-parser": "^1.18.3",
         "express": "^4.16.4",
-        "tensorflow/tfjs": "",
-        "ensorflow/tfjs-node": "",
-        "tensorflow/tfjs": "",
-        "tensorflow/tfjs-node-gpu": ""
+        "tensorflow/tfjs": "^0.13.2",
+        "tensorflow/tfjs-node": "^0.1.19"
     }
 }
 \end{lstlisting}
@@ -633,18 +631,17 @@ Als nächstes kann man mit der Entwicklung des REST-Endpunktes beginnen. Dafür 
 Express-Server sowie alle REST-Endpunkte definiert sind. 
 
 Diese Datei trägt den Namen \textit{server.js} und ist in Listing~\ref{ls:umsetzung_serverjs} auf 
-Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten vier Zeilen der Datei werden die benötigten Bibliotheken in das 
-Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server und der Body-Parser sind somit 
-einsatzbereit.
+Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten drei Zeilen der Datei werden die benötigten Bibliotheken in das 
+Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server, der Body-Parser und die 
+TensorFlow.js-Runtime ist somit einsatzbereit.
 
-In der sechsten Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man diesen über
+In der fünften Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man diesen über
 die Variable konfigurieren.
 
 \begin{lstlisting}[language=JavaScript, caption=Die komplette server.js, label=ls:umsetzung_serverjs]
 const express = require('express');
 const bodyParser = require('body-parser');
-const tf = require('@tensorflow/tfjs')
-require('@tensorflow/tfjs-node')
+const tf = require('@tensorflow/tfjs-node')
 
 const app = express();
 
@@ -660,21 +657,22 @@ app.listen(80, () => {
 });
 \end{lstlisting}
 
-Die achte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den REST-Endpunkt schicken kann und man diese dann
-verwenden kann. Andernfalls müssten alle Anfragen gesondert geparst werden.
+Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken kann und man 
+diese dann auch verwenden kann. Andernfalls müssten alle Anfragen durch ein API-Gateway gesondert geparst werden.
 
-Mit den Zeile zehn bis 13 wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit der
-TensorFlow.js Logik gefüllt wird. Der Endpunkt hat den Namen \textit{predict-tensorflow} und als HTTP-Typ ist \textit{POST}
-angegeben. Damit können Daten an den Endpunkt geschickt werden.
+Durch die Zeile neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit der
+TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ ist \textit{POST}
+angegeben. Somit kann man Daten an den Endpunkt schicken.
 
-Mit der Zeile zwölf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder zurückgegeben. Dies
-dient als ein Test für das richtige Versenden und die richtige Funktion des Endpunktes.
+Mit der Zeile elf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder zurückgegeben. 
+Dies dient als ein Test für das richtige Versenden und die richtige Funktion des Endpunktes. Man kann dies zum Beispiel
+mit dem Programm Postman verifizieren.
 
 Die letzten drei Zeilen lassen den Express-Server auf Port 80 starten und geben Auskunft darüber, dass der Start des Servers
-erfolgreich war.
+erfolgreich war. Diese Information wird in der Konsole ausgegeben.
 
-Im Weitern kann nun die Zeile elf so erweitert werden, dass die mitgeschickten Daten auch an das heruntergeladene neuronale
-Netz übergeben werden können. Dies wird durch die Hilfe von TensorFlow.js ermöglicht.
+Im Weitern kann man nun die Zeile zehn so erweitern, dass die mitgeschickten Daten auch an das heruntergeladene neuronale
+Netz übergeben werden. Das wird durch die Hilfe der TensorFlow.js und der Body-Parser-Bibliothek ermöglicht.
 
 In Listing~\ref{ls:umsetzung_tensorflow} auf Seite~\pageref{ls:umsetzung_tensorflow} sind alle Änderungen für den Einbau des
 TensorFlow.js-Wrappers aufgeführt.
@@ -693,7 +691,11 @@ die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weiterge
 die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
 
 Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die REST-Schnittstelle
-vollkommen ist.
+vollkommen ist. Die Ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man dabei entfernen.
+
+Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner. Anschließend kann
+man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage an das Erstellte REST-Interface machen um die funktion der 
+Anwendung zu überprüfen.
 
 Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in einen
 Cloud Foundry-Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
