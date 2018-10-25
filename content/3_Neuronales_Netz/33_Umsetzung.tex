@@ -1089,7 +1089,7 @@ werden kann.
 Eine detailliertere Anleitung steht auf der geöffneten Webseite zur Verfügung. Dort kann man sich die einzelnen Befehle
 und Kommandos direkt herauskopieren um diese ausführen.
 
-\subsection{Vergleich}
+\subsection{Vergleich der Endpunkte}
 Wie Eingangs erwähnt soll ein Test zeigen, ob das selbe trainierte Model unter verschiedenen Implementierungen die selben
 Werte als Vorhersage errechnet oder ob es dabei unterschiede geben kann.
 
@@ -1103,9 +1103,19 @@ geschehen. Anschließend muss man die vorhergesagten Parameter des trainierten M
 Bei den angegebenen Parametern handelt es sich lediglich um das \textit{values}-Array des gesamten Aufrufs. Das 
 \textit{fields}-Array kann man aus vorangegangenen Beispielen heranziehen.
 
-Ein Aufruf der beiden Endpunkte ergbit, dass beide die \textbf{selben} Parameter vorhergesagt haben. Dies kann man ganz 
-einfach damit erklären, dass das verwendete neuronale Netz \textit{konsistent} ist. Da sich die Gewichtungen der Parameter
-und \textit{hidden-layer} nicht unterscheidet kommen sie auch zum selben Ergebnis.
+Ein Aufruf der beiden Endpunkte ergbit, dass beide die \textbf{selben} Parameter vorhergesagt haben. Beide kommen auf 
+die folgenden Ergebnisse:
+
+\begin{itemize}
+    \item \textbf{Bandgeschwindigkeit}: 96.51822510893484
+    \item \textbf{Druckluft}: 5.75285430869325
+    \item \textbf{Impuls}: 189.00282088959375
+    \item \textbf{Position}: 571.5457678954419
+    \item \textbf{Totzeit}: 75.98728953791543
+\end{itemize}
+
+Dies kann man ganz einfach damit erklären, dass das verwendete neuronale Netz \textit{konsistent} ist. Da sich die 
+Gewichtungen der Parameter und \textit{hidden-layer} nicht unterscheidet kommen sie auch zum selben Ergebnis. 
 
 Mehr dazu im Kapitel~\ref{ai_openscale} \textit{AI Open Scale} auf Seite~\pageref{ai_openscale} in dem auf die 
 Vertrauenswürdigkeit von neuronalen Netzen eingegangen wird.
