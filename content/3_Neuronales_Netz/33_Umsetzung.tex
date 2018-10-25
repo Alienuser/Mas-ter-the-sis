@@ -1088,3 +1088,54 @@ werden kann.
 
 Eine detailliertere Anleitung steht auf der geöffneten Webseite zur Verfügung. Dort kann man sich die einzelnen Befehle
 und Kommandos direkt herauskopieren um diese ausführen.
+
+\subsection{Vergleich}
+Wie Eingangs erwähnt soll ein Test zeigen, ob das selbe trainierte Model unter verschiedenen Implementierungen die selben
+Werte als Vorhersage errechnet oder ob es dabei unterschiede geben kann.
+
+Ein einfacher Test kann klarheit über dieses Thema geben. Man muss lediglich beide Endpunkte, die der Entwickler über 
+den API Connect Service angeschlossen hat, nacheinander aufrufen. Wichtig dabei ist natürlich, dass man die selben 
+Parameter übergibt um den Test durchzuführen.
+
+Der Test kann mit den Parametern in Listing~\ref{ls:umsetzung_parameter} auf Seite~\pageref{ls:umsetzung_parameter} 
+geschehen. Anschließend muss man die vorhergesagten Parameter des trainierten Models nur noch miteinander verglichen. 
+
+Bei den angegebenen Parametern handelt es sich lediglich um das \textit{values}-Array des gesamten Aufrufs. Das 
+\textit{fields}-Array kann man aus vorangegangenen Beispielen heranziehen.
+
+Ein Aufruf der beiden Endpunkte ergbit, dass beide die \textbf{selben} Parameter vorhergesagt haben. Dies kann man ganz 
+einfach damit erklären, dass das verwendete neuronale Netz \textit{konsistent} ist. Da sich die Gewichtungen der Parameter
+und \textit{hidden-layer} nicht unterscheidet kommen sie auch zum selben Ergebnis.
+
+Mehr dazu im Kapitel~\ref{ai_openscale} \textit{AI Open Scale} auf Seite~\pageref{ai_openscale} in dem auf die Vertraubarkeit
+von neuronalen Netzen eingegangen wird.
+
+\begin{lstlisting}[language=JSON, caption=Parameter zum Test der beiden Implementierungen, label=ls:umsetzung_parameter]
+    "values": 
+        [
+            [
+                415,
+                360,
+                470,
+                250,
+                250,
+                250,
+                29,
+                29,
+                29,
+                240,
+                150,
+                20,
+                220,
+                275.86,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        ]
+\end{lstlisting}
+
+Der Test ist somit positiv verlaufen und beiden Implementierungen können gefahrlos genutzt werden, ohne bei jeder Anfrage
+auf beide Ergebnisse zu warten um diese zu vergleichen.

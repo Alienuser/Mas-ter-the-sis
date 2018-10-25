@@ -1,22 +1,26 @@
 %% TODO noch schreiben
 \chapter{Neuronales Netz}
 \label{ch:neuronalesNetz}
-In diesem Kapitel wird ein neuronales Netz in der Cloud trainiert. Dies wird dann über einen Webdienst verfügbar gemacht.
-\\ \\
-Ich habe Testdaten gesammelt und strukturiert. Ich habe ein neuronales Netz in der Cloud (Bluemix) aufgebaut und es
-mit den gesammelten Daten trainiert und getestet. - Dann habe ich das Model deployed, damit man es per REST aufrufen kann.
-- Dann API Connect genommen um die REST-Schnittstelle anzusprechen und eigene zu bauen. Zur kommunikation.
-- Dann damit rumprobiert. - Dann das trainierte Model genommen und mit TensorFlow.js genutzt und eine Node.js-Applikation gebaut
-- Da dann auch ausprobiert und geschaut, ob das gleiche Erbegnis rauskommt.
-- Auch eine Schnittstelle gebaut, damit man die Funktion von außen aufrufen kann. - Am Schluss die Daten verglichen. Was
-kommt bei der Cloud raus und was bei der Applikation - Bild mit schematischer Architektur (Client, API Connect, Deployment, Model)
-\\ \\
-1--2 Seiten
+Im folgenden Kapitel wird das Training eines neuronalen Netzes eingeleitet und überwacht. Die dafür benötigten Testdaten 
+werden strukturier, aufbereitet und anschließend zum Training vorbereitet und verwendet. Das trainierte Model soll für später
+folgende Anwendungen Aufrufbar sein um Vorhersagen in Echtzeit zu tätigen.
 
-\colorbox{yellow}{Hier fehlt was}
+Sowohl über ein Web-Dienst als auch über ein Deployment soll das trainierte Model Verfügbar sein. Dafür werden, wie in 
+Abbildung~\ref{fig:schematische_architektur} auf Seite~\pageref{fig:schematische_architektur} zu sehen, zwei unterschiedliche
+Anwendungen angelegt und eingerichtet.
 
-In der Abbildung~\ref{fig:schematische_architektur} auf Seite~\pageref{fig:schematische_architektur} ist eine schematische
-Darstellung der Architektur aufgezeigt.
+Die Kommunikation mit den Anwendungen geschieht über den Austausch von JSON-Objekten über REST-Schnittstellen. Damit die 
+Kommunikation zentral gesteuert sowie einfach wartbar ist, soll ein API-Gateway zwischen Anwendung und den beiden Deployments
+für komfort sorgen.  
+
+Der API-Gateway-Service \textit{API Connect} verfügt über zwei verwaltete Endpunkte. Einer steht für die Kommunikation
+mit dem Web-Dienst. Der Andere für die Kommunikation mit dem Deployment.
+
+Ziel der Architektur ist die Bereitstellung eines trainierten Models, welches aus einem neuronalen Netz hervorgeht. Die 
+Architektur soll so aufgebaut werden, dass sie im Weiteren gut Wartbar und Erweiterbar ist.
+
+Außerdem soll ein Test ergeben, ob das selbe trainierte Model auch unter zwei verschiedenen Implementierungen zum gleichen 
+Ergebnis für Vorhersagen mit den gleichen Eingabeparametern kommt und warum es eventuell Abweichungen geben kann.
 
 \begin{figure}[h]
     \centering
