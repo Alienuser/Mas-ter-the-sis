@@ -1,20 +1,28 @@
-%% TODO noch schreiben
 \chapter{Client}
 \label{ch:client}
-Hier beschreiben, was im folgenden Kapitel gemacht werden soll? Was ist das Ziel? Was muss vorbereitet werden?
-Es soll der Client aufgebaut werden, welcher dann mit der REST-Schnittstelle kommuniziert.
-\\ \\
-Wir haben zwei Applikationen. Also muss man auch beide aufrufen können.
-\\ \\
-Ich habe eine Webseite auf Basis von Angular mit Angular-Material gebaut. - Mit der REST-Schnittstelle von API Connect
-kommunizieren lassen (beide Endpunkte) - Zwei Smartphone-Apps aufgebaut,
-welche die Webseite in einem WebViewer laden und anzeigen - Vorkehrungen getroffen, damit die Applikation in der Cloud
-gebaut und gehostet werden kann (Toolchain, Git) - Bild mit schematischer Architektur (Markiert, was nun gemacht wird.
-Rest ausgegraut)
-\\ \\
-1 - 2 Seiten
+Das nachfolgende Kapitel beschreibt die Entwicklung einer Applikation, welche die in Kapitel~\ref{ch:neuronalesNetz}
+auf Seite~\pageref{ch:neuronalesNetz} implementierte Architektur nutzt um Anfragen an die neuronalen Netze einfacher
+und schöner zu gestalten.
 
-\colorbox{yellow}{Hier fehlt was}
+Dabei ist die Anwendung für die Eingabe der Parameter zuständig und das Abfangen von falsch eingetragenen Werten in
+das Formular. Anschließend ist die Übertragung der Werte an die neuronalen Netze möglich und die Vorhersagen werden
+aufbereitet dargestellt.
+
+Die Architektur beherbergt zwar zwei Anwendungen mit jeweils einem Endpunkt, allerdings sind diese gemeinsam über
+den API Connect Service aufrufbar. Dies erleichtert die Entwicklung der Anwendung dahingehend, dass lediglich eine 
+Kommunikation zwischen der neuen Applikation und dem Bluemix-Service notwendig ist.
+
+Da, wie in~\cite{online_client_apps} zu lesen, Apps eine immer wichtigere Rolle im Leben spielen, soll neben einer
+Webanwendung (englisch Frontend) auch für die beiden größten Hersteller von Smartphone-Betriebssystemen eine App 
+entstehen. Somit kann ein noch viel größerer Kundenbereich abgedekt werden.
+
+Das Frontend soll in einem Container laufen um ihn möglichst schnell und komfortabel sowohl in der Cloud als auch 
+im eigenen Rechenzentrum betreiben zu können. In Abbilung~\ref{fig:schematische_architektur_4} auf 
+Seite~\pageref{fig:schematische_architektur_4} zeigt die schematische Architektur des Frontends mit den ausgehenden
+Anfragen. 
+
+Die notwenigen Schritte für das bauen eines Containers sollen in einem Continuous Deployment verankert werden, um sie 
+möglichst Modular zu halten.
 
 \begin{figure}[h]
     \centering

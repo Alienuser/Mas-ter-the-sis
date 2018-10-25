@@ -1,8 +1,8 @@
 \section{Abschluss}
 Das neuronale Netz ist an dieser Stelle fertig trainiert und erfolgreich als Model exportiert. Auch kann man es als
-Deployment über einen Web-Dienst aufrufen und Vorhersagen triggern.
+Deployment über einen Webdienst aufrufen und Vorhersagen triggern.
 
-Mittels internem Onlinetest und über das externe Programm \textit{Postman} wurde der Aufruf des Web-Dienstes überprüft
+Mittels internem Onlinetest und über das externe Programm \textit{Postman} wurde der Aufruf des Webdienstes überprüft
 und die Parameter verifiziert.
 
 Desweiteren ist das trainierte Model erfolgreich in einen Node.js-Wrapper eingebaut worden, der eine TensorFlow.js
@@ -12,7 +12,7 @@ Eingabevariablen.
 Nach kurzer Zeit werden die vorhergesagten Parameter als Rückgabewert über den Request zurückgegeben und eine Anfrage
 wurde so erfolgreich durchgeführt.
 
-Sowohl der Web-Dienst als auch der Node.js Wrapper sind in einem API Gateway vereint, sodass Aufrufe an die beiden
+Sowohl der Webdienst als auch der Node.js Wrapper sind in einem API Gateway vereint, sodass Aufrufe an die beiden
 Endpunkte vereinfacht werden können. Auch Authentifizierung und Sicherheitsmechanismen laufen über den API Gateway um
 eine Anpassung zu vereinfachen.
 
@@ -20,7 +20,7 @@ Um dem Endnutzer eine vereinfachte Möglichkeit zu bieten, Anfragen an die beide
 im nächsten Schritt ein Frontend dafür eingerichtet. Mit diesem ist es Möglich die Inputs für die Bosch KWE einzugeben
 und die vorhergesagten Parameter schön darzustellen.
 
-Außerdem ist so ein Test der komplette Architektur mit Web-Dienst, Node.js Wrapper mit integrierter TensorFlow.js
+Außerdem ist so ein Test der komplette Architektur mit Webdienst, Node.js Wrapper mit integrierter TensorFlow.js
 Applikation und API Connect möglich.
 
 Denn über das Frontend soll ein Request an den API Gateway gesendet werden, welcher dann weiter an ein Vorhersagemodell
