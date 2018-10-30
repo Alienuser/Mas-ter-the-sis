@@ -398,7 +398,7 @@ Als Type für das Deployment muss man \textit{Web Service} auswählen. Der Name 
 und muss befüllt sein. Anschließend kann man das Deployment über \texttt{Save} speichern und starten. Dieser Vorgang kann
 wenige Minuten dauern.
 
-Direkt nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Status} der Wert \texttt{DEPLOY\_SUCCESS}
+Direkt nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Status} der Wert \textit{DEPLOY\_SUCCESS}
 angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf den Namen öffnen.
 
 Das Deployment ist somit erfolgreich erstellt und kann im Weiteren getestet und genutzt werden.
@@ -543,7 +543,7 @@ Da der Entwickler das Model in Kapitel~\ref{subsub:modeler_flow} auf Seite\pager
 eingerichtet und trainiert hat, steht es im Modeler Flow als gelbes Modul bereit.
 
 Über einen Rechtsklick auf das trainierte Model und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
-Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine pb-Datei. Diese Datei beinhaltet alle wichtigen
+Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine JSON-Datei. Diese Datei beinhaltet alle wichtigen
 Informationen über das gebaute neuronale Netz.
 
 Auf der Seite des
@@ -559,7 +559,7 @@ Da das trainierte Model nun offline zur Verfügung steht, kann es im Weiteren mi
 genutzt werden.
 
 Die Idee des Wrappers ist es, ein Web-Service zur Verfügung zu stellen, der auf dem Port 80 eine REST-Schnittstelle
-beherbergt. Dort findet sich mindestens ein REST-Endpunkt, welcher die Input-Parametern für das trainiert,
+beherbergt. Dort findet sich mindestens ein REST-Endpunkt, welcher die Input-Parametern für das trainierte,
 neuronale Netz annehmen kann.
 
 Die übergebenen Werte werden anschließend von einer Routine extrahiert und über die TensorFlow.js Bibliothek an das
@@ -582,7 +582,7 @@ Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen 
 Schnittstelle oder das Bündeln der Rückgabewerte - also um den Umgang mit JSON-Objekten.
 
 Die TensorFlow-Bibliotheken \textit{tfjs} und \textit{tjfs-node} sind für die Verwarbeitung von neuronalen Netzen,
-die Übergabe von Parametern an Modelle und das bereitstellen von heruntergeladenen neuronalen Netzen verantwortlich.
+die Übergabe von Parametern an Modelle und das Bereitstellen von heruntergeladenen neuronalen Netzen verantwortlich.
 
 Da Node.js und damit der Paketmanager npm schon installiert ist, kann der Entwickler mit \textit{npm init} ein neues 
 Projekt starten. Wenn man diesen Befehl in einem noch leeren Ordner ausführt, erscheint eine neue Datei mit dem Namen
@@ -598,7 +598,7 @@ Auch werden in der Datei der Name, eine Beschreibung und die Version des Projekt
 definieren, welche man durch kurze Befehle in ein Terminal ausführen kann. Dazu später mehr.
 
 In Listing~\ref{ls:umsetzung_package} auf Seite~\pageref{ls:umsetzung_package} ist die vollständige package.json-Datei
-ersichtlich, welche die beiden Bibliotheken als Abhängigkeit entählt und ein paar wenige Parameter wie Name, Beschreibung, 
+ersichtlich, welche die vier Bibliotheken als Abhängigkeit entählt und ein paar wenige Parameter wie Name, Beschreibung,
 Version und verwendete Lizenz angibt. 
 
 Auch ist ein script mit dem Namen \textit{start} angegeben. Dies kann später mit dem Befehl \textit{npm start} starten.
@@ -609,7 +609,7 @@ ausgeführt wird. Diese Datei wird im Weiteren erstellt.
 {
     "name": "tensorflow_wrapper",
     "version": "1.0.0",
-    "description": "A rest-wrapper for a tensorflow net.",
+    "description": "A rest-wrapper for a tensorflow app.",
     "main": "server.js",
     "scripts": {
         "start": "node server.js"
@@ -695,7 +695,8 @@ res.send(predictions);
 \end{lstlisting}
 
 Die Zeilen eins bis drei kümmern sich um das Laden des trainierten Netz von der Festplatte. Dabei ist in der zweiten
-Zeile der Name des heruntergeladenen neuronalen Netzes angegeben. Auch einen eventuellen Pfad kann man dort angeben.
+Zeile der Name des heruntergeladenen neuronalen Netzes angegeben. Auch einen eventuellen Pfad zu einem untergeordneten
+Ordner kann man dort angeben.
 
 In der fünften Zeile werden die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weitergegeben um eine
 Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
