@@ -29,8 +29,7 @@ spezifiziert und umgesetzt werden.
 \label{subsec:webseite}
 Als nächstes kann man das Web-Frontend (auch Webseite oder englisch website oder auch client genannt) entwickeln. Um
 nicht mit zahlreiche Iterationen und Anpassungen bei der Entwicklung zu kämpfen, empfiehlt es sich mit der Definition
-von Use-Cases \textendash{} also mit der Definition der Aktionen eines Endnutzers auf der Webseite \textendash{} zu
-beginnen.
+von Use-Cases -- also mit der Definition der Aktionen eines Endnutzers auf der Webseite -- zu beginnen.
 
 Anschließend sollte man für die einzelnen Use-Cases Mockups erstellen, die aufzeigen, wie ein Endnutzer die einzelnen
 Aktionen durchführen kann. In einem weiteren Schritt setzt der Entwickler die gebauten Mockups dann in Quellcode um,
@@ -83,7 +82,7 @@ So ist es zum Beispiel möglich die Parameter \textit{Produktbreite}, \textit{Pr
 einer Gruppe namens \textit{Produktmaße} zusammenzufügen.
 
 Die Abbildung~\ref{fig:umsetzung_mockup_scale_2} auf Seite~\pageref{fig:umsetzung_mockup_scale_2} zeigt das angepasste
-Mockup mit seinen Gruppen sowohl auf der Input- als auch der Output-Seite.
+Mockup mit seinen Gruppen sowohl auf der Input"~ als auch der Output-Seite.
 
 \begin{figure}[h]
     \centering
@@ -96,7 +95,7 @@ Im oberen Bereich der Anwendung kann man ein Logo der Anwendung erscheinen lasse
 geöffnete Seite.
 
 Damit man das Frontend auch für weitere Maschinen oder Maschinenkomponenten anpassen kann, kann der Entwickler ein Menü
-hinzufügen, über das man auf die anderen Seiten mit Eingabe- und Ausgabewerte zugreifen kann.
+hinzufügen, über das man auf die anderen Seiten mit Eingabe"~ und Ausgabewerte zugreifen kann.
 
 Dieses Menü entwickelt man am Besten so, dass es sich aus dem linken Bereich herausschiebt und über ein
 \textit{Hamburger-Menü-Icon}\footnote{https://de.wikipedia.org/wiki/Hamburger-Menü-Icon} zu öffnen ist.
@@ -180,8 +179,8 @@ Standard-Komponenten der Angular-Material-Bibliothek zu nutzen, damit das Ersche
 App ähnelt.
 
 Die Komponenten sind auf der entsprechenden Dokumentationsseite\footnote{https://material.angular.io/components/categories}
-einsehbar und können von da auch direkt kopiert werden um sie im eigenen Quellcode direkt zu nutzen. Auch Icons und
-vorgefertigte Farben kann man der Webseite entnehmen um eine im Stil passende Webseite zu bauen.
+einsehbar und man kann sie von da aus direkt kopiert um sie im eigenen Quellcode zu nutzen. Auch Icons und vorgefertigte
+Farben kann man der Webseite entnehmen um eine im Stil passende Webseite zu bauen.
 
 In Abbildung~\ref{fig:umsetzung_website_input} auf Seite~\pageref{fig:umsetzung_website_input} ist die fertige
 umgesetzte Webseite zu sehen, welche die Parameter für das neuronale Netz eingeben kann. Die linke Spalte mit der
@@ -208,7 +207,20 @@ Webseite zu sehen mit beiden Spalten und dem Button zur generierung der Vorhersa
 \end{figure}
 
 Bei der Umsetzung ist entscheidend, dass die rechte Spalte des Dashboards nur dann angezeigt wird, wenn auch die Abfrage
-an das Backend durch ist und Vorhersagen an das Frontend zurück gekommen sind.
+an das Backend durch ist und Vorhersagen an das Frontend zurück gekommen sind. Allerdings sollte man die Überschrift
+der Spalte anzeigen -- Ausgabe -- damit der Endnutzer weiß, dass da noch weitere Informationen
+folgen werden.
+
+Auch ist so ersichtlich, dass der Platz auf der rechten Seite nicht verschwendet wird. Wenn die Eingabe der Parameter
+sich über die gesamte Seite ziehen würde und nach betätigung des Buttons dann verkleinert, würde das zu viel bewegung in
+der Webseite nach sich ziehen. Das wirkt sich negativ auf das verständnis der Webseite aus.
+
+Die einzelnen Blöcke der Ausgabe erscheinen nach und nach durch kleine Animationen, welche die einzelnen Boxen langsam
+einblendet. Dadurch kann man Zeit gewinnen, um das JSON-Objekt, welches vom Backend zurück kommt, zu parsen. Die einzelnen
+Werte muss man sich aus dem großen Array herausziehen.
+
+Das Parsen kann zeitgleich mit der Animation starten. So wird de Endnutzer symbolisiert, dass die Daten schon da sind
+und sie auch gleich sichtbar sind. So muss er nicht noch das Parsing abwarten.
 
 Dies erleichtert die Arbeit mit der Webseite enorm, da der Endnutzer nicht direkt mit vielen Boxen konfrontiert wird.
 Außerdem existieren für die rechte Spalte nach dem öffnen der Seite auch noch keine Daten die angezeigt werden könnten.
@@ -251,6 +263,9 @@ Button zum erstellen der Vorhersage für die Parameter.
 
 Nach einem Klick auf diesen Button und einer kurzen Ladeanimation erscheint die Ansicht der Ausgabe. Der Nutzer muss
 nicht mehr nach unten scrollen.
+
+Auch in der mobilen Version steht die Überschrift für die Ausgabe schon am unteren Rand, damit der Endnutzer weiß, dass
+die Informationen unterhalb der Eingabe kommen werden und er nicht unnötig überrascht wird.
 
 %% TODO noch schreiben
 \subsubsection{Service Worker}
