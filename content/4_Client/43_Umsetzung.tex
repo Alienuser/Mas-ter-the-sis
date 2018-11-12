@@ -267,25 +267,138 @@ nicht mehr nach unten scrollen.
 Auch in der mobilen Version steht die Überschrift für die Ausgabe schon am unteren Rand, damit der Endnutzer weiß, dass
 die Informationen unterhalb der Eingabe kommen werden und er nicht unnötig überrascht wird.
 
-%% TODO noch schreiben
-\subsubsection{Service Worker}
+\subsubsection{Erweiterungen}
 Die Webseite ist fertig entwickelt. Nun kann man sich über Erweiterungen Gedanken machen, die den Endnutzer bei der
-Eingabe unterstützen können.
+Eingabe der Daten unterstützen können.
 
-\colorbox{yellow}{Hier fehlt was}
+Für zahlreiche Erweiterungen, welche im folgenden Behandelt werden, spielt der \textit{Service Worker} eine
+entscheidende Rolle. Dieser installiert, definiert über ein Manifest, mittels JavaScript-Technologie einen Proxy
+zwischen dem Webbrowser und dem Server.
 
-%% TODO noch schreiben
+Damit kann man die Grundlage für Push-Benachrichtigungen, progressive Web-Apps (PWA), offline Modus und komplexer
+Cache-Strategie setzen.
+
+Um in der erstellten Angular-Anwendung einen Service-Worker zu installieren, benötigt man eine zusätzliche Bibliothek,
+welche die interne Arbeit übernimmt. Diese kann man mittels des folgenden Befehls in die Anwendung einbauen.
+
+\begin{lstlisting}[language=bash, caption=Hinzufügen der PWA-Bibliothek, label=ls:umsetzung_angularaddpwa]
+    ng add @angular/pwa
+\end{lstlisting}
+
+Nun muss man den ServiceWorker in der \textit{angular.json}-Datei aktivieren. Dazu fügt man die Zeile
+\textit{"serviceWorker": true} in das erste \textit{apps}-Objekt ein.
+
+Mit der Aktivierung der Funktionalität wird beim Bau der Anwendung eine \textit{Angular Service Worker}-Datei mit dem
+Namen \textit{ngsw-worker.js} angelegt. Außerdem wird eine Konfigurationsdatei für den Service Worker mit dem Namen
+\textit{ngsw.json} angelegt.
+
+Die erste Datei übernimmt die Installation, das Aktualisieren und das Deinstallieren des Service Workers in den Browser.
+Die zweite Datei kann den Service Worker konfigurieren. So kann man dort zum Beispiel definieren, wie der Service Worker
+heißt und welches Icon für ihn angezeigt werden soll.
+
+Die Einrichtung des Service Workers ist damit abgeschlossen. Allerdings funktioniert dieser nur, wenn die
+Angular-Anwendung produktiv gebaut wird (\textit{ng build --prod}) und dann über das Protokoll \textit{https} aufgerufen
+wird.
+
+Wenn man im Nachgang die Webseite aufruft (mehr dazu im Kapitel~\ref{toolchain_einrichten} auf
+Seite~\pageref{toolchain_einrichten}), kann man den Service Worker in den \textit{Entwicklertools} über den Menüpunkt
+\texttt{Applikation} und dann \texttt{Service Worker} sehen. Dort kann man ihn auch zur Aktualisierung zwingen und
+Löschen.
+
 \subsubsection{Offline Mode}
-Dann kann man alles speichern, damit es offline verfügbar ist.
-\colorbox{yellow}{Hier fehlt was}
+Da man im vorangegangenen Kapitel den Service Worker installiert und eingerichtet hat, kann man als nächstes eine der
+grundlegensten Funktionen des Service Workers nutzen -- das Caching mit offline Modus.
 
-%% TODO noch schreiben
-\subsubsection{Weitere Funktionalitäten}
-Offline Modus -> Kein Request an API,
-\colorbox{yellow}{Hier fehlt was}
+Damit man diesen umsetzen kann, muss man lediglich die Datei \textit{ngsw.json} anpassen und um alle cachbaren Elemente
+erweitern.
+
+In Anhang~\ref{sec:serviceWorkerConfig} auf Seite~\pageref{sec:serviceWorkerConfig} ist die komplette
+Konfigurationsdatei angegeben. Diese kann man komplett nutzen. Nachdem man die Angular-Anwendung wieder gebaut hat, kann
+man sie aufrufen und alle Elemente werden automatisch im Browser gecached.
+
+Wenn man im Anschluss die Internetverbindung unterbricht (offline Modus oder Netzwerk trennen) und die Webseite
+aktualisiert, wird sie trotzdem wie gewünscht angezeigt. Allerdings kann man in diesem Fall keine Vorhersagen tätigen,
+da die REST-Schnittstelle nicht aufgerufen werden kann.
+
+Der offline Modus funktioniert auf allen Plattformen in allen Browsern. So kann man diesen sowohl auf dem Desktop-Computer
+nutzen als auch auf dem Smartphone oder Tablet.
+
+\subsubsection{Keine offline Anfragen}
+Damit man im offline Modus nicht auf einen Fehler stößt, wenn man eine Abfrage an das Backend machen möchte, soll im
+Weiteren das Frontend auf die verschiedenen Modi (online oder offline) reagieren können.
+
+Beispielhaft soll man sich folgendes Szenario vor Augen führen. Ein Endnutzer öffnet bei aktiver Internetverbindung die
+Webseite um eine Vorhersage zu tätigen. Damit er die geforderten Eingabeparameter allerdings eingeben kann, muss er zur
+betreffenden Maschine und diese auslesen.
+
+In dem Raum in dem sich die Maschine befindet gibt es allerdings keine WLAN Verbindung, worauf die Webseite in den
+offline Modus geht. Nachdem der Endnutzer die Daten eingetragen hat und eine Vorhersage starten will, würde er einfach
+eine Fehlermeldung bekommen, dass das Backend nicht angefragt werden kann. Eventuell würden seine Eingaben auch
+verschwinden, da er versucht die Seite neu zu laden.
+
+Um dieses Problem zu beheben, soll das Frontent im offline Modus gar keine Anfragen an das Backend machen sondern den
+Nutzer informieren, dass es aktuell im offline Modus ist. Damit weiß der Nutzer, dass er aktiv nach einer
+Internetverbindung suchen muss.
+
+Um dies zu bewerkstelligen muss man einen Service in die Angular-Anwendung einbauen, welcher immer über den aktuellen
+Modus (online oder offline) bescheid weiß und bei einer Änderung allen Komponenten bescheid gibt.
+
+Mit dem folgenden Befehl kann man einen neuen Service in die Anwendung einbauen.
+
+\begin{lstlisting}[language=bash, caption=Hinzufügen eines Services, label=ls:umsetzung_angularaddservice]
+    ng generate service network
+\end{lstlisting}
+
+Dieser Befehl legt eine Datei mit dem Namen \textit{network.service.ts} an, in der der Service definiert wird. Die
+Implementierung der geforderten Funktion ist relativ einfach, da Angular von Haus aus viele Funktionalitäten mitbringt.
+
+So kann man mit dem in Listing~\ref{ls:umsetzung_angularservicenetwork} auf
+Seite~\pageref{ls:umsetzung_angularservicenetwork} definierten Quellcode ein \textit{Observable} anlegen, welches den
+aktuellen Netzwerkmodus beinhaltet. Sollte dieser sich ändern, werden alle \textit{Observer} darüber informiert.
+
+\begin{lstlisting}[language=JavaScript, caption=Funktion des Network-Services, label=ls:umsetzung_angularservicenetwork]
+    public isConnected = true;
+
+    constructor(private connectionService: ConnectionService) {
+        this.connectionService.monitor().subscribe(isConnected => {
+            this.isConnected = isConnected;
+        })
+    }
+\end{lstlisting}
+
+Anschließend kann man bei jeder Anfrage an das Backend das in Listing~\ref{ls:umsetzung_angularchecknetwork} auf
+Seite~\pageref{ls:umsetzung_angularchecknetwork} definierte If-Statement nutzen, um zu überprüfen ob aktuell eine
+Internetverbindung vorliegt oder nicht. Falls nicht, sollte man den Nutzer über einen gut sichtbaren Hinweis darüber
+informieren, dass aktuell keine Abfrage möglich ist.
+
+\begin{lstlisting}[language=JavaScript, caption=Überprüfung ob eine Internetverbindung vorliegt, label=ls:umsetzung_angularchecknetwork]
+    if (this.networkService.isConnected) {
+        ...
+    } else {
+        ...
+    }
+\end{lstlisting}
+
+Auch wäre es möglich einen dauerhaften Hinweis einzublenden, wenn keine Internetverbindung vorliegt. Dies müsste man dann
+in der \textit{app.component.ts} Datei global machen. Dabei ist entscheidend, dass das nicht mit einem If-Statement
+möglich ist.
+
+Mit einer Snackbar kann man den entsprechenden Hinweis optimal anzeigen und positionieren lassen.
 
 %% TODO noch schreiben
 \subsubsection{Toolchain einrichten}
+Im letzten Schritt bei der Entwicklung des Frontends muss man die Toolchain einrichten, damit man den geschriebenen
+Quellcode auch in einem Cloud Foundry Container in der Cloud installieren kann.
+
+Dabei ist die konfiguration der Pipeline nicht so einfach wie beim Erstellen des TensorFlow-Containers, da man die
+Angular-Anwendung bauen muss, bevor man sie in den Container schieben kann. Auch ist der gebaute Quellcode in einem
+anderen Ordner als der Teil, welchen man in das Git-Repository lädt.
+
+So sind nacheinander wenige Schritte notwendig, damit man die gebaute Anwendung auch richtig in den Container schieben
+kann.
+
+In einem ersten Schritt muss man die Toolchain jedoch erst anlegen.
+
 \colorbox{yellow}{Hier fehlt was}
 
 \begin{figure}[h]
