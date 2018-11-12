@@ -366,6 +366,13 @@ aktuellen Netzwerkmodus beinhaltet. Sollte dieser sich ändern, werden alle \tex
     }
 \end{lstlisting}
 
+Die vierte Zeile \textit{subscribed} sich auf einen Angular internen \textit{Observable}, welcher die Information
+beinhaltet, ob eine Internetverbindung aktuell besteht oder nicht. Die Information, welche aus dem internen Service
+kommt, wird in der lokalen Variable \textit{isConnected} gespeichert. Diese Speicherung führt man in Zeile fünf durch.
+
+Die Varibale, die den aktuellen Modus der Internetverbindung hält, definiert man am Besten global in dem Service und
+damit weit oben in der Datei. Hier symbolisiert durch die Zeile eins.
+
 Anschließend kann man bei jeder Anfrage an das Backend das in Listing~\ref{ls:umsetzung_angularchecknetwork} auf
 Seite~\pageref{ls:umsetzung_angularchecknetwork} definierte If-Statement nutzen, um zu überprüfen ob aktuell eine
 Internetverbindung vorliegt oder nicht. Falls nicht, sollte man den Nutzer über einen gut sichtbaren Hinweis darüber
@@ -378,6 +385,10 @@ informieren, dass aktuell keine Abfrage möglich ist.
         ...
     }
 \end{lstlisting}
+
+In der Zeile zwei definiert man den Programmteil, welcher bei aktiver Internetverbindung aufgefürt wird. Also zum
+Beispiel die Abfrage an das Backend. In der vierten Zeile kann man dann die Meldung ausgeben die angezeigt wird, wenn
+der Nutzer über keine Internetverbindung verfügt.
 
 Auch wäre es möglich einen dauerhaften Hinweis einzublenden, wenn keine Internetverbindung vorliegt. Dies müsste man dann
 in der \textit{app.component.ts} Datei global machen. Dabei ist entscheidend, dass das nicht mit einem If-Statement
