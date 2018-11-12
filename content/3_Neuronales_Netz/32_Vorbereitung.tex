@@ -162,20 +162,20 @@ Repository mit Git verwendet. Unter Linux erfolgt die Installation des Programme
     $ sudo apt-get install git
 \end{lstlisting}
 
-Unter macOS steht ein grafisches Installationsprogramm\footnote{http://sourceforge.net/projects/git-osx-installer} zur
+Unter macOS steht ein grafisches Installationsprogramm\footnote{https://sourceforge.net/projects/git-osx-installer} zur
 Verfügung.
 
 \subsection{Node.js und npm}
 Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Entwicklungsrechner wird ein installiertes
-Node.js benötigt. Eine Installation der zur Zeit aktuellsten LTS-Version (8.12.0) erfolgt unter Linux über die folgenden
+Node.js benötigt. Eine Installation der zur Zeit aktuellsten LTS-Version (10.13.0) erfolgt unter Linux über die folgenden
 Kommandos:
 
 \begin{lstlisting}[language=bash, caption=Installation von Node.js, label=ls:vorbereitung_nodejs]
-    $ curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+    $ curl -L https://deb.nodesource.com/setup_10.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 \end{lstlisting}
 
-Für macOS existiert ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v8.12.0/node-v8.12.0.pkg}
+Für macOS existiert ein Installationspaket, welches auf der Download-Seite\footnote{https://nodejs.org/dist/v10.13.0/node-v10.13.0.pkg}
 zur Verfügung steht.
 
 Bei der Installation von Node.js wird npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und
