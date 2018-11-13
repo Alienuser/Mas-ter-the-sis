@@ -16,11 +16,101 @@
 \label{sec:hariboSiegel}
 \colorbox{yellow}{Hier fehlt was}
 
-%% TODO noch hinzufügen
+\newpage
+
 \section{Postman Testparameter}
 \label{sec:postmanTestparameter}
-\colorbox{yellow}{Hier fehlt was}
+
+\begin{lstlisting}[language=json, caption=Testparameter für Postman, label=ls:anhang_postman, escapeinside=``]
+    {   "fields": [
+            "Einlaufbandl`\textcolor{blue}{ä}`nge",
+            "W`\textcolor{blue}{ä}`gebandl`\textcolor{blue}{ä}`nge",
+            "Auslaufbandl`\textcolor{blue}{ä}`nge",
+            "Einlaufbandbreite",
+            "W`\textcolor{blue}{ä}`gebandbreite",
+            "Auslaufbandbreite",
+            "Einlaufbandrolle",
+            "W`\textcolor{blue}{ä}`gebandrolle",
+            "Auslaufbandrolle",
+            "Produktbreite",
+            "Produktl`\textcolor{blue}{ä}`nge",
+            "Produkth`\textcolor{blue}{ö}`he",
+            "Leistung",
+            "Packungsgewicht",
+            "Bandgeschwindigkeit",
+            "Position",
+            "Totzeit",
+            "Impuls",
+            "Druckluft"
+        ],
+        "values": [
+            [
+                415,
+                360,
+                470,
+                250,
+                250,
+                250,
+                29,
+                29,
+                29,
+                240,
+                150,
+                20,
+                220,
+                275.86,
+                null,
+                null,
+                null,
+                null,
+                null
+            ]
+        ]}
+\end{lstlisting}
+
+\newpage
 
 \section{Konfiguration des Service Worker}
 \label{sec:serviceWorkerConfig}
-\colorbox{yellow}{Hier fehlt was}
+
+\begin{lstlisting}[language=json, caption=Konfiguration des Service Workers, label=ls:anhang_serviceworker]
+    {
+        "index": "/index.html",
+        "assetGroups": [
+            {
+                "name": "app",
+                "installMode": "prefetch",
+                "updateMode": "prefetch",
+                "resources": {
+                    "files": [
+                        "/favicon.ico",
+                        "/index.html",
+                        "/*.css",
+                        "/*.js"
+                    ]
+                }
+            },
+            {
+                "name": "assets",
+                "installMode": "prefetch",
+                "updateMode": "prefetch",
+                "resources": {
+                    "files": [
+                        "/assets/**"
+                    ]
+                }
+            },
+            {
+                "name": "fonts",
+                "installMode": "lazy",
+                "updateMode": "lazy",
+                "resources": {
+                    "urls": [
+                        "https://fonts.googleapis.com/**",
+                        "https://fonts.gstatic.com/**"
+                    ]
+                }
+            }
+        ]
+    }
+\end{lstlisting}
