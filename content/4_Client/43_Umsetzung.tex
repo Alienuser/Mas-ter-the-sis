@@ -396,21 +396,33 @@ möglich ist.
 
 Mit einer Snackbar kann man den entsprechenden Hinweis optimal anzeigen und positionieren lassen.
 
-%% TODO noch schreiben
 \subsubsection{Toolchain einrichten}
 Im letzten Schritt bei der Entwicklung des Frontends muss man die Toolchain einrichten, damit man den geschriebenen
 Quellcode auch in einem Cloud Foundry Container in der Cloud installieren kann.
 
 Dabei ist die Konfiguration der Pipeline nicht ganz so einfach wie die beim Erstellen des TensorFlow-Containers, da man
 die Angular-Anwendung bauen muss, bevor man sie in den Container schieben kann. Auch ist der gebaute Quellcode in einem
-anderen Ordner als der Teil, welchen man in das Git-Repository lädt.
+anderen Ordner als der Teil, welchen man in das Git-Repository lädt. So sind nacheinander wenige Schritte notwendig,
+damit man die gebaute Anwendung auch richtig in den Container schieben kann.
 
-So sind nacheinander wenige Schritte notwendig, damit man die gebaute Anwendung auch richtig in den Container schieben
-kann.
+In einem ersten Schritt muss man die Toolchain jedoch erst anlegen. Dies kann man über das Cloud Foundry Dashboard der
+IBM Cloud machen. Dazu geht man auf das IBM Cloud Dashboard und Klickt auf die angelegte Runtime der Angular-Anwendung.
 
-In einem ersten Schritt muss man die Toolchain jedoch erst anlegen. Dies kann man %% TODO Hier gehts weiter
+Nun öffnet sich das Cloud Foundry Dashboard über das man am unteren Bereich auf den Button \texttt{Aktivieren} in der
+Box \texttt{Continous Delivery} Klicken kann. Genau wie in Kapitel~\ref{sub:tollchain_einrichten} auf
+Seite~\pageref{sub:tollchain_einrichten} gelangt man damit auf die Konfigurationsseite der Toolchain.
 
-\colorbox{yellow}{Hier fehlt was}
+Nun muss man einen Namen für die Toolchain definieren und die Region auswählen. Da auch hier die Standartkonfiguration
+ausreicht, kann man die Toolchain mit einem Klick auf den Button \texttt{Erstellen} einrichten.
+
+Nach einem kurzen Ladevorgang ist die Toolchain eingerichtet und mit einem leeren Git-Repository vorkonfiguriert.
+Aktuell ist lediglich die \textit{Delivery Pipeline} interessant, da man hier die Installation der Angular-Anwendung
+spezifizieren muss.
+
+In der aktuellen Konfiguration sind drei \textit{Stages} eingerichtet. Diese muss man nun um zwei weitere Ergänzen,
+sodass es eine \textit{Build-}, eine \textit{Angular build-}, eine \textit{Copy files-}, eine \textit{Test} und eine
+\textit{Deploy}-Stage gibt. Dies ist in Abbilung~\ref{fig:umsetzung_toolchain_pipeline_frontend} auf
+Seite~\pageref{fig:umsetzung_toolchain_pipeline_frontend} ersichtlich.
 
 \begin{figure}[h]
     \centering
@@ -418,6 +430,41 @@ In einem ersten Schritt muss man die Toolchain jedoch erst anlegen. Dies kann ma
     \caption{Übersicht der Toolchain-Konfiguration}
     \label{fig:umsetzung_toolchain_pipeline_frontend}
 \end{figure}
+
+Die \textbf{Build Stage} entspricht der Standard Build Stage der Toolchain konfiguration und man kann diese unverändert
+beibehalten. Sie ist für das Laden des Quellcodes aus dem Git-Repository zuständig und wird immer dann ausgeführt,
+sobald ein \textit{commit} in das Repository \textit{gepushed} wird.
+
+In der \textbf{Angular Build} Stage wird die ANgular-Anwendung mittels des Befehls \textit{ng build --prod} gebaut. Dies
+ist wichtig, damit ein \textit{dist}-Ordner entsteht, welcher alle kaskadierten CSS- und HTML-Dateien enthält. Auch
+werden CSS- oder HTML-Platzhalter ausgetauscht und die Angular-Anwendung betriebsbereit geschaltet. Dies ist zum
+Beispiel auch für den offline Modus und den Service Worker entscheidend.
+
+Die nächste Stage, \textbf{Copy files}, kümmert sich um das Kopieren der Inhalte aus dem \textit{dist}-Ordner. Später
+soll in dem Cloud Foundry Container nicht der Quellcode laufen, welcher in das Git-Repository geladen wurde. Sondern
+der, welcher mittels der vorangegangenen Stage durch die Angular-CLI gebaut wurde. Darum muss man, bis auf den Inhalt
+des dist-Ordners, alle Dateien und Ordner löschen.
+
+Um die Funktionalität einer Anwendung stetig gewährleisten zu können sollte man Tests für alle Funktionen bereitstellen.
+Die \textbf{Test}-Stage kümmert sich um die Ausführung der Tests. Nur wenn alle erfolgreich durchlaufen, wird der Inhalt
+an das Deployment übergeben um den Cloud Foundry Container zu befüllen.
+
+Die letzte Stage, \textbf{Deploy Stage}, ist die Stadard-Stage der Toolchain für das Installieren der Anwendung. Diese
+kann aus der Ursprungskonfiguration übernommen werden.
+
+Somit ist die Toolchain fertig konfiguriert und man kann den Quellcode in das Git-Repository laden um die Toolchain zu
+starten. Nach wenigen Minuten ist die Anwendung in einem Cloud Foundry Container über ihre Domain im Browser aufrufbar
+und man kann damit beginnen Anfragen an das Backend zu stellen.
+
+Da man in Kapitel~\ref{subsec:apiconnect} auf Seite~\pageref{subsec:apiconnect} den API Connect Service mit den beiden
+Backends verbunden hat, kann man nun aus dem Frontend heraus Anfragen an diese stellen und die Vorhergesagten Parameter
+werden angezeigt.
+
+Im Weiteren kann man damit beginnen das Frontend in die Smartphone-Apps einbauen, da es über eine Domain und ein
+valides SSL-Zertifikat verfügt.
+
+Nur damit ist es Möglich die Webseite in ein WebViewer zu laden und dem Endnutzer anzuzeigen. Auch für die
+Funktion des Service Workers und des offline Moduses ist ein SSL-Zertifikat und eine Domain essentiell.
 
 \subsection{Smartphone App}
 Da das Frontend (Dashboard) nun fertig entwickelt ist, kann man es im nächsten Schritt für die Umsetzung der
@@ -430,31 +477,97 @@ dominieren~\cite{online_umsetzung_mobileos}.
 In den zwei weiteren Kapiteln werden die Umsetzungen für die beiden Betriebssysteme erläutert. Insbesondere wird auf die
 technischen Unterschiede der Systeme eingegangen.
 
-%% TODO noch schreiben
 \subsubsection{Android}
-Bauen und erstellen der Apps
+Für die Erstellung einer Android-App benötigt man die Android Studio IDE. Diese kann man kostenlos auf der
+Developper-Seite\footnote{https://developer.android.com/studio} von Google herunterladen. Die Anwendung steht für
+Windows, Linux und macOS zur Verfügung. Android Studio basiert auf der Community-Edition von IntelliJ1.
 
-\colorbox{yellow}{Hier fehlt was}
+Für die Verwendung von Android Studio benötigt man eine Installierte Java-JRE und das Java-JDK. Die JRE benötigt man für
+das Ausführen der IDE und die JDK für das Bauen des Qqellcodes und der APK-Datei. Die Aktuellste Version von Java wird
+für die Nutzung empfholen. Dies ist zur Zeit die Version 9.
+
+Nachdem man die IDE und gegebenenfalls Java installiert hat, kann man Android Studio zum ersten Mal starten. Beim ersten
+Aufruf muss man das Android-SDK herunterladen sowie einen Emulator konfigurieren. Dabei sollte man jeweils die neuesten
+Versionen auswählen. Mit dem Emulator kann man die App nachher auf dem Rechner starten und live testen.
+
+Im nächsten Schritt muss man ein neues Projekt anlegen. Dazu wird zum Beispiel der Name \textit{Dashboard} ausgewählt.
+Also Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
+
+Die Android-App muss im Ordner \texttt{/res/layout} ein Layout besitzen, welches als Root-Element ein
+\textit{CoordinatorLayout} besitzt und als Kind-Element ein WebView Layout. Diesem Layout wird eine ID zugeteilt, damit
+man es aus der Kotlin-Klasse heraus eindeutig identifizieren kann.
+
+Nun kann man im \texttt{/src}-Ordner zwei Kotlin-Klassen anlegen. Eine für die MainActivity, welche die Hauptroutine der
+Anwendung enthält. Die andere ist für den SplashScreen, welcher beim Start der App angezeigt wird. Der Splashscreen
+zeigt das Bosch-Logo und wechselt nach ein paar Sekunden in die Hauptroutine um den WebViewer darzustellen.
+
+Die MainActivity entählt eine unveränderliche Variable vom Typ \textit{Text} um die URL des Frontends zu definieren. In
+der \textit{onCreate}-Methode kann man dann das WebViewer-Layout konfigurieren, damit die Nutzung von JavaScript möglich
+ist.
+
+Das WebView-Layout, welches von der \textit{Android-WebKit} Klasse erbt, kümmert sich anschließend um das Laden der
+Webseite, die Darstellung und die Interaktion des Nutzers damit.
+
+Wenn man Funktionen der \textit{WebViewClient} überschreibt kann man das Verhalten des WebViews anpassen. So kann man
+beispielsweise Einfluss auf den Titel oder andere HTML-Elemente nehmen.
+
+In den beiden Ordnern \texttt{/res/values} und \texttt{/res/values-v21} kann man Farben und Styles definieren. Im Ordner
+mit der Endung \textit{v21} kann man Styles und Farben definieren, welche erst ab der Android in der Version 21 genutzt
+werden.
+
+Die Datei- und Ordnerstruktur der Android-Anwendung kann man in der Abbildung~\ref{fig:umsetzung_android_folder} auf
+Seite~\pageref{fig:umsetzung_android_folder} einsehen.
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.4]{images/kapitel_4/android_folder.png}
+    \includegraphics[scale=0.3]{images/kapitel_4/android_folder.png}
     \caption{Ordner und Dateien in Android Studio}
     \label{fig:umsetzung_android_folder}
 \end{figure}
 
+Der Ordner \texttt{/res/drawable} enthält das Splashscreen-Logo, also das Bosch-Logo, und die Konfiguration für den
+Hintergrund des Splashscreens.
+
+Die \textit{Manifest.xml}-Datei ist Elementar für jede Android-Anwendung. Über diese kann man die Informationen und
+Konfigurationen der gesamten App anpassen.
+
+Zum Beispiel ist es dort möglich zu definieren, welche Activity beim Start der Anwendung geladen werden soll. Weitere
+Informationen zu dieser Manifest Datei sind in der
+Android-Developer-Seite\footnote{https://developer.android.com/guide/topics/manifest/manifest-intro} verfügbar.
+
+In der Abbildung~\ref{fig:umsetzung_android_app} auf Seite~\pageref{fig:umsetzung_android_app} ist die fertig
+entwickelte Android-App in einem Smartphone-Emulator sichtbar.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.1]{images/kapitel_4/android_app.png}
+    \includegraphics[scale=0.095]{images/kapitel_4/android_app.png}
     \caption{Android-App im Smartphone-Emulator}
     \label{fig:umsetzung_android_app}
 \end{figure}
 
-%% TODO noch schreiben
-\subsubsection{iOS}
-Bauen und erstellen der Apps
+In dieser Abbildung ist leicht zu sehen, dass die Antroid-Styles direkten Einfluss auf die Darstellung der Menüpunkte
+(am unteren Rand) und die Farbe der Toolbar haben. Beide werden in der selben Farbe wie der Header im Web-Frontend
+dargestellt.
 
-\colorbox{yellow}{Hier fehlt was}
+Die Android-App ist an dieser Stelle fertig entwickelt und man kann sie in eine APK-Datei exportieren. Dazu muss man
+eine \textit{Signing-Datei} erstellen mit welcher es dann möglich ist, die Anwendung auch in den Play-Store zu laden.
+
+Alternativ kann man die exportierte Android Package-Datei (kurz APK) auch auf einem echten Smartphone oder Tablet
+installieren um sie unter echten Bedingungen zu testen.
+
+\subsubsection{iOS}
+Um eine App für iOS Geräte zu entwickeln, benötigt man die kostenlose IDE xCode von Apple. Diese steht lediglich für
+macOS-Geräte zur Verfügung und man kann sie im App-Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835?mt=12}
+herunterladen.
+
+Somit kann man iOS Apps lediglich unter macOS und xCode schreiben, kompilieren und testen. Dies stellt eine sehr große
+Einschränkung dar.
+
+Nach der erfolgreichen Installation kann man in xCode anschließend ein neues Projekt anlegen. Die Art des Projektes ist
+\textit{SingleViewApp} und den Namen kann auf \textit{Dashboard} setzen.
+
+In der Abbildung~\ref{fig:umsetzung_ios_ide} auf Seite~\pageref{fig:umsetzung_ios_ide} ist das erstellte Projekt in
+xCode zu sehen. Der lokale Emulator und die verschiedenen SDKs sind automatisch mitinstalliert.
 
 \begin{figure}[h]
     \centering
@@ -463,16 +576,47 @@ Bauen und erstellen der Apps
     \label{fig:umsetzung_ios_ide}
 \end{figure}
 
+Bei den beiden \texttt{.swift}-Dateien handelt es sich um die ausführbaren Klassen innerhalb der Anwendung. Ihn ihnen
+kann man die Logik entwickeln, die für die Anwendung notwendig sind.
+
+Dabei übergibt man in der \textit{ViewController}-Datei die genutzte View und konfiguriert diese. Wie in der Abbildung
+zu sehen ist das gentzte View ein WebView-Layout, dem man die URL übergibt.
+
+In der Datei \textit{AppDelegate} definiert man den Lifecycle der Anwendung. So kann man dort zum Beispiel festlegen,
+dass der genutzte Controller das \textit{LaunchScreen}-Storyboard zugeteilt bekommt.
+
+Generell sind die \texttt{.storyboard}-Dateien für die Darstellung der einzelnen Seiten und Menüpunkte zuständig. Davon
+benötigt man lediglich eine, welche das Web-Frontend darstellt.
+
+Zum Schluss benötigt man die \texttt{.plist}-Datei, die die Konfiguration der Anwendung übernimmt. Sie ist ähnlich der
+Android-Manifest-Datei.
+
+In der Abbildung~\ref{fig:umsetzung_ios_folder} auf Seite~\pageref{fig:umsetzung_ios_folder} ist die Übersicht der
+Ordnerstruktur in xCode bgebildet. Dort sind alle benötigten Dateien zu sehen.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.7]{images/kapitel_4/ios_folder.png}
+    \includegraphics[scale=0.6]{images/kapitel_4/ios_folder.png}
     \caption{Ordner und Dateien in xCode}
     \label{fig:umsetzung_ios_folder}
 \end{figure}
 
+Die Plist-Datei (Property List Files) beinhaltet die Konfiguration der Anwendung. So kann man hier zum Beispiel
+einstellen, ab welcher iOS-Version die App zur Verfügung steht oder ob es beispielsweise einschränkungen in der
+Ausrichtung des Bildschirmes gibt. Außerdem definiert man hier den Namen der Anwendung und das verwendete Icon.
+
+Anschließend muss man im Storyboard, also der View, ein WebView-Layout anlegen. Dies kann man mit der Programmiersprache
+Swift dann ansprechen und konfigurieren. Ähnlich der Android-App kann man Informationen wie Domain oder Anzeigegröße
+übergeben und das Layout kümmert sich selbstständig um das Laden, das Darstellen und die Interaktion mit dem Nutzer der
+Webseite.
+
+Mit einem Klick auf \texttt{Run} (der kleine schwarze Play-Button) in xCode, kann man den zu nutzenden Emulator
+auswählen, welcher die Anwendung starten soll. In der Abbildung~\ref{fig:umsetzung_ios_app} auf
+Seite~\pageref{fig:umsetzung_ios_app} ist die Anwendung im Smartphone Emulator mit der neuesten iOS Version zu sehen.
+
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.4]{images/kapitel_4/ios_app.png}
+    \includegraphics[scale=0.35]{images/kapitel_4/ios_app.png}
     \caption{iOS-App im Smartphone-Emulator}
     \label{fig:umsetzung_ios_app}
 \end{figure}
