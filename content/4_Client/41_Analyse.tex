@@ -7,20 +7,85 @@ umzusetzen, zu verwalten und in Betrieb zu nehmen.
 
 Mit den Ergebnissen wird in den darauffolgenden Kapiteln fortgesetzt und sie werden Schritt für Schritt umgesetzt.
 
-%% TODO noch schreiben
-\subsection{Webseite}
-Wir könnten eine Webseite aufbauen. Am besten responsive.
+\subsection{Architektur Webseite}
+Für die Entwicklung von Webseiten existieren zahlreiche Frameworks, welche wiederum zahlreiche Architekturen umsetzen.
+Das Model-View-Controler-Pattern (kurz MVC) hat sich in der Vergangenheit großflächig durchgesetzt (siehe
+hierzu~\cite{book_grundlagen_mvc}) und soll in diesem Beispiel Verwendung finden.
 
-\colorbox{yellow}{Hier fehlt was}
+Einer der größten Vertreter des MVC-Patterns ist Angular oder AngularJS. Ersteres ist die Weiterentwicklung und
+mittlerweile in Version 6 Verfügbar. Neben der sehr schnellen Einarbeitung ist Angular auch sehr
+mächtig was die mitgelieferten Funktionen und Helfer angeht.
 
-%% TODO noch schreiben
-\subsection{App}
-Wir könnten aber auch eine Native App bauen, mit der wir alles darstellen.
+Es ist darauf spezialisiert Single-Page-Applications (kurz SPA) zu bauen, was einen schnellen Wechsel zwischen den
+einzelnen Seiten nach sich zieht. Bei dem zu entwickelnden Frontend soll es sich um eine SPA handeln.
 
-\colorbox{yellow}{Hier fehlt was}
+\subsection{Runtime}
+Um das Frontend in der IBM Cloud laufen zu lassen, benötigt man eine Runtime in der die Anwendung bestehen kann. Zur
+Auswahl stehen neben \textit{Cloud Foundry} auch ein \textit{Docker-Container} oder der Service \textit{Object Storage}.
 
-%% TODO noch schreiben
-\subsection{Hybrid}
-Wie könnten wir das noch machen? WebViewer-App? Also eine Mischung aus beidem.
+Der Object Storage Service speichert belibige Daten online. Diese kann man dann mittels statischer URLs aufrufen und
+nutzen. Um eine Angular Seite damit zu hosten muss man alle benötigten Daten hochladen und anschließend referenzieren.
+Dieses Vorgehen ist relativ mühsam, da eine Referenzierung in der lokalen IDE erst dann möglich ist, wenn man die Daten
+hochgeladen hat.
 
-\colorbox{yellow}{Hier fehlt was}
+Alternativ kann man die Anwendung auch in ein Docker Container laden und mittels eines Apache oder Nginx Servers
+ausliefern. Dies bedeutet allerdings, dass man ein Dockerimage bauen muss, welches die Anwendung dann aus einem
+Repository lädt.
+
+Eine sehr einfache Möglichkeit ist das Nutze eines Cloud Foundry Containers. Für diese gibt es, genau wie für
+Dockerimages, zahlreiche Buildpacks. Ein Buildpack enthält eine NodeJS-Runtime, mit der man die Angular-Anwendung
+problemlos ausliefern lassen kann.
+
+Zudem ermöglicht der Cloud Foundry Container vereinfachten Zugriff auf die Cloud Foundry
+Environment-Variablen\footnote{https://docs.run.pivotal.io/devguide/deploy-apps/environment-variable.html} (kurz env)
+auf die man über die VCAP-Variablen zugreifen kann.
+
+Über diese Variablen kann man zum Beispiel Zugangsdaten für die Verbundenen Cloud Services auslesen, um diese nicht in
+die Anwendung eintragen zu müssen. Auch wenn sich beispielsweise die Zugangsdaten für die Services ändern, kann die
+Anwendung problemlos weiterlaufen.
+
+\subsection{Smartphone App}
+Eine Möglichkeit ist die Entwicklung nativer Smartphone Apps mit der jeweiligen Programmiersprache und einer
+anschließenden installation auf einem Endgerät. In diesem Fall müsste man zwei seperate Apps entwickeln.
+
+Der Nachteil der Variante ist die Tatsache, dass man bei jeglicher Änderungen am Design oder Anpassungen der
+REST-Schnittstelle eine neue Version der beiden Apps entwickeln muss und sie neu im entsprechenden Store veröffentlichen
+muss.
+
+Alternativ kann man eine native App für die jeweiligen Systeme bauen, welche allerdings als Layout eine Vollbild WebView
+enthält. Dies ermöglicht das laden des aktuellen Web-Frontends aus dem Internet und eine anschließende Darstellung in
+der App. Dem Nutzer wird so suggeriert, als ob er eine komplett nativ geschriebene App nutzt.
+
+Sofern die App ähnlich einer Smartphone App gebaut und designt ist und sich ähnlich verhält, wird dem Endnutzer dieser
+Unterschied allenfalls in der Geschwindigkeit der App auffallen. Diese ist gerade beim Start etwas langsamer, da der
+Nutzer die komplette Webseite herunterladen muss.
+
+Sofern die Webseite allerdings das erste Mal komplett heruntergeladen ist, wird diese auf dem Smartphone gecached um sie
+schneller zu öffnen. Dabei hilft auch der entwickelte Service Worker, der sich nach dem Start dann nach Aktualisierungen
+der Webseite umschaut und diese gegebenenfalls im Hintergrund herunterlädt.
+
+Auch der eingerichtete offline Modus ist für die App interessant, da auch dieser hier problemlos funktioniert.
+Allerdings kann man im offline Modus natürlich keine Vorhersagen starten und es wird mit einer Fehlermeldung abgebrochen.
+
+Da es sich teilweise um eine native App handelt, kann man diese Problemlos in den Store laden. Lediglich eine
+Aktualisierung am Design muss man nicht mit einer neuen Version der App einleiten.
+
+Dies hat den großen Vorteil, dass man kommende Änderungen lediglich an der Webseite umsetzen muss und die beiden Apps
+bekommen diese Aktualisierungen direkt mit und funktionieren weiterhin.
+
+Da es sowohl für Android als auch iOS ein WebView-Layout gibt, kann man beide Apps damit implementieren und so den
+Entwicklungsaufwand auf ein Minimum reduzieren.
+
+In diesem Beispiel wird eine WebView-App entwickelt, da man so dass schon geschriebene Web-Frontend wiederverwenden
+kann und sich dadurch die Entwicklungszeit und Wartung deutlich verkürzt.
+
+\subsection{Frontend-Design}
+Genau wie bei der Architektur einer Anwendung gibt es auch im Bereich des Designs einer Webseite zahlreiche Frameworks.
+Nach t3n~\cite{online_analyse_css} ist \textit{Bootstrap} das wohl bekannteste CSS Framework, welches aktuell existiert.
+
+Da man in diesem Beispiel allerdings das Web-Frontend auch als App nutzen möchte, muss es eine sehr große Ähnlichkeit zu
+diesen besitzen.
+
+Aus diesem Grund ist es sinnvoller das Google Material Design\footnote{https://material.angularjs.org/latest} zu nutzen.
+Für Angular existiert eine Bibliothek, welche die Material-Design Spezifika\footnote{https://material.io/guidelines} in
+Komponenten umsetzt und zum einfachen kopieren zur Verfügung stellt.
