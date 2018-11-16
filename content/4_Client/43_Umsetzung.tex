@@ -436,14 +436,14 @@ beibehalten. Sie ist für das Laden des Quellcodes aus dem Git-Repository zustä
 sobald ein \textit{commit} in das Repository \textit{gepushed} wird.
 
 In der \textbf{Angular Build} Stage wird die ANgular-Anwendung mittels des Befehls \textit{ng build --prod} gebaut. Dies
-ist wichtig, damit ein \textit{dist}-Ordner entsteht, welcher alle kaskadierten CSS- und HTML-Dateien enthält. Auch
+ist wichtig, damit ein \texttt{dist}-Ordner entsteht, welcher alle kaskadierten CSS- und HTML-Dateien enthält. Auch
 werden CSS- oder HTML-Platzhalter ausgetauscht und die Angular-Anwendung betriebsbereit geschaltet. Dies ist zum
 Beispiel auch für den offline Modus und den Service Worker entscheidend.
 
-Die nächste Stage, \textbf{Copy files}, kümmert sich um das Kopieren der Inhalte aus dem \textit{dist}-Ordner. Später
+Die nächste Stage, \textbf{Copy files}, kümmert sich um das Kopieren der Inhalte aus dem \texttt{dist}-Ordner. Später
 soll in dem Cloud Foundry Container nicht der Quellcode laufen, welcher in das Git-Repository geladen wurde. Sondern
 der, welcher mittels der vorangegangenen Stage durch die Angular-CLI gebaut wurde. Darum muss man, bis auf den Inhalt
-des dist-Ordners, alle Dateien und Ordner löschen.
+des \texttt{dist}-Ordners, alle Dateien und Ordner löschen.
 
 Um die Funktionalität einer Anwendung stetig gewährleisten zu können sollte man Tests für alle Funktionen bereitstellen.
 Die \textbf{Test}-Stage kümmert sich um die Ausführung der Tests. Nur wenn alle erfolgreich durchlaufen, wird der Inhalt
@@ -556,23 +556,23 @@ Alternativ kann man die exportierte Android Package-Datei (kurz APK) auch auf ei
 installieren um sie unter echten Bedingungen zu testen.
 
 \subsubsection{iOS}
-Um eine App für iOS Geräte zu entwickeln, benötigt man die kostenlose IDE xCode von Apple. Diese steht lediglich für
+Um eine App für iOS Geräte zu entwickeln, benötigt man die kostenlose IDE Xcode von Apple. Diese steht lediglich für
 macOS-Geräte zur Verfügung und man kann sie im App-Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835?mt=12}
 herunterladen.
 
-Somit kann man iOS Apps lediglich unter macOS und xCode schreiben, kompilieren und testen. Dies stellt eine sehr große
+Somit kann man iOS Apps lediglich unter macOS und Xcode schreiben, kompilieren und testen. Dies stellt eine sehr große
 Einschränkung dar.
 
-Nach der erfolgreichen Installation kann man in xCode anschließend ein neues Projekt anlegen. Die Art des Projektes ist
+Nach der erfolgreichen Installation kann man in Xcode anschließend ein neues Projekt anlegen. Die Art des Projektes ist
 \textit{SingleViewApp} und den Namen kann auf \textit{Dashboard} setzen.
 
 In der Abbildung~\ref{fig:umsetzung_ios_ide} auf Seite~\pageref{fig:umsetzung_ios_ide} ist das erstellte Projekt in
-xCode zu sehen. Der lokale Emulator und die verschiedenen SDKs sind automatisch mitinstalliert.
+Xcode zu sehen. Der lokale Emulator und die verschiedenen SDKs sind automatisch mitinstalliert.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_4/ios_ide.png}
-    \caption{Übersicht von xCode}
+    \caption{Übersicht von Xcode}
     \label{fig:umsetzung_ios_ide}
 \end{figure}
 
@@ -592,12 +592,12 @@ Zum Schluss benötigt man die \texttt{.plist}-Datei, die die Konfiguration der A
 Android-Manifest-Datei.
 
 In der Abbildung~\ref{fig:umsetzung_ios_folder} auf Seite~\pageref{fig:umsetzung_ios_folder} ist die Übersicht der
-Ordnerstruktur in xCode bgebildet. Dort sind alle benötigten Dateien zu sehen.
+Ordnerstruktur in Xcode bgebildet. Dort sind alle benötigten Dateien zu sehen.
 
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.6]{images/kapitel_4/ios_folder.png}
-    \caption{Ordner und Dateien in xCode}
+    \caption{Ordner und Dateien in Xcode}
     \label{fig:umsetzung_ios_folder}
 \end{figure}
 
@@ -610,7 +610,7 @@ Swift dann ansprechen und konfigurieren. Ähnlich der Android-App kann man Infor
 übergeben und das Layout kümmert sich selbstständig um das Laden, das Darstellen und die Interaktion mit dem Nutzer der
 Webseite.
 
-Mit einem Klick auf \texttt{Run} (der kleine schwarze Play-Button) in xCode, kann man den zu nutzenden Emulator
+Mit einem Klick auf \texttt{Run} (der kleine schwarze Play-Button) in Xcode, kann man den zu nutzenden Emulator
 auswählen, welcher die Anwendung starten soll. In der Abbildung~\ref{fig:umsetzung_ios_app} auf
 Seite~\pageref{fig:umsetzung_ios_app} ist die Anwendung im Smartphone Emulator mit der neuesten iOS Version zu sehen.
 
