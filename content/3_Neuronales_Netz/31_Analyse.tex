@@ -1,38 +1,46 @@
 \section{Analyse}
 \label{sec:analyse}
 In diesem Kapitel geht es um die Analyse verschiedener Ansätze zur Umsetzung eines neuronalen Netzes und den damit
-verbundenen Trainings und Tests. Dafür existieren aktuell mehrere Möglichkeiten.
+verbundenen Trainings und Tests. Dafür existieren zum jetzigen Zeitpunkt mehrere Möglichkeiten.
 
-Im Folgenden wird auf drei gängige Varianten näher eingegangen. Dabei werden die Vor"~ und auch die Nachteile aufgezeigt
-und eine Variante ausgewählt, mit der die Architektur umgesetzt wird.
+Im Folgenden wird auf drei gängige Varianten näher eingegangen die für die Umsetzung in Frage kommen. Dabei werden die
+Vor"~ und auch die Nachteile aufgezeigt und eine Variante ausgewählt, mit der die Umsetzung der Architektur am
+Sinnvolsten erscheint.
 
-Ziel ist es, eine optimale Umsetzung zu finden, die späteren Anforderungen und Erweiterungen gerecht werden kann.
-
-%% TODO noch schreiben
-\subsection{Cloud}
-Wir könnten es in der Cloud machen. Besprechen von Bluemix, Azure und AWS. Vor und auch Nachteile der Variante.
-
-Azure kann keine Multi-Label Classification. Darum nur über Umwege (Selber schreiben oder Neuronale Netz an Neuronale
-Netz) machbar. Fällt also weg.
-
-AWS hat hier ein paar Informationen\\
-\url{https://aws.amazon.com/de/blogs/big-data/building-a-multi-class-ml-model-with-amazon-machine-learning/}.
-
-\colorbox{yellow}{Hier fehlt was}
+Ziel des Kapitels ist es, eine optimale Umsetzung für die Architektur zu finden, die späteren Anforderungen und
+Erweiterungen gerecht werden kann.
 
 %% TODO noch schreiben
-\subsection{TensorFlow}
-Alternativ kann das neuronale Netz auch mittels TensorFlow umgesetzt werden.
-Wie könnten es aber auch eigenständig mit Tensorflow machen. Vor und auch Nachteile der Variante. Vergleich Tensorflow
-und TensorFlow.js. Gerade die Geschwindigkeit, leichtigkeit und Weiterverwendbarkeit ist super, wenn man es nicht mit
-Quellcode lößt.
+\subsection{Offline mit Python}
+Einer Möglichkeit zum Aufbau eines neuronalen Netzes ist es, dieses selbst mit Quellcode zu schreiben. Zahlreiche
+Bibliotheken für die verschiedensten Programmiersprachen existieren um dieses Problem anzugehen.
 
-\colorbox{yellow}{Hier fehlt was}
+Eine der am Weitest verbreiteten Programmiersprachen zum Aufbau eines solchen Netzes ist die Programmiersprache
+\textit{Python}\footnote{https://www.python.org}.
+
+Viele Vorteile sprechen für die Umsetzung des neuronalen Netzes mit Python in Verbindung mit einem der zur Verfügung
+stehenden Bibliotheken.
+
+%Gerade die Geschwindigkeit, leichtigkeit und Weiterverwendbarkeit ist super, wenn man es nicht mit Quellcode lößt.
+
+%% TODO noch schreiben
+\subsection{Online in der Cloud}
+Alternativ wäre es auch Möglich das neuronale Netz in der Cloud zu trainieren. Ex existierend unzählig viele Anbieter im
+Bereich Künstliche Intelligenz. Auch die IBM Cloud bietet mit dem \textit{Watson Studio} ein mechanismus ein neuronales
+Netz einfach aufzubauen.
+
+%Wir könnten es in der Cloud machen. Besprechen von Bluemix, Azure und AWS. Vor und auch Nachteile der Variante.
+
+%Azure kann keine Multi-Label Classification. Darum nur über Umwege (Selber schreiben oder Neuronale Netz an Neuronale
+%Netz) machbar. Fällt also weg.
+
+%AWS hat hier ein paar Informationen\\
+%\url{https://aws.amazon.com/de/blogs/big-data/building-a-multi-class-ml-model-with-amazon-machine-learning/}.
 
 %% TODO noch schreiben
 \subsection{Hybrid}
-Es wird eine Mischung aus den beiden Varianten. In der Cloud wird das Neuronale Netz aufgebaut und trainier -> Geschwindigkeit.
-Dann kann es aber auch Deployed werden. Dann aber runterladen und mit TensorFlow.js einen Wrapper bauen um die gleiche
-Datei/Modul.
+Der Beste Weg für die Umsetzung des neuronalen Netzes wäre eine Kombination aus beiden Vorteilen zu nutzen.
 
-\colorbox{yellow}{Hier fehlt was}
+%Es wird eine Mischung aus den beiden Varianten. In der Cloud wird das Neuronale Netz aufgebaut und trainier -> Geschwindigkeit.
+%Dann kann es aber auch Deployed werden. Dann aber runterladen und mit TensorFlow.js einen Wrapper bauen um die gleiche
+%Datei/Modul.

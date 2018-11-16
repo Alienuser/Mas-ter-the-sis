@@ -12,8 +12,8 @@ Eingabevariablen.
 Nach kurzer Zeit werden die vorhergesagten Parameter als Rückgabewert über den Request zurückgegeben und eine Anfrage
 wurde so erfolgreich durchgeführt.
 
-Sowohl der Webdienst als auch der Node.js Wrapper sind in einem API Gateway vereint, sodass Aufrufe an die beiden
-Endpunkte vereinfacht werden können. Auch Authentifizierung und Sicherheitsmechanismen laufen über den API Gateway um
+Sowohl der Webdienst als auch der Node.js Wrapper sind in einem API-Gateway vereint, sodass Aufrufe an die beiden
+Endpunkte vereinfacht werden können. Auch Authentifizierung und Sicherheitsmechanismen laufen über den API-Gateway um
 eine Anpassung zu vereinfachen.
 
 Um dem Endnutzer eine vereinfachte Möglichkeit zu bieten, Anfragen an die beiden Vorhersagemodelle zu schicken, wird
@@ -23,8 +23,8 @@ und die vorhergesagten Parameter schön darzustellen.
 Außerdem ist so ein Test der komplette Architektur mit Webdienst, Node.js Wrapper mit integrierter TensorFlow.js
 Applikation und API Connect möglich.
 
-Denn über das Frontend soll ein Request an den API Gateway gesendet werden, welcher dann weiter an ein Vorhersagemodell
-geschickt wird. Die Antwort des Models gelangt dann zurück zum API Gateway und dann wieder zurück an das Frontend.
+Denn über das Frontend soll ein Request an den API-Gateway gesendet werden, welcher dann weiter an ein Vorhersagemodell
+geschickt wird. Die Antwort des Models gelangt dann zurück zum API-Gateway und dann wieder zurück an das Frontend.
 
 In einem Aufruf sind alle bisher gebauten Komponenten involviert, sodass ein Test das Zusammenspiel und der
 Kommunikation der Komponenten möglich ist.
