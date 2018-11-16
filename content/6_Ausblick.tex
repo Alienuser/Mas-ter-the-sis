@@ -48,67 +48,129 @@ Möglichen Architektur zur automatisierten Einstellung von Maschinenparametern.
 
 Allerdings sind automatisierte Tests nicht immer und für jede Anwendung geeignet. Michael Lüttel von der Deutschen
 Flugsicherung sagte auf der iqnite-Konferenz in Düsseldorf \enquote{Automatisierung macht nur dann Sinn, wenn sie mehr
-Aufwände einspart als sie selbst erzeugt.}\footnote{https://www.qz-online.de/news/uebersicht/nachrichten/vor-und-nachteile-von-automatisierten-software-tests-890130.html}.
+Aufwände einspart als sie selbst
+erzeugt.}\footnote{https://www.qz-online.de/news/uebersicht/nachrichten/vor-und-nachteile-von-automatisierten-software-tests-890130.html}.
 
-%% TODO noch schreiben
 \section{Function as a Service}
-Wie könnte man Functions/Lambda einbauen. FaaS
+Aktuell ist in der Architektur ein Webservice mit dem trainierten Modell installiert und eingerichtet, welcher auf
+einem Cloud Foundry Container basiert. Die Konfiguration und Instanthaltung des Containers übernimmt die IBM Cloud
+automatisch.
 
-\colorbox{yellow}{Hier fehlt was}
+Dieser Container wartet immerzu auf Anfragen an das eigene REST-Interface um eine Vorhersage zu erzeugen. Sollte über
+einen Zeitraum keine Anfrage ankommen, verbraucht dieser Container weiterhin kostspielige Ressourcen wie zum Beispiel
+Arbeitsspeicher, da er immer betriebsbereit sein muss.
 
-%% TODO noch schreiben
-\section{Machine Learning für Smartphones}
-Wie könnte man das Feature nutzen und was würde das bringen
+Um diesem Problem entgegenzuwirken existieren Services für den Serverlosen Betrieb (englisch Serverless Computing).
+Diese heißen \textit{Functions as a Service} (kurz Faas) und sind in der IBM Cloud unter dem Namen \textit{Functions}
+zu finden. Die Funktionsweise basiert auf Apache OpenWhisk.
 
-\colorbox{yellow}{Hier fehlt was}
+Dieser Service stellt online eine Ordnerstruktur für den Kunden bereit, in der man selbstgeschriebenen Quellcode
+hinterlegen kann. Dabei werden alle gängigen Programmiersprachen unterstützt.
 
-%% TODO noch schreiben
+Nachdem man den Quellcode hinterlegt hat, kann man sogenannte \textit{Trigger} definieren. Ein Trigger steht für ein
+Ereignis, welches an einem Provider stattfindet. Dies kann zum Beispiel ein Aufruf eines Endpunktes sein, ein neuer
+Eintrag in einer Datenbank, eine Push-Benachrichtigung oder andere Funktionen.
+
+Sofern dieses Ereignis eintritt, startet der Service \textit{Functions} eigenständig den selbstgeschriebenen Quellcode
+und führt ihn aus. Dabei wird ein Cloud Foundry Container gestartet und der Quellcode in diesem ausgeführt.
+
+Wenn der Quellcode fertig abgearbeitet ist, fährt der Container selbstständig herunter und die benötigten Ressourcen
+werden nicht weiter beansprucht.
+
+Mit der Hilfe dieser Funktion kann man das online in der Cloud trainierte Modell mit dem TensorFlow-Wrapper in den IBM
+Service Functions schieben und diesen immer dann ausführen lassen, wenn ein Request ankommt.
+
+So kann man Geld für die ansonsten ständig belegten Ressourcen des Containers sparen.
+
 \section{Offline Modus}
-Ein Offline-Mode für die Website mit TensorFlow.js.
+Anstatt das trainierte Modell aus der Cloud in einem TensorFlow-Wrapper einzurichten um es anschließend mit einer
+REST-Schnittstelle zu versehen kann man es auch direkt und nativ im Browser (bisher nur Chrome von Google) einbetten.
 
-\colorbox{yellow}{Hier fehlt was}
+Dafür muss man das Frontend dahingehend erweitern, dass Anfragen davon nicht an eine online REST-Schnittstelle geschickt
+werden, sondern direkt an das im selben Verzeichnis gespeicherte trainierte Modell.
 
-%% TODO noch schreiben
+Das Trainieren des Modells kann trotzdem in der Cloud geschehen. Man muss es anschließend aber herunterladen und in der
+Angular-Anwendung verfügbar machen. Mittels TensorFlow-Bibliotheken kann man eine Anfrage dann direkt an das lokale
+Modell stellen und erhält die Vorhersagen schneller.
+
+Auch wird in dieser Version keine Internetverbindung benötigt. Nachdem die Webseite einmal heruntergeladen ist, kann
+eine Anfrage im offline Modus geschehen.
+
+\section{Machine Learning für Smartphones}
+Auch kann das trainierte Modell nicht nur im Browser zur Verfügung gestellt werden, sondern auch in einer nativen
+Android"~ oder iOS-App.
+
+Dafür existieren im Android-SDK oder im Xcode Funktionen für den direkten Zugriff auf trainierte neuronale Netze. Dabei
+muss das Modell nicht schon im Voraus trainiert sein. Es kann auch direkt auf dem Smartphone passieren.
+
+Unter Android steht beispielsweise die \textit{Neural Networks API} bereit. In dieser kann man die Testdaten mit der APK
+ausliefern und selbst trainieren lassen. Dies hat den Vorteil, dass man keine eigenen Ressourcen für das Training und
+für das Bereistellen eines Backends aufbringen muss.
+
+Nachdem das neuronale Netz auf dem Smartphone trainiert ist, kann man Anfragen direkt aus der selbst geschriebenen App
+stellen und benötigt keine Internetverbindung mehr.
+
+Diese Variante funktioniert allerdings nur bei nativen Apps. Da es sich allerdings bei der WebView-App um eine native
+App handelt, welche die Webseite herunterlädt, kann man diese um die Funktion der lokalen neuronalen Netze erweitern.
+
+Da es aus einer WebView-App möglich ist, den HTML"~ sowie den JavaScript-Code zu manipulieren ist es lediglich notwendig
+den \textit{Senden}-Button so abzuändern, dass man die eingegebenen Daten nicht an das Backend schickt, sondern an das
+lokal trainierte Modell.
+
 \section{AI OpenScale}
 \label{ai_openscale}
-Hiermit kann man veranschaulichen, warum und wie die AI auf das Ergebnis gekommen ist. Das kann man mit dem Deployment
-und mit dem TensorFlow.js Ding machen. Dafür braucht man eine Datenbank.
+Der Service AI OpenScale aus der IBM Cloud kann den internen Aufbau eines trainierten neuronalen Netz anzeigen und
+nachvollziehbar darstellen. Dabei ist es unter anderem Möglich zu verstehen, wie das neuronale Netz auf die Vorhersage
+kommt und zu welcher Wahrscheinlichkeit es sich sicher ist.
 
-\colorbox{yellow}{Hier fehlt was}
+Dabei muss man eine Datenbank mit dem Watson Studio Service verbinden, damit diese alle Tätigkeiten des neuronalen
+Netzes und des trainierten Modells aufzeichnet. Diese Aufzeichnung passiert nach der Einrichtung automatisch.
 
-%% TODO nosch schreiben
-\section{Skalierbarkeit}
-Wie könnte man die Anwendung skalieren?
+Nachdem man mehrere Vorhersagen durchgeführt hat, zeigt der AI OpenScale Service zahlreiche Informationen an und
+visualisiert dem Nutzer, wie die Vorhersage zustandegekommen ist.
 
-\colorbox{yellow}{Hier fehlt was}
+Auf der Produktseite\footnote{https://www.ibm.com/cloud/ai-openscale} des Services sind zahlreiche Beispiele und Videos
+zu sehen, welche die Funktionsweise veranschaulichen.
 
-%% TODO noch schreiben
+Der Service wurde unter dem Gesichtspunkt \texttt{Transparenz} entwickelt. Er soll die Angst vor neuronalen Netzen
+eindämmen in dem nachvollziehbar wird, warum und vorallem wie Ergebnisse zustandekommen.
+
 \section{Audit mit Blockchain}
-Für die Waage muss Audit gemacht werden. Könnte man Blockchian da nicht noch einbauen?
+Aktuell muss der Maschineneinsteller für jede Auslieferung einer KWE der Robert Bosch GmbH ein Excel-Dokument ausfüllen,
+in dem diverse Tests, eingestellte Parameter und Funktionen der Wiegeeinheit festgehalten und überprüft werden.
 
-\colorbox{yellow}{Hier fehlt was}
+Dieses Dokument dient zur Validierung der korrekten Funktionsweise der Waage und man kann damit zu jedem späteren
+Zeitpunkt, nach erfolgter Auslieferung, die korrekte Funktion beweisen.
 
-%% TODO noch schreiben
-\section{Nutzen von IoT}
-Nutzen von IoT
+Das Dokument dient ebenfalls zur Absicherung der Robert Bosch GmbH gegenüber dem Gesetzgeber, dass die Wiegeeinheit
+korrekt geeicht wurde und muss über den kompletten Lebenszyklus der Maschine aufbewart werden.
 
-\colorbox{yellow}{Hier fehlt was}
+Aus diesem Grund ist es wichtig, dass das Dokument nach der Anfertigung weder verschwindet, noch nachträglich verändert
+wird.
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=\textwidth]{images/kapitel_6/iot_waage.pdf}
-    \caption{Übersicht der Zielarchitektur}
-    \label{fig:ausblick_iot}
-\end{figure}
+Zum Speichern und zum Schutz vor unberechtigter Veränderung von Informationen existiert seit dem Jahr 2008 eine neue
+und sichere Speichermöglichkeit -- die Blockchain.
 
-%% TODO noch schreiben
-\subsection{Daten einlesen}
-Wie könnten die Daten, welche durch das Netzwerk herausgefunden werden, auch automatisch in die Machine eingegeben werden?
+Sowohl das WallStreet
+Journal\footnote{https://www.wallstreet-online.de/nachricht/10475136-ey-announces-blockchain-audit-technology} als auch
+die Seite des Blockchain-Wikipedia-Eintrags\footnote{https://de.wikipedia.org/wiki/Blockchain} zeigen zahlreiche
+Vorschläge für den automatisierten Audit-Vorgang im Unternehmensbereich.
 
-\colorbox{yellow}{Hier fehlt was}
+Dabei ist die Idee, die eingestellten Parameter der Maschine, bevor sie zum Kunden ausgeliefert wird, in einer
+Blockchain zu speichern. Die Architektur der Blockchain stellt anschließend sicher, dass nach erfolgreichem anlegen
+eines Blockes, welcher mit den Informationen gefüllt ist, dieser vor fremden Zugriffen und manipulationen geschützt ist.
 
-%% TODO noch schreiben
-\subsection{Daten auslesen}
-Wie könnte man Daten der Maschine auslesen, damit man sie nutzen kann um das Neuronale Netz weiter zu verbessern?
+Allerdings muss man dabei beachten, dass das Auslesen der Informationen aus der Maschine und das Übertragen der Daten
+an den Blockchain-Knoten so abgesichert sein muss, dass keine fremde Person diese Daten verändern kann.
 
-\colorbox{yellow}{Hier fehlt was}
+In einem darauf aufbauenden Schritt könnte ein neuronales Netz wiederkehrend mit den Maschinenparametern versorgt werden,
+um sich selbst neu einzustellen. Die daraufhin veränderten Parameter und darauf aufbauenden Tests müssten automatisiert
+an den Block der Ureinstellung gehängt werden.
+
+Damit wäre es später möglich, dass man Änderung nachvollziehen und die daraus resultierenden Verbesserungen sehen kann.
+
+Auch wäre es so möglich, gegenüber dem Gesetzgeber nachvollziehbar beweisen zu können, wann und zu welchen Parametern
+die Maschine anders konfiguriert wurde und mit welchen Parametern sie anfangs an den Kunden ausgeliefert wurde.
+
+Die Blockchain übernimmt damit die Funktion der alten Excel-Tabelle und es ist zu jedem Zeitpunkt sichergestellt, dass
+die Informationen jeder einzelnen Waage sicher an einem Ort aufbewart sind.

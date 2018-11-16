@@ -381,7 +381,7 @@ REST-Schnittstelle in einem Webdienst verfügbar machen.
 Dazu ist es erforderlich, das Model in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
 des Deployments wird dabei automatisch von der IBM Cloud übernommen.
 
-Für die Erstellung des Web Services muss man im Watson Dashboard das zuvor erstellte Model auswählen. Das folgende
+Für die Erstellung des Webservices muss man im Watson Dashboard das zuvor erstellte Model auswählen. Das folgende
 Fenster zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe"~ und Ausgabeparameter für
 das Model wichtig sind.
 
@@ -392,7 +392,7 @@ Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwalte
 Löschen von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment}
 öffnet eine Konfigurationsseite zum Erstellen eines neuen Deployments.
 
-Ein Model kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Web-Services zu
+Ein Model kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Webservices zu
 reduzieren bzw. auf mehrere zu verteilen. Um die Last zu verteilen bedarf es eines Load-Balancers.
 
 Als Type für das Deployment muss man \textit{Web Service} auswählen. Der Name des Deployments ist das einzige Pflichtfeld
@@ -416,10 +416,10 @@ zweispaltige Ansicht.
 In der linken Spalte befinden sich die Eingabefelder für das trainierte Model (die Inputs). Nachdem man alle Felder mit
 Testwerten gefüllt hat, kann man über die Schaltfläche \texttt{Predict} eine Vorhersage starten.
 
-Nach wenigen Sekunden erscheint auf der rechten Seite ein großes JSON-Objekt, welches den Rückgabewert des Web Services
-enthält. Das erste Array, \textit{fields}, listet alle an den Web-Service gesendeten Felder auf (die Inputs).
+Nach wenigen Sekunden erscheint auf der rechten Seite ein großes JSON-Objekt, welches den Rückgabewert des Webservices
+enthält. Das erste Array, \textit{fields}, listet alle an den Webservice gesendeten Felder auf (die Inputs).
 
-Das zweite Array, \textit{values}, listet alle an den Web-Service gesendeten, wie auch die vorhergesagten Werte (die
+Das zweite Array, \textit{values}, listet alle an den Webservice gesendeten, wie auch die vorhergesagten Werte (die
 Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Models (also
 die Targets). Sie entsprechen den definierten Targets.
 
@@ -442,18 +442,18 @@ und Architekturen eingegangenund.
 
 \subsubsection{Aufruf mit Postman}
 \label{subsec:Aufruf mit Postman}
-Im Weiteren soll das erstellte Model, welches im vorherigen Kapitel als Deployment in einen Web-Service zur Verfügung
+Im Weiteren soll das erstellte Model, welches im vorherigen Kapitel als Deployment in einen Webservice zur Verfügung
 gestellt wurde, mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
 So ist sichergestellt, dass man das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufen kann.
 Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem ist
 so eine Überprüfung der Übergabeparameter, sowie der Rückgabewerte an die Schnittstelle möglich.
 
-Jeder Request an den Web-Service des trainierte Models benötigt einen \textit{Authentication Token} (kurz Auth-Token).
+Jeder Request an den Webservice des trainierte Models benötigt einen \textit{Authentication Token} (kurz Auth-Token).
 Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
 
 Über die REST-Schnittstelle des Watson Studios wird ein neuer Token generriert. Dabei handelt es sich um eine andere
-Schnittstelle als beim selbst erstellten Web-Service. Der Token ist immer nur für maximal vier Stunden gültig.
+Schnittstelle als beim selbst erstellten Webservice. Der Token ist immer nur für maximal vier Stunden gültig.
 
 Um einen Auth-Token zu erstellen, muss man den Watson Studio Benutzername und das zugehörige Passwort an die
 Schnittstelle übergeben. Ein Beispielaufruf ist in Listing~\ref{ls:umsetzung_apitoken} auf
@@ -494,7 +494,7 @@ Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)}
 Anhang~\ref{sec:postmanTestparameter} auf Seite~\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche
 als Eingabe genutzt werden können.
 
-Der Nutzer kann abschließend den Request über den Button \texttt{Send} an den Web-Service abschicken. Nach wenigen
+Der Nutzer kann abschließend den Request über den Button \texttt{Send} an den Webservice abschicken. Nach wenigen
 Sekunden zeigt Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten
 sein.
 
@@ -509,7 +509,7 @@ Eingabevariablen (Inputs). Dabei hat das JSON-Objekt die beiden geforderten Item
     \label{fig:umsetzung_deployment_postman}
 \end{figure}
 
-Die Rechte Seite zeigt die Antwort des Web-Service. Dabei werden zu Anfang des JSON-Objektes die Parameter wiederholt,
+Die Rechte Seite zeigt die Antwort des Webservice. Dabei werden zu Anfang des JSON-Objektes die Parameter wiederholt,
 die an das Interface gesendet wurden. Am Ende sind die vorhergesagten Parameter durch das trainierte Model zu sehen.
 
 Im Eingabe-Parameter \textit{values} muss man ebenfalls die Output-Parameter definieren. Da die Werte keine Rolle
@@ -559,14 +559,14 @@ der Inhalt der Datei in einer TensorFlow.js Applikation importiert und ausgewert
 Da das trainierte Model nun offline zur Verfügung steht, kann es im Weiteren mit TensorFlow.js in einem Node.js-Wrapper
 genutzt werden.
 
-Die Idee des Wrappers ist es, ein Web-Service zur Verfügung zu stellen, der auf dem Port 80 eine REST-Schnittstelle
+Die Idee des Wrappers ist es, ein Webservice zur Verfügung zu stellen, der auf dem Port 80 eine REST-Schnittstelle
 beherbergt. Dort findet sich mindestens ein REST-Endpunkt, welcher die Input-Parametern für das trainierte,
 neuronale Netz annehmen kann.
 
 Die übergebenen Werte werden anschließend von einer Routine extrahiert und über die TensorFlow.js Bibliothek an das
 heruntergeladene neuronale Netz übergeben.
 
-Anschließend übermittelt der Web-Service die durch das neuronale Netz vorhergesagten Parameter zurück an die Applikation,
+Anschließend übermittelt der Webservice die durch das neuronale Netz vorhergesagten Parameter zurück an die Applikation,
 welche die Anfrage gestellt hat.
 
 Für die Umsetzung des Wrappers sind also zwei Bestandteile elementar. Einerseits muss die Anwendung eine TensorFlow.js
@@ -826,8 +826,8 @@ Nach dem Klick auf den Service-Namen erscheint eine Seite mit hilfreichen Inform
 Über die Schaltfläche \texttt{Open API Connect} gelangt man auf das API Connect Dashboard. In diesem muss man zuerst ein
 automatisch angelegten Katalog benennen. In diesem Katalog werden alle Informationen zur API gespeichert.
 
-Veröffentlichte APIs werden automatisch in diesem Katalog aufgelistet. Nach der fertigen Einrichtung des Kataloges gelangt
-man über einen Klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
+Veröffentlichte APIs werden automatisch in diesem Katalog aufgelistet. Nach der fertigen Einrichtung des Kataloges
+gelangt man über einen Klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
 
 In dieser muss man den Menüpunkt \texttt{APIs} auswählen. In der erscheinenden Liste werden alle APIs, welche im Weiteren
 erstellt werden, aufgelistet. Aktuell existieren hier aber noch keine. Dies kann der Nutzer über den Button
@@ -967,7 +967,8 @@ apim.setvariable('message.headers.authorization', 'Bearer' + token);
 \end{lstlisting}
 
 In der zweiten Zeile wird der Token, welcher in dem Modul \textit{Zuordnung} gespeichert wurde, ausgelesen. Die dritte
-Zeile sorgt dafür, dass ein Header mit dem Key \textit{authorization} und dem Value \textit{Bearer + token} gesetzt wird.
+Zeile sorgt dafür, dass ein Header mit dem Key \textit{authorization} und dem Value \textit{Bearer + token} gesetzt
+wird.
 
 Diese Einstellungen sind wichtig, damit der spätere Request an das Watson Studio Deployment die richtigen Benutzerdaten
 erhält um die Anfrage für gültig zu erklären.
@@ -1003,9 +1004,10 @@ Die Konfiguration des API Conenct Services ist somit abgeschlossen und man kann 
 veröffentlichen.
 
 \subsubsection{API Veröffentlichen}
-In der Abbildung~\ref{fig:umsetzung_api_connect} auf Seite~\pageref{fig:umsetzung_api_connect} ist der fertig eingerichtete
-API Connect Flow dargestellt. Dieser umfasst alle notwendigen Module und Einstellungen.
+In der Abbildung~\ref{fig:umsetzung_api_connect} auf Seite~\pageref{fig:umsetzung_api_connect} ist der fertig
+eingerichtete API Connect Flow dargestellt. Dieser umfasst alle notwendigen Module und Einstellungen.
 
+%% TODO Bild austauschen
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/api_connect.png}

@@ -93,7 +93,6 @@ Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_
 In diesem Fall ändern sich aber die Parameter für die Eingabe"~ und Ausgabeparameter wie in
 Tabelle~\ref{tab:targets_inputs_siegeln} auf Seite~\pageref{tab:targets_inputs_siegeln} zu sehen.
 
-% TODO Richtige Daten
 \begin{table}[h]
     \centering
     \begin{tabular}{|c|c|}
@@ -101,9 +100,13 @@ Tabelle~\ref{tab:targets_inputs_siegeln} auf Seite~\pageref{tab:targets_inputs_s
         \textbf{Targets} & \textbf{Inputs}\\
         \hline
         \hline
-        Siegelnatfestigkeit & Siegeltemperatur\\
+        Siegelnatfestigkeit & Siegelzeit\\
         \hline
-        & Siegelzeit\\
+        & Siegeltemperatur\\
+        \hline
+        & Siegelverfahren\\
+        \hline
+        & Foliendicke\\
         \hline
         & Folienlagen\\
         \hline
@@ -129,7 +132,7 @@ Web-Servces des einen Modells zugreifen. Dort sind aktuell noch keine sichtbar.
 Kapitel~\ref{subsec:deployment_erstellen} ab Seite~\pageref{subsec:deployment_erstellen} beschrieben.
 
 Nach der Eingabe eines Namens und der Speicherung des Deployments erscheint es in der vorher leeren Liste. Damit das das
-trainierte Modell in einem Web-Service zur Verfügung getsellt.
+trainierte Modell in einem Webservice zur Verfügung getsellt.
 
 Nun kann man in einem weiteren Schritt den API Connect Service um diesen Endpunkt erweitern, um auch Vorhersagen von
 diesem neuronalen Netz zu beziehen um die Siegelnahtfestigkeit zu ermitteln.
@@ -151,14 +154,14 @@ Der \textit{Switch} für die Verzweigung je nach gewünschtem Pfad muss man um d
 erweitern. Somit beinhaltet die Switch-Operation drei Verzweigungen.
 
 Der Inhalt für den neuen Pfad kann man direkt vom Pfad \textit{predict-watson} übernehmen und lediglich im
-\textit{Get Prediction} Modul definierte URL für den Web Service anpassen.
+\textit{Get Prediction} Modul definierte URL für den Webservice anpassen.
 
 Damit ist der API Connect Service fertig eingerichtet und kann vom Frontend aus oder auch von zum Beispiel Postman
 aufgerufen werden. Ein Test sollte die Funktionsweiße des Endpunktes sicherstellen.
 
 \subsection{Frontend erweitern}
 Im letzten Schritt der Adaptierung der Architektur auf eine neue Maschine oder auf ein neues Modul muss man das Frontend
-um die gewünschten Eingaben der Parameter erweitern, damit das Frontend die Vorhersage auf dem Web Service starten und
+um die gewünschten Eingaben der Parameter erweitern, damit das Frontend die Vorhersage auf dem Webservice starten und
 das Ergebnis darstellen kann.
 
 Dafür kann man eine neue Angular-Komponente anlegen und diese dann mit dem gewünschten neuen Design versehen. Das
@@ -193,7 +196,7 @@ das Backend keine Rolle spielen.
 
 \subsection{Abschluss}
 Damit ist die Adaption der erstellen Architektur auf eine neue Maschine abgeschlossen und man kann damit beginnen,
-neue Vorhersagen des Web Services zu beziehen. Die Ergebnisse werden anschließend auf dem Frontend angezeigt.
+neue Vorhersagen des Webservices zu beziehen. Die Ergebnisse werden anschließend auf dem Frontend angezeigt.
 
 Für alle weiteren Anpassungen oder Erweiterungen der Architektur muss man lediglich diese einfachen fünf Schritte
 wiederholen.
