@@ -37,6 +37,13 @@ händisch ermitteln oder auf Erfahrungen von Mitarbeitern zurückgreifen.
 Aus diversen Tests kann man anhand der eingestellten Parameter für Siegeltemperatur und Siegelzeit und der genutzten
 Folie die Siegelnahtfestigkeiten ableiten, indem man den Kraftaufwand zum öffnen der Siegelnaht misst.
 
+Für das weitere Beispiel ist es nun interessant die Siegelnahtfestigkeit aus einem neuronalen Netz zu ermitteln, sofern
+die Zusammensetzung der Folie sowie die Siegeltermperatur und Siegelzeit feststeht.
+
+Ein weiteres Beispiel könnte sein, die Siegelnahtfestigkeit vorzugeben und das neuronale Netz ermitteln zu lassen,
+welche Temperatur und welche Zeit für das Siegeln eingeplant werden muss. Dieses Beispiel wird aktuell aber nicht weiter
+verfolgt.
+
 \subsection{Daten zusammenstellen}
 Um an Testdaten für das Aufbauen eines neuronalen Netzes für diesen Maschinentyp zu kommen, sind zahlreiche Tests und
 Versuche notwendig.
@@ -69,18 +76,127 @@ Die kombinierten Daten aus den Testdurchläufen von Herrn Felix Kruppa sind im A
 auf Seite~\pageref{sec:schlauchbeutelmaschine} zu sehen und man kann diese direkt für das Trainieren des neuronalen
 Netzes nutzen.
 
-%% TODO noch schreiben
 \subsection{Neuronales Netz trainieren}
-\colorbox{yellow}{Hier fehlt was}
+Mit Hilfe der zusammengestellten Testdaten kann man nun das neuronale Netz trainieren. Das Training funktioniert in
+gleicher Weise wie auch in Kapitel~\ref{subsub:modeler_flow} ab Seite~\pageref{subsub:modeler_flow} mit dem Modeler
+Flow.
 
-%% TODO noch schreiben
+Dazu werden die Testdaten in den Watson Studio Service hochgeladen und anschließend mit dem Data Refinery Flows in eine
+CSV-Datei umgewandelt. Der Machine Learning Service der IBM Cloud kann aktuell lediglich mit CSV-Dateien umgehen.
+
+Auch kann man die Datei schon auf dem Entwicklungsrechner in eine CSV-Datei konvertieren um sich die Konvertierung im
+Service zu sparen. So muss man keinen neuer Flow für die Data Refinery anlegen.
+
+Anschließend muss man einen neuen Modeler Flow anlegen und diesen genau gleich dem Flow in
+Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} aufbauen.
+
+In diesem Fall ändern sich aber die Parameter für die Eingabe"~ und Ausgabeparameter wie in
+Tabelle~\ref{tab:targets_inputs_siegeln} auf Seite~\pageref{tab:targets_inputs_siegeln} zu sehen.
+
+% TODO Richtige Daten
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        \textbf{Targets} & \textbf{Inputs}\\
+        \hline
+        \hline
+        Siegelnatfestigkeit & Siegeltemperatur\\
+        \hline
+        & Siegelzeit\\
+        \hline
+        & Folienlagen\\
+        \hline
+        & Folienzusammensetzung\\
+        \hline
+    \end{tabular}
+    \caption{Variablen für die Targets und die Inputs der Schlauchbeutelmaschine}
+    \label{tab:targets_inputs_siegeln}
+\end{table}
+
+Nach erfolgreicher Konfiguration der einzelnen Module kann man das neuronale Netz trainieren lassen um das Modell zu
+erhalten. Diese Modell muss man im Weiteren nun in einem Deployment zur Verfügung stellen.
+
 \subsection{Deployment erstellen}
-\colorbox{yellow}{Hier fehlt was}
+Um das Deployment für das trainierte Modell zu erstellen, muss man das Modell im Modeler Flow mit der rechten Maustaste
+auswählen und \enquote{Save branch as a model} auswählen. Dies speichert das trainierte Modell als eigenständiges Modell
+im Watson Studio.
 
-%% TODO noch schreiben
+Dies kann man nun über das Watson Studio Dashboard auswählen und über den Reiter \texttt{Deployments} auf alle
+Web-Servces des einen Modells zugreifen. Dort sind aktuell noch keine sichtbar.
+
+Über die Schaltfläche \texttt{Add Deployment} legt man ein neues an. Dies geschieht genau wie in
+Kapitel~\ref{subsec:deployment_erstellen} ab Seite~\pageref{subsec:deployment_erstellen} beschrieben.
+
+Nach der Eingabe eines Namens und der Speicherung des Deployments erscheint es in der vorher leeren Liste. Damit das das
+trainierte Modell in einem Web-Service zur Verfügung getsellt.
+
+Nun kann man in einem weiteren Schritt den API Connect Service um diesen Endpunkt erweitern, um auch Vorhersagen von
+diesem neuronalen Netz zu beziehen um die Siegelnahtfestigkeit zu ermitteln.
+
 \subsection{API Connect erweitern}
-\colorbox{yellow}{Hier fehlt was}
+Der API Connect Service fungiert als Knotenpunkt zwischen Frontend und den möglichen Vorhersage-Services. Damit das
+Frontend auf neue Services vereinfacht zugreifen kann, muss man hier einen neuen Endpunkt anlegen. Dies kann man
+entweder über die Erweiterung der JSON-Konfiguration oder über den grafischen Editor machen.
 
-%% TODO noch schreiben
+Der einfachere Weg ist die Anpassung der Endpunkt über den grafischen Editor. Damit man den neuen Service auch über den
+API Service nutzen kann, muss man im Reiter \texttt{Gestalten} in der Konfiguration \texttt{Pfade} einen neuen anlegen.
+
+Diesen kann man beliebig benamen. Ein Beispiel hierfür ist \textit{predict-seal}. Darüber hinaus muss der Pfad eine
+Operation besitzen. Diese muss, genau wie alle anderen Operationen der anderen Pfade, \textit{POST} sein, damit das
+Frontend Daten an den Endpunkt schicken kann.
+
+Da der neue Pfad angelegt ist, kann man die Konfiguration speichern und in den Reiter \texttt{Assemblieren} wechseln.
+Der \textit{Switch} für die Verzweigung je nach gewünschtem Pfad muss man um den gerade eingerichteten neuen Pfad
+erweitern. Somit beinhaltet die Switch-Operation drei Verzweigungen.
+
+Der Inhalt für den neuen Pfad kann man direkt vom Pfad \textit{predict-watson} übernehmen und lediglich im
+\textit{Get Prediction} Modul definierte URL für den Web Service anpassen.
+
+Damit ist der API Connect Service fertig eingerichtet und kann vom Frontend aus oder auch von zum Beispiel Postman
+aufgerufen werden. Ein Test sollte die Funktionsweiße des Endpunktes sicherstellen.
+
 \subsection{Frontend erweitern}
-\colorbox{yellow}{Hier fehlt was}
+Im letzten Schritt der Adaptierung der Architektur auf eine neue Maschine oder auf ein neues Modul muss man das Frontend
+um die gewünschten Eingaben der Parameter erweitern, damit das Frontend die Vorhersage auf dem Web Service starten und
+das Ergebnis darstellen kann.
+
+Dafür kann man eine neue Angular-Komponente anlegen und diese dann mit dem gewünschten neuen Design versehen. Das
+anlegen einer Komponente in Angular geschieht am Einfachsten über einen Befehl der Angular-CLI.
+
+\begin{lstlisting}[caption=Erstellen einer neuen Komponente, label=ls:schlauchbeutelmaschine_component]
+    ng generate component name
+\end{lstlisting}
+
+Der Parameter \textit{Name} dient als Platzhalter und man muss ihn mit einem Namen für die Komponente ersetzen. Dieser
+Name darf durch keine andere Komponente vergeben sein. Die neue Komponente erscheint als Unterordner im Ordner
+\texttt{app}.
+
+Die neue Komponente besteht aus den drei Dateien \textit{*.component.css} für die Definition von CSS-Eigenschaften,
+\textit{*.component.html} zur Konfiguration der Darstellung, \textit{*.component.spec.ts} für das Schreiben von Tests
+und \textit{*.component.ts} für die eigentliche Logik.
+
+Der Inhalt der vier Dateien kann man aus der Komponente für die Waage im Ordner \texttt{/app/scales} kopieren und
+anschließend Stück für Stück anpassen.
+
+In der HTML-Datei muss man das Design auf die neuen Eingabefelder abändern. Dies ist Wichtig, da ja andere Parameter für
+den Endpunkt notwendig sind.
+
+In der TS-Datei, in der die Logik der Komponente definiert ist, muss man den REST-Endpunkt auf den neuen abändern und
+die übergebenen Parameter anpassen, damit die Vorhersage auch funktionieren kann.
+
+Auch ist entscheidend, dass man die Abfrage zu leeren Felder auf die richtige Benamung und die definition von
+zufälligen Eingabeparameter auf logische Werte anpasst.
+
+Die CSS-Datei sowie die SPEC-Datei bedürfen keiner zwingenden Änderung, da sie für die Funktionsfähigkeit der Abfrage an
+das Backend keine Rolle spielen.
+
+\subsection{Abschluss}
+Damit ist die Adaption der erstellen Architektur auf eine neue Maschine abgeschlossen und man kann damit beginnen,
+neue Vorhersagen des Web Services zu beziehen. Die Ergebnisse werden anschließend auf dem Frontend angezeigt.
+
+Für alle weiteren Anpassungen oder Erweiterungen der Architektur muss man lediglich diese einfachen fünf Schritte
+wiederholen.
+
+Damit ist gezeigt, dass die gebaute Architektur so modular ist, um sie problemlos zu erweitern und neue Funktionen
+einzubauen. Dies galt es als Teilaufgabe zu beweisen.
