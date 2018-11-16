@@ -458,7 +458,7 @@ Um einen Auth-Token zu erstellen, muss man den Watson Studio Benutzername und da
 Schnittstelle übergeben. Ein Beispielaufruf ist in Listing~\ref{ls:umsetzung_apitoken} auf
 Seite~\pageref{ls:umsetzung_apitoken} zu sehen. Der Token ist dabei in einem JSON-Objekt im Rückgabewert enthalten.
 
-\begin{lstlisting}[language=bash, caption=Abruf des Auth-Tokens, label=ls:umsetzung_apitoken]
+\begin{lstlisting}[caption=Abruf des Auth-Tokens, label=ls:umsetzung_apitoken]
 $ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identity/token
 \end{lstlisting}
 
@@ -605,7 +605,7 @@ Auch ist ein script mit dem Namen \textit{start} angegeben. Dies kann später mi
 Die definition für den Startbefehl kümmert sich anschließend darum, dass intern der Befehl \textit{node server.js}
 ausgeführt wird. Diese Datei wird im Weiteren erstellt.
 
-\begin{lstlisting}[language=json, caption=Die komplette package.json, label=ls:umsetzung_package]
+\begin{lstlisting}[language=JSON, caption=Die komplette package.json, label=ls:umsetzung_package]
 {
     "name": "tensorflow_wrapper",
     "version": "1.0.0",
@@ -1126,7 +1126,7 @@ Mehr dazu im Kapitel~\ref{ai_openscale} \textit{AI Open Scale} auf Seite~\pagere
 Vertrauenswürdigkeit von neuronalen Netzen eingegangen wird.
 
 \begin{lstlisting}[language=JSON, caption=Parameter zum Test der beiden Implementierungen, label=ls:umsetzung_parameter]
-    "values": 
+    "values":
         [
             [
                 415,

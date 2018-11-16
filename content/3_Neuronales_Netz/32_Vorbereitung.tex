@@ -28,13 +28,13 @@ der IBM Cloud aktuell sechs, verteilt auf drei Kontinente. Eine \textit{Organisa
 Für die einfache Verwaltung der IBM Cloud empfiehlt es sich, dass zugehörige Command Line Interface (kurz \textit{CLI})
 zu installieren. Die Installation unter Linux und macOS erfolgt durch die Eingabe des folgenden Kommandos in eine Shell:
 
-\begin{lstlisting}[language=bash, caption=Installation des IBM Cloud CLI, label=ls:vorbereitung_ibmcli]
+\begin{lstlisting}[caption=Installation des IBM Cloud CLI, label=ls:vorbereitung_ibmcli]
     $ curl -sL http://ibm.biz/idt-installer | bash
 \end{lstlisting}
 
 Das folgende Kommando überprüft die erfolgreiche Installation auf dem System:
 
-\begin{lstlisting}[language=bash, caption=Installation des CLI überprüfen, label=ls:vorbereitung_ibmclitest]
+\begin{lstlisting}[caption=Installation des CLI überprüfen, label=ls:vorbereitung_ibmclitest]
     $ ibmcloud dev help
 \end{lstlisting}
 
@@ -75,13 +75,13 @@ wechselt der Nutzer in das Watson Studio Dashboard.
 Alternativ erfolgt die Installation des Services mittels dem installierten CLI. Dazu wird im ersten Schritt das CLI mit
 dem IBM Cloud-Konto verknüpft. Der folgende Befehl setzt den dafür notwendigen API-Endpunkt:
 
-\begin{lstlisting}[language=bash, caption=Setzen des API-Endpunkt, label=ls:vorbereitung_apiendpunkt]
+\begin{lstlisting}[caption=Setzen des API-Endpunkt, label=ls:vorbereitung_apiendpunkt]
     $ ibmcloud api https://api.ng.bluemix.net
 \end{lstlisting}
 
 Anschließend erfolgt ein Login über den folgenden Befehl in der Shell:
 
-\begin{lstlisting}[language=bash, caption=Login über CLI und Single Sign-on, label=ls:vorbereitung_login]
+\begin{lstlisting}[caption=Login über CLI und Single Sign-on, label=ls:vorbereitung_login]
     $ ibmcloud login --sso
 \end{lstlisting}
 
@@ -93,7 +93,7 @@ entsprechenden Nummer der Organisation, welche am linken Rand zu sehen ist. Der 
 
 Der Benutzer kann eine neue Instanz des \textit{Watson Studio}-Service mit dem folgenden Befehl erstellen:
 
-\begin{lstlisting}[language=bash, caption=Instanziierung des Watson Studio Services, label=ls:vorbereitung_watsonservice]
+\begin{lstlisting}[caption=Instanziierung des Watson Studio Services, label=ls:vorbereitung_watsonservice]
     $ ibmcloud cf create-service Watson-Studio lite sercive_name
 \end{lstlisting}
 
@@ -101,7 +101,7 @@ Für den Parameter \texttt{service\_name} muss man einen Name eingetragen, unter
 den Befehl \texttt{cf services} können alle instanziierten Services, welche sich in der vorher ausgewählten Organisation
 befinden, aufgelistet werden.
 
-\begin{lstlisting}[language=bash, caption=Auflisten aller Services in einer Organisation, label=ls:vorbereitung_alleservices]
+\begin{lstlisting}[caption=Auflisten aller Services in einer Organisation, label=ls:vorbereitung_alleservices]
     $ ibmcloud cf services
 \end{lstlisting}
 
@@ -130,7 +130,7 @@ des Containers existieren ebenfalls zwei Möglichkeiten.
 Im vorangegangenen Kapitel wurden beiden Möglichkeiten (über den IBM Cloud Katalog und über die Kommandozeile)
 ausführlich erläutert. Über das folgende Kommando der CLI erstellt man die benötigte Runtime in einem Container.
 
-\begin{lstlisting}[language=bash, caption=Instanziierung der Node.js Runtime, label=ls:vorbereitung_nodejstensorflow]
+\begin{lstlisting}[caption=Instanziierung der Node.js Runtime, label=ls:vorbereitung_nodejstensorflow]
     $ ibmcloud cf create-service nodejs service_name
 \end{lstlisting}
 
@@ -149,7 +149,7 @@ instanziiert werden. Wie auch in den beiden vorangegangenen Kapiteln kann die In
 
 Einfachheitshalber wird im Folgenden die Instanziierung des Services mittels IBM Cloud CLI aufgezeigt.
 
-\begin{lstlisting}[language=bash, caption=Instanziierung von API Connect, label=ls:vorbereitung_apiconnect]
+\begin{lstlisting}[caption=Instanziierung von API Connect, label=ls:vorbereitung_apiconnect]
 $ ibmcloud cf create-service API-Connect lite service_name
 \end{lstlisting}
 
@@ -160,7 +160,7 @@ Dashboard auffindbar.
 Für die Verwaltung und den späteren, automatisierten Installationsvorgang des geschriebenen Quellcodes wird ein
 Repository mit Git verwendet. Unter Linux erfolgt die Installation des Programmes über das folgende Kommando:
 
-\begin{lstlisting}[language=bash, caption=Installation von Git, label=ls:vorbereitung_git]
+\begin{lstlisting}[caption=Installation von Git, label=ls:vorbereitung_git]
     $ sudo apt-get install git
 \end{lstlisting}
 
@@ -172,7 +172,7 @@ Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Ent
 Node.js benötigt. Eine Installation der zur Zeit aktuellsten LTS-Version (10.13.0) erfolgt unter Linux über die folgenden
 Kommandos:
 
-\begin{lstlisting}[language=bash, caption=Installation von Node.js, label=ls:vorbereitung_nodejs]
+\begin{lstlisting}[caption=Installation von Node.js, label=ls:vorbereitung_nodejs]
     $ curl -L https://deb.nodesource.com/setup_10.x | sudo -E bash -
     $ sudo apt-get install -y nodejs
 \end{lstlisting}

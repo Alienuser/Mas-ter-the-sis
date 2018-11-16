@@ -156,7 +156,7 @@ Da die Mockups für die Anwendung fertig umgesetzt sind, kann im Weitern damit b
 umzusetzen. Da man das Frontend mit Angular umsetzt und die Angular-CLI installiert ist, kann man auf dem
 Entwicklerrechner mit dem folgenden Befehl eine neue Angular-Seite einrichten.
 
-\begin{lstlisting}[language=bash, caption=Einrichten einer neuen Angular-Seite, label=ls:umsetzung_angular]
+\begin{lstlisting}[caption=Einrichten einer neuen Angular-Seite, label=ls:umsetzung_angular]
     ng new dashboard
 \end{lstlisting}
 
@@ -164,7 +164,7 @@ Dabei wird ein neuer Ordner mit dem Namen \textit{dashboard} angelegt, welcher a
 eine funktionierende Angular-Seite zu bauen beinhaltet. Wenn man anschließend in den neu erstellen Ordner wechselt, kann
 man mit dem folgenden Befehl die Standard-Applikation von Angular bauen lassen und sie im Browser ansehen.
 
-\begin{lstlisting}[language=bash, caption=Bereitstellen der Angular-Webseite, label=ls:umsetzung_angularserve]
+\begin{lstlisting}[caption=Bereitstellen der Angular-Webseite, label=ls:umsetzung_angularserve]
     ng serve --open
 \end{lstlisting}
 
@@ -281,7 +281,7 @@ Cache-Strategie setzen.
 Um in der erstellten Angular-Anwendung einen Service-Worker zu installieren, benötigt man eine zusätzliche Bibliothek,
 welche die interne Arbeit übernimmt. Diese kann man mittels des folgenden Befehls in die Anwendung einbauen.
 
-\begin{lstlisting}[language=bash, caption=Hinzufügen der PWA-Bibliothek, label=ls:umsetzung_angularaddpwa]
+\begin{lstlisting}[caption=Hinzufügen der PWA-Bibliothek, label=ls:umsetzung_angularaddpwa]
     ng add @angular/pwa
 \end{lstlisting}
 
@@ -345,7 +345,7 @@ Modus (online oder offline) bescheid weiß und bei einer Änderung allen Kompone
 
 Mit dem folgenden Befehl kann man einen neuen Service in die Anwendung einbauen.
 
-\begin{lstlisting}[language=bash, caption=Hinzufügen eines Services, label=ls:umsetzung_angularaddservice]
+\begin{lstlisting}[caption=Hinzufügen eines Services, label=ls:umsetzung_angularaddservice]
     ng generate service network
 \end{lstlisting}
 
