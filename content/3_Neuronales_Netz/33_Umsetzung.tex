@@ -1,16 +1,17 @@
 \section{Umsetzung}
 Wie die Zielarchitektur in Abbildung~\ref{fig:umsetzung_zielarchitektur} auf
-Seite~\pageref{fig:umsetzung_zielarchitektur} zeigt, sollen Anfragen (englisch Requests) vom Frontend an die Anwendung
-über den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf zwei Systeme.
+Seite~\pageref{fig:umsetzung_zielarchitektur} zeigt, sollen Anfragen (englisch Requests) von einem Frontend an die
+Anwendung über den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf zwei
+Systeme.
 
-In einem System, \textit{Watson Studio}, erfolgt das Training für das neuronale Netz. Nach erfolgreichem Training wird es
-als Modul in ein Deployment installiert. Dieses Deployment enthält eine REST-Schnittstelle, um Anfragen an das Model
-bearbeiten zu können.
+In einem System, dem \textit{Watson Studio}, erfolgt das Training für das neuronale Netz. Nach erfolgreichem Training
+wird es als Modul in ein Deployment installiert. Dieses Deployment erhält eine REST-Schnittstelle, um Anfragen an das
+trainierte Modell bearbeiten zu können.
 
-Das zweite System enthält einen \textit{Cloud Foundry Container}, welcher eine Node.js Runtime zur Verfügung stellt. Dieser
-Container läuft in der Cloud und erhält eine IP sowie eine Domain über die er aufrufbar ist.
+Das zweite System enthält einen \textit{Cloud Foundry Container}, welcher eine Node.js Runtime zur Verfügung stellt.
+Dieser Container läuft in der Cloud und erhält eine IP sowie eine Domain über die er aufrufbar ist.
 
-In der Runtime läuft eine \textit{TensorFlow.js} Applikation, welche das im Watson Studio trainierte Model enthält. Die
+In der Runtime läuft eine \textit{TensorFlow.js} Applikation, welche das im Watson Studio trainierte Modell enthält. Die
 Applikation dient als Wrapper für das Model.
 
 Im API Connect wird jeweils eine Route für das Watson Studio Deployment und eine für die TensorFlow.js Applikation
@@ -27,21 +28,23 @@ In den folgenden Kapiteln wird die Architektur Schritt für Schritt umgesetzt, e
 \end{figure}
 
 \subsection{Cloud}
-Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} auf Seite~\pageref{sec:analyse}, beschrieben, wird das neuronale Netz
-in der Cloud erstellt, konfiguriert und trainiert. Wie bereits erwähnt hat dies einen enormen Geschwindigkeitsvorteil
-gegenüber der offline trainierten Variante. Im Anschluss daran wird das trainierte Model heruntergeladen und mit einem
-TensorFlow.js Wrapper nutzbar gemacht.
+Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} ab Seite~\pageref{sec:analyse}, beschrieben, wird das neuronale Netz
+in der Cloud erstellt, konfiguriert und trainiert. Wie in diesem Kapitel bereits erwähnt hat dies einen enormen
+Geschwindigkeitsvorteil gegenüber der offline trainierten Variante.
+
+Im Anschluss daran soll das trainierte Model heruntergeladen und mit einem TensorFlow.js Wrapper nutzbar gemacht werden.
 
 Die folgenden Kapitel beschreiben die notwendigen Schritte für die Erstellung eines neuronalen Netzes in der Cloud, das
-trainierten des Models und das Einrichten eines Deployments für die REST-Schnittstelle.
+trainierten des Modells und das Einrichten eines Deployments mit einer REST-Schnittstelle zum einfachen abrufen von
+Vorhersagen.
 
-\subsubsection{Daten zusammenstellen}
+\subsubsection{Trainingsdaten zusammenstellen}
 In einem ersten Schritt muss man die Daten, welche man später für das Training des neuronalen Netzes nutzen möchte,
-sammeln und in einer Datei bündeln. Als Format eignet sich dafür eine Excel-Tabelle hervorragend, da das Anlegen der
-Datensätze in Zeilen und Spalten sinnvoll ist.
+sammeln und in einer Datei bündeln. Als Format eignet sich dafür hervorragend eine Excel-Tabelle, da das Anlegen der
+Datensätze in Zeilen und Spalten sinnvoll für das Verständnis ist.
 
-Um eine Auswahl an Daten zu schaffen muss man sich darüber im klaren sein, welche Parameter existieren und welche Werte
-durch das neuronale Netz vorhergesagt werden sollen. Auch ist wichtig zu wissen, welche Eingaben notwendig sind, um
+Um eine Auswahl an Daten zu schaffen muss man sich darüber im Klaren sein, welche Parameter existieren und welche Werte
+durch das neuronale Netz vorhergesagt werden sollen. Auch ist wichtig zu wissen welche Eingaben notwendig sind, um
 überhaupt die Vorhersagen machen zu können.
 
 In diesem Beispiel sollen Daten für das Bosch KWE Kontrollwaagensystem aufbereitet werden. Die vorhersagbaren Parameter
@@ -55,25 +58,27 @@ Der Parameter \textit{Totzeit} gibt die Zeit an die gewartet wird, bis der Pushe
 zum ausfahren bekommen hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe wird ab
 dem Mittelpunkt der Wiegeeinheit gerechnet.
 
-Für die Inputparameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind werden alle die
-genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Stück. Sie sind in
-Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} ersichtlich.
+Für die Inputparameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle die
+genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Parameter. Sie sind in der
+Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} definiert.
 
-Alle Input-Werte sind in diesem Fall vom Kunden abhängig und desshalb problemlos Recherchierbar beziehungsweise abgelegt
-und gespeichert.
+Alle Eingabe-Parameter sind in diesem Fall vom Kunden abhängig und desshalb problemlos Recherchierbar beziehungsweise
+abgelegt und gespeichert.
 
 In der noch leeren Excel-Tabelle muss man nun in den Spalten die Eingabeparameter aber auch die vorhersagbaren Parameter
-auflisten. Jede leere Zeile wird durch ein Produkt ersetze. So listet man alle historischen Daten untereinander auf und
-befüllt jede Spalte mit den entsprechenden Informationen.
+in den Spalten auflisten. Jede leere Zeile wird durch ein Produkt ersetzt. So listet man alle historischen Daten
+untereinander auf und befüllt jede Spalte mit den entsprechenden Informationen.
 
-Sollte man für eine Spalte keinen Wert haben, so muss die Zeile leer gelassen und es darf keine null oder sonstiges
-eingetragen werden.
+Sollte man für eine Zelle keinen Wert haben, so muss man diese leer lassen und darf keine null oder sonstigen Vermerk
+eintragen.
 
-In Anhang~\ref{sec:scaleData} auf Seite~\pageref{sec:scaleData} sind die Beispieldaten für die Waage aufgezeigt. Die
-folgenden Kapitel beziehen sich auf diesen Datensatz.
+In Anhang~\ref{sec:scaleData} auf der Seite~\pageref{sec:scaleData} sind die Beispieldaten für die Waage angegeben. Die
+folgenden Kapitel beziehen sich immer auf diesen Datensatz.
 
-Da die Daten zusammengestellt sind, kann man sie in einem weiteren Schritt in das Watson Studio importieren um das
+Da die Daten nun zusammengestellt sind, kann man sie in einem weiteren Schritt in das Watson Studio importieren um das
 neuronale Netz zu trainieren.
+
+%% TODO Hier weiter reviewen
 
 \subsubsection{Daten importieren}
 Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in das Watson Studio importieren. Dazu existiert
@@ -239,7 +244,7 @@ Nach dem erfolgreichem Training des neuronalen Netzes erscheint das trainierte M
 aktuellen Arbeitsbereich. Eine gestrichelte Linie zwischen dem neuronalen Netz und dem trainierten Model zeigt die
 Abhängigkeit der beiden Module an.
 
-Für die Weiterverarbeitung und ein späteres Deployment des trainierten Models muss man dieses mit einem Export-Modul
+Für die Weiterverarbeitung und ein späteres Deployment des trainierten Modells muss man dieses mit einem Export-Modul
 verbinden. Der Export erfolgt über das Modul \textit{Table}.
 
 Das Table-Modul befindet sich in der Kategorie \textit{Outputs} und wird, genau wie alle andere Module, frei auf dem
@@ -264,8 +269,8 @@ des Model Flows dargestellt mit seinem trainierten Model und der Tabellen-Export
 
 \subsubsection{Informationen zum Model}
 Über einen weiteren Rechtsklick auf das trainierte Model kann man über den Menüpunkt \texttt{View Model} auf eine
-detaillierte Übersicht des Models gelangen. Hier finden sich zahlreiche Informationen, die unter anderem Aufschluss
-über die Genauigkeit des Models geben.
+detaillierte Übersicht des Modells gelangen. Hier finden sich zahlreiche Informationen, die unter anderem Aufschluss
+über die Genauigkeit des Modells geben.
 
 Die erste Information, welche man als Benutzer über das Model zu sehen bekommt, ist in
 Abbildung~\ref{fig:umsetzung_model_evaluation} auf Seite~\pageref{fig:umsetzung_model_evaluation} zu sehen -- die
@@ -274,20 +279,20 @@ Abbildung~\ref{fig:umsetzung_model_evaluation} auf Seite~\pageref{fig:umsetzung_
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_evaluation.png}
-    \caption{Evaluation des trainierten Models}
+    \caption{Evaluation des trainierten Modells}
     \label{fig:umsetzung_model_evaluation}
 \end{figure}
 
-Die große Zahl gibt die tatsächliche Genauigkeit des Models (englisch Model Accuracy) an. Mit 100 multipliziert, erhält
+Die große Zahl gibt die tatsächliche Genauigkeit des Modells (englisch Model Accuracy) an. Mit 100 multipliziert, erhält
 man die prozentuale Angabe der Genauigkeit. Wenn man mit dem Mauszeiger über die Zahl fährt, erhält man eine genauere
 Angabe mit Nachkommastellen.
 
 Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset automatisch entnommen wird. Dabei
-kann beim trainieren des Models angegeben werden, um wie viele Datenset es sich handeln soll.
+kann beim trainieren des Modells angegeben werden, um wie viele Datenset es sich handeln soll.
 
 Nachdem das Model fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
 die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
-Genauigkeit des trainierten Models.
+Genauigkeit des trainierten Modells.
 
 Im Weiteren finden sich Bewertungskriterien für das trainierte Model (englisch Model Evaluation Measures). Diese geben
 Aufschluss darüber, wie gut das Model ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
@@ -385,8 +390,8 @@ Für die Erstellung des Webservices muss man im Watson Dashboard das zuvor erste
 Fenster zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe"~ und Ausgabeparameter für
 das Model wichtig sind.
 
-Der Reiter \texttt{Evaluation} zeigt vorangegangene Auswertungen des Models an. Über den Menüpunkt \texttt{Lineage}
-werden Verknüpfungen und Abstammungen des Models angezeigt.
+Der Reiter \texttt{Evaluation} zeigt vorangegangene Auswertungen des Modells an. Über den Menüpunkt \texttt{Lineage}
+werden Verknüpfungen und Abstammungen des Modells angezeigt.
 
 Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des einen Moduls. Das
 Löschen von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment}
@@ -409,7 +414,7 @@ Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashb
 man das Deployment direkt testen und bei Fehlveralten neu trainiert kann. Auch benötigt man keine externe Software um
 das Model zu testen.
 
-Auf der Deploymentseite des gespeicherten Models genügt ein Klick auf den Namen um die Deploymentinformationen anzuzeigen.
+Auf der Deploymentseite des gespeicherten Modells genügt ein Klick auf den Namen um die Deploymentinformationen anzuzeigen.
 Hier steht neben diversen Informationen auch der Menüpunkt \texttt{Test} zur Verfügung. Mit diesem öffnet sich eine
 zweispaltige Ansicht.
 
@@ -420,13 +425,13 @@ Nach wenigen Sekunden erscheint auf der rechten Seite ein großes JSON-Objekt, w
 enthält. Das erste Array, \textit{fields}, listet alle an den Webservice gesendeten Felder auf (die Inputs).
 
 Das zweite Array, \textit{values}, listet alle an den Webservice gesendeten, wie auch die vorhergesagten Werte (die
-Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Models (also
+Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Modells (also
 die Targets). Sie entsprechen den definierten Targets.
 
 In Abbildung~\ref{fig:umsetzung_deployment_test} auf Seite~\pageref{fig:umsetzung_deployment_test} ist ein Beispiel für
-den online Aufruf des trainierten Models sichtbar.
+den online Aufruf des trainierten Modells sichtbar.
 
-Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das trainieren des Models nicht
+Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das trainieren des Modells nicht
 erfolgreich und muss wiederholt werden. Das Model kennt damit keine Targets die es vorhersagen könnte.
 
 Unter dem Menüpunkt \texttt{Implementation} sind wichtige Informationen und erforderliche Schritte aufgezeigt, damit
@@ -436,7 +441,7 @@ und Architekturen eingegangenund.
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/deployment_test.png}
-    \caption{Online Test des trainierten Models}
+    \caption{Online Test des trainierten Modells}
     \label{fig:umsetzung_deployment_test}
 \end{figure}
 
@@ -449,7 +454,7 @@ So ist sichergestellt, dass man das Model auch von extern, nicht nur über das W
 Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem ist
 so eine Überprüfung der Übergabeparameter, sowie der Rückgabewerte an die Schnittstelle möglich.
 
-Jeder Request an den Webservice des trainierte Models benötigt einen \textit{Authentication Token} (kurz Auth-Token).
+Jeder Request an den Webservice des trainierte Modells benötigt einen \textit{Authentication Token} (kurz Auth-Token).
 Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
 
 Über die REST-Schnittstelle des Watson Studios wird ein neuer Token generriert. Dabei handelt es sich um eine andere
@@ -481,7 +486,7 @@ Nach wenigen Sekunden erscheint im Bereich \textit{Body} der Token in einem JSON
 \textit{curl}.
 
 Um nun das eigentliche Deployment aufzurufen, muss man einen neuen Postman-Tab öffnen. Die URL für den Endpunkt ist im
-Deployment des Models zu finden und heißt \texttt{Scoring End-point}.
+Deployment des Modells zu finden und heißt \texttt{Scoring End-point}.
 
 Nachdem die URL des Postman-Requests definiert ist, kann man als HTTP-Type \texttt{POST} auswählen. Im Bereich
 \texttt{Authentication} wird der Typ auf \texttt{Baerer} abgeändert und dies ermöglicht die Eingabe des Tokens. Dieser
@@ -525,7 +530,7 @@ Das neuronale Netz ist nun erfolgreich in einem Deployment online zur Verfügung
 Applikation eingebaut.
 
 Dies hat nun mehrere Vorteile. Zum einen kann man das trainierte Model unabhängig von einer Cloud-Lösung nutzen. Die
-TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry-Container geladen werden und ist somit völlig
+TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry Container geladen werden und ist somit völlig
 unabhängig von der Plattform auf der die Applikation läuft. Auch kann sie modular und schnell in beliebigen Regionen
 instanziiert werden.
 
@@ -710,12 +715,12 @@ kann man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage an das Erstellt
 der Anwendung zu überprüfen.
 
 Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in
-einen Cloud Foundry-Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
+einen Cloud Foundry Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
 nötigen Schritte erläutert.
 
 \subsubsection{Toolchain einrichten}
 \label{sub:tollchain_einrichten}
-Die fertig entwickelte Node.js Applikation wird im nächsten Schritt in einen Cloud Foundry-Container installiert. Dies
+Die fertig entwickelte Node.js Applikation wird im nächsten Schritt in einen Cloud Foundry Container installiert. Dies
 ermöglicht den Aufruf der Applikation über eine Domain, welche automatisch von der IBM Cloud vergeben wird.
 
 Damit man den geschriebenen Quellcode nicht nach jeder Änderung manuell mittels \texttt{cf push} in einen Cloud
@@ -725,7 +730,7 @@ Die Nutzung der Toolchain erfordert ein eingerichtetes Git-Repository. Nach jede
 Repository schreibt, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
 
 Anschließend werden, je nach gewählter und eingerichteter Konfiguration, verschiedene Schritte (Phasen) in der Toolchain
-durchlaufen, um die Applikation in einen Cloud Foundry-Container zu installieren.
+durchlaufen, um die Applikation in einen Cloud Foundry Container zu installieren.
 
 Dabei ist es möglich die einzelnen Schritte, welche bei einem Deployment durchlaufen werden, selbst zu definieren, oder
 eine vorkonfigurierte Toolchain zu nutzen. Es ist allerdings möglich die vorkonfigurierte Toolchain im Nachgang zu
@@ -785,7 +790,7 @@ Nach erfolgreichem \texttt{push} der Anwendung in das Git-Repository startet der
 selbstständig. Nach wenigen Minuten ist die Anwendung über ihre URL, welche in der Node.js Runtime definiert ist,
 aufrufbar.
 
-Da die Applikation nun im Internet in einem Cloud Foundry-Container zur Verfügung steht, kann diese im nächsten Schritt
+Da die Applikation nun im Internet in einem Cloud Foundry Container zur Verfügung steht, kann diese im nächsten Schritt
 mit dem API Connect Service verbunden werden.
 
 Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom Frontend, welches in Kapitel~\ref{subsec:webseite}
@@ -809,7 +814,7 @@ Desweiteren ist es relativ einfach Daten auszulesen, die von einer Anwendung an 
 ermöglicht es Angreifern die Daten für andere Zwecke zu missbrauchen.
 
 Ein weiterer Vorteil für die Nutzung von API Connect ist die Bündelung von mehreren Schnittstellen um Vorhersagen zu
-beziehen. Aktuell ist es möglich, die Vorhersage aus dem Deployment des Watson Studio Models zu beziehen oder die
+beziehen. Aktuell ist es möglich, die Vorhersage aus dem Deployment des Watson Studio Modells zu beziehen oder die
 entwickelte Node.js Applikation mit TensorFlow.js zu nutzen.
 
 Mittels API Connect kann man die Aufrufe optimal verteilen oder eigene Routen für eine jeweilige Schnittstelle bauen.
@@ -1110,7 +1115,7 @@ den API Connect Service angeschlossen hat, nacheinander aufrufen. Wichtig dabei 
 Parameter übergibt um den Test durchzuführen.
 
 Der Test kann mit den Parametern in Listing~\ref{ls:umsetzung_parameter} auf Seite~\pageref{ls:umsetzung_parameter} 
-geschehen. Anschließend muss man die vorhergesagten Parameter des trainierten Models nur noch miteinander verglichen. 
+geschehen. Anschließend muss man die vorhergesagten Parameter des trainierten Modells nur noch miteinander verglichen.
 
 Bei den angegebenen Parametern handelt es sich lediglich um das \textit{values}-Array des gesamten Aufrufs. Das 
 \textit{fields}-Array kann man aus vorangegangenen Beispielen heranziehen.
