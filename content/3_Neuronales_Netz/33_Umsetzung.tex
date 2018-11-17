@@ -32,7 +32,7 @@ Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} ab Seite~\pageref{sec:analyse
 in der Cloud erstellt, konfiguriert und trainiert. Wie in diesem Kapitel bereits erwähnt hat dies einen enormen
 Geschwindigkeitsvorteil gegenüber der offline trainierten Variante.
 
-Im Anschluss daran soll das trainierte Model heruntergeladen und mit einem TensorFlow.js Wrapper nutzbar gemacht werden.
+Im Anschluss daran soll das trainierte Modell heruntergeladen und mit einem TensorFlow.js Wrapper nutzbar gemacht werden.
 
 Die folgenden Kapitel beschreiben die notwendigen Schritte für die Erstellung eines neuronalen Netzes in der Cloud, das
 trainierten des Modells und das Einrichten eines Deployments mit einer REST-Schnittstelle zum einfachen abrufen von
@@ -78,11 +78,9 @@ folgenden Kapitel beziehen sich immer auf diesen Datensatz.
 Da die Daten nun zusammengestellt sind, kann man sie in einem weiteren Schritt in das Watson Studio importieren um das
 neuronale Netz zu trainieren.
 
-%% TODO Hier weiter reviewen
-
-\subsubsection{Daten importieren}
-Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in das Watson Studio importieren. Dazu existiert
-im Watson Studio Dashboard ein Menüpunkt mit dem Namen \textit{Assets} am oberen Menüband.
+\subsubsection{Trainingsdaten importieren}
+Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in den Watson Studio Service importieren. Dazu
+existiert im Watson Studio Dashboard ein Menüpunkt mit dem Namen \textit{Assets} am oberen Menüband.
 
 Dieser beinhaltet alle hochgeladenen, generierten oder gesammelten Daten, Modelle, Dashboards, Notebooks oder Flows. Die
 oberste Kategorie, \textit{Data Assets}, listet alle Trainingsdaten in Form von Excel-Tabellen für die Weiterverarbeitung
@@ -97,9 +95,9 @@ Alternativ kann man die Datei auch in das fabrlich hervorgehobene Feld schieben.
 sofort.
 
 Nach wenigen Sekunden ist die Datei hochgeladen und wird im Bereich \textit{Data assets} angezeigt. Damit ist der
-Uploadvorgang erfolgreich abgeschlossen und die Datei kann im nächsten Schritt umgewandelt werden.
+Uploadvorgang erfolgreich abgeschlossen und man kann die Datei im nächsten Schritt in das Zielformat umwandeln.
 
-\subsubsection{Daten umwandeln}
+\subsubsection{Trainingsdaten umwandeln}
 Da die erstellte Datei mit den Trainigsdaten nun in Watson Studio bereitsteht, ist die Umwandlung in eine CSV-Datei
 möglich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz
 dienen kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
@@ -108,15 +106,15 @@ In Watson Studio liegt mit den \textit{Data Refinery flows} ein einfaches Werkze
 CSV-Format zu überführen. Dazu kann der Nutzer in der Kategorie Data Flows über \texttt{New Data Refinery flow} ein
 neuen Flow anlegen.
 
-Im folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss im linken Bereich die umzuwandelnde Datei
-auswählen. Dabei handelt es sich um die hochgeladene Datei. Über die Schaltfläche \texttt{Add} kann man die Auswahl
-übernehmen.
+Im Folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss im linken Bereich die umzuwandelnde Datei
+auswählen. Dabei handelt es sich um die hochgeladene Datei mit den Trainingsdaten. Über die Schaltfläche \texttt{Add}
+kann man die Auswahl übernehmen.
 
 Nun ist der Inhalt der Datei im mittleren Bereich des Displays sichtbar. Bei dieser Ansicht ist darauf zu achten, dass
 die Interpretation der Werte der einzelnen Spalten als Dezimal-Zahl erfolgt. Diese Information steht unterhalb der
 einzelnen Spaltenüberschriften. Sollte diese Einstellung nicht voreingestellt sein, muss man diese manuell abändern.
 
-Dazu klickt man in der entsprechenden Spalte oben, rechts neben dem Spaltenname, auf die drei Punkte (Einstellungen) und
+Dazu Klickt man in der entsprechenden Spalte oben, rechts neben dem Spaltenname, auf die drei Punkte (Einstellungen) und
 selektiert den Eintrag \texttt{Convert Column}. Im Untermenü muss man dann den Wert \texttt{Decimal} bestätigen. Nun
 werden die Zahlen in der Spalte auch korrekt als Dezimal-Zahl interpretiert.
 
@@ -127,9 +125,9 @@ Schritte, die dazu benötigt werden, an.
 Hier werden zum Beispiel etwaige Konvertierungen zu Dezimal-Zahlen angezeigt oder sonstige Operationen dargestellt. Da
 es sich hierbei lediglich um Informationen handelt, kann der Nutzer die Seite bestätigen und der Flow startet.
 
-Nach wenigen Minuten sollte im Watson Studio im Bereich Assets, in der Kategorie Data Assets, die neue Datei zur
-Verfügung stehen. Dabei trägt die Datei die Dateiendung \textit{.csv}. Die Konvertierung der Datei ist somit
-abgeschlossen und man kann sie für das neuronale Netz verwenden.
+Nach wenigen Minuten steht im Watson Studio im Bereich Assets, in der Kategorie Data Assets, die neue Datei zur
+Verfügung. Dabei trägt die Datei die Dateiendung \textit{.csv}. Die Konvertierung der Datei ist somit abgeschlossen und
+man kann sie für das neuronale Netz verwenden.
 
 \subsubsection{Modeler Flow}
 \label{subsub:modeler_flow}
@@ -160,7 +158,7 @@ konfiguriert.
 
 Im nächsten Schritt erfolgt die Konfiguration des neuronalen Netzes. Dazu existiert in der Kategorie \textit{Modeling}
 das Modul \textit{Neural Net}. Das stellt für den Anwendungsfall die beste Alternative dar, da es sich hierbei um ein
-allgemeines neuronales Netz handelt. Dies kann allerdings sehr tief konfiguriert werden.
+allgemeines neuronales Netz handelt. Dies kann man später allerdings sehr tief konfigurieren.
 
 Genau wie das Import-Modul kann man dieses mit der Maus in einen freien Bereich des Arbeitsbereiches platzieren. Somit
 ist das Modul Teil des Prozesses und der Entwickler kann es konfigurieren.
@@ -185,7 +183,7 @@ Die Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} zeig
 die jeweilige Kategorie. Die Targets beschreiben die Variablen, welche durch den Watson Service Vorhergesagt werden
 sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage überhaupt möglich ist.
 
-Dem resultierenden, trainierten Model werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen als
+Dem resultierenden, trainierten Modell werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen als
 vorhergesagte Rückgabeparameter zurück.
 
 \begin{table}[h]
@@ -240,39 +238,41 @@ Einstellungen das neuronale Netz anpassen und gegebenenfalls optimieren.
 Der Flow für das neuronale Netz ist somit fertiggestellt. Mit einem Klick auf \texttt{Run} startet das Training des
 neuronalen Netzes.
 
-Nach dem erfolgreichem Training des neuronalen Netzes erscheint das trainierte Model unterhalb des neuronalen Netzes im
-aktuellen Arbeitsbereich. Eine gestrichelte Linie zwischen dem neuronalen Netz und dem trainierten Model zeigt die
+Nach dem erfolgreichem Training des neuronalen Netzes erscheint das trainierte Modell unterhalb des neuronalen Netzes im
+aktuellen Arbeitsbereich. Eine gestrichelte Linie zwischen dem neuronalen Netz und dem trainierten Modell zeigt die
 Abhängigkeit der beiden Module an.
 
 Für die Weiterverarbeitung und ein späteres Deployment des trainierten Modells muss man dieses mit einem Export-Modul
 verbinden. Der Export erfolgt über das Modul \textit{Table}.
 
 Das Table-Modul befindet sich in der Kategorie \textit{Outputs} und wird, genau wie alle andere Module, frei auf dem
-Arbeitsbereich platziert. Eine Verbindung zwischen dem trainierten Model und der Table ermöglicht den Datenaustausch.
-Für die Table ist keine weitere Konfiguration notwendig.
+Arbeitsbereich platziert. Eine Verbindung zwischen dem trainierten Modell und der Tabelle ermöglicht den Datenaustausch.
+Für die Tabelle ist keine weitere Konfiguration notwendig.
 
 Ein Rechtsklick auf das Table-Modul öffnet das Kontextmenü des Moduls. Darüber lässt sich der Punkt
-\enquote{Save branch as a model} anklicken. Dieser ermöglicht es, das trainierte Model zu exportieren.
+\texttt{Save branch as a model} anklicken. Dieser ermöglicht es, das trainierte Modell zu exportieren.
 
-In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung für das neue Model definieren. Mit einem
-Klick auf den Button \texttt{Save} wird das Model gespeichert und es erscheint im Watson Studio Dashboard.
+In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung für das neue Modell definieren. Mit einem
+Klick auf den Button \texttt{Save} wird das Modell gespeichert und es erscheint im Watson Studio Dashboard.
 
 In der Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau
-des Model Flows dargestellt mit seinem trainierten Model und der Tabellen-Exportierung.
+des Modell Flows dargestellt mit seinem Input, dem neuronalen Netz, dem trainierten Modell und der Tabellen-Exportierung.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/umsetzung_model_flow.png}
-    \caption{Vollständiger Model Flow}
+    \caption{Vollständiger Model Flow mit allen Modulen}
     \label{fig:umsetzung_model_flow}
 \end{figure}
 
-\subsubsection{Informationen zum Model}
-Über einen weiteren Rechtsklick auf das trainierte Model kann man über den Menüpunkt \texttt{View Model} auf eine
+%% TODO Hier weiter reviewen
+
+\subsubsection{Informationen zum Modell}
+Über einen weiteren Rechtsklick auf das trainierte Modell kann man über den Menüpunkt \texttt{View Model} auf eine
 detaillierte Übersicht des Modells gelangen. Hier finden sich zahlreiche Informationen, die unter anderem Aufschluss
 über die Genauigkeit des Modells geben.
 
-Die erste Information, welche man als Benutzer über das Model zu sehen bekommt, ist in
+Die erste Information, welche man als Benutzer über das Modell zu sehen bekommt, ist in
 Abbildung~\ref{fig:umsetzung_model_evaluation} auf Seite~\pageref{fig:umsetzung_model_evaluation} zu sehen -- die
 \texttt{Evaluation}.
 
@@ -290,12 +290,12 @@ Angabe mit Nachkommastellen.
 Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset automatisch entnommen wird. Dabei
 kann beim trainieren des Modells angegeben werden, um wie viele Datenset es sich handeln soll.
 
-Nachdem das Model fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
+Nachdem das Modell fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
 die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
 Genauigkeit des trainierten Modells.
 
-Im Weiteren finden sich Bewertungskriterien für das trainierte Model (englisch Model Evaluation Measures). Diese geben
-Aufschluss darüber, wie gut das Model ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
+Im Weiteren finden sich Bewertungskriterien für das trainierte Modell (englisch Model Evaluation Measures). Diese geben
+Aufschluss darüber, wie gut das Modell ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
 handelt es sich um den Determinationskoeffizient. Dieser ist eine wichtige Kennzahl zur formalen Beurteilung der
 Regression. Weitere Informationen sind auf der Wikipedia-Seite\footnote{https://de.wikipedia.org/wiki/Bestimmtheitsmaß}
 ersichtlich.
@@ -321,7 +321,7 @@ auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
     \label{fig:umsetzung_model_information}
 \end{figure}
 
-Hier findet man Informationen darüber, wie das trainierte Model aufgebaut ist oder um welche Art Model es sich handelt.
+Hier findet man Informationen darüber, wie das trainierte Modell aufgebaut ist oder um welche Art Model es sich handelt.
 Auch die Hiden Layers, die im neuronalen Netz eingerichtet sind, werden hier angegeben.
 
 Weiter ist hier zu finden, mit wie vielen Inputparametern (englisch Number of Predictors) das Netz trainiert ist und wie
@@ -380,15 +380,15 @@ Produkt auch vom Band stoßen zu können. Das Timing ist an dieser Stelle von gr
 
 \subsubsection{Deployment erstellen}
 \label{subsec:deployment_erstellen}
-Das in einem vorangegangenen Kapitel erstellte und trainierte Model kann man im Weiteren durch ein Deployment über eine
+Das in einem vorangegangenen Kapitel erstellte und trainierte Modell kann man im Weiteren durch ein Deployment über eine
 REST-Schnittstelle in einem Webdienst verfügbar machen.
 
-Dazu ist es erforderlich, das Model in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
+Dazu ist es erforderlich, das Modell in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
 des Deployments wird dabei automatisch von der IBM Cloud übernommen.
 
-Für die Erstellung des Webservices muss man im Watson Dashboard das zuvor erstellte Model auswählen. Das folgende
+Für die Erstellung des Webservices muss man im Watson Dashboard das zuvor erstellte Modell auswählen. Das folgende
 Fenster zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe"~ und Ausgabeparameter für
-das Model wichtig sind.
+das Modell wichtig sind.
 
 Der Reiter \texttt{Evaluation} zeigt vorangegangene Auswertungen des Modells an. Über den Menüpunkt \texttt{Lineage}
 werden Verknüpfungen und Abstammungen des Modells angezeigt.
@@ -397,7 +397,7 @@ Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwalte
 Löschen von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment}
 öffnet eine Konfigurationsseite zum Erstellen eines neuen Deployments.
 
-Ein Model kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Webservices zu
+Ein Modell kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Webservices zu
 reduzieren bzw. auf mehrere zu verteilen. Um die Last zu verteilen bedarf es eines Load-Balancers.
 
 Als Type für das Deployment muss man \textit{Web Service} auswählen. Der Name des Deployments ist das einzige Pflichtfeld
@@ -412,13 +412,13 @@ Das Deployment ist somit erfolgreich erstellt und kann im Weiteren getestet und 
 \subsubsection{Deployment testen}
 Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass
 man das Deployment direkt testen und bei Fehlveralten neu trainiert kann. Auch benötigt man keine externe Software um
-das Model zu testen.
+das Modell zu testen.
 
 Auf der Deploymentseite des gespeicherten Modells genügt ein Klick auf den Namen um die Deploymentinformationen anzuzeigen.
 Hier steht neben diversen Informationen auch der Menüpunkt \texttt{Test} zur Verfügung. Mit diesem öffnet sich eine
 zweispaltige Ansicht.
 
-In der linken Spalte befinden sich die Eingabefelder für das trainierte Model (die Inputs). Nachdem man alle Felder mit
+In der linken Spalte befinden sich die Eingabefelder für das trainierte Modell (die Inputs). Nachdem man alle Felder mit
 Testwerten gefüllt hat, kann man über die Schaltfläche \texttt{Predict} eine Vorhersage starten.
 
 Nach wenigen Sekunden erscheint auf der rechten Seite ein großes JSON-Objekt, welches den Rückgabewert des Webservices
@@ -432,7 +432,7 @@ In Abbildung~\ref{fig:umsetzung_deployment_test} auf Seite~\pageref{fig:umsetzun
 den online Aufruf des trainierten Modells sichtbar.
 
 Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das trainieren des Modells nicht
-erfolgreich und muss wiederholt werden. Das Model kennt damit keine Targets die es vorhersagen könnte.
+erfolgreich und muss wiederholt werden. Das Modell kennt damit keine Targets die es vorhersagen könnte.
 
 Unter dem Menüpunkt \texttt{Implementation} sind wichtige Informationen und erforderliche Schritte aufgezeigt, damit
 man die erstellte Schnittstelle in ein eigene Programm integriert kann. Dabei wird auf verschiedene Programmiersprachen
@@ -450,7 +450,7 @@ und Architekturen eingegangenund.
 Im Weiteren soll das erstellte Model, welches im vorherigen Kapitel als Deployment in einen Webservice zur Verfügung
 gestellt wurde, mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
-So ist sichergestellt, dass man das Model auch von extern, nicht nur über das Watson Studio Dashboard, aufrufen kann.
+So ist sichergestellt, dass man das Modell auch von extern, nicht nur über das Watson Studio Dashboard, aufrufen kann.
 Dies ist für die spätere Entwicklung des Frontends und die Einrichtung des API Connect Services wichtig. Außerdem ist
 so eine Überprüfung der Übergabeparameter, sowie der Rückgabewerte an die Schnittstelle möglich.
 
@@ -515,7 +515,7 @@ Eingabevariablen (Inputs). Dabei hat das JSON-Objekt die beiden geforderten Item
 \end{figure}
 
 Die Rechte Seite zeigt die Antwort des Webservice. Dabei werden zu Anfang des JSON-Objektes die Parameter wiederholt,
-die an das Interface gesendet wurden. Am Ende sind die vorhergesagten Parameter durch das trainierte Model zu sehen.
+die an das Interface gesendet wurden. Am Ende sind die vorhergesagten Parameter durch das trainierte Modell zu sehen.
 
 Im Eingabe-Parameter \textit{values} muss man ebenfalls die Output-Parameter definieren. Da die Werte keine Rolle
 spielen, kann man diese mit den Werten \textit{null} initialisieren. Damit werden sie vom System nicht weiter verwendet.
@@ -526,10 +526,10 @@ Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtl
 
 \subsection{TensorFlow.js}
 Das neuronale Netz ist nun erfolgreich in einem Deployment online zur Verfügung gestellt. Außerdem ist die Funktion
-über einen Aufruf mittels Postman überprüft worden. Im Weiteren wird das trainierte Model in eine TensorFlow.js
+über einen Aufruf mittels Postman überprüft worden. Im Weiteren wird das trainierte Modell in eine TensorFlow.js
 Applikation eingebaut.
 
-Dies hat nun mehrere Vorteile. Zum einen kann man das trainierte Model unabhängig von einer Cloud-Lösung nutzen. Die
+Dies hat nun mehrere Vorteile. Zum einen kann man das trainierte Modell unabhängig von einer Cloud-Lösung nutzen. Die
 TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry Container geladen werden und ist somit völlig
 unabhängig von der Plattform auf der die Applikation läuft. Auch kann sie modular und schnell in beliebigen Regionen
 instanziiert werden.
@@ -540,15 +540,15 @@ instanziiert oder auch aktualisiert werden.
 Natürlich ist es ebenfalls möglich die TensorFlow.js Applikation direkt in die eigene Hauptapplikation zu integrieren
 ohne sie als Microservice nutzen zu müssen.
 
-\subsubsection{Model exportieren}
-Damit das Model in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert
+\subsubsection{Modell exportieren}
+Damit das Modell in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert
 werden.
 Dies erfolgt über den Modeler Flow.
 
-Da der Entwickler das Model in Kapitel~\ref{subsub:modeler_flow} auf Seite\pageref{subsub:modeler_flow} komplet
+Da der Entwickler das Modell in Kapitel~\ref{subsub:modeler_flow} auf Seite\pageref{subsub:modeler_flow} komplet
 eingerichtet und trainiert hat, steht es im Modeler Flow als gelbes Modul bereit.
 
-Über einen Rechtsklick auf das trainierte Model und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
+Über einen Rechtsklick auf das trainierte Modell und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
 Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine JSON-Datei. Diese Datei beinhaltet alle wichtigen
 Informationen über das gebaute neuronale Netz.
 
@@ -561,7 +561,7 @@ Im Weiteren kann mit der Entwicklung des Wrappers für das heruntergeladene neur
 der Inhalt der Datei in einer TensorFlow.js Applikation importiert und ausgewertet.
 
 \subsubsection{Wrapper entwickeln}
-Da das trainierte Model nun offline zur Verfügung steht, kann es im Weiteren mit TensorFlow.js in einem Node.js-Wrapper
+Da das trainierte Modell nun offline zur Verfügung steht, kann es im Weiteren mit TensorFlow.js in einem Node.js-Wrapper
 genutzt werden.
 
 Die Idee des Wrappers ist es, ein Webservice zur Verfügung zu stellen, der auf dem Port 80 eine REST-Schnittstelle
@@ -1107,7 +1107,7 @@ Eine detailliertere Anleitung steht auf der geöffneten Webseite zur Verfügung.
 und Kommandos direkt herauskopieren um diese ausführen.
 
 \subsection{Vergleich der Endpunkte}
-Wie Eingangs erwähnt soll ein Test zeigen, ob das selbe trainierte Model unter verschiedenen Implementierungen die selben
+Wie Eingangs erwähnt soll ein Test zeigen, ob das selbe trainierte Modell unter verschiedenen Implementierungen die selben
 Werte als Vorhersage errechnet oder ob es dabei unterschiede geben kann.
 
 Ein einfacher Test kann klarheit über dieses Thema geben. Man muss lediglich beide Endpunkte, die der Entwickler über 
