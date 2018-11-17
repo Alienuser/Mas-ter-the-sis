@@ -265,8 +265,6 @@ des Modell Flows dargestellt mit seinem Input, dem neuronalen Netz, dem trainier
     \label{fig:umsetzung_model_flow}
 \end{figure}
 
-%% TODO Hier weiter reviewen
-
 \subsubsection{Informationen zum Modell}
 Über einen weiteren Rechtsklick auf das trainierte Modell kann man über den Menüpunkt \texttt{View Model} auf eine
 detaillierte Übersicht des Modells gelangen. Hier finden sich zahlreiche Informationen, die unter anderem Aufschluss
@@ -288,7 +286,7 @@ man die prozentuale Angabe der Genauigkeit. Wenn man mit dem Mauszeiger über di
 Angabe mit Nachkommastellen.
 
 Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset automatisch entnommen wird. Dabei
-kann beim trainieren des Modells angegeben werden, um wie viele Datenset es sich handeln soll.
+kann beim Trainieren des Modells angegeben werden, um wie viele Datenset es sich handeln soll.
 
 Nachdem das Modell fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
 die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
@@ -309,7 +307,7 @@ ein Maß für die Unterschiede zwischen Werten, die von einem Modell vorhergesag
 Werten.
 
 In der nächsten Kategorie, Model Viewer, sind Informationen zu den einzelnen Werten des neuronalen Netzes angegeben.
-Im ersten Menüpunkt, Model Information, stehen alle generellen Informationen.
+Im ersten Menüpunkt, dem Model Information, finden sich zahlreiche generellen Informationen zum Modell.
 
 Mit einem Klick auf den Menüpunkt gelangt man in eine Ansicht wie in Abbildung~\ref{fig:umsetzung_model_information}
 auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
@@ -344,12 +342,12 @@ ist, desto mehr Einfluss hat dieser auf die vorhergesagten Ausgabewerte.
 Parameter mit der geringsten Gewichtung spielen für das Ergebnis keine große Rolle und könnten bei einer Optimierung des
 neuronalen Netzes weggelassen werden.
 
-Der letzte Menüpunkt, mit der Aufschrift \texttt{Network Diagram}, zeigt das neuronale Netz, wie es beim Traning aufgebaut
-wurde. Dabei sind auf der linken Seite die Parameter zur Eingabe aufgelistet.
+Der letzte Menüpunkt, mit der Aufschrift \texttt{Network Diagram}, zeigt das neuronale Netz, wie es beim Traning
+aufgebaut wurde. Dabei sind auf der linken Seite die Parameter zur Eingabe aufgelistet.
 
 Auf der rechten Seite erscheinen die Ausgabeparameter. Dazwischen werden die \textit{Hidden Layers} dargestellt und wie
 diese mit der Eingangs"~ und Ausgangsseite verbunden sind. Die Abbildung~\ref{fig:umsetzung_model_network_diagram}
-auf~\pageref{fig:umsetzung_model_network_diagram} visualisiert das vorangegangene, trainierte Model.
+auf~\pageref{fig:umsetzung_model_network_diagram} visualisiert das vorangegangene, trainierte Modell.
 
 \begin{figure}[h]
     \centering
@@ -373,18 +371,19 @@ soll die Leistung erhöht werden), muss das Band mit höherer Geschwindigkeit (B
 zu transportieren.
 
 Desweiteren hat die Leistung einen direkten Einfluss auf den Parameter \textit{Druckluft}. Dieser gibt indirekt die
-Geschwindigkeit an, mit welcher der Pusher ausschlagen soll um ein Produkt vom Band zu hauen.
+Geschwindigkeit an, mit welcher der Pusher ausschlagen soll um ein Produkt vom Band zu schieben.
 
 Auch dieser Zusammenhang ergibt Sinn, da eine höhere Bandgeschwindigkeit auch ein schnelleren Pusher voraussetzt, um ein
 Produkt auch vom Band stoßen zu können. Das Timing ist an dieser Stelle von großer Bedeutung.
 
 \subsubsection{Deployment erstellen}
 \label{subsec:deployment_erstellen}
-Das in einem vorangegangenen Kapitel erstellte und trainierte Modell kann man im Weiteren durch ein Deployment über eine
-REST-Schnittstelle in einem Webdienst verfügbar machen.
+Das in einem vorangegangenen Kapitel erstellte und trainierte Modell kann man im Weiteren in einem Deployment mit einer
+REST-Schnittstelle als einen Webdienst verfügbar machen.
 
 Dazu ist es erforderlich, das Modell in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
-des Deployments wird dabei automatisch von der IBM Cloud übernommen.
+des Deployments übernimmt dabei automatisch die IBM Cloud. Bei dem Deployment handelt es sich um ein Cloud Foundry
+Container.
 
 Für die Erstellung des Webservices muss man im Watson Dashboard das zuvor erstellte Modell auswählen. Das folgende
 Fenster zeigt mehrere Informationen zu diesem an. Unter anderem ist sichtbar, welche Eingabe"~ und Ausgabeparameter für
@@ -393,21 +392,23 @@ das Modell wichtig sind.
 Der Reiter \texttt{Evaluation} zeigt vorangegangene Auswertungen des Modells an. Über den Menüpunkt \texttt{Lineage}
 werden Verknüpfungen und Abstammungen des Modells angezeigt.
 
-Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des einen Moduls. Das
-Löschen von älteren Deployments oder das Erstellen von Neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment}
+Für das Deployment ist der Reiter \texttt{Deployments} wichtig. Dieser verwaltet alle Deployments des einen Modells. Das
+Löschen von älteren Deployments oder das Erstellen von neuen ist hier möglich. Die Schaltfläche \texttt{Add Deployment}
 öffnet eine Konfigurationsseite zum Erstellen eines neuen Deployments.
 
-Ein Modell kann über mehrere Deployments verfügbar gemacht werden. So ist es möglich, die Last eines Webservices zu
-reduzieren bzw. auf mehrere zu verteilen. Um die Last zu verteilen bedarf es eines Load-Balancers.
+Ein Modell kann man über mehrere Deployments verfügbar machen. So ist es möglich, die Last eines Webservices zu
+reduzieren bzw. auf mehrere zu verteilen. Um die Last zu verteilen bedarf es anschließend eines Load Balancers.
 
-Als Type für das Deployment muss man \textit{Web Service} auswählen. Der Name des Deployments ist das einzige Pflichtfeld
-und muss befüllt sein. Anschließend kann man das Deployment über \texttt{Save} speichern und starten. Dieser Vorgang kann
-wenige Minuten dauern.
+Als Type für das Deployment muss man \textit{Web Service} auswählen. Der Name des Deployments ist das einzige
+Pflichtfeld und muss befüllt sein. Anschließend kann man das Deployment über \texttt{Save} speichern und starten. Dieser
+Vorgang kann wenige Minuten dauern.
 
 Direkt nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Status} der Wert \textit{DEPLOY\_SUCCESS}
 angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf den Namen öffnen.
 
-Das Deployment ist somit erfolgreich erstellt und kann im Weiteren getestet und genutzt werden.
+Das Deployment ist somit erfolgreich erstellt und man kann es im Weiteren testen und auch nutzen.
+
+%% TODO Hier weiter reviewen
 
 \subsubsection{Deployment testen}
 Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass
