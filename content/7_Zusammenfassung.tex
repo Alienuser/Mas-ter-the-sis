@@ -7,24 +7,25 @@ ermittelt werden können.
 
 Gerade durch die modularität der erstellten Architektur können Vorhersagen auch für weitere Maschinen erfolgen. Dabei
 können Teile der Anwendung sowohl in einer beliebigen Cloud als auch im eigenen Rechenzentrum laufen ohne größeren
-Entwicklungsaufwand zu generieren.
+Entwicklungsaufwand bei der Umstellung zu generieren.
 
-Die Basis für die Anwendung bildet das neuronale Netz sowie das darauf trainierte Modell, welches in Echtzeit Vorhersagen
-tätigen kann und über mehrere Schnittstellen erreichbar ist.
+Die Basis für die Anwendung bildet das neuronale Netz sowie das darauf trainierte Modell, welches in Echtzeit
+Vorhersagen tätigen kann und über mehrere Schnittstellen erreichbar ist.
 
-Zum Start der Arbeit wurden historischen Daten gesammelt um anschließend ein neuronale Netz zu trainieren. Das daraufhin
-erstellte Deployment des Modells mit eigener Schnittstelle erfolgte automatisiert aus der Cloud heraus.
+Zum Start der Arbeit wurden historischen Daten gesammelt um darauf anschließend ein neuronale Netz zu trainieren. Das
+daraufhin erstellte Deployment des Modells mit eigener Schnittstelle erfolgte automatisiert aus der Cloud heraus.
 
 Zusätzlich ist das extrahierte Modell in einem TensorFlow-Wrapper nutzbar, um es unabhängig von einer Cloud zu
-betreiben. Auch kann so getestet werden, ob Vorhersagen für die gleichen Parameter in beiden Deployments übereinstimmen.
+betreiben. Auch konnte so getestet werden, ob die Vorhersagen für die gleichen Parameter in beiden Deployments
+übereinstimmen.
 
 Ein Cloud Service für die Bündelung der Anfragen an die beiden Endpunkte ist in einem weiteren Schritt eingerichtet
 worden. Über diesen ist es Möglich, die Anfragen der Frontends zu normieren und Benutzerdaten zum Watson Deployment zu
 verschleiern.
 
 Abschließend bleibt mir zu sagen, dass ich die in der Einleitung erwähnte Meinung von Amy Webb in so weit unterstütze,
-dass mit Künstlicher Intelligenz viele neue Möglichkeiten zur Lösung von aktuellen Problemen entstehen.
+dass mit künstlicher Intelligenz viele neue Möglichkeiten zur Lösung von aktuellen Problemen entstehen.
 
 Laut einer aktuellen IDC-Studie~\cite{article_zusammenfassung_idc} arbeiten und beschäftigen sich mehr als 50\% der
-deutschen Unternehmen mit der Künstlichen Intelligenz allerdings bremst auch hier \enquote{Der Fachkräftemangel (\ldots)
+deutschen Unternehmen mit der künstlichen Intelligenz allerdings bremst auch hier \enquote{Der Fachkräftemangel (\ldots)
 den Fortschritt vieler Unternehmen aus.}.
