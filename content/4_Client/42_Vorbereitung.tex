@@ -1,11 +1,13 @@
 \section{Vorbereitung}
 Damit im Weiteren das Frontend und die Smartphone-Apps entwickelt und gebaut werden können, werden drei Programme auf
-dem Entwicklungsrechner installiert und ein Services in der IBM Cloud instanziiert. Die Vorgehensweise wird im
-folgenden Kapitel erläutert.
+dem Entwicklungsrechner installiert und ein Services in der IBM Cloud instanziiert sowie eingerichtet und verwaltet.
+
+Die Vorgehensweise wird in den folgenden Kapiteln erläutert und Schritt für Schritt erklärt.
 
 \subsection{Angular CLI}
-Für die Erstellung, Verwaltung und Aktualisierung einer Angular-Applikation, empfiehlt es sich das hauseigene Command
-Line Interface (CLI) zu nutzen. Über den folgenden Befehl wird dieses auf einem Linux oder macOS Rechner installiert.
+Für die Erstellung, die Verwaltung und die Aktualisierung einer Angular-Applikation, empfiehlt es sich das hauseigene
+Command Line Interface (CLI) zu nutzen. Über den folgenden Befehl wird dieses auf einem Linux oder macOS Rechner
+installiert.
 
 \begin{lstlisting}[caption=Installation des Angular CLI, label=ls:vorbereitung_angularcli]
     $ npm install -g @angular/cli
@@ -22,18 +24,20 @@ Edition\footnote{https://www.jetbrains.com/idea} und ist kostenlos.
 Die Installation von Android Studio erfolgt durch das Herunterladen des jeweiligen Installationspaketes auf der
 Installationsseite\footnote{https://developer.android.com/studio/install}.
 
-Nach erfolgreicher Installation kann die IDE gestartet und ein neues Projekt angelegt werden.
+Nach erfolgreicher Installation kann man die IDE starten und ein neues Projekt anlegen.
 
 \subsection{Xcode}
-iOS-Apps können lediglich durch das Apple eigene Xcode entwicklet werden. Die Insallation kann nur auf einem macOS
+iOS-Apps kann man lediglich durch das Apple eigene Xcode entwickln. Die Insallation kann nur auf einem macOS
 erfolgen und dort durch den internen App Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835}.
 
 Nach erfolgreicher Installation erscheint die IDE im Dock und ist bereit zur Nutzung.
 
 \subsection{Node.js Runtime}
-Damit das erstellte Frontend online aufgerufen werden kann, wird in der IBM Cloud eine zusätzliche Node.js Runtime
-benötigt. Genau wie in Kapitel~\ref{ssc:nodejs_runtime} auf Seite~\pageref{ssc:nodejs_runtime} beschrieben, ist die
-Einrichtung und Konfiguration der Runtime über den folgenden Befehl möglich.
+Damit man das erstellte Frontend online aufgerufen kann, wird in der IBM Cloud eine zusätzliche Node.js Runtime
+benötigt.
+
+Genau wie in Kapitel~\ref{ssc:nodejs_runtime} auf Seite~\pageref{ssc:nodejs_runtime} beschrieben, ist die Einrichtung
+und Konfiguration einer solchen Runtime über den folgenden Befehl möglich:
 
 \begin{lstlisting}[caption=Instanziierung der Node.js Runtime, label=ls:vorbereitung_nodejsdashboard]
     $ ibmcloud cf create-service nodejs service_name
