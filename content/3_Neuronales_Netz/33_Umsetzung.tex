@@ -600,8 +600,8 @@ Anschließend übermittelt der Webservice die durch das neuronale Netz vorherges
 welche die Anfrage gestellt hat.
 
 Für die Umsetzung des Wrappers sind also zwei Bestandteile elementar. Einerseits muss die Anwendung eine TensorFlow.js
-Umgebung schaffen, indem man das heruntergeladene und trainierte Netz einbinden kann. Andererseits muss es eine
-REST-Schnittstelle bieten, damit man es von über den API Connect Service ansprechen kann.
+Umgebung schaffen, in der man das heruntergeladene und trainierte Netz einbinden kann. Andererseits muss es eine
+REST-Schnittstelle bieten, welche über den API Connect Service ansprechbar ist.
 
 Bei der Entwicklung beginnt man am Besten beim REST-Endpunkt, da dieser die Struktur der Anwendung vorgibt. Für die
 Implementierung der Endpunkte sind die Libraries \textit{express}\footnote{https://expressjs.com/de},
@@ -620,10 +620,12 @@ Projekt starten. Wenn man diesen Befehl in einem noch leeren Ordner ausführt, e
 \textit{package.json}. In dieser Datei werden unter anderem alle benötigten Abhängigkeiten des Projektes aufgelistet 
 um sie später einfach und komfortabel zu installieren.
 
-Hinter den einzelnen Bibliotheken kann man direkt die Version definieren, welche man nutzen möchte. Im Listing ist ein
-\textbf{\^}-Symbol vorangestellt. Dies bedeutet, dass die Version, welche heruntergeladen werden soll, zu der angegebenen
-Version kompatibel sein muss. Das bedeutet, dass durchaus eine andere Version heruntergeladen werden kann, falls eine
-neuere existiert. Allerdings bietet sie mindestens genau die selben Funktionen wie die geforderte.
+Hinter den einzelnen Bibliotheken kann man direkt die Version definieren, welche man nutzen möchte. Im Listing ist vor
+den Versionsnummern ein \textbf{\^}-Symbol. Dies bedeutet, dass die Version, welche heruntergeladen werden soll, zu der
+angegebenen Version kompatibel sein muss.
+
+Also kann das System durchaus eine neuere Version herunterladen, stellt aber sicher, dass die andere Version vollstens
+Kompatibel mit der geforderten ist.
 
 Auch werden in der Datei der Name, eine Beschreibung und die Version des Projektes angegeben. Außerdem kann man Skripte
 definieren, welche man durch kurze Befehle in ein Terminal ausführen kann. Dazu später mehr.
@@ -632,9 +634,9 @@ In Listing~\ref{ls:umsetzung_package} auf Seite~\pageref{ls:umsetzung_package} i
 ersichtlich, welche die vier Bibliotheken als Abhängigkeit entählt und ein paar wenige Parameter wie Name, Beschreibung,
 Version und verwendete Lizenz angibt. 
 
-Auch ist ein script mit dem Namen \textit{start} angegeben. Dies kann später mit dem Befehl \textit{npm start} starten.
-Die definition für den Startbefehl kümmert sich anschließend darum, dass intern der Befehl \textit{node server.js}
-ausgeführt wird. Diese Datei wird im Weiteren erstellt.
+Auch ist ein script mit dem Namen \textit{start} angegeben. Dies kann man später mit dem Befehl \textit{npm start}
+starten. Die definition für den Startbefehl kümmert sich anschließend darum, dass intern der Befehl
+\textit{node server.js} ausgeführt wird. Die \textit{server.js}-Datei wird nun im Weiteren erstellt.
 
 \begin{lstlisting}[language=JSON, caption=Die komplette package.json, label=ls:umsetzung_package]
 {
@@ -656,11 +658,12 @@ ausgeführt wird. Diese Datei wird im Weiteren erstellt.
 }
 \end{lstlisting}
 
-Im selben Ordner wie die angelegte package.json kann man nun mittels des Befehls \textit{npm install} alle Abhängigkeiten 
-in das Projekt installieren. 
+Im selben Ordner wie die angelegte package.json kann man nun mittels des Befehls \textit{npm install} alle
+Abhängigkeiten in das Projekt installieren.
 
-Auch wenn eine selbst benötigte Bibliothek, wie zum Beispiel die express-Library, weitere Abhängigkeiten benötigt, werden 
-diese automatisch mitinstalliert. So ist sichergestellt, dass alle geforderten Bibliotheken einwandfrei funktionieren.
+Auch wenn eine selbst benötigte Bibliothek, wie zum Beispiel die express-Library, weitere Abhängigkeiten benötigt um zu
+funktionieren, werden diese automatisch mitinstalliert. So ist sichergestellt, dass alle geforderten Bibliotheken
+einwandfrei funktionieren.
 
 Die Ausführung des Befehls hat zur Folge, dass ein neuer Ordner mit dem Namen \textit{node\_modules} erstellt wird. In
 diesem finden sich nun alle geforderten Bibliotheken und deren Abhängigkeiten an einem zentralen Ort und sind zur
@@ -672,7 +675,7 @@ der Express-Server sowie alle REST-Endpunkte definiert sind.
 Diese Datei trägt den Namen \textit{server.js} und ist in Listing~\ref{ls:umsetzung_serverjs} auf 
 Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten drei Zeilen der Datei werden die benötigten Bibliotheken
 in das Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server, der Body-Parser und die
-TensorFlow.js-Runtime ist somit einsatzbereit.
+TensorFlow.js-Runtime sind somit einsatzbereit.
 
 In der fünften Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man
 diesen über die Variable konfigurieren.
@@ -699,7 +702,7 @@ app.listen(80, () => {
 Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken kann und
 man diese dann auch verwenden kann. Andernfalls müssten alle Anfragen durch ein API-Gateway gesondert geparst werden.
 
-Durch die Zeile neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit
+Durch die Zeilen neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit
 der TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ ist
 \textit{POST} angegeben. Somit kann man Daten an den Endpunkt schicken.
 
@@ -735,9 +738,10 @@ Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Paramet
 Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die REST-Schnittstelle
 vollkommen ist. Die Ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man dabei entfernen.
 
-Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner. Anschließend
-kann man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage an das Erstellte REST-Interface machen um die funktion
-der Anwendung zu überprüfen.
+Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner.
+
+Anschließend kann man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage an das Erstellte REST-Interface machen um
+die Funktion der Anwendung zu überprüfen.
 
 Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in
 einen Cloud Foundry Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
@@ -745,11 +749,12 @@ nötigen Schritte erläutert.
 
 \subsubsection{Toolchain einrichten}
 \label{sub:tollchain_einrichten}
-Die fertig entwickelte Node.js Applikation wird im nächsten Schritt in einen Cloud Foundry Container installiert. Dies
-ermöglicht den Aufruf der Applikation über eine Domain, welche automatisch von der IBM Cloud vergeben wird.
+Die fertig entwickelte Node.js Applikation wird im nächsten Schritt in einen Cloud Foundry Container in der IBM Cloud
+installiert. Dies ermöglicht den Aufruf der Applikation über eine Domain, welche automatisch von der IBM Cloud vergeben
+wird.
 
-Damit man den geschriebenen Quellcode nicht nach jeder Änderung manuell mittels \texttt{cf push} in einen Cloud
-Foundry-Container laden muss, wird hierfür eine Toolchain aus der IBM Cloud genutzt.
+Damit man den geschriebenen Quellcode nicht nach jeder Änderung manuell mittels \texttt{cf push} in einen Cloud Foundry
+Container laden muss, wird hierfür eine Toolchain aus der IBM Cloud genutzt.
 
 Die Nutzung der Toolchain erfordert ein eingerichtetes Git-Repository. Nach jedem \texttt{commit}, welchen man in dieses
 Repository schreibt, aktiviert sich die Toolchain selbstständig und lädt den entsprechenden Commit herunter.
@@ -765,40 +770,54 @@ Für die Konfiguration der Toolchain muss man die instanziierte Node.js Runtime,
 laufen soll, in dem IBM Cloud Dashboard auswählen.
 
 Auf der dann folgenden Seite im Tab \texttt{Übersicht} (linke Seite) erscheinen fünf Kacheln mit unterschiedlichen
-Informationen. Für die Toolchain ist die Karte mit der Aufschrift \texttt{Continous Delivery} entscheidend. Dort gibt es
-einen Button mit der Aufschrift \texttt{Aktivieren}.
+Informationen. Für die Toolchain ist die Karte mit der Überschrift \texttt{Continous Delivery} entscheidend. Dort gibt
+es einen Button mit der Aufschrift \texttt{Aktivieren}.
 
 Ein Klick auf diesen öffnet die Übersicht und eine visuelle Vorschau der Standardkonfiguration der Toolchain. Nun muss
 man einen Name eintragen und die Region auswählen, in der die Toolchain installiert wird. Da die Standardkonfiguration
 vorerst völlig ausreichend ist, kann diese direkt übernommen werden. Dafür genügt ein Klick auf \texttt{Erstellen}.
 
 Nach einem kurzen Ladevorgang ist die Toolchain eingerichtet und vorkonfiguriert. Es erscheinen nun vier Karten für
-unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann.
+unterschiedliche Bereiche, in denen die IBM Cloud dem Entwicklungszyklus helfen kann. In
+Abbildung~\ref{fig:umsetzung_toolchain} auf Seite~\pageref{fig:umsetzung_toolchain} ist die Übersicht der Toolchain
+ersichtlich.
 
-Im Bereich \texttt{Nachdenken} wird ein Issue-Tracker konfiguriert, in dem zum Beispiel Bugs (Softwarefehler), welche
-in der Software entdeckt werden, eingetragen, verwaltet und diskutiert werden können.
+%% TODO Bild anpassen (auf größerem Bildschirm)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/toolchain_overview.png}
+    \LARGE
+    \put(-350,70){DRAFT - Muss ausgetauscht werden}
+    \caption{Übersicht der Toolchain}
+    \label{fig:umsetzung_toolchain}
+\end{figure}
+
+Im Bereich \texttt{Nachdenken} steht ein Issue-Tracker bereit, mit dem man Bugs (Softwarefehler), eingetragen,
+verwalten und diskutieren kann. Auch ist es Möglich anstehende Aufgaben auf Mitglieder zu verteilen.
 
 In \texttt{Codieren} stehen gleich zwei Kacheln zur Verfügung. Einerseits das konfigurierte Git-Repository, bei dem es
 sich um ein auf IBM-Servern gehostetes GitLab handelt. Andererseits findet sich dort eine Web-IDE auf Basis von Eclipse
-Orion, mit der der Quellcode der Anwendung online editiert werden kann.
+Orion, mit dem man den Quellcode der Anwendung online editiert kann.
 
-In der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Pipeline, welche im nächsten Schritt näher erläutert
-und eingerichtet wird. Mit einem Klick auf die Kachel mit der Aufschrift \texttt{Delivery Pipeline} wechselt man in die
+In der letzten Kategorie, \texttt{Bereitstellen}, findet sich die Pipeline, welche man im nächsten Schritt konfiguriert
+und einrichtet. Mit einem Klick auf die Kachel mit der Aufschrift \texttt{Delivery Pipeline} wechselt man in die
 Konfiguration.
 
-Nach dem Laden der Seite erscheinen zwei sogenannte \textit{Phasen} (engl. Stages). Jeder Schritt in der Delivery Pipeline
-wird durch eine Phase symbolisiert. In einer Phase können zum Beispiel der Quellcode aus dem Git-Repository geladen, oder
-die geschriebenen Tests durchgeführt werden.
+Nach dem Laden der Seite erscheinen zwei sogenannte \textit{Phasen} (engl. Stages). Jeder Schritt in der Delivery
+Pipeline wird durch eine Phase symbolisiert. In einer Phase können zum Beispiel der Quellcode aus dem Git-Repository
+geladen, oder die geschriebenen Tests durchgeführt werden.
 
 Die Standardkonfiguration sieht in der \textit{Build Stage} das Herunterladen des Quellcodes aus dem Git-Repository vor
-und in der \textit{Deploy Stage} das Einrichten eines Cloud Foundy-Containers.
+und in der \textit{Deploy Stage} das Einrichten eines Cloud Foundry Containers.
 
-Für die Node.js Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder Einrichtungen
-notwendig sind.
+Für die Node.js Applikation reicht diese Konfiguration völlig aus, da keine zusätzlichen Installationen oder
+Einrichtungen notwendig sind.
 
 In Abbildung~\ref{fig:umsetzung_toolchain_pipeline} auf Seite~\pageref{fig:umsetzung_toolchain_pipeline} ist die
-komplette Konfiguration der Toolchain veranschaulicht. Die grünen Balken zeigen einen erfolgreichen Durchlauf einer
-einzelnen Phase an.
+komplette Konfiguration der Toolchain zu sehen.
+
+Die grünen Balken zeigen einen erfolgreichen Durchlauf einer einzelnen Phase an. Bei einem Fehler ändert sich die Farbe
+auf rot. Alle Phasen in der Farbe orange werden aktuell ausgeführt.
 
 \begin{figure}[h]
     \centering
@@ -809,14 +828,14 @@ einzelnen Phase an.
 
 Als nächstes muss man den geschriebenen Quellcode der Applikation lediglich noch in das, in der Toolchain hinzugefügte,
 Git-Repository einchecken. Die URL für das Repository kann man sich in der Toolchain-Übersicht mit einem Klick auf die
-Kachel \texttt{Git} anzeigen.
+Kachel \texttt{Git} anzeigen lassen.
 
 Nach erfolgreichem \texttt{push} der Anwendung in das Git-Repository startet der Deploymentvorgang in der Toolchain
 selbstständig. Nach wenigen Minuten ist die Anwendung über ihre URL, welche in der Node.js Runtime definiert ist,
 aufrufbar.
 
-Da die Applikation nun im Internet in einem Cloud Foundry Container zur Verfügung steht, kann diese im nächsten Schritt
-mit dem API Connect Service verbunden werden.
+Da die Applikation nun im Internet in einem Cloud Foundry Container zur Verfügung steht, kann man diese im nächsten
+Schritt mit dem API Connect Service verbinden.
 
 Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom Frontend, welches in Kapitel~\ref{subsec:webseite}
 auf Seite~\pageref{subsec:webseite} beschrieben wird, und auch über Postman vereinfacht aufgerufen werden kann.
@@ -831,9 +850,9 @@ Damit man diese Schritte vereinfachen kann und das im weiteren Verlauf erstellte
 aufrufen kann, werden beide Abfragen in API Connect gebündelt.
 
 Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das Mitschicken des Benutzernamens und
-des zugehörigen Passwortes zum Generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung hinterlegt
-werden müssen, kann man diese Zentral in API Connect speichern. Das hat den Vorteil, dass man sie bei Bedarf nur an einer
-zentralen Stelle abändern muss.
+des zugehörigen Passwortes zum Generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung
+hinterlegt werden müssen, kann man diese Zentral in API Connect speichern. Das hat den Vorteil, dass man sie bei Bedarf
+nur an einer zentralen Stelle abändern muss.
 
 Desweiteren ist es relativ einfach, Daten auszulesen, die von einer Anwendung an die Schnittstelle geschickt werden.
 Dies ermöglicht es Angreifern, die Daten für andere Zwecke zu missbrauchen.
@@ -846,7 +865,7 @@ Mittels API Connect kann man die Aufrufe optimal verteilen oder eigene Routen f�
 Außerdem kann man Änderungen schnell und kompfortabel in einem Online-Editor anpassen.
 
 Die Anpassung der Routen in API Connect bedürfen keinerlei Programmierkenntnisse uns sind sehr schnell umgesetzt und in
-Echtzeit veröffentlich.
+Echtzeit veröffentlicht und nutzbar.
 
 \subsubsection{API Connect einrichten}
 Der in Kapitel~\ref{subsec:vorbereitung_apiconnect} auf Seite~\pageref{subsec:vorbereitung_apiconnect} instanziierte
@@ -859,13 +878,24 @@ automatisch angelegten Katalog benennen. In diesem Katalog werden alle Informati
 Veröffentlichte APIs werden automatisch in diesem Katalog aufgelistet. Nach der fertigen Einrichtung des Kataloges
 gelangt man über einen Klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
 
-In dieser muss man den Menüpunkt \texttt{APIs} auswählen. In der erscheinenden Liste werden alle APIs, welche im Weiteren
-erstellt werden, aufgelistet. Aktuell existieren hier aber noch keine. Dies kann der Nutzer über den Button
+In dieser muss man den Menüpunkt \texttt{APIs} auswählen. In der erscheinenden Liste werden alle APIs, welche im
+Weiteren erstellt werden, aufgelistet. Aktuell existieren hier aber noch keine. Dies kann der Nutzer über den Button
 \texttt{Hinzufügen} und dann \texttt{Neue API} ändern.
 
-Nachdem man den Titel, einen Namen und eine beliebige Version hinterlegt hat, kann man die API mit \texttt{API erstellen}
-in die Liste aufnehmen. Sie erscheint nun mit dem definierten Namen. Über einen Klick auf diesen lässt sich die
-Konfiguration der API öffnen.
+Nachdem man den Titel, einen Namen und eine beliebige Version hinterlegt hat, kann man die API mit
+\texttt{API erstellen} in die Liste aufnehmen. Sie erscheint nun mit dem definierten Namen. Über einen Klick auf diesen
+lässt sich die Konfiguration der API öffnen. Siehe dazu die Abbildung~\ref{fig:umsetzung_apiconnect_config} auf
+Seite~\pageref{fig:umsetzung_apiconnect_config}.
+
+%% TODO Bild anpassen (auf größerem Bildschirm)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/apiconnect_config.png}
+    \LARGE
+    \put(-350,70){DRAFT - Muss ausgetauscht werden}
+    \caption{API Connect Konfiguration}
+    \label{fig:umsetzung_apiconnect_config}
+\end{figure}
 
 Für die Konfiguration einer API existieren drei wichtige Untermenüs. In \texttt{Gestalten} lassen sich Name, Beschreibung,
 Version, die Sicherheitsdefinitionen sowie die zur Verfügung gestellten Pfade und dafür vorgesehene Parameter definieren.
@@ -880,30 +910,43 @@ Um mit der Konfiguration zu starten, muss der Nutzer zuallererst die einzelnen P
 definieren. Dazu wird in den Menüpunkt \texttt{Gestalten} gewechselt und im linken Menü dann in \texttt{Pfade}.
 
 Über das kleine Plus-Zeichen im rechten Bereich kann der Nutzer einen neuen Pfad hinzufügen. Pfade sind die Endpunkte
-einer REST-Schnittstelle. Jede URL ist ein Endpunkt. Über jeden einzelnen Endpunkt können verschiedene HTTP-Requests
-angesteuert werden. Die häufigsten sind \textit{GET}, \textit{POST}, \textit{PUT} und \textit{DELETE}.
+einer REST-Schnittstelle. Jede URL ist ein Endpunkt. Über jeden einzelnen Endpunkt kann man verschiedene HTTP-Requests
+ansteuern. Die am häufigsten genutzten laufen \textit{GET}, \textit{POST}, \textit{PUT} sowie \textit{DELETE}.
 
 Direkt nach einem Klick auf das Plus-Zeichen erscheint ein neuer Pfad mit dem Namen \textit{/pfad-1}. Diesen kann man
 durch einen Klick aufklappen. Es erscheinen nun die Konfigurationsparameter für den Endpunkt. Als \textit{Pfad} wird nun
-ein Name vergeben, über den das Watson Studio Deployment aufgerufen werden kann. Ein Beispiel hierfür ist
+ein Name vergeben, über das man das Watson Studio Deployment aufrufen können soll. Ein Beispiel hierfür ist
 \textit{predict-watson}.
 
-Da in der jetzigen Version für die Parameter keine Validierung vorgenommen wird, kann die Einstellung dieser ignoriert
-werden. Allerdings muss man nun eine neue Operation hinzufügen. Dabei handelt es sich um die HTTP-Typen. Da von der
-späteren Anwendung Daten an die Schnittstelle geschickt werden sollen, muss es eine Operation vom Typ \textit{POST} sein.
+Da in der jetzigen Version für die Parameter keine Validierung vorgenommen wird, kann man die Einstellung dieser
+ignorieren. Allerdings muss man nun eine neue Operation hinzufügen. Dabei handelt es sich um die HTTP-Typen. Da das
+Frontend später Daten an die Schnittstelle schicken soll, muss es die Operation vom Typ \textit{POST} sein.
 
 Über den Button \texttt{Operation hinzufügen} kann man diese hinzufügen. In dem Dropdown-Menü muss der Nutzer dann den
 entsprechenden \texttt{POST}-Eintrag auswählen. Dieser erscheint sogleich in der Liste und wird grün hinterlegt.
 
-Mit einem Klick auf den \textit{POST}-Eintrag wechselt man in die weitere Konfiguration. Die weitere Konfiguration ist
-für die Schnittstelle uninteressant und kann wieder geschlossen werden.
+Mit einem Klick auf den \textit{POST}-Eintrag wechselt man in die weitere Konfiguration. Diese ist für die Schnittstelle
+uninteressant und man kann sie wieder schließen.
 
 Diese Schritte muss man nun auch für einen weiteren Pfad mit dem Namen \textit{predict-tensorflow} durchführen. Diese
-Route ist für die Kommunikation mit der Node.js Applikation notwendig. Sie erhält ebenfalls eine Operation vom Typ
-\textit{POST}.
+Route ist für die Kommunikation mit der Node.js Applikation notwendig.
 
-Somit sind erfolgreich zwei Endpunkte mit den Namen \textit{predict-watson} und \textit{predict-tensorflow} angelegt
-worden. Diese haben jeweils eine Operation vom Typ \textit{POST}.
+Sie erhält ebenfalls eine Operation vom Typ \textit{POST}. In Abbildung~\ref{fig:umsetzung_apiconnect_endpoint} auf
+Seite~\pageref{fig:umsetzung_apiconnect_endpoint} ist Beispielhaft die Konfiguration des
+\textit{predict-watson}-Endpunktes ersichtlich.
+
+%% TODO Bild anpassen (auf größerem Bildschirm)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/apiconnect_endpoint.png}
+    \LARGE
+    \put(-350,70){DRAFT - Muss ausgetauscht werden}
+    \caption{Endpunkt für den API Connect Service}
+    \label{fig:umsetzung_apiconnect_endpoint}
+\end{figure}
+
+Somit sind erfolgreich zwei Endpunkte mit den Namen \textit{predict-watson} und \textit{predict-tensorflow} angelegt.
+Diese haben jeweils eine Operation vom Typ \textit{POST}.
 
 Als weitere wichtige Einstellung muss man unter \texttt{Lebenszyklus} den Schalter bei \texttt{CORS} aktivieren und da
 im ersten Schritt mit keiner Sicherheit gearbeitet wird, kann der entsprechende Menüpunkt übersprungen werden.
@@ -913,7 +956,7 @@ entsprechende Meldung quittiert die Speicherung.
 
 Die Grundeinstellungen der Schnittstelle sind somit getätigt. Im Weiteren muss der Entwickler die API über
 \texttt{Assemblieren} mit dem richtigen Verhalten versehen. Dazu wechselt man über den entsprechenden Menüpunkt in einen
-fast leeren Arbeitsbereich.
+Arbeitsbereich.
 
 Hier finden sich im linken Bereich alle möglichen Bausteine um die API mit Funktionen und intelligenz zu füllen. Im
 mittleren Teil, dem Arbeitsbereich, ist lediglich ein Punkt hinterlegt. Dieser dient als Einstieg bei einem Aufruf der
@@ -943,23 +986,26 @@ Dieses Modul kann man der Kategorie \textit{Umwandlungen} entnehmen und es direk
 reiht sich somit dahinter ein. Ein doppelter Klick öffnet die Konfiguration des Modules. Da hier nur ein Parameter
 gespeichert werden muss, ist die Konfiguration recht simpel.
 
-In der Spalte Eingabe kann man über den Stift einen neuen Eintrag hinzufügen. Als Kontextvariable ist
+In der Spalte \textit{Eingabe} kann man über den Stift einen neuen Eintrag hinzufügen. Als Kontextvariable ist
 \enquote{newtoken.body.token} zu definieren. Dabei handelt es sich um den Rückgabeparameter des vorangestellten
 Request-Modules und das JSON-Objekt \enquote{token}, welches von der Schnittstelle zurückgegeben wird.
 
 Als Name der Variable wird \enquote{Token Input} definiert, der Inhaltstyp ist \enquote{text/plain} und die Definition
 ist \enquote{string}. Über \texttt{Fertig} kann man die Konfiguration speichern.
 
-Nun muss in der Spalte Ausgabe eine interne Variable definiert werden, welche den Auth-Token speichert. Dafür wird über
-den Stift ein neuer Eintrag angelegt. Die Kontextvariable ist \enquote{newtoken} und der Name \enquote{Token Output}.
-Als Inhaltstyp wird \enquote{text/plain} ausgewählt, da die Variable auf der Seite der Eingabe als Text definiert ist.
+Nun muss man in der Spalte \textit{Ausgabe} eine interne Variable definieren, welche den Auth-Token speichert. Dafür
+muss man über den Stift einen neuen Eintrag anlegen. Die Kontextvariable ist \enquote{newtoken} und der Name
+\enquote{Token Output}.
+
+Als Inhaltstyp definiert man \enquote{text/plain}, da die Variable auf der Seite der Eingabe als Text definiert ist.
 Somit wird auch die Definition auf \enquote{string} gesetzt.
 
 Nachdem auf beiden Seiten nun ein Eintrag erscheint, muss man diese beiden über die rundlichen Punkte verbinden. Eine
 grüne Linie symbolisiert anschließend die Verbindung. Die Konfiguration der Zuordnung ist damit fertiggestellt.
 
-Da bei der Schnittstelle mir CORS gearbeitet wird, muss man in einem nächsten Schritt den Header setzen, welche Anfragen
-erlaubt sind. Dafür verwendet man einen \textit{Gateway Script}. Dies platziert man einfach hinter dem Zuordnungs-Modul.
+Da man bei der Schnittstelle mit CORS arbeitet, muss man in einem nächsten Schritt den Header setzen, welche Anfragen
+in der API erlaubt sind. Dafür verwendet man einen \textit{Gateway Script}. Dies platziert man einfach hinter dem
+Zuordnungs-Modul.
 
 Die Konfiguration des Moduls entspricht Quellcode in JavaScript. Die Zeilen in Listing~\ref{ls:umsetzung_cors} auf
 Seite~\pageref{ls:umsetzung_cors} definieren die entsprechenden Einstellungen.
@@ -971,22 +1017,22 @@ apim.setvariable('message.headers.Access-Control-Allow-Headers', 'Origin, X-Requ
 \end{lstlisting}
 
 Die zweite Zeile besagt, dass die nachfolgende Konfiguration für \textit{alle} Requests zählt, die diese Schnittstelle
-aufrufen. Die dritte Zeile besagt, dass die Anfragen akzeptiert werden sollen. Somit kann jede Anwendung mit dieser
-Schnittstelle kommunizieren.
+aufrufen. Die dritte Zeile gibt Auskunft darüber, dass die Anfragen auch akzeptiert werden sollen. Somit kann jede
+Anwendung mit dieser Schnittstelle kommunizieren.
 
 Bei einer späteren Konfiguration könnte man Anwendungen, welche auf die Schnittstelle zugreifen können, hier
 einschränken. Dazu muss man die IP der Anwendung kennen, welche mit der Schnittstelle kommunizieren möchte. Diese kann
-man dann in die zweite Zeile eintragen (das \enquote{*} ersetzen).
+man dann in die zweite Zeile eintragen (also das \enquote{*} ersetzen).
 
-Da es zwei Endpunkte für die Schnittstelle geben wird, braucht man nun einen \textit{Operationsswitch}, um je nach
+Da zwei Endpunkte für die Schnittstelle existieren, braucht man nun einen \textit{Operationsswitch}, um je nach
 gefordertem Endpunkt auch die richtigen Informationen zurückgeben zu können.
 
-Dieser Switch wird direkt nach dem Gateway Script angeordnet. In der Konfiguration des Switches kann der Nutzer über den
+Dieser Switch ordnen man direkt nach dem Gateway Script an. In der Konfiguration des Switches kann der Nutzer über den
 Button \texttt{+ Pfad} einen neuen Zweig hinzufügen. Insgesamt werden zwei Stück benötigt. Der erste Fall ist für
 \textit{predict-watson} da. Der Zweite für \textit{predict-tensorflow}.
 
 \subsubsection*{Pfad für das Watson Deployment}
-Für den Pfad des \textit{predict-watson} wird ein weiteres Gateway Script benötigt, welches den Header für die Anfrage
+Für den Pfad des \textit{predict-watson} benötigt man ein weiteres Gateway Script, welches den Header für die Anfrage
 an des Watson Studio Deployment setzt. Für die Einstellungen sind die JavaScript Zeilen in
 Listing~\ref{ls:umsetzung_settoken} auf Seite~\pageref{ls:umsetzung_settoken} zuständig.
 
@@ -996,9 +1042,8 @@ var token = apim.getvariable('newtoken');
 apim.setvariable('message.headers.authorization', 'Bearer' + token);
 \end{lstlisting}
 
-In der zweiten Zeile wird der Token, welcher in dem Modul \textit{Zuordnung} gespeichert wurde, ausgelesen. Die dritte
-Zeile sorgt dafür, dass ein Header mit dem Key \textit{authorization} und dem Value \textit{Bearer + token} gesetzt
-wird.
+In der zweiten Zeile ließt man den Token, welcher in dem Modul \textit{Zuordnung} gespeichert ist, aus. Die dritte
+Zeile sorgt dafür, dass man ein Header mit dem Key \textit{authorization} und dem Value \textit{Bearer + token} setzt.
 
 Diese Einstellungen sind wichtig, damit der spätere Request an das Watson Studio Deployment die richtigen Benutzerdaten
 erhält um die Anfrage für gültig zu erklären.
@@ -1007,31 +1052,35 @@ Ein weiteres Gateway Script sorgt dafür, dass die ursprünglich übergebenen Pa
 Input-Werten für die Vorhersage) auch an den nächsten Request weitergegeben werden können.
 
 Dafür setzt man die alten Werte als neue Message-Werte. Das Listing~\ref{ls:umsetzung_header} auf
-Seite~\pageref{ls:umsetzung_header} veranschaulicht das vorgehen.
+Seite~\pageref{ls:umsetzung_header} veranschaulicht das Vorgehen.
 
-\begin{lstlisting}[language=JavaScript, caption=Gateway Script zum Setzen des Message-Bodys, label=ls:umsetzung_header]
+\begin{lstlisting}[language=JavaScript, caption=Gateway Script zum Setzen des Message-Bodyies, label=ls:umsetzung_header]
 // Get variables
 var request = apim.getvariable('request.body');
 apim.setvariable('message.body', request);
 \end{lstlisting}
 
 Im letzten Schritt muss man ein weiteres Aufruf-Modul hinzufügen. Dies erledigt den eigentlichen Aufruf an das Watson
-Studio Deployment. Dazu wird das Modul als das Nächste in die Reihe eingefügt. In der Konfiguration muss man lediglich
+Studio Deployment. Dazu setzt man das Modul als das Nächste in die Reihe ein. In der Konfiguration muss man lediglich
 die URL des Deployments hinzufügen. Diese ist auf der Seite des Deployments ersichtlich.
 
-Damit ist dieser Pfad fertig konfiguriert und kann mit einem Aufruf verifiziert werden. Im nächsten Schritt wird der
-zweite Pfad eingerichtet.
+Damit ist dieser Pfad fertig konfiguriert und man kann ihn mit einem Aufruf verifizieren. Nun kann man den zweiten Pfad
+im Perationsswitch einrichten.
 
 \subsubsection*{Pfad für den TensorFlow Container}
 Die Einrichtung des TensorFlow-Pfades ist sehr ähnlich zum vorherigen Pfad. Allerdings bedarf es keines Gateway Scriptes
-zum setzen eines Authorization Tokens, da dieser hier nicht benötigt wird. Die anderen Module kann man kopieren und in
-dem Pfad einsetzen. Lediglich das Aufrufen-Modul benötigt weitere Konfiguration.
+zum setzen eines Authorization Tokens, da man diesen hier nicht benötigt.
+
+Die anderen Module kann man direkt kopieren und in dem neuen Pfad einsetzen. Lediglich das Aufrufen-Modul benötigt
+weitere Konfiguration.
 
 In diesem muss nicht die URL des Watson Studio Deployments definiert sein, sondern man muss die des Cloud
-Foundry-Containers einsetzen. Anschließend sollte man die Konfiguration über das Disketten-Symbol speichern.
+Foundry Containers einsetzen. Anschließend sollte man die Konfiguration über das Disketten-Symbol speichern.
 
 Die Konfiguration des API Conenct Services ist somit abgeschlossen und man kann diese im eingerichteten Katalog
 veröffentlichen.
+
+%% TODO Hier weiter reviewen
 
 \subsubsection{API Veröffentlichen}
 In der Abbildung~\ref{fig:umsetzung_api_connect} auf Seite~\pageref{fig:umsetzung_api_connect} ist der fertig
