@@ -1080,8 +1080,6 @@ Foundry Containers einsetzen. Anschließend sollte man die Konfiguration über d
 Die Konfiguration des API Conenct Services ist somit abgeschlossen und man kann diese im eingerichteten Katalog
 veröffentlichen.
 
-%% TODO Hier weiter reviewen
-
 \subsubsection{API Veröffentlichen}
 In der Abbildung~\ref{fig:umsetzung_api_connect} auf Seite~\pageref{fig:umsetzung_api_connect} ist der fertig
 eingerichtete API Connect Flow dargestellt. Dieser umfasst alle notwendigen Module und Einstellungen.
@@ -1099,14 +1097,14 @@ eingerichtete API Connect Flow dargestellt. Dieser umfasst alle notwendigen Modu
 Über den Play-Button am linken oberen Rand, kann man die aktuelle Konfiguration des API Connect Services bauen lassen.
 Als Katalog sollte man den anfangs angelegten Katalog definieren. Im Bereich Produkt muss der Nutzer ein Neues anlegen.
 
-Bei dem Produkt handelt es sich um einen Namen für den Service. Die API läuft später unter diesem Produkt-Namen und kann
-in dem anfangs erstellten Katalog über das Produkt gefunden werden.
+Bei dem Produkt handelt es sich um einen Namen für den Service. Die API läuft später unter diesem Produkt-Namen und
+kann in dem anfangs erstellten Katalog über das Produkt gefunden werden.
 
-So ist es möglich mehrere APIs für einen Produkt zu definieren. Ein Endnutzer kann sich ein Produkt dann über den Katalog
-beziehen und die angelegte API nutzen.
+So ist es möglich mehrere APIs für einen Produkt zu definieren. Ein Endnutzer kann sich ein Produkt dann über den
+Katalog beziehen und die angelegte API nutzen.
 
 Nun kann man mit \texttt{Produkt veröffentlichen} dieses veröffentlichen und nutzbar machen. Dieser Vorgang kann bis zu
-wenigen Minuten dauern.
+wenigen Minuten dauern, da der API Connect Service die Konfiguration neu bauen muss.
 
 Im Anhang~\ref{sec:konfigurationAPIConnect} auf Seite~\pageref{sec:konfigurationAPIConnect} ist die komplette
 Konfiguration des API Connect Services in einer Konfigurationsdatei zu sehen. Diese kann man für die Nutzung direkt
@@ -1114,7 +1112,7 @@ kopieren und ersetzen.
 
 \subsubsection{API durchsuchen}
 Auf dem API Connect Dashboard kann der Benutzer über die rechts oben angelegte Schaltfläche \texttt{Durchsuchen} auf ein
-Untermenü zugreifen. In diesem werden alle Kataloge und Entwürfe aufgelistet, die durch ihn erstellt wurden.
+Untermenü zugreifen. Dort sind alle Kataloge und Entwürfe aufgelistet, welche man selbst erstellt hat.
 
 Mit einem Klick auf den ersten Eintrag in der Kategorie \textit{Katalog} gelangt man auf eine Übersicht aller
 API-Endpunkte, welche sich in diesem Katalog befinden.
@@ -1123,18 +1121,30 @@ Aktuell sollten im linken Feld lediglich zwei Endpunkte zu sehen sein. Der Endpu
 Watson-Deployment und der Endpunkt \textit{predict-tensorflow} für den Node.js Wrapper. Auch sollten beide über
 den HTTP-Type \textit{POST} definiert sein.
 
-Außerdem könnte in diesem Bereich nach einem Endpunkt gesucht oder die Endpunkte sortiert werden. Jeder Eintrag in der Liste
-kann angeklickt werden. Daraufhin wird die mittlere Ansicht, in der Informationen zum Endpunkt stehen, zu der jeweiligen
-Stelle gescrollt.
+Außerdem könnte in diesem Bereich nach einem Endpunkt gesucht oder die Endpunkte sortiert werden. Jeder Eintrag der
+Liste ist markierbar, sodass daraufhin die mittlere Ansicht, zum jeweiligen Bereich automatisch scrollt.
 
 Auch kann man der mittleren Spalte für jeden Endpunkt Informationen zu den verwendeten und produzierten Datentypen
-entnehmen. Diese Informationen können bei der Konfiguration des API-Endpunktes angegeben werden. Dies ist in
+entnehmen. Diese Informationen kann man bei der Konfiguration des API-Endpunktesangeben. Dies ist in
 Kapitel~\ref{subsec:apiconnect} auf Seite~\pageref{subsec:apiconnect} erklärt.
 
-Jede zusätzliche Information, die bei der Konfiguration eingetragen wird, erweitert die Ansicht des mittleren Bereiches
-um die jeweilige Informationen.
+Die Abbildung~\ref{fig:umsetzung_apiconnect_durchsuchen} auf Seite~\pageref{fig:umsetzung_apiconnect_durchsuchen}
+veranschaulicht den Menüpunkt \textit{API durchsuchen}.
 
-Im rechten Bereich der Ansicht werden Beispielaufrufe angezeigt, wie man die jeweiligen Endpunkte zum Beispiel mit dem
+%% TODO Bild anpassen (auf größerem Bildschirm)
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/apiconnect_durchsuchen.png}
+    \LARGE
+    \put(-350,70){DRAFT - Muss ausgetauscht werden}
+    \caption{Ansicht des Menüpunktes API durchsuchen}
+\label{fig:umsetzung_apiconnect_durchsuchen}
+\end{figure}
+
+Jede zusätzliche Information, die man bei der Konfiguration einträgt, erweitert die Ansicht des mittleren Bereiches
+um die jeweilige Information.
+
+Im rechten Bereich der Ansicht sind Beispielaufrufe angezeigt, wie man die jeweiligen Endpunkte zum Beispiel mit dem
 Befehlsprogramm \textit{curl} aufrufen kann. Dies ist hilfreich um die Endpunkte zu testen oder in Erfahrung zu bringen,
 wie die Rückgabewerte aussehen.
 
@@ -1144,22 +1154,23 @@ Einbindung der Schnittstelle in eigene Programme erheblich.
 Als letzte Funktion kann man im rechten Bereich die API-Endpunkte auch direkt online testen. Dies ist hilfreich um die
 Funktion des Endpunktes zu überprüfen ohne ein externes Tool nutzen zu müssen.
 
-Bei der Ansicht handelt es sich um eine Darstellung der automatisch generierten Konfigurationsdatei (\textit{yaml}-Datei)
-mit einer Swagger-UI\footnote{https://swagger.io/tools/swagger-ui}, welche von IBM optisch angepasst wurde.
+Bei der Ansicht handelt es sich um eine Darstellung der automatisch generierten Konfigurationsdatei
+(\textit{yaml}-Datei) mit einer Swagger-UI\footnote{https://swagger.io/tools/swagger-ui}, welche IBM optisch angepasst
+hat.
 
 \subsubsection{Developer Toolkit}
 Ebenfalls über das API Connect Dashboard kann der Entwickler auf den Menüpunkt \texttt{Developer Toolkit} zugreifen.
 Dieser zeigt eine Anleitung, wie man die erstellte API auf einem eigenen Server einrichten kann. Dafür sind lediglich
 drei einfache Schritte notwendig.
 
-Zuallererst muss man das Programm \textit{API Connect} mittels npm herunterladen und installieren. Anschließens wird über
-die Funktion \textit{loopback} eine neue API auf dem lokalen API Connect Service eingerichtet. Der Wizzard führt einen
-durch die benötigte Konfiguration.
+Zuallererst muss man das Programm \textit{API Connect} mittels npm herunterladen und installieren. Anschließens wird
+über die Funktion \textit{loopback} eine neue API auf dem lokalen API Connect Service eingerichtet. Der Wizzard führt
+einen durch die benötigte Konfiguration.
 
 Nun kann man die Web-Oberfläche des lokalen API Connect starten und seine erstellte, noch leere API, sehen. Anschließend
 muss man nur noch die Konfigurations-Datei der online erstellten API kopieren und in den lokalen Service einfügen.
 
-Über den Menüpunkt \texttt{Run Your API}, gelangt man auf eine weitere Anleitung, welche das starten und zur Verfügung
+Über den Menüpunkt \texttt{Run Your API}, gelangt man auf eine weitere Anleitung, welche das Starten und zur Verfügung
 stellen der lokal erstellten API erläutert.
 
 Im letzten Schritt, welchen man über die Schaltfläche \texttt{Publish Your API to IBM Cloud} erreicht, wird Schritt für
@@ -1168,28 +1179,29 @@ kann.
 
 Dies ist dann sinnvoll, wenn man lokal Änderungen vorgenommen hat und diese wieder online einspielen möchte.
 
-Nach einem Neustart des lokalen Services kann die API genutzt werden und man ist nicht mehr auf eine Cloud-Lösung
-angewiesen.
+Nach einem Neustart des lokalen Services kann man die API nutzen und ist so nicht mehr auf eine Cloud-Lösung angewiesen.
 
 Dies kann diverse Vorteile für die Erstellung einer eigenen Architektur haben. Gerade wenn Applikationen lediglich im
 internen Netz zur Verfügung stehen, man allerdings den API Connect Service nutzen möchte.
 
-Oder zum offline Erstellen einer API, da bei der Entwicklung nicht immer eine Verbindung zu den IBM Servern gewährleistet
-werden kann.
+Oder zum offline Erstellen einer API, da bei der Entwicklung nicht immer eine Verbindung zu den IBM Servern
+gewährleistet werden kann.
 
 Eine detailliertere Anleitung steht auf der geöffneten Webseite zur Verfügung. Dort kann man sich die einzelnen Befehle
 und Kommandos direkt herauskopieren um diese ausführen.
 
 \subsection{Vergleich der Endpunkte}
-Wie Eingangs erwähnt soll ein Test zeigen, ob das selbe trainierte Modell unter verschiedenen Implementierungen die selben
-Werte als Vorhersage errechnet oder ob es dabei unterschiede geben kann.
+Wie in der Einleitung des Kapitels erwähnt, soll ein Test zeigen ob das selbe trainierte Modell unter verschiedenen
+Implementierungen die selben Werte als Vorhersage errechnet oder ob es dabei unterschiede geben kann.
 
 Ein einfacher Test kann klarheit über dieses Thema geben. Man muss lediglich beide Endpunkte, die der Entwickler über 
-den API Connect Service angeschlossen hat, nacheinander aufrufen. Wichtig dabei ist natürlich, dass man die selben 
-Parameter übergibt um den Test durchzuführen.
+den API Connect Service angeschlossen hat, nacheinander oder zeitgleich aufrufen.
+
+Wichtig dabei ist lediglich, dass man die selben Parameter für die Vorhersage übergibt um den Test durchzuführen.
 
 Der Test kann mit den Parametern in Listing~\ref{ls:umsetzung_parameter} auf Seite~\pageref{ls:umsetzung_parameter} 
-geschehen. Anschließend muss man die vorhergesagten Parameter des trainierten Modells nur noch miteinander verglichen.
+geschehen. Anschließend muss man die vorhergesagten Parameter des trainierten Modells nur noch miteinander verglichen
+und eventuell Abweichungen feststellen.
 
 Bei den angegebenen Parametern handelt es sich lediglich um das \textit{values}-Array des gesamten Aufrufs. Das 
 \textit{fields}-Array kann man aus vorangegangenen Beispielen heranziehen.
@@ -1238,5 +1250,8 @@ Vertrauenswürdigkeit von neuronalen Netzen eingegangen wird.
         ]
 \end{lstlisting}
 
-Der Test ist somit positiv verlaufen und beiden Implementierungen können gefahrlos genutzt werden, ohne bei jeder Anfrage
+Der Test ist somit positiv verlaufen und beiden Implementierungen kann man gefahrlos nutzen, ohne bei jeder Anfrage
 auf beide Ergebnisse zu warten um diese zu vergleichen.
+
+Eine Abweichung war auch nicht zu erwarten, da die beiden Modelle dem selben neuronalen Netz entspringen und bei der
+Vorhersage keinen Platz für Spielräume zulassen.
