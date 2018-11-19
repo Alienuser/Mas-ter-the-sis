@@ -110,9 +110,17 @@ Im Folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss i
 auswählen. Dabei handelt es sich um die hochgeladene Datei mit den Trainingsdaten. Über die Schaltfläche \texttt{Add}
 kann man die Auswahl übernehmen.
 
-Nun ist der Inhalt der Datei im mittleren Bereich des Displays sichtbar. Bei dieser Ansicht ist darauf zu achten, dass
-die Interpretation der Werte der einzelnen Spalten als Dezimal-Zahl erfolgt. Diese Information steht unterhalb der
-einzelnen Spaltenüberschriften. Sollte diese Einstellung nicht voreingestellt sein, muss man diese manuell abändern.
+Wie in Abbildung~\ref{fig:umsetzung_data_flow} auf Seite~\pageref{fig:umsetzung_data_flow} zu sehen, ist nun der Inhalt
+der Datei im mittleren Bereich des Displays sichtbar. Bei dieser Ansicht ist darauf zu achten, dass die Interpretation
+der Werte der einzelnen Spalten als Dezimal-Zahl erfolgt. Diese Information steht unterhalb der einzelnen
+Spaltenüberschriften. Sollte diese Einstellung nicht voreingestellt sein, muss man diese manuell abändern.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/umsetzung_data_flow.png}
+    \caption{Umwandlung der Trainingsdaten}
+    \label{fig:umsetzung_data_flow}
+\end{figure}
 
 Dazu Klickt man in der entsprechenden Spalte oben, rechts neben dem Spaltenname, auf die drei Punkte (Einstellungen) und
 selektiert den Eintrag \texttt{Convert Column}. Im Untermenü muss man dann den Wert \texttt{Decimal} bestätigen. Nun
@@ -148,7 +156,7 @@ diesem muss man den Baustein \textit{Data asset} in der Gruppe \textit{Import} a
 Dieser Baustein ermöglicht den Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag \& Drop kann der
 Nutzer den Baustein in den noch leeren Arbeitsbereich platzieren.
 
-Um den Baustein zu konfigurieren Klickt der Entwickler doppelt auf den Baustein. Daraufhin öffnet sich ein rechter,
+Um den Baustein zu konfigurieren klickt der Entwickler doppelt auf den Baustein. Daraufhin öffnet sich ein rechter,
 seitlicher Arbeitsbereich. In diesem kann er über die Schaltfläche \texttt{Change Data Asset} die Datei auswählen, welche
 die Trainingsdatensätze enthält.
 
@@ -176,15 +184,25 @@ verbinden. Dabei stehen dann allen weiteren Modulen die gleichen Werte zur Verf�
 
 Die Konfiguration des Neural-Net-Moduls erfolgt durch einen doppelten Klick auf dieses. Damit man die
 \textit{Targets} und die \textit{Inputs} selbst definieren kann, muss man den Hacken bei \enquote{Use custom field roles}
-setzen. Andernfalls versucht Watson selbst die Inputs und die Outputs zu definieren. Meist sind diese Einstellungen dann
-aber falsch.
+setzen.
+
+Andernfalls versucht Watson selbst die Inputs und die Outputs zu definieren. Meist sind diese Einstellungen dann
+aber falsch. Die Abbildung~\ref{fig:umsetzung_config_neural_net} auf Seite~\pageref{fig:umsetzung_config_neural_net}
+veranschaulicht die Konfiguration.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/umsetzung_config_neural_net.png}
+    \caption{Konfiguration des Neural Net Moduls}
+    \label{fig:umsetzung_config_neural_net}
+\end{figure}
 
 Die Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} zeigt die auszuwählenden Tabellenspalten für
 die jeweilige Kategorie. Die Targets beschreiben die Variablen, welche durch den Watson Service Vorhergesagt werden
 sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage überhaupt möglich ist.
 
-Dem resultierenden, trainierten Modell werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen als
-vorhergesagte Rückgabeparameter zurück.
+Dem resultierenden, trainierten Modell werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen
+als vorhergesagte Rückgabeparameter zurück.
 
 \begin{table}[h]
     \centering
@@ -404,9 +422,17 @@ Pflichtfeld und muss befüllt sein. Anschließend kann man das Deployment über 
 Vorgang kann wenige Minuten dauern.
 
 Direkt nachdem das Deployment fertiggestellt ist, wird in der Spalte \textit{Status} der Wert \textit{DEPLOY\_SUCCESS}
-angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf den Namen öffnen.
+angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf den Namen öffnen
+(siehe Abbildung~\ref{fig:umsetzung_deployment} auf Seite~\pageref{fig:umsetzung_deployment}).
 
-Das Deployment ist somit erfolgreich erstellt und man kann es im Weiteren testen und auch nutzen.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/umsetzung_deployment_model.png}
+    \caption{Deployment des trainierten Modells}
+    \label{fig:umsetzung_deployment}
+\end{figure}
+
+Das Deployment ist nun erfolgreich erstellt und man kann es im Weiteren testen und auch nutzen.
 
 %% TODO Hier weiter reviewen
 
@@ -807,14 +833,14 @@ Damit man diese Schritte vereinfachen kann und das im weiteren Verlauf erstellte
 aufrufen kann, werden beide Abfragen in API Connect gebündelt.
 
 Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das Mitschicken des Benutzernamens und
-des zugehörigen Passwortes zum generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung hinterlegt
+des zugehörigen Passwortes zum Generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung hinterlegt
 werden müssen, kann man diese Zentral in API Connect speichern. Das hat den Vorteil, dass man sie bei Bedarf nur an einer
 zentralen Stelle abändern muss.
 
-Desweiteren ist es relativ einfach Daten auszulesen, die von einer Anwendung an die Schnittstelle geschickt werden. Dies
-ermöglicht es Angreifern die Daten für andere Zwecke zu missbrauchen.
+Desweiteren ist es relativ einfach, Daten auszulesen, die von einer Anwendung an die Schnittstelle geschickt werden.
+Dies ermöglicht es Angreifern, die Daten für andere Zwecke zu missbrauchen.
 
-Ein weiterer Vorteil für die Nutzung von API Connect ist die Bündelung von mehreren Schnittstellen um Vorhersagen zu
+Ein weiterer Vorteil für die Nutzung von API Connect ist die Bündelung von mehreren Schnittstellen, um Vorhersagen zu
 beziehen. Aktuell ist es möglich, die Vorhersage aus dem Deployment des Watson Studio Modells zu beziehen oder die
 entwickelte Node.js Applikation mit TensorFlow.js zu nutzen.
 
