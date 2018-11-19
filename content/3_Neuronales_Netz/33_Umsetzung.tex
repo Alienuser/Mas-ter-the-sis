@@ -327,13 +327,13 @@ Werten.
 In der nächsten Kategorie, Model Viewer, sind Informationen zu den einzelnen Werten des neuronalen Netzes angegeben.
 Im ersten Menüpunkt, dem Model Information, finden sich zahlreiche generellen Informationen zum Modell.
 
-Mit einem Klick auf den Menüpunkt gelangt man in eine Ansicht wie in Abbildung~\ref{fig:umsetzung_model_information}
-auf Seite~\pageref{fig:umsetzung_model_information} zu sehen.
+Mit einem Klick auf den entsprechenden Menüpunkt gelangt man in eine Ansicht wie sie in
+Abbildung~\ref{fig:umsetzung_model_information} auf Seite~\pageref{fig:umsetzung_model_information} zu sehen ist.
 
 \begin{figure}[h]
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/model_information.png}
-    \caption{Informtionen zum trinierten Model}
+    \caption{Informationen zum trainierten Modell}
     \label{fig:umsetzung_model_information}
 \end{figure}
 
@@ -434,16 +434,12 @@ angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf 
 
 Das Deployment ist nun erfolgreich erstellt und man kann es im Weiteren testen und auch nutzen.
 
-%% TODO Hier weiter reviewen
-
 \subsubsection{Deployment testen}
-Ein online Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass
-man das Deployment direkt testen und bei Fehlveralten neu trainiert kann. Auch benötigt man keine externe Software um
-das Modell zu testen.
+Ein Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass man das
+Deployment direkt testen und bei Fehlveralten neu trainiert kann. Auch benötigt man für den Test keine externe Software.
 
-Auf der Deploymentseite des gespeicherten Modells genügt ein Klick auf den Namen um die Deploymentinformationen anzuzeigen.
-Hier steht neben diversen Informationen auch der Menüpunkt \texttt{Test} zur Verfügung. Mit diesem öffnet sich eine
-zweispaltige Ansicht.
+Auf der Deploymentseite des gespeicherten Modells genügt ein Klick auf den Namen um die Deploymentinformationen
+anzuzeigen. Hier findet sich der Menüpunkt \texttt{Test}. Mit diesem öffnet sich eine zweispaltige Ansicht.
 
 In der linken Spalte befinden sich die Eingabefelder für das trainierte Modell (die Inputs). Nachdem man alle Felder mit
 Testwerten gefüllt hat, kann man über die Schaltfläche \texttt{Predict} eine Vorhersage starten.
@@ -451,19 +447,8 @@ Testwerten gefüllt hat, kann man über die Schaltfläche \texttt{Predict} eine 
 Nach wenigen Sekunden erscheint auf der rechten Seite ein großes JSON-Objekt, welches den Rückgabewert des Webservices
 enthält. Das erste Array, \textit{fields}, listet alle an den Webservice gesendeten Felder auf (die Inputs).
 
-Das zweite Array, \textit{values}, listet alle an den Webservice gesendeten, wie auch die vorhergesagten Werte (die
-Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Modells (also
-die Targets). Sie entsprechen den definierten Targets.
-
 In Abbildung~\ref{fig:umsetzung_deployment_test} auf Seite~\pageref{fig:umsetzung_deployment_test} ist ein Beispiel für
 den online Aufruf des trainierten Modells sichtbar.
-
-Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das trainieren des Modells nicht
-erfolgreich und muss wiederholt werden. Das Modell kennt damit keine Targets die es vorhersagen könnte.
-
-Unter dem Menüpunkt \texttt{Implementation} sind wichtige Informationen und erforderliche Schritte aufgezeigt, damit
-man die erstellte Schnittstelle in ein eigene Programm integriert kann. Dabei wird auf verschiedene Programmiersprachen
-und Architekturen eingegangenund.
 
 \begin{figure}[h]
     \centering
@@ -472,9 +457,20 @@ und Architekturen eingegangenund.
     \label{fig:umsetzung_deployment_test}
 \end{figure}
 
+Das zweite Array, \textit{values}, listet alle an den Webservice gesendeten, wie auch die vorhergesagten Werte (die
+Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Modells (also
+die Targets).
+
+Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das Trainieren des Modells nicht
+erfolgreich und muss wiederholt werden. Das Modell kennt damit keine Targets die es vorhersagen könnte.
+
+Unter dem Menüpunkt \texttt{Implementation} sind wichtige Informationen und erforderliche Schritte aufgezeigt, damit
+man die erstellte Schnittstelle in ein eigene Programm integriert kann. Dabei wird auf verschiedene Programmiersprachen
+und Architekturen eingegangen.
+
 \subsubsection{Aufruf mit Postman}
 \label{subsec:Aufruf mit Postman}
-Im Weiteren soll das erstellte Model, welches im vorherigen Kapitel als Deployment in einen Webservice zur Verfügung
+Im Weiteren soll das erstellte Modell, welches im vorherigen Kapitel als Deployment in einen Webservice zur Verfügung
 gestellt wurde, mit Postman\footnote{https://www.getpostman.com} getestet werden.
 
 So ist sichergestellt, dass man das Modell auch von extern, nicht nur über das Watson Studio Dashboard, aufrufen kann.
@@ -484,8 +480,8 @@ so eine Überprüfung der Übergabeparameter, sowie der Rückgabewerte an die Sc
 Jeder Request an den Webservice des trainierte Modells benötigt einen \textit{Authentication Token} (kurz Auth-Token).
 Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
 
-Über die REST-Schnittstelle des Watson Studios wird ein neuer Token generriert. Dabei handelt es sich um eine andere
-Schnittstelle als beim selbst erstellten Webservice. Der Token ist immer nur für maximal vier Stunden gültig.
+Über die REST-Schnittstelle des Watson Studios wird ein neuer Token generiert. Dabei handelt es sich um eine andere
+Schnittstelle als die vom selbst erstellten Webservice. Der Token ist für immer nur maximal vier Stunden gültig.
 
 Um einen Auth-Token zu erstellen, muss man den Watson Studio Benutzername und das zugehörige Passwort an die
 Schnittstelle übergeben. Ein Beispielaufruf ist in Listing~\ref{ls:umsetzung_apitoken} auf
@@ -505,26 +501,27 @@ Im rechten Bereich sollten dann die beiden Eingabefelder für Benutzername und P
 geforderten Daten eingeben und kann dann den Request mit der Schaltfläche \texttt{Send} starten.
 
 Den Benutzernamen und das zugehörige Passwort findet man in der Übersichtsseite des Machine Learning Services. Diese
-Seite erreicht man über einen Klick auf den Machine Learning Service auf dem IBM Cloud Dashboard. Auf der linken Seite
-kann man sich über den Menüpunkt \texttt{Serviceberechtigungsnachweise} und dann über die Schaltfläche
-\texttt{Berechtigungsnachweise anzeigen} die Daten anzeigen lassen.
+Seite erreicht man über einen Klick auf den Machine Learning Service auf dem IBM Cloud Dashboard.
 
-Nach wenigen Sekunden erscheint im Bereich \textit{Body} der Token in einem JSON-Objekt. Ähnlich dem Aufruf mit
-\textit{curl}.
+Auf der linken Seite kann man sich über den Menüpunkt \texttt{Service\-berechtigungs\-nachweise} und dann über die
+Schaltfläche \texttt{Berechtigung anzeigen} die Daten anzeigen lassen.
+
+Wenige Sekunden nach dem Abschicken des Postman-Requests erscheint im Bereich \textit{Body} der Token in einem
+JSON-Objekt. Ähnlich dem Aufruf mit \textit{curl}.
 
 Um nun das eigentliche Deployment aufzurufen, muss man einen neuen Postman-Tab öffnen. Die URL für den Endpunkt ist im
 Deployment des Modells zu finden und heißt \texttt{Scoring End-point}.
 
 Nachdem die URL des Postman-Requests definiert ist, kann man als HTTP-Type \texttt{POST} auswählen. Im Bereich
-\texttt{Authentication} wird der Typ auf \texttt{Baerer} abgeändert und dies ermöglicht die Eingabe des Tokens. Dieser
+\texttt{Authentication} wird der Typ auf \texttt{Baerer} abgeändert. Dies ermöglicht die Eingabe des Auth-Tokens. Dieser
 Token entspricht dem Rückgabewert des vorangegangenen Postman-Requests.
 
 Die Auswahl des HTTP-Types \textit{POST} ermöglicht die Definition des Bereichs \texttt{Body} für den Request. Dabei
-handelt es sich um Parameter, welche an die Schnittstelle geschickt werden.
+handelt es sich um Parameter, welche man an die Schnittstelle schicken kann.
 
 Als Datentyp muss man \textit{raw} und als Type \textit{JSON (application/json)} auswählen. Im
 Anhang~\ref{sec:postmanTestparameter} auf Seite~\pageref{sec:postmanTestparameter} sind Testparameter zu finden, welche
-als Eingabe genutzt werden können.
+man zur Eingabe nutzen kann.
 
 Der Nutzer kann abschließend den Request über den Button \texttt{Send} an den Webservice abschicken. Nach wenigen
 Sekunden zeigt Postman den erhaltenen Response des neuronalen Netzes an. Hier sollten auch die Vorhersagen enthalten
@@ -557,27 +554,28 @@ Das neuronale Netz ist nun erfolgreich in einem Deployment online zur Verfügung
 Applikation eingebaut.
 
 Dies hat nun mehrere Vorteile. Zum einen kann man das trainierte Modell unabhängig von einer Cloud-Lösung nutzen. Die
-TensorFlow.js Applikation kann zum Beispiel in einen Cloud Foundry Container geladen werden und ist somit völlig
-unabhängig von der Plattform auf der die Applikation läuft. Auch kann sie modular und schnell in beliebigen Regionen
-instanziiert werden.
+TensorFlow.js Applikation kann man zum Beispiel in einen Cloud Foundry Container laden und sie ist somit völlig
+unabhängig von der Plattform auf der sie läuft. Auch kann man sie modular und schnell in beliebigen Regionen
+instanziieren.
 
-Ein weiterer Vorteil ist die Unabhängigkeit welche damit erreichbar wird. Die Applikation kann selbst verwaltet,
-instanziiert oder auch aktualisiert werden.
+Ein weiterer Vorteil ist die Unabhängigkeit, welche man damit erreicht. Der Entwickler kann die Applikation selbst
+verwalten, instanziieren oder auch aktualisieren.
 
 Natürlich ist es ebenfalls möglich die TensorFlow.js Applikation direkt in die eigene Hauptapplikation zu integrieren
 ohne sie als Microservice nutzen zu müssen.
 
 \subsubsection{Modell exportieren}
 Damit das Modell in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert
-werden.
-Dies erfolgt über den Modeler Flow.
+werden. Dies erfolgt über den schon bekannten \textit{Modeler Flow}.
 
-Da der Entwickler das Modell in Kapitel~\ref{subsub:modeler_flow} auf Seite\pageref{subsub:modeler_flow} komplet
+Da der Entwickler das Modell in Kapitel~\ref{subsub:modeler_flow} auf Seite~\pageref{subsub:modeler_flow} komplett
 eingerichtet und trainiert hat, steht es im Modeler Flow als gelbes Modul bereit.
 
 Über einen Rechtsklick auf das trainierte Modell und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
-Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine JSON-Datei. Diese Datei beinhaltet alle wichtigen
-Informationen über das gebaute neuronale Netz.
+Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine JSON-Datei.
+
+Diese Datei beinhaltet alle wichtigen Informationen über das gebaute neuronale Netz und das resultierende trainierte
+Modell.
 
 Auf der Seite des
 FreeCodeCamps\footnote{https://medium.freecodecamp.org/how-to-deploy-tensorflow-models-to-production-using-tf-serving-4b4b78d41700}

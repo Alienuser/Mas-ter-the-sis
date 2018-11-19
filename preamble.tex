@@ -192,28 +192,9 @@ acronym,      % Abkürzungsverzeichnis erstellen
     morecomment=[s]{/*}{*/},
 }
 
-% Define language html
-\lstdefinelanguage{HTML}{
-    morekeywords={
-        % JavaScript
-        typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break,
-        % HTML
-        html, title, meta, style, head, body, script, canvas, domain, allowedOrigins, allowedMethods, allowedHeaders, allowCredentials, maxAge,
-        % CSS
-        border:, transform:, -moz-transform:, transition-duration:, transition-property:, transition-timing-function:
-    },
-    otherkeywords={<, >, \/},
-    ndkeywords={class, export, boolean, throw, implements, import, this, cors},
-    comment=[l]{//},
-    morecomment=[s]{/*}{*/},
-    morecomment=[s]{<!}{>},
-    alsoletter={-},
-    alsodigit={:}
-}
-
 % Define language json
 \lstdefinelanguage{JSON}{
     string=[s]{"}{"},
     stringstyle={\color{blue}\bfseries},
-    comment=[l]{:},
+    comment=[l]{:}
 }
