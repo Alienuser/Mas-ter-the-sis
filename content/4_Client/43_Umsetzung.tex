@@ -536,21 +536,25 @@ gebauten Version auszuschließen.
 \subsubsection{Android}
 Für die Erstellung einer Android-App benötigt man die Android Studio IDE. Diese kann man kostenlos auf der
 Developper-Seite\footnote{https://developer.android.com/studio} von Google herunterladen. Die Anwendung steht für
-Windows, Linux und macOS zur Verfügung. Android Studio basiert auf der Community-Edition von IntelliJ.
+Windows, Linux und macOS zur Verfügung. Android Studio basiert auf der Community-Edition von IntelliJ und ist kostenlos.
 
-Für die Verwendung von Android Studio benötigt man eine Installierte Java-JRE und das Java-JDK. Die JRE benötigt man für
-das Ausführen der IDE und die JDK für das Bauen des Qqellcodes und der APK-Datei. Die Aktuellste Version von Java wird
-für die Nutzung empfholen. Dies ist zur Zeit die Version 9.
+Für die Verwendung von Android Studio benötigt man eine installierte Version Java-JRE und das Java-JDK. Die JRE benötigt
+man für das Ausführen der IDE und die JDK für das Bauen des Quellcodes und der APK-Datei. Die aktuellste Version von
+Java wird für die Nutzung empfohlen. Dies ist zur Zeit die Version 9.
 
 Nachdem man die IDE und gegebenenfalls Java installiert hat, kann man Android Studio zum ersten Mal starten. Beim ersten
 Aufruf muss man das Android-SDK herunterladen sowie einen Emulator konfigurieren. Dabei sollte man jeweils die neuesten
 Versionen auswählen. Mit dem Emulator kann man die App nachher auf dem Rechner starten und live testen.
 
+Es ist möglich eine Android-App mittels \textit{Java}, \textit{Kotlin} und \textit{C\texttt{++}} zu entwicklen. Im
+folgenden wird auf die Verwendung von \textbf{Kotlin} zurückgegriffen, da es den Quellcode sehr schlank macht, was eine
+bessere Übersicht bietet.
+
 Im nächsten Schritt muss man ein neues Projekt anlegen. Dazu wird zum Beispiel der Name \textit{Dashboard} ausgewählt.
 Also Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
 
 Die Android-App muss im Ordner \texttt{/res/layout} ein Layout besitzen, welches als Root-Element ein
-\textit{CoordinatorLayout} besitzt und als Kind-Element ein WebView Layout. Diesem Layout wird eine ID zugeteilt, damit
+\textit{CoordinatorLayout} enthält und als Kind-Element ein WebView Layout. Diesem Layout wird eine ID zugeteilt, damit
 man es aus der Kotlin-Klasse heraus eindeutig identifizieren kann.
 
 Nun kann man im \texttt{/src}-Ordner zwei Kotlin-Klassen anlegen. Eine für die MainActivity, welche die Hauptroutine der
@@ -571,7 +575,7 @@ In den beiden Ordnern \texttt{/res/values} und \texttt{/res/values-v21} kann man
 mit der Endung \textit{v21} kann man Styles und Farben definieren, welche erst ab der Android in der Version 21 genutzt
 werden.
 
-Die Datei- und Ordnerstruktur der Android-Anwendung kann man in der Abbildung~\ref{fig:umsetzung_android_folder} auf
+Die Datei"~ und Ordnerstruktur der Android-Anwendung kann man in der Abbildung~\ref{fig:umsetzung_android_folder} auf
 Seite~\pageref{fig:umsetzung_android_folder} einsehen.
 
 \begin{figure}[h]
@@ -636,7 +640,7 @@ Bei den beiden \texttt{.swift}-Dateien handelt es sich um die ausführbaren Klas
 kann man die Logik entwickeln, die für die Anwendung notwendig sind.
 
 Dabei übergibt man in der \textit{ViewController}-Datei die genutzte View und konfiguriert diese. Wie in der Abbildung
-zu sehen ist das gentzte View ein WebView-Layout, dem man die URL übergibt.
+zu sehen ist das genutzte View ein WebView-Layout, dem man die URL übergibt.
 
 In der Datei \textit{AppDelegate} definiert man den Lifecycle der Anwendung. So kann man dort zum Beispiel festlegen,
 dass der genutzte Controller das \textit{LaunchScreen}-Storyboard zugeteilt bekommt.
@@ -644,11 +648,14 @@ dass der genutzte Controller das \textit{LaunchScreen}-Storyboard zugeteilt beko
 Generell sind die \texttt{.storyboard}-Dateien für die Darstellung der einzelnen Seiten und Menüpunkte zuständig. Davon
 benötigt man lediglich eine, welche das Web-Frontend darstellt.
 
+Die iOS-App erhält in dieser Version keine eigene View mit einem Splashscreen und zeigt nach dem Start direkt das
+WebView-Layout an.
+
 Zum Schluss benötigt man die \texttt{.plist}-Datei, die die Konfiguration der Anwendung übernimmt. Sie ist ähnlich der
-Android-Manifest-Datei.
+Android-Manifest-Datei und kümmert sich um grundlegende Konfigurationen.
 
 In der Abbildung~\ref{fig:umsetzung_ios_folder} auf Seite~\pageref{fig:umsetzung_ios_folder} ist die Übersicht der
-Ordnerstruktur in Xcode bgebildet. Dort sind alle benötigten Dateien zu sehen.
+Datei"~ und Ordnerstruktur in Xcode abgebildet. Dort sind alle benötigten Dateien für das Projekt zu sehen.
 
 \begin{figure}[h]
     \centering
@@ -659,16 +666,25 @@ Ordnerstruktur in Xcode bgebildet. Dort sind alle benötigten Dateien zu sehen.
 
 Die Plist-Datei (Property List Files) beinhaltet die Konfiguration der Anwendung. So kann man hier zum Beispiel
 einstellen, ab welcher iOS-Version die App zur Verfügung steht oder ob es beispielsweise einschränkungen in der
-Ausrichtung des Bildschirmes gibt. Außerdem definiert man hier den Namen der Anwendung und das verwendete Icon.
+Ausrichtung des Bildschirmes gibt.
+
+Außerdem definiert man hier den Namen der Anwendung und das verwendete Icon das auf dem Home-Screen angezeigt werden
+soll.
 
 Anschließend muss man im Storyboard, also der View, ein WebView-Layout anlegen. Dies kann man mit der Programmiersprache
 Swift dann ansprechen und konfigurieren. Ähnlich der Android-App kann man Informationen wie Domain oder Anzeigegröße
-übergeben und das Layout kümmert sich selbstständig um das Laden, das Darstellen und die Interaktion mit dem Nutzer der
+übergeben und das Layout kümmert sich selbstständig um das Laden, das Darstellen und die Interaktion zwischen Nutzer und
 Webseite.
 
 Mit einem Klick auf \texttt{Run} (der kleine schwarze Play-Button) in Xcode, kann man den zu nutzenden Emulator
-auswählen, welcher die Anwendung starten soll. In der Abbildung~\ref{fig:umsetzung_ios_app} auf
-Seite~\pageref{fig:umsetzung_ios_app} ist die Anwendung im Smartphone Emulator mit der neuesten iOS Version zu sehen.
+auswählen, welcher die Anwendung starten soll.
+
+Nach wenigen Augenblicken ist der Emulator gestartet und zeigt die entwickelte App an. Man kann diese so nutzen, als
+würde man sie auf einem echten Smartphone starten. Das Frontend sollte nach wenigen Sekunden ladezeit vollflächig
+angezeigt werden.
+
+In der Abbildung~\ref{fig:umsetzung_ios_app} auf Seite~\pageref{fig:umsetzung_ios_app} ist die Anwendung im Smartphone
+Emulator mit der neuesten iOS Version zu sehen.
 
 \begin{figure}[h]
     \centering
