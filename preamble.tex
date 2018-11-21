@@ -1,32 +1,32 @@
 \documentclass[
-BCOR=5mm,           % Binderkorrektur von 5mm vorsehen
-DIV=10,             % Seite in X Kästchen einteilen (Siehe Koma-Script Guide)
-%DIVcalc,           % Besten DIV Wert berechnen (Siehe Koma-Script Guide)
-fontsize=11pt,      % Schriftgröße 11 Punkte
-oneside,            % Einseitig
-parskip,            % Paragraphen nicht einrücken
-headsepline,        % Kopfzeile nach unten durch Linie abgrenzen (scrheadings)
-%footbotline,       % Fußzeile nach unten durch Linie abgrenzen (scrheadings)
-plainheadsepline,   % Kopfzeile nach unten durch Linie abgrenzen (scrplain)
-plainfootbotline,   % Fußzeile nach unten durch Linie abgrenzen (scrplain)
-%headtopline,       % Kopfzeile nach oben durch Linie abgrenzen (scrheadings)
-footsepline,        % Fußzeile nach oben durch Linie abgrenzen (scrheadings)
-plainheadtopline,   % Kopfzeile nach oben durch Linie abgrenzen (scrplain)
-plainfootsepline,   % Fußzeile nach oben durch Linie abgrenzen (scrplain)
-headinclude=false,  % Kopfzeile nicht als Teil des Inhalts setzen
-footinclude=false,  % Fußzeile nicht als Teil des Inhalts setzen
-%bibtotocnumbered,  % Literaturverzeichnis nummeriert ins Inhaltsverzeichnis aufnehmen
-bibliography=totoc, % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
-%liststotocnumbered,% Sonstige Verzeichnise nummeriert ins Inhaltsverzeichnis aufnehmen
-listof=totoc,       % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
-%idxtotocnumbered    % Index nummeriert ins Inhaltsverzeichnis aufnehmen
-%idxtotoc           % Index ins Inhaltsverzeichnis aufnehmen
-]{scrbook}          % Koma-Script Klasse zum setzen eines Buchs
+    BCOR=5mm,           % Binderkorrektur von 5mm vorsehen
+    DIV=10,             % Seite in X Kästchen einteilen (Siehe Koma-Script Guide)
+    %DIVcalc,           % Besten DIV Wert berechnen (Siehe Koma-Script Guide)
+    fontsize=11pt,      % Schriftgröße 11 Punkte
+    oneside,            % Einseitig
+    parskip,            % Paragraphen nicht einrücken
+    headsepline,        % Kopfzeile nach unten durch Linie abgrenzen (scrheadings)
+    %footbotline,       % Fußzeile nach unten durch Linie abgrenzen (scrheadings)
+    plainheadsepline,   % Kopfzeile nach unten durch Linie abgrenzen (scrplain)
+    plainfootbotline,   % Fußzeile nach unten durch Linie abgrenzen (scrplain)
+    %headtopline,       % Kopfzeile nach oben durch Linie abgrenzen (scrheadings)
+    footsepline,        % Fußzeile nach oben durch Linie abgrenzen (scrheadings)
+    plainheadtopline,   % Kopfzeile nach oben durch Linie abgrenzen (scrplain)
+    plainfootsepline,   % Fußzeile nach oben durch Linie abgrenzen (scrplain)
+    headinclude=false,  % Kopfzeile nicht als Teil des Inhalts setzen
+    footinclude=false,  % Fußzeile nicht als Teil des Inhalts setzen
+    %bibtotocnumbered,  % Literaturverzeichnis nummeriert ins Inhaltsverzeichnis aufnehmen
+    bibliography=totoc, % Literaturverzeichnis ins Inhaltsverzeichnis aufnehmen
+    %liststotocnumbered,% Sonstige Verzeichnise nummeriert ins Inhaltsverzeichnis aufnehmen
+    listof=totoc,       % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
+    %idxtotocnumbered    % Index nummeriert ins Inhaltsverzeichnis aufnehmen
+    %idxtotoc           % Index ins Inhaltsverzeichnis aufnehmen
+]{scrbook}              % Koma-Script Klasse zum setzen eines Buchs
 
 % Die "Standard-Header" für deutsche Dokumente
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}         % T1 Schriften verwenden (sieht besser aus)
-\usepackage[ngerman]{babel}      % Neue deutsche Rechtschreibung und Übersetzungenq
+\usepackage[ngerman]{babel}      % Neue deutsche Rechtschreibung und Übersetzungen
 
 % Für URLs und Path
 \usepackage[hyphens,spaces,obeyspaces]{url}
@@ -36,10 +36,40 @@ listof=totoc,       % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
 \usepackage[scaled=.95]{helvet}  % Serifenloser Font passend zu mathpazo
 \usepackage{courier}             % "Schönerer" Festbreiten-Font
 
+% Für deutsche Zitate
 \usepackage[babel,german=quotes]{csquotes}
 
 % Koma-Script Paket zum setzen vom Kopf- und Fußzeilen einbinden
 \usepackage{scrlayer-scrpage}
+
+% Paket zum Einbinden von Quellcode als Listings
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{soul}
+
+% Paket für definierte Übersetzungen einbinden
+\usepackage[ngerman]{translator}
+
+% Paket für Stichwort- Abkürzungs- und sonstige Verzeichnisse einbinden
+\usepackage[
+    nonumberlist, % Keine Seitenzahlen anzeigen
+    acronym,      % Abkürzungsverzeichnis erstellen
+    %toc,         % In Inhaltsverzeichnis aufnehmen
+    %section      % Verzeichniseintrag als Section
+]{glossaries}
+
+% Paket zum generieren von Blindtext
+\usepackage{blindtext}
+
+% Paket zum Einbinden von Bildern
+\usepackage{graphicx}
+
+% Paket für Wortindex einbinden
+\usepackage{makeidx}
+
+% Andere packages
+\usepackage{hyperref}
+\usepackage{eurosym}
 
 % Seitenstil für normale Seiten auf scrheadings setzen
 % Für Kapitelanfang und ähnliches wird scrplain verwendet
@@ -70,36 +100,6 @@ listof=totoc,       % Sonstige Verzeichnise ins Inhaltsverzeichnis aufnehmen
 % Siehe Optionen der Dokumentklasse
 %$\KOMAoptions{headtopline=0pt, footbotline=0pt, headsepline=.4pt,footsepline=.4pt}
 \KOMAoptions{headsepline=.4pt,footsepline=.4pt}
-
-% Paket zum Einbinden von Quellcode als Listings
-% Hinweis: UTF-8 Encoding führt zu Problemen mit Umlauten
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{soul}
-
-% Paket für definierte Übersetzungen einbinden
-\usepackage[ngerman]{translator}
-
-% Paket für Stichwort- Abkürzungs- und sonstige Verzeichnisse einbinden
-\usepackage[
-nonumberlist, % Keine Seitenzahlen anzeigen
-acronym,      % Abkürzungsverzeichnis erstellen
-%toc,         % In Inhaltsverzeichnis aufnehmen
-%section      % Verzeichniseintrag als Section
-]{glossaries}
-
-% Paket zum generieren von Blindtext
-\usepackage{blindtext}
-
-% Paket zum Einbinden von Bildern
-\usepackage{graphicx}
-
-% Paket für Wortindex einbinden
-\usepackage{makeidx}
-
-% Andere packages
-\usepackage{hyperref}
-\usepackage{eurosym}
 
 % Ein eigenes Verzeichnis definieren (Smbolverzeichnis)
 % Das Stichwort- und Abkürzungsverzeichnis wird analog vordefiniert

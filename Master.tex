@@ -1,66 +1,70 @@
+% Include the config
 \include{preamble}
 
-\usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
-\usepackage{graphicx}
-
+% Include the glossary
 \include{content/Glossary}
 
-% Beginn des eigentlichen Dokuments
+% Begin the document
 \begin{document}
 
-% Titelseite (verwendet pagestyle=empty)
+% Titlepage
 \begin{titlepage}
-\begin{center}
-\includegraphics[scale=2.5]{images/he_logo.pdf}\\
-\vspace{1cm} Fakultät Informationstechnik\\
-\vspace{1.5cm} \Large Abschlussarbeit \\
-\vspace{1.5cm} \Huge Künstliche Intelligenz zur \\ Parameteroptimierung \\ in der Fertigung\\
-\vspace{1.5cm} \Large Lars Helmuth Probst\\\normalsize
-\vspace{0.5cm} Wintersemester 2018\\\normalsize
-\vfill{}
-\begin{tabular}{rl}
-Firma: & Robert Bosch GmbH\\[0.5cm]
-Betreuer: & Sebastian Stöcklmeier\\[0.5cm]
-Erstprüfer: & Prof. Dr. Harald Melcher\\[0.5cm]
-Zweitprüfer: & Prof. Dr. Reiner Marchthaler\\
-\end{tabular}
-\end{center}
+    \begin{center}
+        \includegraphics[scale=2.5]{images/he_logo.pdf}\\
+        \vspace{1cm} Fakultät Informationstechnik\\
+        \vspace{1.5cm} \Large Abschlussarbeit\\
+        \vspace{1.5cm} \Huge Künstliche Intelligenz zur \\ Parameteroptimierung \\ in der Fertigung\\
+        \vspace{1.5cm} \Large Lars Helmuth Probst\\\normalsize
+        \vspace{0.5cm} Wintersemester 2018\\\normalsize
+        \vfill{}
+        \begin{tabular}{rl}
+            Firma: & Robert Bosch GmbH\\[0.5cm]
+            Betreuer: & Sebastian Stöcklmeier\\[0.5cm]
+            Erstprüfer: & Prof. Dr. Harald Melcher\\[0.5cm]
+            Zweitprüfer: & Prof. Dr. Reiner Marchthaler
+        \end{tabular}
+    \end{center}
 \end{titlepage}
 
-% Widmung
+% More content
 \thispagestyle{empty}
 \vspace*{2cm}
 \begin{center}
-\begin{minipage}{12cm}
-\begin{center}
-% Inhalt
+    % Dedication
+    \begin{minipage}{12cm}
+        \begin{center}
+            % content
+        \end{center}
+    \end{minipage}
+
+    \vfill{}
+
+    % Quote
+    \begin{minipage}{10cm}
+        \begin{quote}
+            \textit{\enquote{Scientists investigate that which already is;\\ engineers create that which has never been.}}
+        \end{quote}
+        \hfill Albert Einstein
+    \end{minipage}
 \end{center}
-\end{minipage}
 
-\vfill{}
-
-% Zitat
-\begin{minipage}{10cm}
-\begin{quote}
-\textit{"`Scientists investigate that which already is;\\ engineers create that which has never been."'}
-\end{quote}
-\hfill Albert Einstein
-\end{minipage}
-\end{center}
-
-% Erklärung
+% Statement
 \chapter*{Ehrenwörtliche Erklärung}
 \thispagestyle{empty}
-Hiermit versichere ich, die vorliegende Arbeit selbstständig und unter ausschließlicher Verwendung der angegebenen Literatur und Hilfsmittel erstellt zu haben.\\\\
-Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt und auch nicht veröffentlicht.\\
+Hiermit versichere ich, die vorliegende Arbeit selbstständig und unter ausschließlicher Verwendung der angegebenen
+Literatur und Hilfsmittel erstellt zu haben.
+
+Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfungsbehörde vorgelegt und auch nicht
+veröffentlicht.
+
 \begin{tabbing}
-          Esslingen, den \today ~~	\= \rule{6cm}{0.3mm}\\
-                                                                                     \> Unterschrift
+          Esslingen, den \today ~~	\= \rule{6cm}{0.3mm}\\ \> Unterschrift
 \end{tabbing}
 
-% Danksagung
+% Blocking
 \include{content/0_Sperrvermerk}
+
+% Thanks
 \include{content/0_Danksagung}
 
 % "Frontmatter" beginnen (Formatierung umschalten)
@@ -107,10 +111,12 @@ Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfung
 \include{content/6_Ausblick}
 \include{content/7_Zusammenfassung}
 
-% Alle Einträge der BibTeX Datenbank "zitieren"
+% Alle Einträge der BibTeX Datenbank zitieren
 \nocite{*}
+
 % Einstellen des Bibliography-Stils für das Literaturverzeichnis
 \bibliographystyle{abbrvdin}
+
 % Auswahl der BibTeX Datenbank für das Literaturverzeichnis
 \bibliography{literatur}
 
@@ -129,7 +135,6 @@ Die Arbeit wurde bisher in gleicher oder ähnlicher Form keiner anderen Prüfung
 \include{content/8_Anhang}
 
 % Ausgabe des Wortindex
-% idxtotoc Option scheint nicht zu funktionieren
 %\clearpage
 %\addcontentsline{toc}{chapter}{Index}
 %\printindex
