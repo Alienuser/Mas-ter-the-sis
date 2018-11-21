@@ -1123,7 +1123,7 @@ veranschaulicht den Menüpunkt \textit{API durchsuchen}.
     \centering
     \includegraphics[width=\textwidth]{images/kapitel_3/apiconnect_durchsuchen.png}
     \caption{Ansicht des Menüpunktes API durchsuchen}
-\label{fig:umsetzung_apiconnect_durchsuchen}
+    \label{fig:umsetzung_apiconnect_durchsuchen}
 \end{figure}
 
 Jede zusätzliche Information, die man bei der Konfiguration einträgt, erweitert die Ansicht des mittleren Bereiches
@@ -1146,14 +1146,23 @@ hat.
 \subsubsection{Developer Toolkit}
 Ebenfalls über das API Connect Dashboard kann der Entwickler auf den Menüpunkt \texttt{Developer Toolkit} zugreifen.
 Dieser zeigt eine Anleitung, wie man die erstellte API auf einem eigenen Server einrichten kann. Dafür sind lediglich
-drei einfache Schritte notwendig.
+drei einfache Schritte notwendig. Die Abbildung~\ref{fig:umsetzung_developer_toolkit} auf
+Seite~\pageref{fig:umsetzung_developer_toolkit} veranschaulicht die erscheinende Seite.
 
-Zuallererst muss man das Programm \textit{API Connect} mittels npm herunterladen und installieren. Anschließens wird
-über die Funktion \textit{loopback} eine neue API auf dem lokalen API Connect Service eingerichtet. Der Wizzard führt
-einen durch die benötigte Konfiguration.
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=\textwidth]{images/kapitel_3/developer_toolkit.png}
+    \caption{Seite des Developer Toolkits}
+    \label{fig:umsetzung_developer_toolkit}
+\end{figure}
+
+Zuallererst muss man laut der Anleitung das Programm \textit{API Connect} mittels npm herunterladen und installieren.
+Anschließens wird über die Funktion \textit{loopback} eine neue API auf dem lokalen API Connect Service eingerichtet.
+Der Wizzard führt einen durch die benötigte Konfiguration.
 
 Nun kann man die Web-Oberfläche des lokalen API Connect starten und seine erstellte, noch leere API, sehen. Anschließend
-muss man nur noch die Konfigurations-Datei der online erstellten API kopieren und in den lokalen Service einfügen.
+muss man nur noch die Konfigurations-Datei der online erstellten API kopieren und in den lokalen Service einfügen, damit
+beide Instanzen den selben Inhalt haben.
 
 Über den Menüpunkt \texttt{Run Your API}, gelangt man auf eine weitere Anleitung, welche das Starten und zur Verfügung
 stellen der lokal erstellten API erläutert.
@@ -1235,8 +1244,5 @@ Vertrauenswürdigkeit von neuronalen Netzen eingegangen wird.
         ]
 \end{lstlisting}
 
-Der Test ist somit positiv verlaufen und beiden Implementierungen kann man gefahrlos nutzen, ohne bei jeder Anfrage
-auf beide Ergebnisse zu warten um diese zu vergleichen.
-
-Eine Abweichung war auch nicht zu erwarten, da die beiden Modelle dem selben neuronalen Netz entspringen und bei der
-Vorhersage keinen Platz für Spielräume zulassen.
+Der Test ist somit positiv verlaufen und man kann beide Implementierungen gefahrlos nutzen, ohne die beiden Ergebnisse
+stehts zu vergleichen.
