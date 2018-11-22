@@ -10,37 +10,89 @@ Sinnvolsten erscheint.
 Ziel des Kapitels ist es, eine optimale Umsetzung für die Architektur zu finden, die späteren Anforderungen und
 Erweiterungen gerecht werden kann.
 
-%% TODO noch schreiben
 \subsection{Offline mit Python}
-Einer Möglichkeit zum Aufbau eines neuronalen Netzes ist es, dieses selbst mit Quellcode zu schreiben. Zahlreiche
-Bibliotheken für die verschiedensten Programmiersprachen existieren um dieses Problem anzugehen.
+Einer der eingängigsten Möglichkeit zum Aufbauen eines neuronalen Netzes ist es, dieses selbst mit Quellcode zu
+definieren. Zahlreiche Bibliotheken für die verschiedensten Programmiersprachen existieren um dieses Problem anzugehen.
 
-Eine der am Weitest verbreiteten Programmiersprachen zum Aufbau eines solchen Netzes ist die Programmiersprache
-\textit{Python}\footnote{https://www.python.org}.
+Eine der am weitest verbreiteten Programmiersprachen zum Aufbau eines solchen Netzes ist die Programmiersprache
+\textit{Python}\footnote{https://www.python.org} mit ihren vielen Bibliotheken.
 
-Viele Vorteile sprechen für die Umsetzung des neuronalen Netzes mit Python in Verbindung mit einem der zur Verfügung
-stehenden Bibliotheken.
+Einer der größten Vorteil dieser Variante ist die Tatsache, dass die Daten alle lokal auf dem Rechner bleiben können und
+man das Netz nach belieben aufbauen und verändern kann. Auch wiederkehrende Änderungen sind möglich.
 
-%Gerade die Geschwindigkeit, leichtigkeit und Weiterverwendbarkeit ist super, wenn man es nicht mit Quellcode lößt.
+Da Python-Quellcode übersichtlich ist, gehen Anpassungen schnell von der Hand. Dies ist insbesondere dann wichtig, wenn
+man die Datensätze verändert oder andere Maschinen anschließen möchte. Der Quellcode ist gut wart"~ und anpassbar.
 
-%% TODO noch schreiben
+Allerdings ist die Geschwindigkeit mit der ein neuronales Netz lokal auf einem Rechner trainiert werden kann stark durch
+die zur Verfügung gestellten Hardware abhängig. Nicht alle Laptops für Entwickler verfügen über eine sehr schnelle
+Hardware.
+
+So kann das Training eines Netzes bei sehr großen Datenmengen, die es im Bereich der künstlichen Intelligenz gebens
+sollte, zu langen Wartezeiten führen, bis das Modell trainiert ist.
+
+Es ist insbesondere dann ärgerlich, wenn das Training mehrere Stunden dauert und anschließend kein vernünftiges Modell
+trainiert ist. Daraufhin müssen Parameter des neuronalen Netzes angepasst werden und das Training beginnt von vorne.
+Diese Schleifen können sehr viel Zeit kosten.
+
 \subsection{Online in der Cloud}
-Alternativ wäre es auch Möglich das neuronale Netz in der Cloud zu trainieren. Es existierend unzählig viele Anbieter im
+Alternativ ist es Möglich das neuronale Netz in der Cloud zu trainieren. Es existierend unzählig viele Anbieter im
 Bereich künstliche Intelligenz. So bietet Azure mit \textit{Azure Machine Learning Studio}, Amazon mit
-\textit{Amazon Machine Learning} und IBM mit \textit{Watson Studio} jeweils eine eigene Lösung in diesem Bereich an.
+\textit{Amazon Machine Learning} und IBM mit \textit{Watson Studio} jeweils eine eigene Lösung für das Training von
+neuronalen Netzen an.
 
-%Wir könnten es in der Cloud machen. Besprechen von Bluemix, Azure und AWS. Vor und auch Nachteile der Variante.
+Einer der größten Vorteile der Cloud ist der schier unendlich große Zugang zu Ressourcen. Das Trainig der Netze kann in
+viel kürzerer Zeit geschehen und der Entwickler muss sich nicht mit der Umsetzung von Quellcode beschäftigen oder
+verschiedene Bibliotheken miteinander zu vergleichen.
 
-%Azure kann keine Multi-Label Classification. Darum nur über Umwege (Selber schreiben oder Neuronale Netz an Neuronale
-%Netz) machbar. Fällt also weg.
+Bei den meisten Cloud-Anbietern stehen sehr erfahrene Entwickler hinter den Produkten und aktualisieren diese stetig. So
+kann man sich selbst auf die Aufbereitung der Daten und das erstellen von Diagrammen konzentrieren anstatt auch die
+Entwicklung von Python-Quellcode zu übernehmen.
 
-%AWS hat hier ein paar Informationen\\
-%\url{https://aws.amazon.com/de/blogs/big-data/building-a-multi-class-ml-model-with-amazon-machine-learning/}.
+In \textit{Azure Machine Learning} ist es aktuell nicht möglich ein neuronales Netz mit multidimensionaler linearer
+Regression zu erstellen. Dies bedeutet, dass es lediglich möglich ist, ein neuronales Netz mit mehreren
+Eingabeparametern zu versehen, es allerdings immer nur einen Ausgabeparameter für jedes Netz gibt.
 
-%% TODO noch schreiben
+Das ist in sofern schlecht für die Umsetzung der Architektur alsdas für der Wiegeeinheit der Robert Bosch GmbH
+mindestens vier Parameter vorhergesagt werden müssen.
+
+Es wäre möglich für jeden Ausgabeparameter der vorhergesagt werden muss ein eigenes Netz aufzubauen und trainieren zu
+lassen. Die verschiedenen Netze hätten dann immer die selben Trainigsdaten. Eine Anfrage an das Backend würde dann immer
+aus mindestens so vielen Anfragen wie Parametern bestehen.
+
+Diese Anfragen müssten zeitversetzt passieren, da für das zweite neuronale Netz der vorhergesagte Parameter aus dem
+ersten Netz ein Eingabeparameter ist. So würde eine Anfrage sehr lange dauern.
+
+Auch \textit{Amazon Machine Learning} kann nicht mit multidimensionalen linearen Regressionen umgehen. Auch hier wäre es
+Nötig mehrere neuronale Netze aufzubauen und zu trainieren.
+
+Eine kleine Anleitung der
+AWS-Dokumentation\footnote{https://aws.amazon.com/de/blogs/big-data/building-a-multi-class-ml-model-with-amazon-machine-learning}
+zeigt sehr umständlich, wie es möglich wäre ein Netz auf der Basis aufzubauen, wie es in dieser Architektur gefordert
+wird. Allerdings ist diese Funktion noch in einem Beta-Status.
+
+Mit \textit{Watson Studio} aus der IBM Cloud ist es möglich mit einem Drag \& Drop Arbeitsumfeld ein neuronales Netz
+aufzubauen, welches beliebig viele Eingabe"~ und Ausgabeparameter beseitzt. Auch kann man dieses neuronale Netz beliebig
+oft und schnell trainieren und das Modell anschließend sehr einfach in einen Webdienst einbauen und mit einer
+Schnittstelle versehen um Anfragen zu steuern.
+
+Allerdings muss die Cloud mit Datenschutzproblemen und diversen Vorurteilen kämpfen. So ist es nicht immer möglich die
+Testdaten in die Cloud zu laden um sie zu verarbeiten. Auch muss zur Erstellung des neuronalen Netzes eine stetige
+Internetverbindung bestehen. Sollte der Service eingestellt werden, so verliert man unter umständen den Zugriff auf die
+Daten.
+
 \subsection{Hybrid}
-Der Beste Weg für die Umsetzung des neuronalen Netzes wäre eine Kombination aus den Vorteilen beider Ansätze.
+Der für diese Architektur beste Weg zur Umsetzung des neuronalen Netzes ist eine Kombination aus den Vorteilen beider
+Ansätze.
 
-%Es wird eine Mischung aus den beiden Varianten. In der Cloud wird das Neuronale Netz aufgebaut und trainier -> Geschwindigkeit.
-%Dann kann es aber auch Deployed werden. Dann aber runterladen und mit TensorFlow.js einen Wrapper bauen um die gleiche
-%Datei/Modul.
+So wird das neuronale Netz in der Cloud trainiert um so den Vorteil der fast grenzenlosen Geschwindigkeit zu nutzen. Das
+trainierte Modell kann dann in einem Webservice zur Verfügung gestellt werden um Vorhersagen zu erhalten.
+
+Über IBM Cloud und Watson Studio entwickelte neuronale Netze kann man die resultierenden trainierten Modelle
+herunterladen und erhält so ein JSON-Datei mit dem internen Aufbau des Netzes.
+
+Dieses Modell kann man anschließend in einen eigenen Wrapper einbauen, welcher eine Schnittstelle nach Außen öffnet. So
+ist es möglich das online trainierte Modell in einer eigenen Anwendung oder im eigenen Rechenzentrum laufen zu lassen.
+
+So ist man im Weiteren unabhängig von der Cloud und kann Vorhersagen in seinen eigenen Rechenzentren für die Maschine
+erstellen lassen. Allerdings müssen die eigenen Ressourcen nicht ausgenutzt oder aufgerüstet werden um ein neuronales
+Netz mit Daten trainieren zu lassen.
