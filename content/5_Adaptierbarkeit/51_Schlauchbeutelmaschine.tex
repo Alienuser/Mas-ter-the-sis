@@ -49,11 +49,11 @@ Um an Testdaten für das Aufbauen eines neuronalen Netzes für diesen Maschinent
 zeitintensive Tests und Versuche notwendig.
 
 Für die Versuche muss man verschiedene Temperaturen mit verschiedenen Siegelzeiten mit verschiedenen Folien kreuzen, was
-einen enormen Zeitaufwand bedeutet, da man jede erzeugte Siegelnaht mit Hilfe einer anderen Maschine prüfen und
-auswerten muss.
+einen enormen Zeitaufwand bedeutet.
 
-Diese Maschine gibt die benötigte Kraft an, um die erzeugte Siegelnaht zu öffnen und ist normiert. Dies ist wichtig um
-keine subjektive Komponente miteinzubauen (\enquote{Diese Siegelnaht war nun fester als die davor.}).
+Durch eine Zugprüfmaschine kann man anschließend die Schälfestigkeit bestimmt -- die Kraft, die bei einer schälenden
+Beanspruchung aufgewendet werden muss -- um eine Naht zu öffnen. Die Prüflinge sollten dabei eine Breite von 15mm und
+eine Länge 40mm aufweisen.
 
 Herr Felix Kruppa von der Robert Bosch GmbH hat während seiner Dissertation einen Siegelteststand aufgebaut, welcher
 verschiedene Siegelnähte mit unterschiedlichen Siegelzeiten und "~temperaturen erzeugen kann.
@@ -102,17 +102,17 @@ Tabelle~\ref{tab:targets_inputs_siegeln} auf Seite~\pageref{tab:targets_inputs_s
         \textbf{Targets} & \textbf{Inputs}\\
         \hline
         \hline
-        Siegelnatfestigkeit & Siegelzeit\\
+        Mittelwert & Eindringverhalten\\
         \hline
-        & Siegeltemperatur\\
+        & Temperatur\\
         \hline
-        & Siegelverfahren\\
+        & Vorwärmphase\\
         \hline
-        & Foliendicke\\
+        & Eindringphase\\
         \hline
-        & Folienlagen\\
+        & Siegelphase\\
         \hline
-        & Folienzusammensetzung\\
+        & End-Siegel-Position\\
         \hline
     \end{tabular}
     \caption{Variablen für die Targets und die Inputs der Schlauchbeutelmaschine}
@@ -220,7 +220,7 @@ das Backend keine Rolle spielen. Allerdings sollte man zu einem späteren Zeitpu
 berichtigen.
 
 \subsection{Abschluss}
-An diesem Punkt ist die Adaption der erstellen Architektur auf eine neue Maschine abgeschlossen und man kann damit
+An diesem Punkt ist die Adaption der erstellen Architektur auf die Siegelmaschine abgeschlossen und man kann damit
 beginnen, neue Vorhersagen des neuen Webservices durch das Frontend zu beziehen. Die Ergebnisse werden anschließend
 ebenfalls auf dem Frontend angezeigt.
 
