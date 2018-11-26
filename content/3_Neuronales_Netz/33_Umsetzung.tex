@@ -32,7 +32,8 @@ Wie in der Vorbereitung, Kapitel~\ref{sec:analyse} ab Seite~\pageref{sec:analyse
 in der Cloud erstellt, konfiguriert und trainiert. Wie in diesem Kapitel bereits erwähnt hat dies einen enormen
 Geschwindigkeitsvorteil gegenüber der offline trainierten Variante.
 
-Im Anschluss daran soll das trainierte Modell heruntergeladen und mit einem TensorFlow.js Wrapper nutzbar gemacht werden.
+Im Anschluss daran soll das trainierte Modell heruntergeladen und mit einem TensorFlow.js Wrapper nutzbar gemacht
+werden.
 
 Die folgenden Kapitel beschreiben die notwendigen Schritte für die Erstellung eines neuronalen Netzes in der Cloud, das
 trainierten des Modells und das Einrichten eines Deployments mit einer REST-Schnittstelle zum einfachen abrufen von
@@ -83,8 +84,8 @@ Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in den W
 existiert im Watson Studio Dashboard ein Menüpunkt mit dem Namen \textit{Assets} am oberen Menüband.
 
 Dieser beinhaltet alle hochgeladenen, generierten oder gesammelten Daten, Modelle, Dashboards, Notebooks oder Flows. Die
-oberste Kategorie, \textit{Data Assets}, listet alle Trainingsdaten in Form von Excel-Tabellen für die Weiterverarbeitung
-auf. In diese Kategorie muss man die zuvor erstellte Tabelle hochladen.
+oberste Kategorie, \textit{Data Assets}, listet alle Trainingsdaten in Form von Excel-Tabellen für die
+Weiterverarbeitung auf. In diese Kategorie muss man die zuvor erstellte Tabelle hochladen.
 
 Über den Menüpunkt \texttt{New data asset} kann man die erstellte Datei hochladen. Ein Klick auf diesen Menüpunkt öffnet
 einen seitlichen Arbeitsbereich. Der Nutzer kann über den Menüpunkt \texttt{Browse} die Dateiauswahl des Betriebssystems
@@ -143,8 +144,8 @@ Nach erfolgreicher Konvertierung der Trainingsdaten kann man diese für das neur
 des neuronalen Netzes und den damit verbundenen Parameterübergaben für die Vorhersage ist der \texttt{Modeler Flow} am
 Besten geeignet.
 
-Über die Schaltfläche \texttt{New Flow} im Bereich Assets erstellt man diesen und richtet ihn ein. Nachdem man einen Namen
-und eine optionale Beschreibung für den Flow eingegeben hat, muss man die Auswahl \textit{Modeler Flow} und
+Über die Schaltfläche \texttt{New Flow} im Bereich Assets erstellt man diesen und richtet ihn ein. Nachdem man einen
+Namen und eine optionale Beschreibung für den Flow eingegeben hat, muss man die Auswahl \textit{Modeler Flow} und
 \textit{IBM SPSS Modeler} auswählen. Dabei handelt es sich um den Standard-Flow von Watson Studio.
 
 Der Nutzer bestätigt die Eingabe über die Schaltfläche \texttt{Create} und nach kurzer Zeit ist der Flow erstellt und es
@@ -153,12 +154,12 @@ erscheint ein leerer Arbeitsbereich im Browser.
 Der Menüpunkt \texttt{Palette} zeigt einen linken Arbeitsbereich mit allen aktuell verfügbaren Modulen, gruppiert an. In
 diesem muss man den Baustein \textit{Data asset} in der Gruppe \textit{Import} auswählen.
 
-Dieser Baustein ermöglicht den Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag \& Drop kann der
-Nutzer den Baustein in den noch leeren Arbeitsbereich platzieren.
+Dieser Baustein ermöglicht den Import der konvertierten Trainingsdaten für das neuronale Netz. Über Drag \& Drop kann
+der Nutzer den Baustein in den noch leeren Arbeitsbereich platzieren.
 
 Um den Baustein zu konfigurieren klickt der Entwickler doppelt auf den Baustein. Daraufhin öffnet sich ein rechter,
-seitlicher Arbeitsbereich. In diesem kann er über die Schaltfläche \texttt{Change Data Asset} die Datei auswählen, welche
-die Trainingsdatensätze enthält.
+seitlicher Arbeitsbereich. In diesem kann er über die Schaltfläche \texttt{Change Data Asset} die Datei auswählen,
+welche die Trainingsdatensätze enthält.
 
 In dieser Liste steht lediglich die vorher erstellte CSV-Datei zur Verfügung, da bisher lediglich CSV-Dateien als
 Eingabeparameter genutzt werden können. Über \texttt{Save} wird die Einstellung gespeichert und der Baustein ist fertig
@@ -171,20 +172,20 @@ allgemeines neuronales Netz handelt. Dies kann man später allerdings sehr tief 
 Genau wie das Import-Modul kann man dieses mit der Maus in einen freien Bereich des Arbeitsbereiches platzieren. Somit
 ist das Modul Teil des Prozesses und der Entwickler kann es konfigurieren.
 
-Damit das neuronale Netz die importierten Datensätze nutzen kann, wird eine Verbindung zwischen dem \textit{Import-Modul}
-und dem \textit{Neural-Net-Modul} aufgebaut. Mit einen Klick auf den Ausgang des Import-Moduls startet man eine
-Verbindungslinie.
+Damit das neuronale Netz die importierten Datensätze nutzen kann, wird eine Verbindung zwischen dem
+\textit{Import-Modul} und dem \textit{Neural-Net-Modul} aufgebaut. Mit einen Klick auf den Ausgang des Import-Moduls
+startet man eine Verbindungslinie.
 
-Mit einem anschließenden Klick auf den Eingang des Neural-Net-Modul kann man die Verbindung fertig aufbauen. Die Verbindung
-wird nun über eine durchgezogene Linie zwischen den beiden Modulen visualisiert.
+Mit einem anschließenden Klick auf den Eingang des Neural-Net-Modul kann man die Verbindung fertig aufbauen. Die
+Verbindung wird nun über eine durchgezogene Linie zwischen den beiden Modulen visualisiert.
 
-Bei einer Verbindung wird der Output eines Modules an das mit einer visualisierten Linie verbundenen Modul weitergegeben.
-Dieses Folgemodul kann die Werte dann als Eingabevariablen nutzen. Einen Ausgang kann man mit mehreren Eingängen
-verbinden. Dabei stehen dann allen weiteren Modulen die gleichen Werte zur Verfügung.
+Bei einer Verbindung wird der Output eines Modules an das mit einer visualisierten Linie verbundenen Modul
+weitergegeben. Dieses Folgemodul kann die Werte dann als Eingabevariablen nutzen. Einen Ausgang kann man mit mehreren
+Eingängen verbinden. Dabei stehen dann allen weiteren Modulen die gleichen Werte zur Verfügung.
 
 Die Konfiguration des Neural-Net-Moduls erfolgt durch einen doppelten Klick auf dieses. Damit man die
-\textit{Targets} und die \textit{Inputs} selbst definieren kann, muss man den Hacken bei \enquote{Use custom field roles}
-setzen.
+\textit{Targets} und die \textit{Inputs} selbst definieren kann, muss man den Hacken bei
+\enquote{Use custom field roles} setzen.
 
 Andernfalls versucht Watson selbst die Inputs und die Outputs zu definieren. Meist sind diese Einstellungen dann
 aber falsch. Die Abbildung~\ref{fig:umsetzung_config_neural_net} auf Seite~\pageref{fig:umsetzung_config_neural_net}
@@ -270,11 +271,12 @@ Für die Tabelle ist keine weitere Konfiguration notwendig.
 Ein Rechtsklick auf das Table-Modul öffnet das Kontextmenü des Moduls. Darüber lässt sich der Punkt
 \texttt{Save branch as a model} anklicken. Dieser ermöglicht es, das trainierte Modell zu exportieren.
 
-In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung für das neue Modell definieren. Mit einem
-Klick auf den Button \texttt{Save} wird das Modell gespeichert und es erscheint im Watson Studio Dashboard.
+In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung für das neue Modell definieren. Mit
+einem Klick auf den Button \texttt{Save} wird das Modell gespeichert und es erscheint im Watson Studio Dashboard.
 
 In der Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau
-des Modell Flows dargestellt mit seinem Input, dem neuronalen Netz, dem trainierten Modell und der Tabellen-Exportierung.
+des Modell Flows dargestellt mit seinem Input, dem neuronalen Netz, dem trainierten Modell und der
+Tabellen-Exportierung.
 
 \begin{figure}[h]
     \centering
@@ -306,9 +308,9 @@ Angabe mit Nachkommastellen.
 Die Genauigkeit berechnet sich durch ein Testdatenset, welches dem Trainingsdatenset automatisch entnommen wird. Dabei
 kann beim Trainieren des Modells angegeben werden, um wie viele Datenset es sich handeln soll.
 
-Nachdem das Modell fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss werden
-die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist die
-Genauigkeit des trainierten Modells.
+Nachdem das Modell fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss
+werden die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist
+die Genauigkeit des trainierten Modells.
 
 Im Weiteren finden sich Bewertungskriterien für das trainierte Modell (englisch Model Evaluation Measures). Diese geben
 Aufschluss darüber, wie gut das Modell ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
@@ -605,8 +607,9 @@ REST-Schnittstelle bieten, welche über den API Connect Service ansprechbar ist.
 
 Bei der Entwicklung beginnt man am Besten beim REST-Endpunkt, da dieser die Struktur der Anwendung vorgibt. Für die
 Implementierung der Endpunkte sind die Libraries \textit{express}\footnote{https://expressjs.com/de},
-\textit{body-parser}\footnote{https://github.com/expressjs/body-parser}, \textit{tfjs}\footnote{https://github.com/tensorflow/tfjs} 
-und \textit{tfjs-node}\footnote{https://github.com/tensorflow/tfjs-node} sehr hilfreich.
+\textit{body-parser}\footnote{https://github.com/expressjs/body-parser},
+\textit{tfjs}\footnote{https://github.com/tensorflow/tfjs} und
+\textit{tfjs-node}\footnote{https://github.com/tensorflow/tfjs-node} sehr hilfreich.
 
 Die \textit{express}-Bibliothek unterstützt bei der Entwicklung eines Web-Servers, welchen man anschließend über den
 Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen der übergebenen Parameter an die
@@ -702,13 +705,13 @@ app.listen(80, () => {
 Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken kann und
 man diese dann auch verwenden kann. Andernfalls müssten alle Anfragen durch ein API-Gateway gesondert geparst werden.
 
-Durch die Zeilen neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt mit
-der TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ ist
-\textit{POST} angegeben. Somit kann man Daten an den Endpunkt schicken.
+Durch die Zeilen neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt
+mit der TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ
+ist \textit{POST} angegeben. Somit kann man Daten an den Endpunkt schicken.
 
-Mit der Zeile elf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder zurückgegeben. 
-Dies dient als ein Test für das richtige Versenden und die richtige Funktion des Endpunktes. Man kann dies zum Beispiel
-mit dem Programm Postman verifizieren.
+Mit der Zeile elf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder
+zurückgegeben. Dies dient als ein Test für das richtige Versenden und die richtige Funktion des Endpunktes. Man kann
+dies zum Beispiel mit dem Programm Postman verifizieren.
 
 Die letzten drei Zeilen lassen den Express-Server auf Port 80 starten und geben Auskunft darüber, dass der Start des
 Servers erfolgreich war. Diese Information wird in der Konsole ausgegeben.
@@ -735,8 +738,9 @@ Ordner kann man dort angeben.
 In der fünften Zeile werden die übergebenen Daten des REST-Endpunktes an die TensorFlow.js-Instanz weitergegeben um eine
 Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
 
-Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die REST-Schnittstelle
-vollkommen ist. Die Ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man dabei entfernen.
+Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die
+REST-Schnittstelle vollkommen ist. Die Ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man
+dabei entfernen.
 
 Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner.
 
@@ -744,8 +748,8 @@ Anschließend kann man mit Postman und dem HTTP-Typ \textit{POST} eine Anfrage a
 die Funktion der Anwendung zu überprüfen.
 
 Die entwickelte Applikation soll im Weiteren über eine Domain aus dem Internet aufrufbar sein. Eine Installation in
-einen Cloud Foundry Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die dafür
-nötigen Schritte erläutert.
+einen Cloud Foundry Container, welcher in der IBM Cloud läuft, ist dafür notwendig. Im folgenden Kapitel werden die
+dafür nötigen Schritte erläutert.
 
 \subsubsection{Toolchain einrichten}
 \label{sub:tollchain_einrichten}
@@ -900,8 +904,8 @@ werden automatisch in den anderen beiden Menüpunkten übernommen.
 Im letzten Menüpunkt, \texttt{Assemblieren}, kann man die Funktionen der API definieren. Dazu zählen zum Beispiel die
 einzelnen Schritte, welche bei einem Endpunkt durchlaufen werden müssen. Hier wird der Inhalt der API definiert.
 
-Um mit der Konfiguration zu starten, muss der Nutzer zuallererst die einzelnen Pfade, welche zur Verfügung stehen sollen,
-definieren. Dazu wird in den Menüpunkt \texttt{Gestalten} gewechselt und im linken Menü dann in \texttt{Pfade}.
+Um mit der Konfiguration zu starten, muss der Nutzer zuallererst die einzelnen Pfade, welche zur Verfügung stehen
+sollen, definieren. Dazu wird in den Menüpunkt \texttt{Gestalten} gewechselt und im linken Menü dann in \texttt{Pfade}.
 
 Über das kleine Plus-Zeichen im rechten Bereich kann der Nutzer einen neuen Pfad hinzufügen. Pfade sind die Endpunkte
 einer REST-Schnittstelle. Jede URL ist ein Endpunkt. Über jeden einzelnen Endpunkt kann man verschiedene HTTP-Requests
