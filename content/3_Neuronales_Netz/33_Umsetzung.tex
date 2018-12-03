@@ -36,13 +36,13 @@ Im Anschluss daran soll das trainierte Modell heruntergeladen und mit einem Tens
 werden.
 
 Die folgenden Kapitel beschreiben die notwendigen Schritte für die Erstellung eines neuronalen Netzes in der Cloud, das
-trainierten des Modells und das Einrichten eines Deployments mit einer REST-Schnittstelle zum einfachen abrufen von
+Trainieren des Modells und das Einrichten eines Deployments mit einer REST-Schnittstelle zum einfachen Abrufen von
 Vorhersagen.
 
 \subsubsection{Trainingsdaten zusammenstellen}
 In einem ersten Schritt muss man die Daten, welche man später für das Training des neuronalen Netzes nutzen möchte,
 sammeln und in einer Datei bündeln. Als Format eignet sich dafür hervorragend eine Excel-Tabelle, da das Anlegen der
-Datensätze in Zeilen und Spalten sinnvoll für das Verständnis ist.
+Datensätze in Zeilen und Spalten sinnvoll für das Verständnis und die Aufbereitung ist.
 
 Um eine Auswahl an Daten zu schaffen muss man sich darüber im Klaren sein, welche Parameter existieren und welche Werte
 durch das neuronale Netz vorhergesagt werden sollen. Auch ist wichtig zu wissen welche Eingaben notwendig sind, um
@@ -51,13 +51,13 @@ durch das neuronale Netz vorhergesagt werden sollen. Auch ist wichtig zu wissen 
 In diesem Beispiel sollen Daten für das Bosch KWE Kontrollwaagensystem aufbereitet werden. Die vorhersagbaren Parameter
 sind die, welche Angaben über den Pusher und über die Bandgeschwindigkeit zulassen.
 
-Der Pusher wird durch insgesamt vier Parameter bestimmt. Die \textit{Druckluft} gibt darüber auskunft, wie stark oder
+Der Pusher wird durch insgesamt vier Parameter bestimmt. Die \textit{Druckluft} gibt darüber Auskunft, wie stark oder
 schnell der Pusher aus seiner Warteposition herausfährt. Der \textit{Impuls} gibt die Wucht an, mit der der Pusher
 ausfährt.
 
-Der Parameter \textit{Totzeit} gibt die Zeit an die gewartet wird, bis der Pusher herausfährt obwohl er schon das Signal
-zum ausfahren bekommen hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe wird ab
-dem Mittelpunkt der Wiegeeinheit gerechnet.
+Der Parameter \textit{Totzeit} gibt die Zeit an, die gewartet wird, bis der Pusher herausfährt obwohl er schon das
+Signal zum ausfahren erhalten hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe
+wird ab dem Mittelpunkt der Wiegeeinheit gerechnet.
 
 Für die Inputparameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle die
 genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Parameter. Sie sind in der
@@ -81,7 +81,7 @@ neuronale Netz zu trainieren.
 
 \subsubsection{Trainingsdaten importieren}
 Nachdem man die Trainingsdaten zusammengestellt hat, kann man diese nun in den Watson Studio Service importieren. Dazu
-existiert im Watson Studio Dashboard ein Menüpunkt mit dem Namen \textit{Assets} am oberen Menüband.
+existiert im Watson Studio Dashboard ein Menüpunkt mit dem Namen \texttt{Assets} am oberen Menüband.
 
 Dieser beinhaltet alle hochgeladenen, generierten oder gesammelten Daten, Modelle, Dashboards, Notebooks oder Flows. Die
 oberste Kategorie, \textit{Data Assets}, listet alle Trainingsdaten in Form von Excel-Tabellen für die
@@ -92,7 +92,7 @@ einen seitlichen Arbeitsbereich. Der Nutzer kann über den Menüpunkt \texttt{Br
 öffnen und seine Datei auswählen. Bei der Auswahl handelt es sich um die im vorangegangenen Kapitel erstellte Datei mit
 Trainingsdaten.
 
-Alternativ kann man die Datei auch in das fabrlich hervorgehobene Feld schieben. Der Upload der Datei startet damit
+Alternativ kann man die Datei auch in das farblich hervorgehobene Feld schieben. Der Upload der Datei startet damit
 sofort.
 
 Nach wenigen Sekunden ist die Datei hochgeladen und wird im Bereich \textit{Data assets} angezeigt. Damit ist der
@@ -310,7 +310,7 @@ kann beim Trainieren des Modells angegeben werden, um wie viele Datenset es sich
 
 Nachdem das Modell fertig trainiert ist, wird es mit den zur Verfügung stehenden Testdaten gefüttert. Im Anschluss
 werden die vorhergesagten Werte mit denen im Testdatenset verglichen. Je größer die Abweichung ist, desto geringer ist
-die Genauigkeit des trainierten Modells.
+die Genauigkeit des trainierten Modells und umso schlechter ist es für einen Einsatz geeignet.
 
 Im Weiteren finden sich Bewertungskriterien für das trainierte Modell (englisch Model Evaluation Measures). Diese geben
 Aufschluss darüber, wie gut das Modell ist. In der ersten Zeile wird zum Beispiel $\mathbf{R^2}$ ausgegeben.  Dabei
@@ -329,8 +329,8 @@ Werten.
 In der nächsten Kategorie, Model Viewer, sind Informationen zu den einzelnen Werten des neuronalen Netzes angegeben.
 Im ersten Menüpunkt, dem Model Information, finden sich zahlreiche generellen Informationen zum Modell.
 
-Mit einem Klick auf den entsprechenden Menüpunkt gelangt man in eine Ansicht wie sie in
-Abbildung~\ref{fig:umsetzung_model_information} auf Seite~\pageref{fig:umsetzung_model_information} zu sehen ist.
+Mit einem Klick auf den entsprechenden Menüpunkt gelangt man in eine Ansicht wie sie in der
+Abbildung~\ref{fig:umsetzung_model_information} auf der Seite~\pageref{fig:umsetzung_model_information} zu sehen ist.
 
 \begin{figure}[h]
     \centering
@@ -339,8 +339,8 @@ Abbildung~\ref{fig:umsetzung_model_information} auf Seite~\pageref{fig:umsetzung
     \label{fig:umsetzung_model_information}
 \end{figure}
 
-Hier findet man Informationen darüber, wie das trainierte Modell aufgebaut ist oder um welche Art Model es sich handelt.
-Auch die Hiden Layers, die im neuronalen Netz eingerichtet sind, werden hier angegeben.
+Hier findet sich Informationen darüber, wie das trainierte Modell aufgebaut ist oder um welche Art Model es sich
+handelt. Auch die Hiden Layers, die im neuronalen Netz automatisch eingerichtet sind, werden hier angegeben.
 
 Weiter ist hier zu finden, mit wie vielen Inputparametern (englisch Number of Predictors) das Netz trainiert ist und wie
 viele Ausgabewerte (englisch Number of Neurons in Output Layer) das Netz vorhersagen kann.
@@ -362,7 +362,7 @@ ist, desto mehr Einfluss hat dieser auf die vorhergesagten Ausgabewerte.
 Parameter mit der geringsten Gewichtung spielen für das Ergebnis keine große Rolle und könnten bei einer Optimierung des
 neuronalen Netzes weggelassen werden.
 
-Der letzte Menüpunkt, mit der Aufschrift \texttt{Network Diagram}, zeigt das neuronale Netz, wie es beim Traning
+Der letzte Menüpunkt, mit der Aufschrift \texttt{Network Diagram}, zeigt das neuronale Netz so an, wie es beim Traning
 aufgebaut wurde. Dabei sind auf der linken Seite die Parameter zur Eingabe aufgelistet.
 
 Auf der rechten Seite erscheinen die Ausgabeparameter. Dazwischen werden die \textit{Hidden Layers} dargestellt und wie
@@ -380,18 +380,18 @@ Die Ansicht kann man über den Slider am rechten Bildschirmrand vergrößern ode
 Rand, kann man die einzelnen Verbindungen filtern.
 
 So ist es zum Beispiel möglich, dass man sich alle Verbindungen mit hoher Priorität anzeigen lässt. Damit hat der
-Entwickler eine Visualisierung, wie die wichtigsten Eingabeparameter für die entsprechenden Ausgaben sorgt.
+Entwickler eine Visualisierung, wie die wichtigsten Eingabeparameter für die entsprechenden Ausgaben sorgen.
 
-Auch kann man sich so anzeigen lassen, wie einzelne Werte auf der Eingabeseite einen direkten Einfluss auf einen
+Auch kann man sich so anzeigen lassen wie einzelne Werte auf der Eingabeseite einen direkten Einfluss auf einen
 Ausgabewert haben. Im Beispiel der Abbildung hat der Parameter \textit{Leistung} einen direkten und sehr großen
-Einfluss auf den Ausgabewert \textit{Bandgeschwindigkeit}.
+Einfluss auf den Ausgabewert \textit{Bandgeschwindigkeit} (symbolisiert durch eine gelbliche Verbindungslinie).
 
 Bei weiterer Betrachtung ist diese Zusammenhang einläuchtend. Wenn mehr Produkte über die Wiegeeinheit laufen sollen (es
 soll die Leistung erhöht werden), muss das Band mit höherer Geschwindigkeit (Bandgeschwindigkeit) laufen um die Produkte
-zu transportieren.
+schneller zu transportieren.
 
-Desweiteren hat die Leistung einen direkten Einfluss auf den Parameter \textit{Druckluft}. Dieser gibt indirekt die
-Geschwindigkeit an, mit welcher der Pusher ausschlagen soll um ein Produkt vom Band zu schieben.
+Desweiteren hat die Leistung einen direkten Einfluss auf den Parameter \textit{Druckluft}. Dieser Parameter gibt
+indirekt die Geschwindigkeit an, mit welcher der Pusher ausfahren soll um ein Produkt vom Band zu schieben.
 
 Auch dieser Zusammenhang ergibt Sinn, da eine höhere Bandgeschwindigkeit auch ein schnelleren Pusher voraussetzt, um ein
 Produkt auch vom Band stoßen zu können. Das Timing ist an dieser Stelle von großer Bedeutung.
@@ -402,7 +402,7 @@ Das in einem vorangegangenen Kapitel erstellte und trainierte Modell kann man im
 REST-Schnittstelle als einen Webdienst verfügbar machen.
 
 Dazu ist es erforderlich, das Modell in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
-des Deployments übernimmt dabei automatisch die IBM Cloud. Bei dem Deployment handelt es sich um ein Cloud Foundry
+des Deployments übernimmt dabei automatisch die IBM Cloud. Bei diesem Deployment handelt es sich um ein Cloud Foundry
 Container.
 
 Für die Erstellung des Webservices muss man im Watson Dashboard das zuvor erstellte Modell auswählen. Das folgende
@@ -434,7 +434,7 @@ angezeigt. Die Informationsseite des Deployments kann man über einen Klick auf 
     \label{fig:umsetzung_deployment}
 \end{figure}
 
-Das Deployment ist nun erfolgreich erstellt und man kann es im Weiteren testen und auch nutzen.
+Das Deployment ist nun erfolgreich erstellt und man kann es im Weiteren testen und auch für erste Abfragen nutzen.
 
 \subsubsection{Deployment testen}
 Ein Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass man das
@@ -467,7 +467,7 @@ Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, wa
 erfolgreich und muss wiederholt werden. Das Modell kennt damit keine Targets die es vorhersagen könnte.
 
 Unter dem Menüpunkt \texttt{Implementation} sind wichtige Informationen und erforderliche Schritte aufgezeigt, damit
-man die erstellte Schnittstelle in ein eigene Programm integriert kann. Dabei wird auf verschiedene Programmiersprachen
+man die erstellte Schnittstelle in ein eigenes Programm integriert kann. Dabei wird auf verschiedene Programmiersprachen
 und Architekturen eingegangen.
 
 \subsubsection{Aufruf mit Postman}
@@ -555,8 +555,8 @@ Das neuronale Netz ist nun erfolgreich in einem Deployment online zur Verfügung
 über einen Aufruf mittels Postman überprüft worden. Im Weiteren wird das trainierte Modell in eine TensorFlow.js
 Applikation eingebaut.
 
-Dies hat nun mehrere Vorteile. Zum einen kann man das trainierte Modell unabhängig von einer Cloud-Lösung nutzen. Die
-TensorFlow.js Applikation kann man zum Beispiel in einen Cloud Foundry Container laden und sie ist somit völlig
+Dies hat nun gleich mehrere Vorteile. Zum einen kann man das trainierte Modell unabhängig von einer Cloud-Lösung nutzen.
+Die TensorFlow.js Applikation kann man zum Beispiel in einen Cloud Foundry Container laden und sie ist somit völlig
 unabhängig von der Plattform auf der sie läuft. Auch kann man sie modular und schnell in beliebigen Regionen
 instanziieren.
 
@@ -570,29 +570,30 @@ ohne sie als Microservice nutzen zu müssen.
 Damit das Modell in die TensorFlow.js Applikation eingebunden werden kann, muss es aus dem Watson Studio exportiert
 werden. Dies erfolgt über den schon bekannten \textit{Modeler Flow}.
 
-Da der Entwickler das Modell in Kapitel~\ref{subsub:modeler_flow} auf Seite~\pageref{subsub:modeler_flow} komplett
+Da der Entwickler das Modell in Kapitel~\ref{subsub:modeler_flow} ab Seite~\pageref{subsub:modeler_flow} komplett
 eingerichtet und trainiert hat, steht es im Modeler Flow als gelbes Modul bereit.
 
-Über einen Rechtsklick auf das trainierte Modell und dem Menüpunkt \texttt{Download Model} kann man das Model auf den
-Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine JSON-Datei.
+Über einen Rechtsklick auf das trainierte Modell und dem Menüpunkt \texttt{Download Model} kann man das Modell auf den
+Entwicklungsrechner herunterladen. Bei der Datei handelt es sich um eine Binär-Datei.
 
-Diese Datei beinhaltet alle wichtigen Informationen über das gebaute neuronale Netz und das resultierende trainierte
-Modell.
+Diese Datei beinhaltet alle Informationen über das gebaute neuronale Netz sowie das resultierende trainierte Modell in
+Form von Schlüssel-Werte-Datenstrukturen (Key-Value-Store), Funktionsdefinitionen und feste Gewichtungen für die
+einzelnen Verbindungen.
 
 Auf der Seite des
 FreeCodeCamps\footnote{https://medium.freecodecamp.org/how-to-deploy-tensorflow-models-to-production-using-tf-serving-4b4b78d41700}
-ist eine Beschreibung und der interne Aufbau der gespeicherten Datei ersichtlich. Auch wird dort erklärt, wie die Datei
-in andere Anwendungen importiert werden kann.
+ist eine Beschreibung und der interne Aufbau der gespeicherten Datei ersichtlich. Auch wird dort erklärt, wie man die
+Datei in eine andere Anwendungen importiert kann.
 
 Im Weiteren kann mit der Entwicklung des Wrappers für das heruntergeladene neuronale Netz begonnen werden. Dafür wird
 der Inhalt der Datei in einer TensorFlow.js Applikation importiert und ausgewertet.
 
 \subsubsection{Wrapper entwickeln}
-Da das trainierte Modell nun offline zur Verfügung steht, kann es im Weiteren mit TensorFlow.js in einem Node.js-Wrapper
+Da das trainierte Modell nun offline zur Verfügung steht, kann es im Weiteren mit TensorFlow.js in einem Node.js Wrapper
 genutzt werden.
 
 Die Idee des Wrappers ist es, ein Webservice zur Verfügung zu stellen, der auf dem Port 80 eine REST-Schnittstelle
-beherbergt. Dort findet sich mindestens ein REST-Endpunkt, welcher die Input-Parametern für das trainierte,
+bereitstellt. Dort findet sich mindestens ein REST-Endpunkt, welcher die Input-Parametern für das trainierte,
 neuronale Netz annehmen kann.
 
 Die übergebenen Werte werden anschließend von einer Routine extrahiert und über die TensorFlow.js Bibliothek an das
@@ -609,7 +610,7 @@ Bei der Entwicklung beginnt man am Besten beim REST-Endpunkt, da dieser die Stru
 Implementierung der Endpunkte sind die Libraries \textit{express}\footnote{https://expressjs.com/de},
 \textit{body-parser}\footnote{https://github.com/expressjs/body-parser},
 \textit{tfjs}\footnote{https://github.com/tensorflow/tfjs} und
-\textit{tfjs-node}\footnote{https://github.com/tensorflow/tfjs-node} sehr hilfreich.
+\textit{tfjs-node}\footnote{https://github.com/tensorflow/tfjs-node} äußerst hilfreich.
 
 Die \textit{express}-Bibliothek unterstützt bei der Entwicklung eines Web-Servers, welchen man anschließend über den
 Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen der übergebenen Parameter an die
@@ -724,7 +725,7 @@ des TensorFlow.js-Wrappers aufgeführt.
 
 \begin{lstlisting}[language=JavaScript, caption=Der TensorFlow.js Programmteil, label=ls:umsetzung_tensorflow]
 const mn = new mobilenet.MobileNet(1, 1);
-mn.path = "./neural_net.json"
+mn.path = "./neural_net.sav"
 await mn.load()
 
 const predictions = await mn_model.classify(req.body);
@@ -815,7 +816,7 @@ Für die Node.js Applikation reicht diese Konfiguration völlig aus, da keine zu
 Einrichtungen notwendig sind.
 
 In Abbildung~\ref{fig:umsetzung_toolchain_pipeline} auf Seite~\pageref{fig:umsetzung_toolchain_pipeline} ist die
-komplette Konfiguration der Toolchain zu sehen.
+komplette Konfiguration, welche einer Standardkonfiguration entspricht, der Toolchain zu sehen.
 
 Die grünen Balken zeigen einen erfolgreichen Durchlauf einer einzelnen Phase an. Bei einem Fehler ändert sich die Farbe
 auf rot. Alle Phasen in der Farbe orange werden aktuell ausgeführt.
@@ -838,8 +839,9 @@ aufrufbar.
 Da die Applikation nun im Internet in einem Cloud Foundry Container zur Verfügung steht, kann man diese im nächsten
 Schritt mit dem API Connect Service verbinden.
 
-Dieser Schritt ist nötig, damit die Schnittstelle der Applikation vom Frontend, welches in Kapitel~\ref{subsec:webseite}
-auf Seite~\pageref{subsec:webseite} beschrieben wird, und auch über Postman vereinfacht aufgerufen werden kann.
+Dieser Schritt ist notwendig, damit die Schnittstelle der Applikation vom Frontend, welches in
+Kapitel~\ref{subsec:webseite} ab Seite~\pageref{subsec:webseite} beschrieben wird, und auch über Postman vereinfacht
+aufgerufen werden kann.
 
 \subsection{API Connect}
 \label{subsec:apiconnect}
@@ -909,7 +911,7 @@ sollen, definieren. Dazu wird in den Menüpunkt \texttt{Gestalten} gewechselt un
 
 Über das kleine Plus-Zeichen im rechten Bereich kann der Nutzer einen neuen Pfad hinzufügen. Pfade sind die Endpunkte
 einer REST-Schnittstelle. Jede URL ist ein Endpunkt. Über jeden einzelnen Endpunkt kann man verschiedene HTTP-Requests
-ansteuern. Die am häufigsten genutzten laufen \textit{GET}, \textit{POST}, \textit{PUT} sowie \textit{DELETE}.
+ansteuern. Die am häufigsten genutzten lauten \textit{GET}, \textit{POST}, \textit{PUT} sowie \textit{DELETE}.
 
 Direkt nach einem Klick auf das Plus-Zeichen erscheint ein neuer Pfad mit dem Namen \textit{/pfad-1}. Diesen kann man
 durch einen Klick aufklappen. Es erscheinen nun die Konfigurationsparameter für den Endpunkt. Als \textit{Pfad} wird nun
@@ -947,7 +949,7 @@ Als weitere wichtige Einstellung muss man unter \texttt{Lebenszyklus} den Schalt
 im ersten Schritt mit keiner Sicherheit gearbeitet wird, kann der entsprechende Menüpunkt übersprungen werden.
 
 Über das Disketten-Symbol am oberen rechten Rand kann man die aktuelle Einstellung zur Sicherheit speichern. Eine
-entsprechende Meldung quittiert die Speicherung.
+entsprechende Meldung quittiert die erfolgreiche Speicherung.
 
 Die Grundeinstellungen der Schnittstelle sind somit getätigt. Im Weiteren muss der Entwickler die API über
 \texttt{Assemblieren} mit dem richtigen Verhalten versehen. Dazu wechselt man über den entsprechenden Menüpunkt in einen
@@ -1049,7 +1051,7 @@ Input-Werten für die Vorhersage) auch an den nächsten Request weitergegeben we
 Dafür setzt man die alten Werte als neue Message-Werte. Das Listing~\ref{ls:umsetzung_header} auf
 Seite~\pageref{ls:umsetzung_header} veranschaulicht das Vorgehen.
 
-\begin{lstlisting}[language=JavaScript, caption=Gateway Script zum Setzen des Message-Bodyies, label=ls:umsetzung_header]
+\begin{lstlisting}[language=JavaScript, caption=Gateway Script zum Setzen des Message-Bodies, label=ls:umsetzung_header]
 // Get variables
 var request = apim.getvariable('request.body');
 apim.setvariable('message.body', request);
@@ -1057,17 +1059,17 @@ apim.setvariable('message.body', request);
 
 Im letzten Schritt muss man ein weiteres Aufruf-Modul hinzufügen. Dies erledigt den eigentlichen Aufruf an das Watson
 Studio Deployment. Dazu setzt man das Modul als das Nächste in die Reihe ein. In der Konfiguration muss man lediglich
-die URL des Deployments hinzufügen. Diese ist auf der Seite des Deployments ersichtlich.
+die URL des Deployments eintragen. Diese ist auf der Seite des Deployments ersichtlich.
 
-Damit ist dieser Pfad fertig konfiguriert und man kann ihn mit einem Aufruf verifizieren. Nun kann man den zweiten Pfad
-im Perationsswitch einrichten.
+Damit ist die Konfiguration des Pfades abgeschlossen und kann mit einem Aufruf verifiziert werden. Jetzt kann man den
+zweiten Pfad im Operationsswitch einrichten um die Konfiguration des API Connects abzuschließen.
 
 \subsubsection*{Pfad für den TensorFlow Container}
 Die Einrichtung des TensorFlow-Pfades ist sehr ähnlich zum vorherigen Pfad. Allerdings bedarf es keines Gateway Scriptes
 zum setzen eines Authorization Tokens, da man diesen hier nicht benötigt.
 
-Die anderen Module kann man direkt kopieren und in dem neuen Pfad einsetzen. Lediglich das Aufrufen-Modul benötigt
-weitere Konfiguration.
+Die anderen Module kann man direkt kopieren und in dem neuen Pfad einsetzen. Lediglich das \enquote{Aufrufen-Modul}
+benötigt weitere Konfiguration.
 
 In diesem muss nicht die URL des Watson Studio Deployments definiert sein, sondern man muss die des Cloud
 Foundry Containers einsetzen. Anschließend sollte man die Konfiguration über das Disketten-Symbol speichern.
@@ -1100,7 +1102,7 @@ wenigen Minuten dauern, da der API Connect Service die Konfiguration neu bauen m
 
 Im Anhang~\ref{sec:konfigurationAPIConnect} auf Seite~\pageref{sec:konfigurationAPIConnect} ist die komplette
 Konfiguration des API Connect Services in einer Konfigurationsdatei zu sehen. Diese kann man für die Nutzung direkt
-kopieren und ersetzen.
+kopieren und einsetzen.
 
 \subsubsection{API durchsuchen}
 Auf dem API Connect Dashboard kann der Benutzer über die rechts oben angelegte Schaltfläche \texttt{Durchsuchen} auf ein
@@ -1117,7 +1119,7 @@ Außerdem könnte in diesem Bereich nach einem Endpunkt gesucht oder die Endpunk
 Liste ist markierbar, sodass daraufhin die mittlere Ansicht, zum jeweiligen Bereich automatisch scrollt.
 
 Auch kann man der mittleren Spalte für jeden Endpunkt Informationen zu den verwendeten und produzierten Datentypen
-entnehmen. Diese Informationen kann man bei der Konfiguration des API-Endpunktesangeben. Dies ist in
+entnehmen. Diese Informationen kann man bei der Konfiguration des API-Endpunktes angeben. Dies ist in
 Kapitel~\ref{subsec:apiconnect} auf Seite~\pageref{subsec:apiconnect} erklärt.
 
 Die Abbildung~\ref{fig:umsetzung_apiconnect_durchsuchen} auf Seite~\pageref{fig:umsetzung_apiconnect_durchsuchen}
@@ -1204,8 +1206,8 @@ und eventuell Abweichungen feststellen.
 Bei den angegebenen Parametern handelt es sich lediglich um das \textit{values}-Array des gesamten Aufrufs. Das 
 \textit{fields}-Array kann man aus vorangegangenen Beispielen heranziehen.
 
-Ein Aufruf der beiden Endpunkte ergbit, dass beide die \textbf{selben} Parameter vorhergesagt haben. Beide kommen auf 
-die folgenden Ergebnisse:
+Ein Aufruf der beiden Endpunkte ergbit, dass beide die \textbf{selben} Parameter vorhersagen. Beide kommen auf die
+im Folgenden aufgelisteten Ergebnisse:
 
 \begin{itemize}
     \item \textbf{Bandgeschwindigkeit}: 96.51822510893484
@@ -1215,8 +1217,9 @@ die folgenden Ergebnisse:
     \item \textbf{Totzeit}: 75.98728953791543
 \end{itemize}
 
-Dies kann man ganz einfach damit erklären, dass das verwendete neuronale Netz \textit{konsistent} ist. Da sich die 
-Gewichtungen der Parameter und \textit{hidden-layer} nicht unterscheidet kommen sie auch zum selben Ergebnis. 
+Dies ist durch das genutzte Modell zu erklären. Beide Endpunkte nutzen die gleichen Gewichtungen für die Parameter sowie
+die gleichen mehrdimensionalen Funktionen, welche durch das Training in der Cloud festgeschrieben sind. Auch die
+\textit{hidden-layers} unterscheiden sich in den beiden Versionen nicht.
 
 Mehr dazu im Kapitel~\ref{ai_openscale} \textit{AI Open Scale} auf Seite~\pageref{ai_openscale} in dem auf die 
 Vertrauenswürdigkeit von neuronalen Netzen eingegangen wird.
@@ -1224,27 +1227,25 @@ Vertrauenswürdigkeit von neuronalen Netzen eingegangen wird.
 \begin{lstlisting}[language=JSON, caption=Parameter zum Test der beiden Implementierungen, label=ls:umsetzung_parameter]
     "values":
         [
-            [
-                415,
-                360,
-                470,
-                250,
-                250,
-                250,
-                29,
-                29,
-                29,
-                240,
-                150,
-                20,
-                220,
-                275.86,
-                null,
-                null,
-                null,
-                null,
-                null
-            ]
+            415,
+            360,
+            470,
+            250,
+            250,
+            250,
+            29,
+            29,
+            29,
+            240,
+            150,
+            20,
+            220,
+            275.86,
+            null,
+            null,
+            null,
+            null,
+            null
         ]
 \end{lstlisting}
 
