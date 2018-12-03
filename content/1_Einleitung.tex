@@ -18,20 +18,21 @@ Statista\footnote{https://de.statista.com/infografik/14245/prognostizierter-umsa
 dass sich der durch künstliche Intelligenz generierte Umsatz bis zum Jahr 2025 um das bis zu zwölffache des aktuellen
 Wertes steigert und sich die größten Anteile auf Nordamerika und Asien verteilen werden.
 
-Aber sind Themen wie künstliche Intelligenz und die damit einhergehenden neuronalen Netze wirklich neu? Laut Sigmar
+Sind aber Themen wie künstliche Intelligenz und die damit einhergehenden neuronalen Netze wirklich neu? Laut Sigmar
 Gabriel und seinem veröffentlichten Artikel in der WirtschaftsWoche handelt es sich um ein \enquote{(\ldots) altes
 Forschungsgebiet in dem seit den Fünfzigerjahren (geforscht wird)}~\cite{article_einleitung_ww_sg} und auch den
 Aufzeichnungen von Google-Trends zufolge~\cite{online_einleitung_googletrends} ist gerade das Thema künstliche
 Intelligenz schon seit dem Jahr 2004 ein gesuchtes Thema und weckt bei vielen Menschen Interesse.
 
-Nach anschließend stetig sinkenden Suchanfragen stieg das Interesse an der KI ab Mitte 2016 wieder stark an, sodass es
-aktuell in aller Munde ist. Die Themen \textit{Machine Learning} und \textit{Big Data} allerdings wurden erst ab Anfang
-2012 für die breite Masse interessant und bilden meist die Ecksäulen der künstlichen Intelligenz.
+Nach anfänglich stetig sinkenden Suchanfragen stieg das Interesse an der KI, bedingt durch schnell wachsende
+Rechenleistung, ab Mitte 2016 wieder stark an, sodass es aktuell in aller Munde ist. Die Themen
+\textit{Machine Learning} und \textit{Big Data} allerdings wurden erst ab Anfang 2012 für die breite Masse interessant
+und bilden meist die Ecksäulen der künstlichen Intelligenz.
 
 \enquote{Intelligenz ist die Fähigkeit, sich dem Wandel anzupassen.} sagte Stephen Hawking auf einer Pressekonferenz.
 Aktuell zeigen zahlreiche Startups sowie amerikanische Großkonzerne, was mit künstlicher Intelligenz alles möglich ist.
 Diesen wachsenden Trend beziehungsweise diesen Wandel in der Entwicklung von Produkten dürfen hiesige Firmen nicht
-verschlafen, indem sie Risiken vor die neuen Möglichkeiten oder die neu entstehenden Geschäftsbereiche stellen.
+verschlafen, indem sie Risiken vor neue Möglichkeiten oder die neu entstehenden Geschäftsbereiche stellen.
 
 Allerdings sollen laut Sigmar Gabriel deutsche Unternehmen \enquote{(\ldots) neue Produkte und Verfahren
 entwickeln, die das Vorhandene (verbessern).} und sich nicht \enquote{(\ldots) an den Geschäftsmodellen von Google,
@@ -51,9 +52,8 @@ Um in diesem Wettstreit nicht abgehängt zu werden, beschäftigen sich immer meh
 Themen wie künstliche Intelligenz und neuronale Netzen, um ihre Produkte mit Intelligenz auszustatten sodass diese
 besser oder auch schneller werden.
 
-Auch die Robert Bosch GmbH mit seiner Robert Bosch Packaging Technology Gesellschaft hat starkes Interesse daran, die
-von ihnen produzierten Verpackungsmaschinen effizienter arbeiten zu lassen oder sie schneller an den Kunden
-auszuliefern, damit dieser sie eher nutzen kann.
+Auch die Robert Bosch GmbH mit der Tochtergesellschaft Packaging Technology GmbH hat starkes Interesse daran, die von
+ihnen produzierten Verpackungsmaschinen effizienter arbeiten zu lassen oder sie einfacher auf neue Produkte umzurüsten.
 
 Die Ursachenanalyse (englisch root cause analysis) von Don Norman aus seinem Buch \textit{The Design of Everyday
 Things}~\cite{book_einleitung_donnorman} besagt, dass die Ursache des menschlichen Handelns zum Lösen von Problemen
@@ -66,8 +66,8 @@ schließen, die es eigentlich zu Lösen gilt.
 Daraus abgeleitet soll in dieser Arbeit mit der Hilfe von künstlicher Intelligenz und einem neuronale Netz eine
 Möglichkeit gefunden werden, um lang dauernde Konfigurationen von Maschinen oder unnötige Testfahren zu eliminieren.
 
-So soll es Möglich werden, die produzierten Verpackungsmaschinen schneller an den Kunden auszuliefern um so frühzeitiger
-produktiv mit ihnen zu sein.
+So soll es Möglich werden, die produzierten Verpackungsmaschinen effizienter arbeiten zu lassen und sie einfacher auf
+neue Produkte umzurüsten.
 
 \newpage
 
@@ -186,26 +186,26 @@ Kapitel behandeln.
 \begin{description}
 
     \item[Kapitel 2 (Grundlagen)]\hfill \\
-    Dieses Kapitel erklärt die Grundlagen. Es wird zum Beispiel der Unterschied zwischen den verschiedenen Cloudanbieter
-    im Bereich Machine Learning erläutert, um was es sich bei TensorFlow.js handelt und was ein WebViewer ist. Außerdem
-    werden die genutzten Bosch-Maschinen kurz vorgestellt.
+    Dieses Kapitel erläutert die Grundlagen. Es wird zum Beispiel der Unterschied zwischen den verschiedenen
+    Cloudanbieter im Bereich Machine Learning aufgezeigt, um was es sich bei TensorFlow.js handelt und was ein WebViewer
+    ist. Außerdem werden die genutzten Bosch-Maschinen kurz eingeführt.
 
     \item[Kapitel 3 (Neuronales Netz)]\hfill \\
-    Das dritte Kapitel erläutert die Entwicklung des Machine Learning Algorithmuses in der Cloud. Dabei werden
-    verschiedene Optionen für die einzelnen Teilaufgaben analysiert und im Anschluss die genutzten Programme installiert,
-    eingerichtet und erläutert. Das trainierte Modell wird abschließend in TensorFlow.js importiert und über einen Wrapper
-    in einem Container zugänglich gemacht. Ein API Management soll für die Komunikation sorgen.
+    Das dritte Kapitel beschreibt die Entwicklung des Machine Learning Algorithmuses in der Cloud. Dabei werden
+    verschiedene Optionen für die einzelnen Teilaufgaben analysiert und im Anschluss die genutzten Programme
+    installiert, eingerichtet und erklärt. Das trainierte Modell wird abschließend in TensorFlow.js importiert und über
+    einen Wrapper in einem Container zugänglich gemacht. Ein API Management soll für die Komunikation sorgen.
 
     \item[Kapitel 4 (Client)]\hfill \\
-    Das vierte Kapitel setzt das in der Cloud trainierte Modell voraus und implementiert dazu ein prototypisches Frontend.
-    Dieses besteht aus einer Angular-Anwendung sowie zwei Smartphone-Apps. Dabei werden zu Anfang verschiedene Programme
-    und Services analysiert, um diese im Anschluss zu nutzen.
+    Das vierte Kapitel setzt das in der Cloud trainierte Modell voraus und implementiert dazu ein prototypisches
+    Frontend. Dieses besteht aus einer Angular-Anwendung sowie zwei Smartphone-Apps. Dabei werden zu Anfang verschiedene
+    Programme und Services analysiert, um diese im Anschluss zu nutzen.
 
     \item[Kapitel 5 (Adaptierbarkeit)]\hfill \\
     Hier werden Themen angesprochen, die für die weitere Verwendung oder Erweiterung des Machine Learning Algorithmus
     oder des Frontends, entscheidend sind. Unter anderem wird erläutert, welche Schritte notwendig sind, um neue
     Maschinen oder Komponenten in die Architektur einzubauen oder wie optimale Daten zusammengestellt werden müssen. Die
-    Adaptierbarkeit wird über mehreren Szenarien veranschaulicht.
+    Adaptierbarkeit wird zu einem Szenario veranschaulicht.
 
     \item[Kapitel 6 (Ausblick)]\hfill \\
     Wie sowohl das neuronale Netz, das Modell oder auch das Frontend erweitert werden kann, zeigt dieses Kapitel auf.

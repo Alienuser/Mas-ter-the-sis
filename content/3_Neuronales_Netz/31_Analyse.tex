@@ -18,22 +18,23 @@ anzugehen.
 Die am weitest verbreiteten Programmiersprachen zum Aufbau eines solchen Netzes ist die Programmiersprache
 \textit{Python}\footnote{https://www.python.org} mit ihren vielen verschiedenen Bibliotheken.
 
-Einer der größten Vorteil dieser Variante ist die Tatsache, dass die Daten alle lokal auf dem Rechner bleiben können und
-man das Netz nach belieben aufbauen und verändern kann. Auch wiederkehrende Änderungen sind damit möglich.
+Einer der größten Vorteil dieser Variante ist die Tatsache, dass die Trainingsdaten alle lokal auf dem Rechner bleiben
+können und man das Netz nach belieben aufbauen und verändern kann. Auch wiederkehrende Änderungen sind damit schnell und
+einfach möglich.
 
 Da Python-Quellcode übersichtlich ist, gehen Anpassungen schnell von der Hand. Dies ist insbesondere dann wichtig, wenn
-man die Datensätze verändert oder andere Maschinen anschließen möchte. Der Quellcode ist gut wart"~ und anpassbar.
+man die Datensätze verändert oder andere Maschinen anschließen möchte. Der Quellcode ist also gut wart"~ und anpassbar.
 
 Allerdings ist die Geschwindigkeit, mit der ein neuronales Netz lokal auf einem Rechner trainiert werden kann, stark
-von der zur Verfügung gestellten Hardware abhängig. Nicht alle Laptops für Entwickler verfügen über eine sehr schnelle
-Hardware.
+von der zur Verfügung gestellten Hardware abhängig. Nicht alle Rechner die für die Entwicklung in Frage kommen verfügen
+über eine ausreichend schnelle Hardware.
 
 So kann das Training eines Netzes bei sehr großen Datenmengen, die es im Bereich der künstlichen Intelligenz geben
-sollte, zu langen Wartezeiten führen, bis das Modell fertig trainiert ist.
+sollte, zu sehr langen Wartezeiten führen.
 
-Das ist insbesondere dann ärgerlich, wenn das Training mehrere Stunden dauert und anschließend kein vernünftiges Modell
-trainiert werden konnte. Daraufhin müssen Parameter des neuronalen Netzes angepasst werden und das Training beginnt von
-vorne. Diese Schleifen können sehr viel Zeit kosten.
+Das ist insbesondere dann ärgerlich, wenn das Training mehrere Stunden dauert und anschließend ein Modell mit geringer
+Übereinstimmung herauskommt. Daraufhin muss man Parameter des neuronalen Netzes anpassen und das Training von vorne
+beginnen lassen. Diese Schleifen können sehr viel Zeit kosten.
 
 \subsection{Online in der Cloud}
 Alternativ ist es Möglich das neuronale Netz in der Cloud zu trainieren. Es existierend unzählig viele Anbieter im
@@ -79,7 +80,7 @@ verfügt er über eine REST-Schnittstelle.
 Allerdings müssen Cloud-Anbieter mit Datenschutzproblemen und diversen Vorurteilen kämpfen. So ist es nicht immer
 möglich die Testdaten in die Cloud zu laden um sie dort zu verarbeiten. Auch muss zur Erstellung des neuronalen Netzes
 eine stetige Internetverbindung bestehen. Sollte der Service eingestellt werden, so verliert man unter umständen den
-Zugriff auf die Daten.
+Zugriff auf die Daten und trainierten Modelle.
 
 \subsection{Hybrid}
 Der für diese Architektur beste Weg zur Umsetzung des neuronalen Netzes ist eine Kombination aus den Vorteilen beider
@@ -90,7 +91,7 @@ nutzen. Das trainierte Modell kann dann in einem Webservice zur Verfügung geste
 erhalten.
 
 Über ein in der IBM Cloud und Watson Studio entwickeltes neuronales Netz kann man das resultierende trainierte Modell
-herunterladen und erhält so eine JSON-Datei mit dem internen Aufbau des Netzes.
+herunterladen und erhält so eine Binär-Datei mit dem internen Aufbau des Netzes.
 
 Dieses Modell kann man anschließend in einen eigenen Wrapper einbauen, welcher eine Schnittstelle für Anfragen öffnet.
 So ist es möglich das online trainierte Modell in einer eigenen Anwendung oder im eigenen Rechenzentrum zu nutzen.

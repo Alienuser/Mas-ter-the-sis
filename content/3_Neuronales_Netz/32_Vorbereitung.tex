@@ -4,13 +4,13 @@ TensorFlow.js Applikation. Dazu muss man zunächst ein kostenloses IBM Cloud Kon
 instanziieren. Außerdem muss man zwei Programme auf dem Entwicklungsrechner installieren.
 
 Diese Schritte benötigt man, um mit dem Systemen arbeiten zu können. Im Weiteren werden die dafür notwendigen Schritte
-einzelnd erläutert und getestet.
+einzelnd erläutert und überprüft.
 
 \subsection{IBM Cloud Konto}
 Für die Arbeit mit der IBM Cloud benötigt der Anwender ein kostenloses Benutzerkonto. Dieses wird auf der zugehörigen
 Registrierungsseite\footnote{https://console.bluemix.net/registration} erstellt und eingerichtet.
 
-Nachdem das Konto erfolgreich mit einem an die hinterlegte E-Mail-Adresse verschickten Bestäigungslink aktiviert ist,
+Nachdem das Konto erfolgreich mit einem an die hinterlegte E-Mail-Adresse verschickten Bestätigungslink aktiviert ist,
 kann der Anwender dieses 30 Tage lang ohne anfallende Gebühren für Services oder Runtimes nutzen.
 
 Nach dem ersten Aufruf des IBM Cloud Dashboards, muss man einen Namen für die automatisch erstellte Organisation
@@ -18,7 +18,7 @@ eintragen. Dieser spielt für die Umsetzung keine Rolle und die Organisation kan
 gelöscht werden. Ein Beispiel für den Organisationsnamen ist \textit{Machine-Learning}.
 
 Direkt im Anschluss wird nach einem Namen für den ersten Space in der erstellten Organisation gefragt. Auch dieser
-spielt für die Umsetzung keine Rollte und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
+spielt für die Umsetzung keine Rolle und kann zu jedem Zeitpunkt umbenannt oder auch gelöscht werden. Ein Beispiel für
 die Benamung des ersten Spaces ist \textit{dev}, was eine Abkürzung für \textit{developper} ist.
 
 Ein \textit{Space} gruppiert mehrere Runtimes und Services in einem Rechenzentrum. Von diesen Rechenzentren gibt es in
@@ -115,14 +115,14 @@ Der vorher erstellte Service sollte nun mit dem selbst definierten Namen in der 
 
 \subsubsection{Projekt einrichten}
 Abschließend muss man ein Projekt im Watson Studio Service anlegen. Dieses bündelt alle Daten und Informationen an einem
-gemeinsamen Ort um sie besser Verwalten zu können. Um ein Projekt zu erstellen, muss man das Watson Studio Dashboard
+gemeinsamen Ort um diese besser Verwalten zu können. Um ein Projekt zu erstellen, muss man das Watson Studio Dashboard
 über das IBM Cloud Dashboard aufrufen.
 
 Die Schlatfläche \texttt{New project} legt im Watson Studio Dashboard ein neues Projekt an. Auch hier muss man einen
 Namen für das Projekt definieren und anschließend einen \textit{Local Storage} einrichten.
 
 Die Einrichtung des Local Storages geschieht über einen Mini-Wizzard auf der rechten Seite. Dabei muss man lediglich
-einen Namen für diesen eintragen und dies dann bestätigen.
+einen Namen für diesen eintragen und diesen dann bestätigen.
 
 Das Projekt kann man über die Schaltfläche \texttt{Create} speichern und es wird für den Nutzer feftig eingerichtet.
 
@@ -153,7 +153,7 @@ Hinweise darüber, ob die Applikation erfolgreich erstellt werden konnte, oder o
 Applikation verwendet werden muss.
 
 Sofern keine Fehlermeldung erscheint ist die Einrichtung der Node.js-Runtime erfolgreich verlaufen und ein Aufruf der
-erstellen URL zeigt eine Standardseite der IBM Cloud mit einem kleinen Logo.
+erstellen URL zeigt eine Standardseite der IBM Cloud mit einem kleinen Logo an.
 
 \subsection{API Connect}
 \label{subsec:vorbereitung_apiconnect}
@@ -191,8 +191,8 @@ die folgenden Kommandos:
     $ sudo apt-get install -y nodejs
 \end{lstlisting}
 
-Für macOS existiert ein Installationspaket, welches über die Download-Seite\footnote{https://nodejs.org/dist/v10.13.0/node-v10.13.0.pkg}
-zur Verfügung steht.
+Für macOS existiert ein Installationspaket, welches auf der
+Download-Seite\footnote{https://nodejs.org/dist/v10.13.0/node-v10.13.0.pkg} zur Verfügung steht.
 
 Bei der Installation von Node.js wird npm automatisch mitinstalliert. Dieser ist der Node.js eigene Paketmanager und
 man benötigt diesen später für die Installation von Abhängigkeiten für die Applikation.

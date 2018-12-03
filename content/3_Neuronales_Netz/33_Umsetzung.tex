@@ -1,7 +1,7 @@
 \section{Umsetzung}
 Wie die Zielarchitektur in Abbildung~\ref{fig:umsetzung_zielarchitektur} auf
 Seite~\pageref{fig:umsetzung_zielarchitektur} zeigt, sollen Anfragen (englisch Requests) von einem Frontend an die
-Anwendung über den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf zwei
+Anwendung über den Service \textit{API Connect} laufen. Dieser Service verteilt die Anfragen anschließend auf die zwei
 Systeme.
 
 In einem System, dem \textit{Watson Studio}, erfolgt das Training für das neuronale Netz. Nach erfolgreichem Training
@@ -12,7 +12,7 @@ Das zweite System enthält einen \textit{Cloud Foundry Container}, welcher eine 
 Dieser Container läuft in der Cloud und erhält eine IP sowie eine Domain über die er aufrufbar ist.
 
 In der Runtime läuft eine \textit{TensorFlow.js} Applikation, welche das im Watson Studio trainierte Modell enthält. Die
-Applikation dient als Wrapper für das Model.
+Applikation dient als Wrapper für das Modell.
 
 Im API Connect wird jeweils eine Route für das Watson Studio Deployment und eine für die TensorFlow.js Applikation
 eingerichtet. So kann ein späteres System selbst entscheiden, welchen Endpunkt es für eine Vorhersage erreichen möchte.
