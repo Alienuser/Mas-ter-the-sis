@@ -64,10 +64,10 @@ Uee-Case geben.
 
 \subsubsection{Mockups erstellen}
 Da der Use-Case nun definiert ist, kann man mit der Entwicklung des Mockups beginnen. Dabei ist die Wahl des
-Designs auf eine zweispaltige Startseite gefallen. Eine der beiden Spalten beinhlatet die Eingabewerte und die andere
-Spalte beinhaltet die vorhergesagten Argumente, welche von dem trainierten Modell bestimmt werden.
+Designs auf eine zweispaltige Startseite gefallen. Eine der beiden Spalten beinhaltet die Eingabewerte und die andere
+Spalte beinhaltet die vorhergesagten Argumente, welche das trainierte Modell bestimmt.
 
-In Abbildung~~\ref{fig:umsetzung_mockup_scale_1} auf Seite~\pageref{fig:umsetzung_mockup_scale_1} ist eine erste Version
+In Abbildung~\ref{fig:umsetzung_mockup_scale_1} auf Seite~\pageref{fig:umsetzung_mockup_scale_1} ist eine erste Version
 des Frontends mit der Umsetzung der beiden Spalten zu sehen. Dabei werden in der linken Spalte die Werte in
 Formularfelder eingetragen und in der rechten Spalte die vorhergesagten Parameter angezeigt.
 
@@ -85,7 +85,7 @@ Damit man sowohl den Input als auch den Output verbessert anzeigen kann ist es s
 zu unterteilen. Gerade bei den Eingabewerten gibt es zahlreiche Parameter, die man in Gruppen zusammenfassen kann.
 
 So ist es zum Beispiel möglich die Parameter \textit{Produktbreite}, \textit{Produkthöhe} und \textit{Produkttiefe} zu
-einer Gruppe namens \textit{Produktmaße} zusammenzufügen.
+einer Gruppe namens \textit{Produktmaße} zusammen zu fassen.
 
 Die Abbildung~\ref{fig:umsetzung_mockup_scale_2} auf Seite~\pageref{fig:umsetzung_mockup_scale_2} zeigt das angepasste
 Mockup mit seinen Gruppen sowohl auf der Input"~ als auch der Output-Seite.
@@ -167,7 +167,7 @@ So ist der Scrollbalken auf der Webseite nicht unnötig lang und sorgt beim Endn
 Auch wird so kein großer leerer Bereich auf der Webseite angezeigt, mit dem der Nutzer nichts anfangen kann.
 
 Auch wird nach der Bestätigung des Buttons automatisch zum Bereich der Ausgabe gescrollt, damit dies nicht manuell
-geschehen muss. Dabei handelt es sich um eine Kompfortfunktion die man allerdings sehr einfach mit JavaScript einbauen
+geschehen muss. Dabei handelt es sich um eine Kompfortfunktion die man allerdings sehr einfach mit JavaScript umsetzen
 kann.
 
 \subsubsection{Webseite umsetzen}
@@ -202,7 +202,7 @@ Anwendung einer Android-App ähnelt.
 Die Komponenten sind auf der entsprechenden
 Dokumentationsseite\footnote{https://material.angular.io/components/categories} zu finden und man kann sie von da aus
 direkt kopieren um sie im eigenen Quellcode zu nutzen. Auch Icons und vorgefertigte Farben lassen sich der Webseite
-entnehmen. Somit kann sehr gut eine Android-App ähnliche Webseite aufbauen.
+entnehmen. Somit kann man sehr gut eine Android-App ähnliche Webseite aufbauen.
 
 In Abbildung~\ref{fig:umsetzung_website_input} auf Seite~\pageref{fig:umsetzung_website_input} ist die fertig
 umgesetzte Webseite zu sehen, in welcher ein Nutzer die Parameter für das neuronale Netz eingeben kann. Die linke Spalte
@@ -252,8 +252,8 @@ Das Parsen kann zeitgleich mit der Animation starten. So wird de Endnutzer symbo
 und sie auch gleich sichtbar sind. So muss er nicht noch das Parsing abwarten. Dies erleichtert die Arbeit mit der
 Webseite enorm, da der Endnutzer nicht direkt mit vielen Boxen konfrontiert wird.
 
-Desweiteren ist wichtig, dass beim Aufruf der Seite in der Spalte für die Ausgabe noch keine Daten bereitstehen. Darum
-macht die Darstellung des Bereichs keinen Sinn.
+Desweiteren ist wichtig zu wissen, dass beim Aufruf der Seite in der Spalte für die Ausgabe noch keine Daten
+bereitstehen. Darum macht die Darstellung des Bereichs keinen Sinn.
 
 Damit der Endnutzer sich schneller auf der Webseite zurecht finden kann, ist die Platzierung von kleinen Icons und
 Beschreibungstexten an den verschiedenen Boxen sinnvoll. So weiß der Nutzer direkt, was er in welcher Box machen oder
@@ -481,13 +481,13 @@ Seite~\pageref{fig:umsetzung_toolchain_pipeline_frontend} zu sehen.
     \label{fig:umsetzung_toolchain_pipeline_frontend}
 \end{figure}
 
-Die \textbf{Build Stage} entspricht der Standard Build Stage der Toolchain konfiguration und man kann diese unverändert
+Die \textbf{Build Stage} entspricht der Standard Build Stage der Toolchain-Konfiguration und man kann diese unverändert
 beibehalten. Sie ist für das Laden des Quellcodes aus dem Git-Repository zuständig und wird immer dann ausgeführt,
 sobald ein \textit{commit} in das Repository \textit{gepushed} ist.
 
 In der \textbf{Angular Build} Stage wird die Angular-Anwendung mittels des Befehls \textit{ng build --prod} gebaut. Dies
-ist wichtig, damit ein \texttt{dist}-Ordner entsteht, welcher alle kaskadierten CSS- und HTML-Dateien enthält. Auch
-werden CSS- oder HTML-Platzhalter ausgetauscht und die Angular-Anwendung betriebsbereit geschaltet. Dies ist zum
+ist wichtig, damit ein \texttt{dist}-Ordner entsteht, welcher alle kaskadierten CSS"~ und HTML-Dateien enthält. Auch
+werden CSS"~ oder HTML-Platzhalter ausgetauscht und die Angular-Anwendung betriebsbereit geschaltet. Dies ist zum
 Beispiel auch für den offline Modus und den Service Worker entscheidend.
 
 Die nächste Stage, \textbf{Copy files}, kümmert sich um das Kopieren der Inhalte aus dem \texttt{dist}-Ordner. Später
@@ -538,17 +538,17 @@ Für die Erstellung einer Android-App benötigt man die Android Studio IDE. Dies
 Developper-Seite\footnote{https://developer.android.com/studio} von Google herunterladen. Die Anwendung steht für
 Windows, Linux und macOS zur Verfügung. Android Studio basiert auf der Community-Edition von IntelliJ und ist kostenlos.
 
-Für die Verwendung von Android Studio benötigt man eine installierte Version Java-JRE und das Java-JDK. Die JRE benötigt
-man für das Ausführen der IDE und die JDK für das Bauen des Quellcodes und der APK-Datei. Die aktuellste Version von
-Java wird für die Nutzung empfohlen. Dies ist zur Zeit die Version 9.
+Für die Verwendung von Android Studio benötigt man eine installierte Version des Java-JRE und das Java-JDK. Die JRE
+benötigt man für das Ausführen der IDE und die JDK für das Bauen des Quellcodes und der APK-Datei. Die aktuellste
+Version von Java wird für die Nutzung empfohlen. Dies ist zur Zeit die Version 9.
 
 Nachdem man die IDE und gegebenenfalls Java installiert hat, kann man Android Studio zum ersten Mal starten. Beim ersten
 Aufruf muss man das Android-SDK herunterladen sowie einen Emulator konfigurieren. Dabei sollte man jeweils die neuesten
 Versionen auswählen. Mit dem Emulator kann man die App nachher auf dem Rechner starten und live testen.
 
 Es ist möglich eine Android-App mittels \textit{Java}, \textit{Kotlin} und \textit{C\texttt{++}} zu entwicklen. Im
-folgenden wird auf die Verwendung von \textbf{Kotlin} zurückgegriffen, da es den Quellcode sehr schlank macht, was eine
-bessere Übersicht bietet.
+folgenden wird auf die Verwendung von \textbf{Kotlin} zurückgegriffen, da es den Quellcode sehr schlank macht und
+dadurch eine bessere Übersicht bietet.
 
 Im nächsten Schritt muss man ein neues Projekt anlegen. Dazu wird zum Beispiel der Name \textit{Dashboard} ausgewählt.
 Also Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
@@ -561,7 +561,7 @@ Nun kann man im \texttt{/src}-Ordner zwei Kotlin-Klassen anlegen. Eine für die 
 Anwendung enthält. Die andere ist für den SplashScreen, welcher beim Start der App angezeigt wird. Der Splashscreen
 zeigt das Bosch-Logo und wechselt nach ein paar Sekunden in die Hauptroutine um den WebViewer darzustellen.
 
-Die MainActivity entählt eine unveränderliche Variable vom Typ \textit{Text} um die URL des Frontends zu definieren. In
+Die MainActivity enthält eine unveränderliche Variable vom Typ \textit{Text} um die URL des Frontends zu definieren. In
 der \textit{onCreate}-Methode kann man dann das WebViewer-Layout konfigurieren, damit die Nutzung von JavaScript möglich
 ist.
 
@@ -618,7 +618,7 @@ installieren um sie unter echten Bedingungen zu testen.
 \subsubsection{iOS}
 Um eine App für iOS Geräte zu entwickeln, benötigt man die kostenlose IDE Xcode von Apple. Diese steht lediglich für
 macOS-Geräte zur Verfügung und man kann sie im
-App-Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835?mt=12} herunterladen.
+App-Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835} herunterladen.
 
 Somit kann man iOS Apps lediglich unter macOS und Xcode schreiben, kompilieren und testen. Dies stellt eine sehr große
 Einschränkung dar.
@@ -681,7 +681,7 @@ auswählen, welcher die Anwendung starten soll.
 
 Nach wenigen Augenblicken ist der Emulator gestartet und zeigt die entwickelte App an. Man kann diese so nutzen, als
 würde man sie auf einem echten Smartphone starten. Das Frontend sollte nach wenigen Sekunden ladezeit vollflächig
-angezeigt werden.
+angezeigt sein.
 
 In der Abbildung~\ref{fig:umsetzung_ios_app} auf Seite~\pageref{fig:umsetzung_ios_app} ist die Anwendung im Smartphone
 Emulator mit der neuesten iOS Version zu sehen.
