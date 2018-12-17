@@ -5,7 +5,7 @@ verbundenen Trainings und Tests. Dafür existieren zum jetzigen Zeitpunkt mehrer
 
 Im Folgenden wird auf drei gängige Varianten näher eingegangen die für die Umsetzung in Frage kommen. Dabei werden die
 Vor"~ und auch die Nachteile aufgezeigt und eine Variante ausgewählt, mit der die Umsetzung der Architektur am
-Sinnvolsten erscheint.
+sinnvolsten erscheint.
 
 Ziel des Kapitels ist es, eine optimale Umsetzung für die Architektur zu finden, die späteren Anforderungen und
 Erweiterungen gerecht werden kann.
@@ -15,7 +15,7 @@ Einer der gängigsten Möglichkeit zum Aufbau eines neuronalen Netzes ist es, di
 und trainieren. Zahlreiche Bibliotheken für die verschiedensten Programmiersprachen existieren um dieses Problem
 anzugehen.
 
-Die am weitest verbreiteten Programmiersprachen zum Aufbau eines solchen Netzes ist die Programmiersprache
+Die am weitest verbreitete Programmiersprache zum Aufbau eines solchen Netzes ist
 \textit{Python}\footnote{https://www.python.org} mit ihren vielen verschiedenen Bibliotheken.
 
 Einer der größten Vorteil dieser Variante ist die Tatsache, dass die Trainingsdaten alle lokal auf dem Rechner bleiben
@@ -37,7 +37,7 @@ Das ist insbesondere dann ärgerlich, wenn das Training mehrere Stunden dauert u
 beginnen lassen. Diese Schleifen können sehr viel Zeit kosten.
 
 \subsection{Online in der Cloud}
-Alternativ ist es Möglich das neuronale Netz in der Cloud zu trainieren. Es existierend unzählig viele Anbieter im
+Alternativ ist es möglich das neuronale Netz in der Cloud zu trainieren. Es existieren unzählig viele Anbieter im
 Bereich künstliche Intelligenz. So bietet Azure mit \textit{Azure Machine Learning Studio}, Amazon mit
 \textit{Amazon Machine Learning} und IBM mit \textit{Watson Studio} jeweils eine eigene Lösung für das Training von
 neuronalen Netzen in ihrer eigenen Cloud an.
@@ -47,14 +47,14 @@ in viel kürzerer Zeit geschehen und der Entwickler muss sich nicht mit der Umse
 verschiedene Bibliotheken miteinander vergleichen.
 
 Bei den meisten Cloud-Anbietern stehen sehr erfahrene Entwickler hinter den Produkten und aktualisieren diese stetig. So
-kann man sich selbst auf die Aufbereitung der Daten und das Erstellen von Diagrammen konzentrieren anstatt auch die
+kann man sich selbst auf die Aufbereitung der Daten und das Erstellen von Diagrammen konzentrieren, anstatt auch die
 Entwicklung von Python-Quellcode zu übernehmen.
 
 In \textit{Azure Machine Learning} ist es aktuell nicht möglich ein neuronales Netz mit multidimensionaler linearer
 Regression zu erstellen. Dies bedeutet, dass es lediglich möglich ist, ein neuronales Netz mit mehreren
 Eingabeparametern zu versehen, es allerdings immer nur einen Ausgabeparameter für jedes Netz gibt.
 
-Das ist in sofern schlecht für die Umsetzung der Architektur als dass für der Wiegeeinheit der Robert Bosch GmbH
+Das ist insofern schlecht für die Umsetzung der Architektur als dass für der Wiegeeinheit der Robert Bosch GmbH
 mindestens vier Parameter vorhergesagt werden müssen um sie korrekt zu benutzen.
 
 Es wäre möglich für jeden Ausgabeparameter der vorhergesagt werden muss ein eigenes Netz aufzubauen und trainieren zu
@@ -79,7 +79,7 @@ verfügt er über eine REST-Schnittstelle.
 
 Allerdings müssen Cloud-Anbieter mit Datenschutzproblemen und diversen Vorurteilen kämpfen. So ist es nicht immer
 möglich die Testdaten in die Cloud zu laden um sie dort zu verarbeiten. Auch muss zur Erstellung des neuronalen Netzes
-eine stetige Internetverbindung bestehen. Sollte der Service eingestellt werden, so verliert man unter umständen den
+eine stetige Internetverbindung bestehen. Sollte der Service eingestellt werden, so verliert man unter Umständen den
 Zugriff auf die Daten und trainierten Modelle.
 
 \subsection{Hybrid}

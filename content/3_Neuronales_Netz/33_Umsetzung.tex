@@ -56,14 +56,14 @@ schnell der Pusher aus seiner Warteposition herausfährt. Der \textit{Impuls} gi
 ausfährt.
 
 Der Parameter \textit{Totzeit} gibt die Zeit an, die gewartet wird, bis der Pusher herausfährt obwohl er schon das
-Signal zum ausfahren erhalten hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe
+Signal zum Ausfahren erhalten hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe
 wird ab dem Mittelpunkt der Wiegeeinheit gerechnet.
 
 Für die Inputparameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle die
 genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Parameter. Sie sind in der
 Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} definiert.
 
-Alle Eingabe-Parameter sind in diesem Fall vom Kunden abhängig und desshalb problemlos Recherchierbar beziehungsweise
+Alle Eingabe-Parameter sind in diesem Fall vom Kunden abhängig und deshalb problemlos recherchierbar beziehungsweise
 abgelegt und gespeichert.
 
 In der noch leeren Excel-Tabelle muss man nun in den Spalten die Eingabeparameter aber auch die vorhersagbaren Parameter
@@ -104,7 +104,7 @@ möglich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Ein
 dienen kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
 
 In Watson Studio liegt mit den \textit{Data Refinery flows} ein einfaches Werkzeug bereit, um Dateien in das benötigte
-CSV-Format zu überführen. Dazu kann der Nutzer in der Kategorie Data Flows über \texttt{New Data Refinery flow} ein
+CSV-Format zu überführen. Dazu kann der Nutzer in der Kategorie Data Flows über \texttt{New Data Refinery flow} einen
 neuen Flow anlegen.
 
 Im Folgenden öffnet sich der Wizzard zum Erstellen des Flows. Der Nutzer muss im linken Bereich die umzuwandelnde Datei
@@ -123,7 +123,7 @@ Spaltenüberschriften. Sollte diese Einstellung nicht voreingestellt sein, muss 
     \label{fig:umsetzung_data_flow}
 \end{figure}
 
-Dazu Klickt man in der entsprechenden Spalte oben, rechts neben dem Spaltenname, auf die drei Punkte (Einstellungen) und
+Dazu klickt man in der entsprechenden Spalte oben rechts neben dem Spaltenname, auf die drei Punkte (Einstellungen) und
 selektiert den Eintrag \texttt{Convert Column}. Im Untermenü muss man dann den Wert \texttt{Decimal} bestätigen. Nun
 werden die Zahlen in der Spalte auch korrekt als Dezimal-Zahl interpretiert.
 
@@ -173,13 +173,13 @@ Genau wie das Import-Modul kann man dieses mit der Maus in einen freien Bereich 
 ist das Modul Teil des Prozesses und der Entwickler kann es konfigurieren.
 
 Damit das neuronale Netz die importierten Datensätze nutzen kann, wird eine Verbindung zwischen dem
-\textit{Import-Modul} und dem \textit{Neural-Net-Modul} aufgebaut. Mit einen Klick auf den Ausgang des Import-Moduls
+\textit{Import-Modul} und dem \textit{Neural-Net-Modul} aufgebaut. Mit einem Klick auf den Ausgang des Import-Moduls
 startet man eine Verbindungslinie.
 
 Mit einem anschließenden Klick auf den Eingang des Neural-Net-Modul kann man die Verbindung fertig aufbauen. Die
 Verbindung wird nun über eine durchgezogene Linie zwischen den beiden Modulen visualisiert.
 
-Bei einer Verbindung wird der Output eines Modules an das mit einer visualisierten Linie verbundenen Modul
+Bei einer Verbindung wird der Output eines Modules an das mit einer visualisierten Linie verbundene Modul
 weitergegeben. Dieses Folgemodul kann die Werte dann als Eingabevariablen nutzen. Einen Ausgang kann man mit mehreren
 Eingängen verbinden. Dabei stehen dann allen weiteren Modulen die gleichen Werte zur Verfügung.
 
@@ -199,7 +199,7 @@ veranschaulicht die Konfiguration.
 \end{figure}
 
 Die Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} zeigt die auszuwählenden Tabellenspalten für
-die jeweilige Kategorie. Die Targets beschreiben die Variablen, welche durch den Watson Service Vorhergesagt werden
+die jeweilige Kategorie. Die Targets beschreiben die Variablen, welche durch den Watson Service vorhergesagt werden
 sollen. Die Inputs definieren die Größen, durch welche eine Vorhersage überhaupt möglich ist.
 
 Dem resultierenden, trainierten Modell werden zu einem späteren Zeitpunkt die Inputs übergeben und die Targets kommen
@@ -271,7 +271,7 @@ Für die Tabelle ist keine weitere Konfiguration notwendig.
 Ein Rechtsklick auf das Table-Modul öffnet das Kontextmenü des Moduls. Darüber lässt sich der Punkt
 \texttt{Save branch as a model} anklicken. Dieser ermöglicht es, das trainierte Modell zu exportieren.
 
-In dem sich öffnenden Fenster muss man den Namen und eine optinale Beschreibung für das neue Modell definieren. Mit
+In dem sich öffnenden Fenster muss man den Namen und eine optimale Beschreibung für das neue Modell definieren. Mit
 einem Klick auf den Button \texttt{Save} wird das Modell gespeichert und es erscheint im Watson Studio Dashboard.
 
 In der Abbildung~\ref{fig:umsetzung_model_flow} auf Seite~\pageref{fig:umsetzung_model_flow} ist der vollständige Aufbau

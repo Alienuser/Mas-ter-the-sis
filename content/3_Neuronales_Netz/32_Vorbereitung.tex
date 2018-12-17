@@ -61,7 +61,7 @@ erscheint er später im IBM Cloud Dashboard. Anschließend muss der Entwickler d
 Service zur Verfügung steht. Über die Region wird das Rechenzentrum und somit auch der Kontinent definiert, in welchem
 der Service läuft.
 
-Die Beste Konfiguration für die Architektur sieht vor, dass sich die genutzten Services und Runtimes in der gleichen
+Die beste Konfiguration für die Architektur sieht vor, dass sich die genutzten Services und Runtimes in der gleichen
 Region befinden, damit die Kommunikation ohne große Latenz abläuft.
 
 Ebenso muss man die Ressourcengruppe und die Organisation auswählen, in die der Service gespeichert wird. Da es aktuell
@@ -71,7 +71,7 @@ Mit einem Klick auf \texttt{Erstellen} instanziiert man den Service und es erfol
 Dashboard. Dort erscheint der Service mit dem eingetragenen Namen in der Liste der \textit{Services}.
 
 Über das Dashboard kann man die Übersichtsseite des Watson Studio Service durch einen Klick auf den Namen öffnen. Auf
-der folgenden Seite finden sich Hinweise über die Funktionenweiße des Services. Über die Schaltfläche
+der folgenden Seite finden sich Hinweise über die Funktionsnweiße des Services. Über die Schaltfläche
 \texttt{Get Started} wechselt der Nutzer dann in das Watson Studio Dashboard.
 
 \subsubsection{Einrichtung über die CLI}
@@ -89,7 +89,7 @@ Anschließend erfolgt der Login über den folgenden Befehl in der selben Shell:
 \end{lstlisting}
 
 Der Parameter \texttt{sso} bewirkt, dass der Login über ein sich öffnendes Browserfenster erfolgt. Dies ermöglicht einen
-bequemen Login ohne eingabe des Passwortes in die Kommandozeile.
+bequemen Login ohne Eingabe des Passwortes in die Kommandozeile.
 
 Nach einem erfolgreichen Login, muss der Nutzer die Organisation auswählen, welche er nutzen möchte. Dies geschieht über
 die Eingabe der entsprechenden Nummer der Organisation, welche am linken Rand zu sehen ist. Der Login-Vogang ist damit
@@ -98,10 +98,10 @@ abgeschlossen.
 Der Benutzer kann nun eine neue Instanz des \textit{Watson Studio}-Service mit dem folgenden Befehl erstellen:
 
 \begin{lstlisting}[caption=Instanziierung des Watson Studio Services, label=ls:vorbereitung_watsonservice]
-    $ ibmcloud cf create-service Watson-Studio lite sercive_name
+    $ ibmcloud cf create-service Watson-Studio lite service_name
 \end{lstlisting}
 
-Für den Parameter \texttt{service\_name} muss man einen Name eingetragen, unter welchem der Service aufrufbar ist.
+Für den Parameter \texttt{service\_name} muss man einen Namen eintragen, unter welchem der Service aufrufbar ist.
 Dieser Name muss für die komplette IBM Cloud Region einzigartig sein.
 
 Über den Befehl \texttt{cf services} kann man alle instanziierten Services, welche sich in der vorher ausgewählten
@@ -115,7 +115,7 @@ Der vorher erstellte Service sollte nun mit dem selbst definierten Namen in der 
 
 \subsubsection{Projekt einrichten}
 Abschließend muss man ein Projekt im Watson Studio Service anlegen. Dieses bündelt alle Daten und Informationen an einem
-gemeinsamen Ort um diese besser Verwalten zu können. Um ein Projekt zu erstellen, muss man das Watson Studio Dashboard
+gemeinsamen Ort um diese besser verwalten zu können. Um ein Projekt zu erstellen, muss man das Watson Studio Dashboard
 über das IBM Cloud Dashboard aufrufen.
 
 Die Schlatfläche \texttt{New project} legt im Watson Studio Dashboard ein neues Projekt an. Auch hier muss man einen
@@ -124,7 +124,7 @@ Namen für das Projekt definieren und anschließend einen \textit{Local Storage}
 Die Einrichtung des Local Storages geschieht über einen Mini-Wizzard auf der rechten Seite. Dabei muss man lediglich
 einen Namen für diesen eintragen und diesen dann bestätigen.
 
-Das Projekt kann man über die Schaltfläche \texttt{Create} speichern und es wird für den Nutzer feftig eingerichtet.
+Das Projekt kann man über die Schaltfläche \texttt{Create} speichern und es wird für den Nutzer fertig eingerichtet.
 
 Ein angelegtes Projekt kann man mit mehreren Personen, welche allerdings über ein IBM Cloud Konto verfügen müssen,
 teilen. So haben alle Teammitglieder zugriff auf alle dort gespeicherten Informationen und Daten. Auch ein
@@ -133,7 +133,7 @@ kollaboratives Arbeiten ist so möglich.
 \subsection{Node.js Runtime}
 \label{ssc:nodejs_runtime}
 Für die Erstellung der Node.js-Applikation benötigt man eine entsprechende Runtime in der IBM Cloud. Für die Runtime
-nutzt man am Einfachsten einen vorkonfigurierten Cloud Foundry Container mit Node.js-Boilerplate. Für die Erstellung
+nutzt man am einfachsten einen vorkonfigurierten Cloud Foundry Container mit Node.js-Boilerplate. Für die Erstellung
 des Containers existieren ebenfalls zwei Möglichkeiten.
 
 Im vorangegangenen Kapitel wurden beiden Möglichkeiten (über den IBM Cloud Katalog und über die Kommandozeile)
@@ -157,7 +157,7 @@ erstellen URL zeigt eine Standardseite der IBM Cloud mit einem kleinen Logo an.
 
 \subsection{API Connect}
 \label{subsec:vorbereitung_apiconnect}
-Um im Weiteren Verlauf den API-Gateway \textit{API Connect} zu nutzen, muss man diesen ebenfalls in der IBM Cloud
+Um im weiteren Verlauf den API-Gateway \textit{API Connect} zu nutzen, muss man diesen ebenfalls in der IBM Cloud
 instanziieren. Wie auch in den beiden vorangegangenen Kapiteln kann man die Instanziierung sowohl über die CLI als auch
 über den IBM Cloud Katalog einleiten.
 
@@ -182,7 +182,7 @@ Unter macOS steht ein grafisches Installationsprogramm\footnote{https://sourcefo
 Verfügung.
 
 \subsection{Node.js und npm}
-Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Entwicklungsrechner benötigt man ein
+Für die Entwicklung und die damit verbundenen Tests und Probeläufe auf dem Entwicklungsrechner benötigt man eine
 installierte Node.js Instanz. Die Installation der zur Zeit aktuellsten LTS-Version (10.13.0) erfolgt unter Linux über
 die folgenden Kommandos:
 
