@@ -34,7 +34,7 @@ ausliefern. Dies bedeutet allerdings, dass man ein Dockerimage bauen muss, welch
 Repository lädt.
 
 Eine sehr einfache Möglichkeit ist das Nutzen eines Cloud Foundry Containers. Für diese gibt es, genau wie für
-Dockerimages, zahlreiche Buildpacks. Ein Buildpack enthält eine NodeJS-Runtime, mit der man die Angular-Anwendung
+Dockerimages, zahlreiche Buildpacks. Ein Buildpack enthält eine Node.js-Runtime, mit der man die Angular-Anwendung
 problemlos ausliefern lassen kann.
 
 Zudem ermöglicht der Cloud Foundry Container vereinfachten Zugriff auf die Cloud Foundry
@@ -44,8 +44,8 @@ auf die man über die VCAP-Variablen zugreifen kann.
 Über diese Variablen kann man zum Beispiel Zugangsdaten für die Verbundenen Cloud Services auslesen, um diese nicht in
 die Anwendung eintragen zu müssen.
 
-\subsection{Smartphone App}
-Eine Möglichkeit ist die Entwicklung nativer Smartphone Apps mit der jeweiligen Programmiersprache und einer
+\subsection{Smartphone-App}
+Eine Möglichkeit ist die Entwicklung nativer Smartphone-Apps mit der jeweiligen Programmiersprache und einer
 anschließenden installation auf einem Endgerät. In diesem Fall müsste man zwei seperate Apps entwickeln.
 
 Der Nachteil der Variante ist die Tatsache, dass man bei jeglicher Änderungen am Design oder Anpassungen der
@@ -53,10 +53,10 @@ REST-Schnittstelle eine neue Version der beiden Apps entwickeln und sie neu im e
 muss.
 
 Alternativ kann man eine native App für die jeweiligen Systeme bauen, welche allerdings als Layout eine Vollbild WebView
-enthält. Dies ermöglicht das laden des aktuellen Web-Frontends aus dem Internet und eine anschließende Darstellung in
+enthält. Dies ermöglicht das Laden des aktuellen Web-Frontends aus dem Internet und eine anschließende Darstellung in
 der App. Dem Nutzer wird suggeriert, dass er eine komplett nativ geschriebene App nutzt.
 
-Sofern die App ähnlich einer Smartphone App gebaut und designt ist und sich ähnlich verhält, wird dem Endnutzer dieser
+Sofern die App ähnlich einer Smartphone-App gebaut und designt ist und sich ähnlich verhält, wird dem Endnutzer dieser
 Unterschied allenfalls in der Geschwindigkeit der App auffallen. Diese ist gerade beim Start etwas langsamer, da die
 App die komplette Webseite herunterladen muss.
 
@@ -89,4 +89,4 @@ diesen besitzen.
 
 Aus diesem Grund ist es sinnvoller das Google Material Design\footnote{https://material.angularjs.org/latest} zu nutzen.
 Für Angular existiert eine Bibliothek, welche die Material-Design Spezifika\footnote{https://material.io/guidelines} in
-Komponenten umsetzt und zum einfachen kopieren zur Verfügung stellt.
+Komponenten umsetzt und zum einfachen Kopieren zur Verfügung stellt.

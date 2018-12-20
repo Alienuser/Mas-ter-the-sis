@@ -438,7 +438,7 @@ Das Deployment ist nun erfolgreich erstellt und man kann es im Weiteren testen u
 
 \subsubsection{Deployment testen}
 Ein Test des eingerichteten Deployments ist über das Watson Studio Dashboard möglich. Dies hat den Vorteil, dass man das
-Deployment direkt testen und bei Fehlveralten neu trainiert kann. Auch benötigt man für den Test keine externe Software.
+Deployment direkt testen und bei Fehlverhalten neu trainiert kann. Auch benötigt man für den Test keine externe Software.
 
 Auf der Deploymentseite des gespeicherten Modells genügt ein Klick auf den Namen um die Deploymentinformationen
 anzuzeigen. Hier findet sich der Menüpunkt \texttt{Test}. Mit diesem öffnet sich eine zweispaltige Ansicht.
@@ -485,7 +485,7 @@ Dieser Token stellt sicher, dass es sich um einen gültigen Aufruf handelt.
 Über die REST-Schnittstelle des Watson Studios wird ein neuer Token generiert. Dabei handelt es sich um eine andere
 Schnittstelle als die vom selbst erstellten Webservice. Der Token ist für immer nur maximal vier Stunden gültig.
 
-Um einen Auth-Token zu erstellen, muss man den Watson Studio Benutzername und das zugehörige Passwort an die
+Um einen Auth-Token zu erstellen muss man den Watson Studio Benutzername und das zugehörige Passwort an die
 Schnittstelle übergeben. Ein Beispielaufruf ist in Listing~\ref{ls:umsetzung_apitoken} auf
 Seite~\pageref{ls:umsetzung_apitoken} zu sehen. Der Token ist dabei in einem JSON-Objekt im Rückgabewert enthalten.
 
@@ -493,7 +493,7 @@ Seite~\pageref{ls:umsetzung_apitoken} zu sehen. Der Token ist dabei in einem JSO
 $ curl --basic --user USERNAME:PASSWORD https://eu-gb.ml.cloud.ibm.com/v3/identity/token
 \end{lstlisting}
 
-Die Parameter \texttt{USERNAME} und \texttt{PASSWORD} muss man durch die entsprechenden Werte ersetzen. Im folgenden
+Die Parameter \texttt{USERNAME} und \texttt{PASSWORD} muss man durch die entsprechenden Werte ersetzen. Im Folgenden
 mehr dazu.
 
 In Postman kann man diesen Aufruf über die Eingabe der URL und dem HTTP-Type \texttt{GET} machen. Im Reiter
@@ -547,7 +547,7 @@ Im Eingabe-Parameter \textit{values} muss man ebenfalls die Output-Parameter def
 spielen, kann man diese mit den Werten \textit{null} initialisieren. Damit werden sie vom System nicht weiter verwendet.
 
 Auf der Übersichtsseite des REST-Interfaces des
-Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337}, sind noch weitere
+Deployments\footnote{https://watson\-ml\-api.mybluemix.net/?cm\_mc\_uid=61889453441915363064337} sind noch weitere
 Endpunkte und die dafür benötigten Parameter sowie die Rückgabewerte ersichtlich.
 
 \subsection{TensorFlow.js}
@@ -560,7 +560,7 @@ Die TensorFlow.js Applikation kann man zum Beispiel in einen Cloud Foundry Conta
 unabhängig von der Plattform auf der sie läuft. Auch kann man sie modular und schnell in beliebigen Regionen
 instanziieren.
 
-Ein weiterer Vorteil ist die Unabhängigkeit, welche man damit erreicht. Der Entwickler kann die Applikation selbst
+Ein weiterer Vorteil ist die dadurch erreichbare Unabhängigkeit. Der Entwickler kann die Applikation selbstständig
 verwalten, instanziieren oder auch aktualisieren.
 
 Natürlich ist es ebenfalls möglich die TensorFlow.js Applikation direkt in die eigene Hauptapplikation zu integrieren
@@ -616,7 +616,7 @@ Die \textit{express}-Bibliothek unterstützt bei der Entwicklung eines Web-Serve
 Port 80 ansprechen kann. Der \textit{body-parser} kümmert sich um das Auslesen der übergebenen Parameter an die
 Schnittstelle oder das Bündeln der Rückgabewerte -- also um den Umgang mit JSON-Objekten.
 
-Die TensorFlow-Bibliotheken \textit{tfjs} und \textit{tjfs-node} sind für die Verwarbeitung von neuronalen Netzen,
+Die TensorFlow-Bibliotheken \textit{tfjs} und \textit{tjfs-node} sind für die Verarbeitung von neuronalen Netzen,
 die Übergabe von Parametern an Modelle und das Bereitstellen von heruntergeladenen neuronalen Netzen verantwortlich.
 
 Da Node.js und damit der Paketmanager npm schon installiert ist, kann der Entwickler mit \textit{npm init} ein neues 
@@ -628,7 +628,7 @@ Hinter den einzelnen Bibliotheken kann man direkt die Version definieren, welche
 den Versionsnummern ein \textbf{\^}-Symbol. Dies bedeutet, dass die Version, welche heruntergeladen werden soll, zu der
 angegebenen Version kompatibel sein muss.
 
-Also kann das System durchaus eine neuere Version herunterladen, stellt aber sicher, dass die andere Version vollstens
+Also kann das System durchaus eine neuere Version herunterladen, stellt aber sicher, dass die neuere Version vollstens
 Kompatibel mit der geforderten ist.
 
 Auch werden in der Datei der Name, eine Beschreibung und die Version des Projektes angegeben. Außerdem kann man Skripte
@@ -638,9 +638,9 @@ In Listing~\ref{ls:umsetzung_package} auf Seite~\pageref{ls:umsetzung_package} i
 ersichtlich, welche die vier Bibliotheken als Abhängigkeit entählt und ein paar wenige Parameter wie Name, Beschreibung,
 Version und verwendete Lizenz angibt. 
 
-Auch ist ein script mit dem Namen \textit{start} angegeben. Dies kann man später mit dem Befehl \textit{npm start}
+Auch ist ein Skript mit dem Namen \textit{start} angegeben. Dies kann man später mit dem Befehl \textit{npm start}
 starten. Die definition für den Startbefehl kümmert sich anschließend darum, dass intern der Befehl
-\textit{node server.js} ausgeführt wird. Die \textit{server.js}-Datei wird nun im Weiteren erstellt.
+\textit{node server.js} ausgeführt wird. Nun muss man die \textit{server.js}-Datei erstellen.
 
 \begin{lstlisting}[language=JSON, caption=Die komplette package.json, label=ls:umsetzung_package]
 {
@@ -681,8 +681,8 @@ Seite~\pageref{ls:umsetzung_serverjs} zu sehen. In den ersten drei Zeilen der Da
 in das Programm geladen um sie für andere Routinen verfügbar zu machen. Der Express-Server, der Body-Parser und die
 TensorFlow.js-Runtime sind somit einsatzbereit.
 
-In der fünften Zeile wird in der Variable \textit{app} die Instanz des Express-Servers gespeichert. Somit kann man
-diesen über die Variable konfigurieren.
+In der fünften Zeile speichert man in der Variable \textit{app} die Instanz des Express-Servers. Somit kann man diesen
+über die Variable weiter konfigurieren.
 
 \begin{lstlisting}[language=JavaScript, caption=Die komplette server.js, label=ls:umsetzung_serverjs]
 const express = require('express');
@@ -703,11 +703,11 @@ app.listen(80, () => {
 });
 \end{lstlisting}
 
-Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken kann und
-man diese dann auch verwenden kann. Andernfalls müssten alle Anfragen durch ein API-Gateway gesondert geparst werden.
+Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken und man
+diese anschließend auch verwenden kann. Andernfalls müssten man alle Anfragen durch ein API-Gateway gesondert parsen.
 
-Durch die Zeilen neun bis zwölf wird ein Endpunkt für den Express-Server definiert, welcher in einem weiteren Schritt
-mit der TensorFlow.js Logik gefüllt wird. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ
+Durch die Zeilen neun bis zwölf definiert man einen Endpunkt für den Express-Server, welchen man in einem weiteren
+Schritt mit der TensorFlow.js Logik befüllt. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ
 ist \textit{POST} angegeben. Somit kann man Daten an den Endpunkt schicken.
 
 Mit der Zeile elf werden alle Daten und Informationen, welche an den Endpunkt geschickt werden, auch wieder
@@ -717,8 +717,8 @@ dies zum Beispiel mit dem Programm Postman verifizieren.
 Die letzten drei Zeilen lassen den Express-Server auf Port 80 starten und geben Auskunft darüber, dass der Start des
 Servers erfolgreich war. Diese Information wird in der Konsole ausgegeben.
 
-Im Weitern kann man nun die Zeile zehn so erweitern, dass die mitgeschickten Daten auch an das heruntergeladene
-neuronale Netz übergeben werden. Das wird durch die Hilfe der TensorFlow.js und der Body-Parser-Bibliothek ermöglicht.
+Im Weitern kann man nun die Zeile zehn so erweitern, dass man die mitgeschickten Daten auch an das heruntergeladene
+neuronale Netz übergibt. Das wird durch die Hilfe der TensorFlow.js und der Body-Parser-Bibliothek ermöglicht.
 
 In Listing~\ref{ls:umsetzung_tensorflow} auf Seite~\pageref{ls:umsetzung_tensorflow} sind alle Änderungen für den Einbau
 des TensorFlow.js-Wrappers aufgeführt.
@@ -795,7 +795,7 @@ ersichtlich.
 \end{figure}
 
 Im Bereich \texttt{Nachdenken} steht ein Issue-Tracker bereit, mit dem man Bugs (Softwarefehler), eingetragen,
-verwalten und diskutieren kann. Auch ist es Möglich anstehende Aufgaben auf Mitglieder zu verteilen.
+verwalten und diskutieren kann. Auch ist es möglich anstehende Aufgaben auf Mitglieder zu verteilen.
 
 In \texttt{Codieren} stehen gleich zwei Kacheln zur Verfügung. Einerseits das konfigurierte Git-Repository, bei dem es
 sich um ein auf IBM-Servern gehostetes GitLab handelt. Andererseits findet sich dort eine Web-IDE auf Basis von Eclipse
@@ -854,29 +854,29 @@ aufrufen kann, werden beide Abfragen in API Connect gebündelt.
 
 Ein weiterer Grund für das Bündeln der beiden Anfragen an den Watson Service ist das Mitschicken des Benutzernamens und
 des zugehörigen Passwortes zum Generieren des Tokens. Damit diese Daten nicht in der zu entwickelnden Anwendung
-hinterlegt werden müssen, kann man diese Zentral in API Connect speichern. Das hat den Vorteil, dass man sie bei Bedarf
-nur an einer zentralen Stelle abändern muss.
+hinterlegt werden müssen, kann man diese in API Connect speichern. Das hat den Vorteil, dass man sie bei Bedarf nur an
+einer gemeinsamen Stelle abändern muss.
 
-Desweiteren ist es relativ einfach, Daten auszulesen, die von einer Anwendung an die Schnittstelle geschickt werden.
-Dies ermöglicht es Angreifern, die Daten für andere Zwecke zu missbrauchen.
+Desweiteren ist es relativ einfach Daten auszulesen, die von einer Anwendung an eine Schnittstelle geschickt werden.
+Dies ermöglicht es Angreifern die Daten für andere Zwecke zu missbrauchen.
 
-Ein weiterer Vorteil für die Nutzung von API Connect ist die Bündelung von mehreren Schnittstellen, um Vorhersagen zu
+Ein weiterer Vorteil für die Nutzung von API Connect ist die Bündelung von mehreren Schnittstellen um Vorhersagen zu
 beziehen. Aktuell ist es möglich, die Vorhersage aus dem Deployment des Watson Studio Modells zu beziehen oder die
 entwickelte Node.js Applikation mit TensorFlow.js zu nutzen.
 
 Mittels API Connect kann man die Aufrufe optimal verteilen oder eigene Routen für eine jeweilige Schnittstelle bauen.
-Außerdem kann man Änderungen schnell und kompfortabel in einem Online-Editor anpassen.
+Außerdem kann man Änderungen schnell und komfortabel in einem Online-Editor durchführen.
 
-Die Anpassung der Routen in API Connect bedürfen keinerlei Programmierkenntnisse uns sind sehr schnell umgesetzt und in
-Echtzeit veröffentlicht und nutzbar.
+Die Anpassung der Routen in API Connect bedürfen keinerlei Programmierkenntnisse, sind sehr schnell umgesetzt und in
+Echtzeit veröffentlicht sowie nutzbar.
 
 \subsubsection{API Connect einrichten}
 Der in Kapitel~\ref{subsec:vorbereitung_apiconnect} auf Seite~\pageref{subsec:vorbereitung_apiconnect} instanziierte
-Service wird im folgenden konfiguriert und eingerichtet. Dazu muss man ihn aus dem IBM Cloud Dashboard heraus aufrufen.
-Nach dem Klick auf den Service-Namen erscheint eine Seite mit hilfreichen Informationen zum Service.
+Service wird im Folgenden konfiguriert und eingerichtet. Dazu muss man ihn aus dem IBM Cloud Dashboard heraus aufrufen.
+Nach dem Klick auf den Service-Namen erscheint eine Seite mit hilfreichen Informationen zu diesem Service.
 
-Über die Schaltfläche \texttt{Open API Connect} gelangt man auf das API Connect Dashboard. In diesem muss man zuerst ein
-automatisch angelegten Katalog benennen. In diesem Katalog werden alle Informationen zur API gespeichert.
+Über die Schaltfläche \texttt{Open API Connect} gelangt man auf das API Connect Dashboard. In diesem muss man zuerst
+einen automatisch angelegten Katalog benennen. In diesem Katalog werden alle Informationen zur API gespeichert.
 
 Veröffentlichte APIs werden automatisch in diesem Katalog aufgelistet. Nach der fertigen Einrichtung des Kataloges
 gelangt man über einen Klick auf \texttt{Entwürfe} auf die Entwurfsübersicht.
@@ -974,7 +974,7 @@ Als \textit{HTTP-Methode} muss \texttt{GET} ausgewählt sein. In der Schnittstel
 diesem Endpunkt lediglich diese Operation.
 
 Als letzte Einstellung muss man als \textit{Antwortobjektvariable} die Bezeichnung \enquote{newtoken} eintragen. Die
-Konfiguration des Modules ist damit abgeschlossen und es kann mit den nächsten Modulen fortgefahren werden.
+Konfiguration des Modules ist damit abgeschlossen und man kann mit den nächsten Modulen fortfahren.
 
 Da die Schnittstelle des Watson Studios den Auth-Token als Rückgabeparameter besitzt, muss man diesen in API Connect
 speichern und allgemein zur Verfügung stellen. Dies kann nur über das Modul \texttt{Zuordnen} erfolgen.
@@ -1088,7 +1088,7 @@ eingerichtete API Connect Flow dargestellt. Dieser umfasst alle notwendigen Modu
     \label{fig:umsetzung_api_connect}
 \end{figure}
 
-Über den Play-Button am linken oberen Rand, kann man die aktuelle Konfiguration des API Connect Services bauen lassen.
+Über den Play-Button am linken oberen Rand kann man die aktuelle Konfiguration des API Connect Services bauen lassen.
 Als Katalog sollte man den anfangs angelegten Katalog definieren. Im Bereich Produkt muss der Nutzer ein Neues anlegen.
 
 Bei dem Produkt handelt es sich um einen Namen für den Service. Die API läuft später unter diesem Produkt-Namen und
@@ -1116,7 +1116,7 @@ Watson-Deployment und der Endpunkt \textit{predict-tensorflow} für den Node.js 
 den HTTP-Type \textit{POST} definiert sein.
 
 Außerdem könnte in diesem Bereich nach einem Endpunkt gesucht oder die Endpunkte sortiert werden. Jeder Eintrag der
-Liste ist markierbar, sodass daraufhin die mittlere Ansicht, zum jeweiligen Bereich automatisch scrollt.
+Liste ist markierbar, sodass daraufhin die mittlere Ansicht zum jeweiligen Bereich automatisch scrollt.
 
 Auch kann man der mittleren Spalte für jeden Endpunkt Informationen zu den verwendeten und produzierten Datentypen
 entnehmen. Diese Informationen kann man bei der Konfiguration des API-Endpunktes angeben. Dies ist in
@@ -1163,14 +1163,14 @@ Seite~\pageref{fig:umsetzung_developer_toolkit} veranschaulicht die erscheinende
 \end{figure}
 
 Zuallererst muss man laut der Anleitung das Programm \textit{API Connect} mittels npm herunterladen und installieren.
-Anschließens wird über die Funktion \textit{loopback} eine neue API auf dem lokalen API Connect Service eingerichtet.
+Anschließend wird über die Funktion \textit{loopback} eine neue API auf dem lokalen API Connect Service eingerichtet.
 Der Wizzard führt einen durch die benötigte Konfiguration.
 
 Nun kann man die Web-Oberfläche des lokalen API Connect starten und seine erstellte, noch leere API, sehen. Anschließend
 muss man nur noch die Konfigurations-Datei der online erstellten API kopieren und in den lokalen Service einfügen, damit
 beide Instanzen den selben Inhalt haben.
 
-Über den Menüpunkt \texttt{Run Your API}, gelangt man auf eine weitere Anleitung, welche das Starten und zur Verfügung
+Über den Menüpunkt \texttt{Run Your API} gelangt man auf eine weitere Anleitung welche das Starten und zur Verfügung
 stellen der lokal erstellten API erläutert.
 
 Im letzten Schritt, welchen man über die Schaltfläche \texttt{Publish Your API to IBM Cloud} erreicht, wird Schritt für
@@ -1194,7 +1194,7 @@ und Kommandos direkt herauskopieren um diese ausführen.
 Wie in der Einleitung des Kapitels erwähnt, soll ein Test zeigen ob das selbe trainierte Modell unter verschiedenen
 Implementierungen die selben Werte als Vorhersage errechnet oder ob es dabei unterschiede geben kann.
 
-Ein einfacher Test kann klarheit über dieses Thema geben. Man muss lediglich beide Endpunkte, die der Entwickler über 
+Ein einfacher Test kann klarheit über dieses Frage geben. Man muss lediglich beide Endpunkte, die der Entwickler über
 den API Connect Service angeschlossen hat, nacheinander oder zeitgleich aufrufen.
 
 Wichtig dabei ist lediglich, dass man die selben Parameter für die Vorhersage übergibt um den Test durchzuführen.
