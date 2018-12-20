@@ -59,7 +59,7 @@ Der Parameter \textit{Totzeit} gibt die Zeit an, die gewartet wird, bis der Push
 Signal zum Ausfahren erhalten hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe
 wird ab dem Mittelpunkt der Wiegeeinheit gerechnet.
 
-Für die Inputparameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle die
+Für die Input-Parameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle die
 genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Parameter. Sie sind in der
 Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} definiert.
 
@@ -339,10 +339,10 @@ Abbildung~\ref{fig:umsetzung_model_information} auf der Seite~\pageref{fig:umset
     \label{fig:umsetzung_model_information}
 \end{figure}
 
-Hier findet sich Informationen darüber, wie das trainierte Modell aufgebaut ist oder um welche Art Model es sich
-handelt. Auch die Hiden Layers, die im neuronalen Netz automatisch eingerichtet sind, werden hier angegeben.
+Hier findet sich Informationen darüber, wie das trainierte Modell aufgebaut ist oder um welche Art Modell es sich
+handelt. Auch die Hidden Layers, die im neuronalen Netz automatisch eingerichtet sind, werden hier angegeben.
 
-Weiter ist hier zu finden, mit wie vielen Inputparametern (englisch Number of Predictors) das Netz trainiert ist und wie
+Weiter ist hier zu finden, mit wie vielen Input-Parameter (englisch Number of Predictors) das Netz trainiert ist und wie
 viele Ausgabewerte (englisch Number of Neurons in Output Layer) das Netz vorhersagen kann.
 
 Im Menüpunkt \texttt{Predictor Importance} sind alle Input-Parameter aufgelistet. Ein Balken unterhalb jedes Parameters
@@ -377,13 +377,13 @@ auf~\pageref{fig:umsetzung_model_network_diagram} visualisiert das vorangegangen
 \end{figure}
 
 Die Ansicht kann man über den Slider am rechten Bildschirmrand vergrößern oder verkleinern. Über die Legende am unteren
-Rand, kann man die einzelnen Verbindungen filtern.
+Rand kann man die einzelnen Verbindungen filtern.
 
 So ist es zum Beispiel möglich, dass man sich alle Verbindungen mit hoher Priorität anzeigen lässt. Damit hat der
 Entwickler eine Visualisierung, wie die wichtigsten Eingabeparameter für die entsprechenden Ausgaben sorgen.
 
 Auch kann man sich so anzeigen lassen wie einzelne Werte auf der Eingabeseite einen direkten Einfluss auf einen
-Ausgabewert haben. Im Beispiel der Abbildung hat der Parameter \textit{Leistung} einen direkten und sehr großen
+Ausgabewert haben. Im Beispiel der Abbildung hat der Parameter \textit{Leistung} einen direkten und gewichtigen
 Einfluss auf den Ausgabewert \textit{Bandgeschwindigkeit} (symbolisiert durch eine gelbliche Verbindungslinie).
 
 Bei weiterer Betrachtung ist diese Zusammenhang einläuchtend. Wenn mehr Produkte über die Wiegeeinheit laufen sollen (es
@@ -399,7 +399,7 @@ Produkt auch vom Band stoßen zu können. Das Timing ist an dieser Stelle von gr
 \subsubsection{Deployment erstellen}
 \label{subsec:deployment_erstellen}
 Das in einem vorangegangenen Kapitel erstellte und trainierte Modell kann man im Weiteren in einem Deployment mit einer
-REST-Schnittstelle als einen Webdienst verfügbar machen.
+REST-Schnittstelle als einen Webdienst zur Verfügung stellen.
 
 Dazu ist es erforderlich, das Modell in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
 des Deployments übernimmt dabei automatisch die IBM Cloud. Bei diesem Deployment handelt es sich um ein Cloud Foundry
