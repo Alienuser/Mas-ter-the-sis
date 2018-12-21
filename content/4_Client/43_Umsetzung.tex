@@ -28,16 +28,17 @@ spezifiziert und umgesetzt werden.
 \subsection{Web-Frontend}
 \label{subsec:webseite}
 Als nächstes kann man das Web-Frontend (auch Webseite oder englisch website oder auch client genannt) entwickeln. Um
-nicht mit zahlreiche Iterationen und Anpassungen bei der Entwicklung zu kämpfen, empfiehlt es sich mit der Definition
+nicht mit zahlreichen Iterationen und Anpassungen bei der Entwicklung zu kämpfen, empfiehlt es sich mit der Definition
 von möglichen Use-Cases -- also mit der Definition von Aktionen eines Endnutzers auf der Webseite -- zu beginnen.
 
-Anschließend sollte man für die einzelnen Use-Cases jeweils eigene Mockups erstellen, die aufzeigen, wie ein Endnutzer
+Anschließend sollte man für die einzelnen Use-Cases jeweils eigene Mockups erstellen die aufzeigen, wie ein Endnutzer
 die einzelnen Aktionen durchführen kann. In einem weiteren Schritt setzt der Entwickler die gebauten Mockups dann in
-Quellcode um, damit ein Prototyp enstehen kann. Diesen könnte man dann mit einer ausgewählten Gruppe testen.
+Quellcode um, damit ein Prototyp entsteht. Diesen könnte man dann mit einer ausgewählten Gruppe testen, um wertvolles
+Feedback zu erhalten.
 
 Ein Test mit ausgewählten Nutzergruppen könnte Aufschluss darüber geben, wie gut der Prototyp bei einem Endnutzer
 ankommt oder wie gut er Nutzbar ist. Dabei sollten man unter anderem auch Maschineneinsteller als Testpersonen
-einsetzen, da dies die Zielgruppe für die Anwendung ist.
+einsetzen, da diese die Zielgruppe für die Anwendung ist.
 
 Damit die Benutzung der Webseite von verschiedenen Endgeräten aus optimal möglich ist, muss man sich im Weiteren
 gedanken über das Thema \textit{Responsive} machen. Wie sich die gebaute Webseite also auf den verschiedenen
@@ -60,7 +61,7 @@ informieren, dass das System arbeitet und der Anwender sich gedulden soll.
 
 Da der Use-Case relativ einfach und schnell definiert werden konnte, kann man als nächstes mit der Erstellung der
 Mockups für diesen beginnen. Es soll eine erste Idee und eine erste Umsetzung für die Anwendung basierend auf dem
-Uee-Case geben.
+Use-Case geben.
 
 \subsubsection{Mockups erstellen}
 Da der Use-Case nun definiert ist, kann man mit der Entwicklung des Mockups beginnen. Dabei ist die Wahl des
@@ -112,7 +113,7 @@ So ist in Abbildung~\ref{fig:umsetzung_mockup_scale_menu} auf Seite~\pageref{fig
 für ein seitliches Menü zusammen mit dem darunterliegenden Inhalt zu sehen, welches über drei beispielhafte Menüeinträge
 verfügt.
 
-Das Menü soll sich beim Aufklappen über den Inhalt legen und den restlichen Bildschirm etwas ausgrauen, sodass für den
+Das Menü soll sich beim Aufklappen über den Inhalt legen und den restlichen Bildschirm etwas ausgrauen sodass für den
 Nutzer ersichtlich ist, dass er am Menü eine Auswahl treffen muss.
 
 Ein Klick in den ausgegrauten Bereich, oder auch auf einen der Menüpunkte, schließt das Menü allerdings wieder, sodass
@@ -160,14 +161,14 @@ Berechnung der Ausgabeparameter angezeigt.
     \label{fig:umsetzung_mockup_scale_responsive}
 \end{figure}
 
-Unter dem Button für das Absenden der Parameter ist die Spalte für die Ausgabeparameter angesiedelt, welche erst
+Unter dem Button für das Absenden der Parameter ist die Spalte für die Ausgabeparameter angesiedelt welche erst
 erscheint, wenn Vorhersagen aus dem Backend zur Verfügung stehen.
 
 So ist der Scrollbalken auf der Webseite nicht unnötig lang und sorgt beim Endnutzer nicht für zusätzliche Verwirrung.
 Auch wird so kein großer leerer Bereich auf der Webseite angezeigt, mit dem der Nutzer nichts anfangen kann.
 
 Auch wird nach der Bestätigung des Buttons automatisch zum Bereich der Ausgabe gescrollt, damit dies nicht manuell
-geschehen muss. Dabei handelt es sich um eine Kompfortfunktion die man allerdings sehr einfach mit JavaScript umsetzen
+geschehen muss. Dabei handelt es sich um eine Komfortfunktion die man allerdings sehr einfach mit JavaScript umsetzen
 kann.
 
 \subsubsection{Webseite umsetzen}
@@ -248,12 +249,12 @@ komplett zu parsen.
 Die einzelnen Werte muss man sich aus dem großen Array herausziehen um es an der passenden Stelle in der richtigen
 Gruppe anzuzeigen.
 
-Das Parsen kann zeitgleich mit der Animation starten. So wird de Endnutzer symbolisiert, dass die Daten schon da sind
+Das Parsen kann zeitgleich mit der Animation starten. So wird dem Endnutzer symbolisiert, dass die Daten schon da sind
 und sie auch gleich sichtbar sind. So muss er nicht noch das Parsing abwarten. Dies erleichtert die Arbeit mit der
-Webseite enorm, da der Endnutzer nicht direkt mit vielen Boxen konfrontiert wird.
+Webseite auch dadurch enorm, als das Endnutzer nicht direkt mit vielen Boxen konfrontiert wird.
 
 Desweiteren ist wichtig zu wissen, dass beim Aufruf der Seite in der Spalte für die Ausgabe noch keine Daten
-bereitstehen. Darum macht die Darstellung des Bereichs keinen Sinn.
+bereitstehen. Darum macht die Darstellung des Bereichs auch keinen Sinn.
 
 Damit der Endnutzer sich schneller auf der Webseite zurecht finden kann, ist die Platzierung von kleinen Icons und
 Beschreibungstexten an den verschiedenen Boxen sinnvoll. So weiß der Nutzer direkt, was er in welcher Box machen oder
@@ -373,7 +374,7 @@ Beispielhaft soll man sich folgendes Szenario vor Augen führen. Ein Endnutzer �
 Webseite um eine Vorhersage zu tätigen. Damit er die geforderten Eingabeparameter allerdings eingeben kann, muss er zur
 betreffenden Maschine und die Daten auslesen.
 
-In dem Raum, in dem sich die Maschine befindet, gibt es allerdings keine WLAN Verbindung, worauf die Webseite in den
+In dem Raum, in dem sich die Maschine befindet, besteht allerdings keine WLAN Verbindung, worauf die Webseite in den
 offline Modus geht. Nachdem der Nutzer die Daten eingetragen hat und eine Vorhersage starten will, würde er einfach
 eine Fehlermeldung bekommen, dass das Backend nicht angefragt werden kann.
 
@@ -436,7 +437,7 @@ der Nutzer über keine Internetverbindung verfügt.
 
 Auch wäre es möglich einen dauerhaften Hinweis einzublenden, wenn keine Internetverbindung vorliegt. Dies müsste man
 dann in der \textit{app.component.ts} Datei global machen. Dabei ist entscheidend, dass das nicht mit einem If-Statement
-möglich ist, sondern mit einem Observer gelöst wird.
+möglich ist. Man muss dies mit einem Observer lösen.
 
 Mit einer Snackbar\footnote{https://material.angular.io/components/snack-bar/overview} kann man den entsprechenden
 Hinweis optimal anzeigen und positionieren lassen. Dabei handelt es sich um eine Komponente des Material-Deisgns.
@@ -453,11 +454,11 @@ Auch ist der gebaute Quellcode in einem anderen Ordner als der Teil, welchen man
 nacheinander wenige Schritte notwendig, damit man die gebaute Anwendung auch richtig in den Container schieben kann.
 
 In einem ersten Schritt muss man die Toolchain jedoch erst anlegen. Dies kann man über das Cloud Foundry Dashboard der
-IBM Cloud machen. Dazu geht man auf das IBM Cloud Dashboard und Klickt auf die vorher angelegte Runtime der
+IBM Cloud machen. Dazu geht man auf das IBM Cloud Dashboard und klickt auf die vorher angelegte Runtime der
 Angular-Anwendung.
 
 Nun öffnet sich das Cloud Foundry Dashboard über das man am unteren Bereich auf den Button \texttt{Aktivieren} in der
-Box \texttt{Continous Delivery} Klicken kann. Genau wie in Kapitel~\ref{sub:tollchain_einrichten} auf
+Box \texttt{Continous Delivery} klicken kann. Genau wie in Kapitel~\ref{sub:tollchain_einrichten} auf
 Seite~\pageref{sub:tollchain_einrichten} gelangt man damit auf die Konfigurationsseite der Toolchain.
 
 Jetzt muss man einen Namen für die Toolchain definieren und die Region auswählen. Da auch hier die Standartkonfiguration
@@ -554,7 +555,7 @@ Im nächsten Schritt muss man ein neues Projekt anlegen. Dazu wird zum Beispiel 
 Also Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
 
 Die Android-App muss im Ordner \texttt{/res/layout} ein Layout besitzen, welches als Root-Element ein
-\textit{CoordinatorLayout} enthält und als Kind-Element ein WebView Layout. Diesem Layout wird eine ID zugeteilt, damit
+\textit{CoordinatorLayout} enthält und als Kind-Element ein WebView-Layout. Diesem Layout wird eine ID zugeteilt, damit
 man es aus der Kotlin-Klasse heraus eindeutig identifizieren kann.
 
 Nun kann man im \texttt{/src}-Ordner zwei Kotlin-Klassen anlegen. Eine für die MainActivity, welche die Hauptroutine der
@@ -617,7 +618,7 @@ installieren um sie unter echten Bedingungen zu testen.
 
 \subsubsection{iOS}
 Um eine App für iOS Geräte zu entwickeln, benötigt man die kostenlose IDE Xcode von Apple. Diese steht lediglich für
-macOS-Geräte zur Verfügung und man kann sie im
+macOS-Geräte zur Verfügung und man kann sie nur im
 App-Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835} herunterladen.
 
 Somit kann man iOS Apps lediglich unter macOS und Xcode schreiben, kompilieren und testen. Dies stellt eine sehr große
