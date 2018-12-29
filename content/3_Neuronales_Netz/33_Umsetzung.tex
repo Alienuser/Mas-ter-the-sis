@@ -318,9 +318,9 @@ handelt es sich um den Determinationskoeffizient. Dieser ist eine wichtige Kennz
 Regression. Weitere Informationen sind auf der Wikipedia-Seite\footnote{https://de.wikipedia.org/wiki/Bestimmtheitsmaß}
 ersichtlich.
 
-Der nächste Wert entspricht der \enquote{Mittleren quadratische Abweichung} (englisch Mean Squared Error). Dies ist der
-Durchschnitt der quadrierten Fehler. Als Fehler ist die Differenz der vorhergesagten Werte und der tatsächlichen Werte
-definiert.
+Der nächste Wert entspricht der \enquote{Mittleren quadratische Abweichung} (oder englisch Mean Squared Error). Dies ist
+der Durchschnitt der quadrierten Fehler. Als Fehler ist die Differenz der vorhergesagten Werte und der tatsächlichen
+Werte definiert.
 
 Der letzte Wert gibt das \enquote{Mittleres Abweichungsquadrat} (englisch Root Mean Squared Error) an. Dieser Wert ist
 ein Maß für die Unterschiede zwischen Werten, die von einem Modell vorhergesagt werden, und den tatsächlich beobachteten
@@ -329,7 +329,7 @@ Werten.
 In der nächsten Kategorie, Model Viewer, sind Informationen zu den einzelnen Werten des neuronalen Netzes angegeben.
 Im ersten Menüpunkt, dem Model Information, finden sich zahlreiche generellen Informationen zum Modell.
 
-Mit einem Klick auf den entsprechenden Menüpunkt gelangt man in eine Ansicht wie sie in der
+Mit einem Klick auf den entsprechenden Menüpunkt gelangt man in eine Ansicht mit weiteren Informationen, wie sie in
 Abbildung~\ref{fig:umsetzung_model_information} auf der Seite~\pageref{fig:umsetzung_model_information} zu sehen ist.
 
 \begin{figure}[h]
@@ -460,8 +460,8 @@ den online Aufruf des trainierten Modells sichtbar.
 \end{figure}
 
 Das zweite Array, \textit{values}, listet alle an den Webservice gesendeten, wie auch die vorhergesagten Werte (die
-Inputs und die Targets) auf. Die letzten fünf Werte des Arrays entsprechen den Vorhersagen des trainierten Modells (also
-die Targets).
+Inputs und die Targets) auf. Die letzten fünf Parameter des Arrays entsprechen den Vorhersagen des trainierten Modells
+(also den Targets).
 
 Sollte das Array \textit{values} kleiner sein, als das Array \textit{fields}, war das Trainieren des Modells nicht
 erfolgreich und muss wiederholt werden. Das Modell kennt damit keine Targets die es vorhersagen könnte.
@@ -1147,7 +1147,7 @@ Funktion des Endpunktes zu überprüfen ohne ein externes Tool nutzen zu müssen
 
 Bei der Ansicht handelt es sich um eine Darstellung der automatisch generierten Konfigurationsdatei
 (\textit{yaml}-Datei) mit einer Swagger-UI\footnote{https://swagger.io/tools/swagger-ui}, welche IBM optisch angepasst
-hat.
+hat, um dem Design des IBM Cloud Dashboards zu entsprechen.
 
 \subsubsection{Developer Toolkit}
 Ebenfalls über das API Connect Dashboard kann der Entwickler auf den Menüpunkt \texttt{Developer Toolkit} zugreifen.

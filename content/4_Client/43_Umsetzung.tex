@@ -555,8 +555,8 @@ Im nächsten Schritt muss man ein neues Projekt anlegen. Dazu wird zum Beispiel 
 Also Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
 
 Die Android-App muss im Ordner \texttt{/res/layout} ein Layout besitzen, welches als Root-Element ein
-\textit{CoordinatorLayout} enthält und als Kind-Element ein WebView-Layout. Diesem Layout wird eine ID zugeteilt, damit
-man es aus der Kotlin-Klasse heraus eindeutig identifizieren kann.
+\textit{CoordinatorLayout} enthält und als Kind-Element ein einzelnes, natives WebView-Layout. Diesem Layout wird eine
+ID zugeteilt, damit man es aus der Kotlin-Klasse heraus eindeutig identifizieren kann.
 
 Nun kann man im \texttt{/src}-Ordner zwei Kotlin-Klassen anlegen. Eine für die MainActivity, welche die Hauptroutine der
 Anwendung enthält. Die andere ist für den SplashScreen, welcher beim Start der App angezeigt wird. Der Splashscreen
