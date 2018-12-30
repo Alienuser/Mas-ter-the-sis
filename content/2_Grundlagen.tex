@@ -8,7 +8,7 @@ diesem Bereich existieren. Es wird dabei unter anderem auf die Konfiguration der
 eingegangen. Außerdem werden hier die Programme und Konzepzte behandelt, welche in dieser Arbeit benötigt werden.
 
 Im letzten Teil des Kapitels folgt die Beschreibung einer Designidee bei Smartphone-Apps, allgemeine Konzepte der
-Softwareentwicklung und ein Framework zum Entwickeln von Webseiten.
+Softwareentwicklung und ein Framework zur Erstellung von Webseiten.
 
 \section{Bosch Kontrollwaagensystem}
 Die Bosch KWE Serie ist ein modulares Kontrollwaagensystem, welches speziell für den Einsatz in der pharmazeutischen
@@ -28,9 +28,9 @@ Die KWE verfügt über mindestens ein Pusher-System, welches vorbeifahrende, sch
 kann. Dies können zum Beispiel Produkte mit falschem Gewicht oder falschen Abmaßen sein oder alle Produkte, damit sie
 auf ein anderes Förderband fallen.
 
-Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle KWE 4000 mit
-ihrem grundsätzlichen Aufbau, dem farblichen Display und einem Auffangbehälter für alle Produkte, die von dem Pusher vom
-Förderband geschoben wurden.
+Die Abbildung~\ref{fig:grundlagen_boschkwe} auf Seite~\pageref{fig:grundlagen_boschkwe} zeigt eine aktuelle
+KWE 4000\footnote{https://www.pulverhandling.ch/bandkontrollwaage-bosch} mit ihrem grundsätzlichen Aufbau, dem
+farblichen Display und einem Auffangbehälter für alle Produkte, die der Pusher vom Förderband geschoben hat.
 
 \begin{figure}[h]
     \centering
@@ -49,7 +49,7 @@ beiden äußeren Seiten verschließt. Der so geformte Endlosbeutel wird anschlie
 
 Der Behälter wird dann durch zwei Siegelbacken am oberen Ende verschlossen und ein Messer trennt ihn vom Rest des
 Folienbandes ab. Der fertig befüllte Behälter fährt dann über ein Förderband aus der Maschine heraus und kann
-weiterverarbeitet werden.
+durch ein nachfolgendes Modul weiterverarbeitet werden.
 
 Das farbige Display dient zur Konfiguration der Maschine und kann die aktuelle Tätigkeit visualisieren. Auch können über
 das Display alle Funktionen überwacht werden.
@@ -486,7 +486,7 @@ Bei der Toolchain handelt es sich unter anderem um ein \textit{Continuous Integr
 
 \section{TensorFlow.js}
 TensorFlow ist eine Deep Learning Bibliothek welche von Google entwickelt wird. Die Bibliothek wird unter der freien
-Apache 2.0 Lizenz vertrieben und ist sowohl unter allen gängigen Betriebssystemem lauffähig als auch bei den meisten
+Apache 2.0 Lizenz vertrieben und ist sowohl unter allen gängigen Betriebssystemen lauffähig als auch bei den meisten
 Cloud-Anbietern. Diese stellen entweder aktuelle Cloud Foundry Container bereit oder eigene Python-Container.
 
 TensorFlow ist der Nachfolger von Googles erstem Deep Learning Tool \textit{DistBelief}, welcher wiederum aus
@@ -520,12 +520,13 @@ Anwendungskomponente in drei Teile zerlegt. In das oberflächenunabhängige \tex
 Ausgabe zuständige \textit{View} und den für die Interpretation von Eingabeereignissen zuständigen \textit{Controller}.
 
 Der Controller ist in dieser Architektur die Steuerungseinheit. Das Modell beherbergt den Anwendungskern und die View
-die dargestellten Komponenten auf der Anwendung.
+die dargestellten Komponenten der Anwendung.
 
-Ein Controller zusammen mit einer View wird hier auch als eine Oberfläche bezeichnet. (mehr hierzu
+Ein Controller zusammen mit einer View wird hier auch als eine Oberfläche bezeichnet (mehr hierzu
 unter~\cite{book_grundlagen_mvc}).
 
-Es gibt zahlreiche Frameworks, welche das MVC-Patern umsetzen. Angular ist einer der bekanntesten Vertreter.
+Es gibt zahlreiche Frameworks, welche das MVC-Patern umsetzen. Angular ist einer der bekanntesten Vertreter in diesem
+Gebiet.
 
 \subsection{Angular-Material}
 Material Design ist eine von Google entwickelte Designsprache. Durch diese werden die Gestaltungsregeln des klassischen
@@ -603,7 +604,7 @@ DNS-Namens zu IP-Adresse) möglich ist, eine eigene Domain mit der Anwendung zu 
 
 \section{Version Control (Git)}
 Git ist ein verteiltes Versionierungssystem, das frei als Open-Source-Software zur Verfügung steht. Es wird bei der
-Softwareentwicklung für die Versionskontrolle (stetige Protokollierung von Änderungen) von Dateien eingesetzt. (mehr
+Softwareentwicklung für die Versionskontrolle (stetige Protokollierung von Änderungen) von Dateien eingesetzt (mehr
 unter~\cite{book_grundlagen_git}).
 
 \section{Node Package Manager (npm)}
@@ -624,7 +625,7 @@ Mockups können auf dem Papier oder auch computergestützt mit zahlreichen Progr
 Beispiel Balsamiq Mockups\footnote{https://balsamiq.com}.
 
 Bei einem Mockup geht es darum, die verschiedenen Elemente einer Anwendung anzuordnen und einen optimalen Userflow
-zu realisieren . Das Design und etwaige Farben treten in den Hintergrund (mehr unter~\cite{book_grundlagen_mockups}).
+zu realisieren. Das Design und etwaige Farben treten in den Hintergrund (mehr unter~\cite{book_grundlagen_mockups}).
 
 \section{TypeScript}
 Bei TypeScript (kurz TS) handelt es sich um ein Superset von JavaScript. Dies bedeutet, dass TypeScript ebenfalls eine
