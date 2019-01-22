@@ -4,11 +4,11 @@ zeigt die Architektur des Frontends und die Kommunikation mit dem API Connect Se
 als auch die Smartphone-Apps mit dem API-Gateway kommunizieren, um anfallende Anfragen zu vereinheitlichen.
 
 Ein Cloud Foundry Container wird mit einem Node.js-Boilerplate versehen. Mit Hilfe des Boilerplates lassen sich
-Node.js-Applikationen innerhalb des Containerts verwalten und nutzen. Es stellt eine Runtime zur Verfügung, in welcher
+Node.js-Applikationen innerhalb des Containers verwalten und nutzen. Es stellt eine Runtime zur Verfügung, in welcher
 das Frontend laufen kann.
 
 Die Smartphone-Apps werden auf Basis von Android und auch iOS entwickelt. Beide Systeme erhalten innerhalb der App ein
-WebView-Layout, welche für das Laden und das Darstellen der Webseite zuständig ist. Damit ist es einfach, eine schon
+WebView-Layout, welches für das Laden und das Darstellen der Webseite zuständig ist. Damit ist es einfach, eine schon
 erstellte, responsive Webseite optimal für ein Smartphone zu nutzen. Zusätzlich können Feinheiten wie angepasste Layouts
 der einzelnen Systeme übernommen werden.
 
@@ -31,17 +31,17 @@ Als nächstes kann man das Web-Frontend (auch Webseite oder englisch website ode
 nicht mit zahlreichen Iterationen und Anpassungen bei der Entwicklung zu kämpfen, empfiehlt es sich mit der Definition
 von möglichen Use-Cases -- also mit der Definition von Aktionen eines Endnutzers auf der Webseite -- zu beginnen.
 
-Anschließend sollte man für die einzelnen Use-Cases jeweils eigene Mockups erstellen die aufzeigen, wie ein Endnutzer
+Anschließend sollte man für die einzelnen Use-Cases jeweils eigene Mockups erstellen, die aufzeigen, wie ein Endnutzer
 die einzelnen Aktionen durchführen kann. In einem weiteren Schritt setzt der Entwickler die gebauten Mockups dann in
 Quellcode um, damit ein Prototyp entsteht. Diesen könnte man dann mit einer ausgewählten Gruppe testen, um wertvolles
 Feedback zu erhalten.
 
 Ein Test mit ausgewählten Nutzergruppen könnte Aufschluss darüber geben, wie gut der Prototyp bei einem Endnutzer
-ankommt oder wie gut er Nutzbar ist. Dabei sollten man unter anderem auch Maschineneinsteller als Testpersonen
-einsetzen, da diese die Zielgruppe für die Anwendung ist.
+ankommt oder wie gut er nutzbar ist. Dabei sollten man unter anderem auch Maschineneinsteller als Testpersonen
+einsetzen, da diese die Zielgruppe für die Anwendung sind.
 
 Damit die Benutzung der Webseite von verschiedenen Endgeräten aus optimal möglich ist, muss man sich im Weiteren
-gedanken über das Thema \textit{Responsive} machen. Wie sich die gebaute Webseite also auf den verschiedenen
+Gedanken über das Thema \textit{Responsive} machen, also wie sich die gebaute Webseite auf den verschiedenen
 Displaygrößen selbstständig anpasst.
 
 Nachdem man die Webseite dann fertig entwickelt hat, muss man sie noch in einen Container installieren. Dies ist über
@@ -65,7 +65,7 @@ Use-Case geben.
 
 \subsubsection{Mockups erstellen}
 Da der Use-Case nun definiert ist, kann man mit der Entwicklung des Mockups starten. Dabei ist die Wahl des
-Designs auf eine zweispaltige Startseite gefallen. Eine der beiden Spalten beinhaltet die Eingabewerte und die andere
+Designs auf eine zweispaltige Startseite gefallen. Eine der beiden Spalten beinhaltet die Eingabewerte, und die andere
 Spalte beinhaltet die vorhergesagten Argumente, welche das trainierte Modell bestimmt.
 
 In Abbildung~\ref{fig:umsetzung_mockup_scale_1} auf Seite~\pageref{fig:umsetzung_mockup_scale_1} ist eine erste Version
@@ -82,11 +82,11 @@ Backend schickt und anschließend den Output anzeigt.
     \label{fig:umsetzung_mockup_scale_1}
 \end{figure}
 
-Damit man sowohl den Input als auch den Output verbessert anzeigen kann ist es sinnvoll, die beiden Spalten noch weiter
+Damit man sowohl den Input als auch den Output verbessert anzeigen kann, ist es sinnvoll, die beiden Spalten noch weiter
 zu unterteilen. Gerade bei den Eingabewerten gibt es zahlreiche Parameter, die man in Gruppen zusammenfassen kann.
 
-So ist es zum Beispiel möglich die Parameter \textit{Produktbreite}, \textit{Produkthöhe} und \textit{Produkttiefe} zu
-einer Gruppe namens \textit{Produktmaße} zusammen zu fassen.
+So ist es zum Beispiel möglich, die Parameter \textit{Produktbreite}, \textit{Produkthöhe} und \textit{Produkttiefe} zu
+einer Gruppe namens \textit{Produktmaße} zusammenzufassen.
 
 Die Abbildung~\ref{fig:umsetzung_mockup_scale_2} auf Seite~\pageref{fig:umsetzung_mockup_scale_2} zeigt das angepasste
 Mockup mit seinen Gruppen sowohl auf der Input"~ als auch der Output-Seite.
@@ -106,17 +106,17 @@ Menü hinzufügen, über das man auf die anderen Seiten mit Eingabe"~ und Ausgab
 
 Dieses Menü entwickelt man am Besten so, dass es sich aus dem linken Bereich herausschiebt und über ein
 \textit{Hamburger-Menü-Icon}\footnote{https://de.wikipedia.org/wiki/Hamburger-Menü-Icon} zu öffnen ist. Dieses Symbol
-hat mittlerweile Kultstatus erreicht und die meisten Anwender wissen damit umzugehen oder wissen was sie bei einem Klick
+hat mittlerweile Kultstatus erreicht, und die meisten Anwender wissen damit umzugehen oder wissen was sie bei einem Klick
 auf das Icon erwartet.
 
 So ist in Abbildung~\ref{fig:umsetzung_mockup_scale_menu} auf Seite~\pageref{fig:umsetzung_mockup_scale_menu} das Mockup
 für ein seitliches Menü zusammen mit dem darunterliegenden Inhalt zu sehen, welches über drei beispielhafte Menüeinträge
 verfügt.
 
-Das Menü soll sich beim Aufklappen über den Inhalt legen und den restlichen Bildschirm etwas ausgrauen sodass für den
+Das Menü soll sich beim Aufklappen über den Inhalt legen und den restlichen Bildschirm etwas ausgrauen, sodass für den
 Nutzer ersichtlich ist, dass er am Menü eine Auswahl treffen muss.
 
-Ein Klick in den ausgegrauten Bereich, oder auch auf einen der Menüpunkte, schließt das Menü allerdings wieder, sodass
+Ein Klick in den ausgegrauten Bereich oder auch auf einen der Menüpunkte schließt das Menü allerdings wieder, sodass
 der Nutzer immer das tun kann, was er gerade möchte.
 
 Die Auswahl eines neuen Menüpunktes hat außerdem zur Folge, dass sich die vorher angesprochene Überschrift im oberen
@@ -132,12 +132,12 @@ er sich gerade befindet.
 
 \subsubsection{Gedanken zu Responsive}
 Damit das Frontend auch von einem Smartphone aus gut bedient und eine WebView-App dafür geschrieben werden kann, muss
-die Webseite auf verschiedene Displaygrößen so reagieren können, damit es alle Informationen nutzerfreundlich und
+die Webseite auf verschiedene Displaygrößen so reagieren können, dass es alle Informationen nutzerfreundlich und
 akkurat anzeigt.
 
 Dabei dürfen keine wichtigen Informationen verschwinden oder die Interaktion mit dem System eingeschränkt sein. Auch
-sollte die Webseite sich optisch nicht zu sehr verändern als das der Nutzer der Meinung ist, dass er sich auf einer
-andere Seite befindet.
+sollte die Webseite sich optisch nicht zu sehr verändern, sodass der Nutzer der Meinung sein könnte, er befände sich auf
+einer anderen Seite.
 
 Damit man dieser Anforderung gerecht werden kann, muss man das Frontend mit responsiven Eigenschaften versehen. Da die
 Webseite in Ihrer ursprünglichen Idee zwei Spalten hat, ist es für die responsive Version interessant, die Spalten nicht
@@ -146,12 +146,12 @@ nebeneinander anzuzeigen, sondern untereinander.
 Dies soll aber auch nur dann geschehen, wenn es nicht genügend Platz gibt, um beide Spalten nebeneinander anzuzeigen.
 
 Bei größeren Displays wäre es im horizontalen Modus (englisch landscape mode) möglich, beide Spalten auch nebeneinander
-darzustellen. Wohingegen im vertikalen Modus (englisch portrait mode) es immer Sinnvoll ist, die beiden Spalten
+darzustellen. Wohingegen im vertikalen Modus (englisch portrait mode) es immer sinnvoll ist, die beiden Spalten
 untereinander anzuzeigen.
 
 Das Mockup in Abbildung~\ref{fig:umsetzung_mockup_scale_responsive} auf
 Seite~\pageref{fig:umsetzung_mockup_scale_responsive} zeigt die Darstellung des Frontends auf einem Smartphone im
-vertikalen Modus. Dabei ist die Spalte mit der \textit{Eingabe} aktuell sichtbar und unterhalb wird der Button für die
+vertikalen Modus. Dabei ist die Spalte mit der \textit{Eingabe} aktuell sichtbar, und unterhalb wird der Button für die
 Berechnung der Ausgabeparameter angezeigt.
 
 \begin{figure}[h]
@@ -161,20 +161,20 @@ Berechnung der Ausgabeparameter angezeigt.
     \label{fig:umsetzung_mockup_scale_responsive}
 \end{figure}
 
-Unter dem Button für das Absenden der Parameter ist die Spalte für die Ausgabeparameter angesiedelt welche erst
+Unter dem Button für das Absenden der Parameter ist die Spalte für die Ausgabeparameter angesiedelt, welche erst
 erscheint, wenn Vorhersagen aus dem Backend zur Verfügung stehen.
 
 So ist der Scrollbalken auf der Webseite nicht unnötig lang und sorgt beim Endnutzer nicht für zusätzliche Verwirrung.
 Auch wird so kein großer leerer Bereich auf der Webseite angezeigt, mit dem der Nutzer nichts anfangen kann.
 
-Auch wird nach der Bestätigung des Buttons automatisch zum Bereich der Ausgabe gescrollt, damit dies nicht manuell
+Auch wird nach der Betätigung des Buttons automatisch zum Bereich der Ausgabe gescrollt, damit dies nicht manuell
 geschehen muss. Dabei handelt es sich um eine Komfortfunktion die man allerdings sehr einfach mit JavaScript umsetzen
 kann.
 
 \subsubsection{Webseite umsetzen}
 Da die Mockups für die Anwendung fertig umgesetzt sind, kann im Weitern damit begonnen werden, das Frontend final
 umzusetzen. Da man das Frontend mit Angular umsetzt und die Angular-CLI installiert ist, kann man auf dem
-Entwicklerrechner mit dem folgenden Befehl eine neues Angular-Projekt einrichten.
+Entwicklerrechner mit dem folgenden Befehl ein neues Angular-Projekt einrichten.
 
 \begin{lstlisting}[caption=Einrichten eines neuen Angular-Projektes, label=ls:umsetzung_angular]
     ng new dashboard
@@ -194,15 +194,15 @@ Durch den Parameter \texttt{open} öffnet sich der Browser selbstständig und ze
 ein großes Bild des Angular-Logos mit einer großen Überschrift und ein paar weiteren Kommentaren zu sehen.
 
 Jegliche Änderung am Quellcode der aktuellen Anwendung hat zur Folge, dass die entsprechende Angular-Komponente neu
-gebaut und der Browser neu geladen wird um die Änderung direkt sichtbar zu machen.
+gebaut und der Browser neu geladen wird, um die Änderung direkt sichtbar zu machen.
 
 Nun kann man damit beginnen, die Webseite entsprechend der Mockups umzusetzen. Dabei ist darauf zu achten, die
 Standard-Komponenten der Angular-Material-Bibliothek zu nutzen. Somit ist sichergestellt, dass das Erscheinungsbild der
 Anwendung einer Android-App ähnelt.
 
 Die Komponenten sind auf der entsprechenden
-Dokumentationsseite\footnote{https://material.angular.io/components/categories} zu finden und man kann sie von da aus
-direkt kopieren um sie im eigenen Quellcode zu nutzen. Auch Icons und vorgefertigte Farben lassen sich der Webseite
+Dokumentationsseite\footnote{https://material.angular.io/components/categories} zu finden, und man kann sie von da aus
+direkt kopieren, um sie im eigenen Quellcode zu nutzen. Auch Icons und vorgefertigte Farben lassen sich der Webseite
 entnehmen. Somit kann man sehr gut eine Android-App ähnliche Webseite aufbauen.
 
 In Abbildung~\ref{fig:umsetzung_website_input} auf Seite~\pageref{fig:umsetzung_website_input} ist die fertig
@@ -216,11 +216,11 @@ mit der \textit{Eingabe} ist also umgesetzt.
     \label{fig:umsetzung_website_input}
 \end{figure}
 
-Nun kann man die zweite Spalte mit der \textit{Ausgabe} anfertigen um sie in dem noch leeren Platz zu positionieren. Die
+Nun kann man die zweite Spalte mit der \textit{Ausgabe} anfertigen, um sie in dem noch leeren Platz zu positionieren. Die
 Umsetzung ist dabei gleich der Umsetzung der linken Spalte in der Anwendung.
 
 In der Abbildung~\ref{fig:umsetzung_website_output} auf Seite~\pageref{fig:umsetzung_website_output} ist die komplette
-Webseite zu sehen mit beiden Spalten und dem Button zur generierung der Vorhersage.
+Webseite zu sehen mit beiden Spalten und dem Button zur Generierung der Vorhersage.
 
 \begin{figure}[h]
     \centering
@@ -230,55 +230,55 @@ Webseite zu sehen mit beiden Spalten und dem Button zur generierung der Vorhersa
 \end{figure}
 
 Bei der Umsetzung ist entscheidend, dass die rechte Spalte des Dashboards nur dann angezeigt wird, wenn auch die Abfrage
-an das Backend durch ist und Vorhersagen an das Frontend zurück gekommen sind.
+an das Backend durch ist und Vorhersagen an das Frontend zurückgekommen sind.
 
-Allerdings sollte man die Überschrift der Spalte -- Ausgabe -- anzeigen, damit der Endnutzer weiß dass da noch weitere
+Allerdings sollte man die Überschrift der Spalte -- Ausgabe -- anzeigen, damit der Endnutzer weiß, dass da noch weitere
 Informationen folgen werden.
 
 Auch ist so für den Nutzer ersichtlich, dass der Platz auf der rechten Seite nicht verschwendet ist. Wenn sich die
-Eingabe der Parameter über die gesamte Seite ziehen würde und sich dann nach betätigung des Buttons verkleinert, würde
-das für zu viel bewegung in der Webseite führen.
+Eingabe der Parameter über die gesamte Seite ziehen würde und sich dann nach Betätigung des Buttons verkleinern, würde
+das für zu viel Bewegung in der Webseite führen.
 
 Dies würde sich negativ auf das Verständnis der Webseite auswirken und zu manch komischen Darstellungen auf der Webseite
 führen.
 
 Die einzelnen Blöcke in der Spalte der Ausgabe erscheinen nach und nach durch kleine Animationen, welche die einzelnen
-Boxen langsam einblendet. Dadurch kann man Zeit gewinnen, um das große JSON-Objekt, welches vom Backend zurück kommt,
+Boxen langsam einblenden. Dadurch kann man Zeit gewinnen, um das große JSON-Objekt, welches vom Backend zurückkommt,
 komplett zu parsen.
 
-Die einzelnen Werte muss man sich aus dem großen Array herausziehen um es an der passenden Stelle in der richtigen
+Die einzelnen Werte muss man sich aus dem großen Array herausziehen, um es an der passenden Stelle in der richtigen
 Gruppe anzuzeigen.
 
 Das Parsen kann zeitgleich mit der Animation starten. So wird dem Endnutzer symbolisiert, dass die Daten schon da sind
 und sie auch gleich sichtbar sind. So muss er nicht noch das Parsing abwarten. Dies erleichtert die Arbeit mit der
-Webseite auch dadurch enorm, als das Endnutzer nicht direkt mit vielen Boxen konfrontiert wird.
+Webseite auch dadurch enorm, dass Endnutzer nicht direkt mit vielen Boxen konfrontiert werden.
 
 Desweiteren ist wichtig zu wissen, dass beim Aufruf der Seite in der Spalte für die Ausgabe noch keine Daten
-bereitstehen. Darum macht die Darstellung des Bereichs auch keinen Sinn.
+bereitstehen. Darum ist die Darstellung des Bereichs auch nicht sinnvoll.
 
-Damit der Endnutzer sich schneller auf der Webseite zurecht finden kann, ist die Platzierung von kleinen Icons und
+Damit der Endnutzer sich schneller auf der Webseite zurechtfinden kann, ist die Platzierung von kleinen Icons und
 Beschreibungstexten an den verschiedenen Boxen sinnvoll. So weiß der Nutzer direkt, was er in welcher Box machen oder
-auch Einstellen kann.
+auch einstellen kann.
 
 Sinnvoll ist es auch die Parameter der linken Spalte mit passenden Zufallszahlen zu versehen. So kann der Nutzer direkt
-nach dem öffnen der Seite eine Vorhersage starten um die Funktionsfähigkeit der Webseite und des Backends zu testen.
+nach dem Öffnen der Seite eine Vorhersage starten, um die Funktionsfähigkeit der Webseite und des Backends zu testen.
 
-Auch kann er so nachvollziehen, welche Werte er in der linken Spalte eintragen muss, falls er sich zuanfang noch
+Auch kann er so nachvollziehen, welche Werte er in der linken Spalte eintragen muss, falls er sich zu Anfang noch
 unsicher über beispielsweise die Zahlengröße ist.
 
-Als nächsten Schritt muss man sich der Anpassung der Webseite an kleinere Bildschirm widmen. Die Darstellung kann man
+Als nächsten Schritt muss man sich der Anpassung der Webseite an kleinere Bildschirme widmen. Die Darstellung kann man
 den Mockups entnehmen. Da die beiden Spalten (Eingabe und Ausgabe) in jeweils einer eigenen Angular-Komponente
 entwickelt sind, kann man diese in eine \textit{CSS-FlexBox} packen.
 
 Damit ist es möglich zu definieren, wie sich die einzelnen \textit{FlexBoxen} verhalten, wenn der Platz nicht
-ausreichend ist um sie beide nebeneinander darzustellen. Dabei gibt man an, dass die Boxen sich im normalen Fall
+ausreichend ist, um sie beide nebeneinander darzustellen. Dabei gibt man an, dass die Boxen sich im normalen Fall
 nebeneinander befinden. Falls dann der Platz nicht ausreicht, sollen sie sich untereinander anordnen.
 
 Dabei ist wichtig, dass der Button in der Mitte auch eine FlexBox erhält, damit dieser bei kleinem Platz auch
-umgebrochen werden kann. Die Umbrechnung übernimmt die Bibliothek automatisch und es bedarf keiner weiteren
+umgebrochen werden kann. Die Umbrechnung übernimmt die Bibliothek automatisch, und es bedarf keiner weiteren
 Konfiguration oder Anpassung.
 
-Ein Test mit einem mobilen Browser auf eine Smartphone oder auch einem Tablet oder aber den Dev-Tools des Explorers
+Ein Test mit einem mobilen Browser auf einem Smartphone oder auch einem Tablet oder aber den Dev-Tools des Explorers
 \textit{Chrome} oder auch \textit{FireFox} zeigt die Abbildung~\ref{fig:umsetzung_website_smartphone} auf
 Seite~\pageref{fig:umsetzung_website_smartphone}. Es wird lediglich der Bereich der \textit{Eingabe} angezeigt mit
 seinen zahlreichen Eingabeformularfeldern.
@@ -301,9 +301,9 @@ die Informationen unterhalb der Eingabe kommen werden und er nicht unnötig übe
 
 \subsubsection{Erweiterungen}
 Die Webseite ist fertig entwickelt. Nun kann man sich über Erweiterungen zum Frontend Gedanken machen, die den Endnutzer
-bei der Eingabe von Daten unterstützen kann.
+bei der Eingabe von Daten unterstützen können.
 
-Für zahlreiche Erweiterungen, welche im folgenden Behandelt werden, spielt der \textit{Service Worker} eine
+Für zahlreiche Erweiterungen, welche im Folgenden behandelt werden, spielt der \textit{Service Worker} eine
 entscheidende Rolle. Dieser installiert, definiert über ein Manifest, mittels JavaScript-Technologie einen Proxy
 zwischen dem Webbrowser und dem Server.
 
@@ -339,7 +339,7 @@ Wenn man im Nachgang die Webseite aufruft (mehr dazu im Kapitel~\ref{subsec:tool
 Seite~\pageref{subsec:toolchain_einrichten}), kann man den Service Worker in den \texttt{Entwicklertools} über den
 Menüpunkt \texttt{Applikation} und dann \texttt{Service Worker} sehen.
 
-Dort kann man ihn auch als Nutzer zur Aktualisierung zwingen und auch Löschen, falls man bei der Entwicklung
+Dort kann man ihn auch als Nutzer zur Aktualisierung zwingen und auch löschen, falls man bei der Entwicklung
 schwerwiegende Fehler eingebaut hat.
 
 \subsubsection{Offline Modus}
@@ -351,7 +351,7 @@ erweitern.
 
 In Anhang~\ref{sec:serviceWorkerConfig} auf Seite~\pageref{sec:serviceWorkerConfig} ist die komplette
 Konfigurationsdatei angegeben. Diese kann man so nutzen. Nachdem man die Angular-Anwendung wieder im produktiven Modus
-gebaut hat, kann man sie aufrufen und alle Elemente werden automatisch im Browser gecached.
+gebaut hat, kann man sie aufrufen, und alle Elemente werden automatisch im Browser gecached.
 
 Wenn man im Anschluss die Internetverbindung unterbricht (offline Modus oder Netzwerk trennen) und die Webseite
 aktualisiert, wird sie trotzdem wie gewünscht angezeigt.
@@ -371,21 +371,21 @@ Damit man im offline Modus nicht auf den angesprochenen Fehler stößt, wenn man
 möchte, soll im Weiteren das Frontend selbstständig auf die verschiedenen Modi (online oder offline) reagieren können.
 
 Beispielhaft soll man sich folgendes Szenario vor Augen führen. Ein Endnutzer öffnet bei aktiver Internetverbindung die
-Webseite um eine Vorhersage zu tätigen. Damit er die geforderten Eingabeparameter allerdings eingeben kann, muss er zur
-betreffenden Maschine und die Daten auslesen.
+Webseite, um eine Vorhersage zu tätigen. Damit er die geforderten Eingabeparameter allerdings eingeben kann, muss er bei
+der betreffenden Maschine die Daten auslesen.
 
 In dem Raum, in dem sich die Maschine befindet, besteht allerdings keine WLAN Verbindung, worauf die Webseite in den
 offline Modus geht. Nachdem der Nutzer die Daten eingetragen hat und eine Vorhersage starten will, würde er einfach
 eine Fehlermeldung bekommen, dass das Backend nicht angefragt werden kann.
 
-Eventuell würden seine getätigten Eingaben auch verschwinden, da er versuchen könnte die Webseite neu zu laden.
+Eventuell würden seine getätigten Eingaben auch verschwinden, da er versuchen könnte, die Webseite neu zu laden.
 
-Um diesem Problem vorzubeugen, soll das Frontent im offline Modus gar keine Anfragen an das Backend machen sondern den
-Nutzer informieren, dass es sich aktuell im offline Modus befindet. somit weiß der Nutzer, dass er aktiv nach einer
-Internetverbindung suchen muss um fortzufahren.
+Um diesem Problem vorzubeugen, soll das Frontent im offline Modus gar keine Anfragen an das Backend machen, sondern den
+Nutzer informieren, dass es sich aktuell im offline Modus befindet. Somit weiß der Nutzer, dass er aktiv nach einer
+Internetverbindung suchen muss, um fortzufahren.
 
-Um dies zu bewerkstelligen muss man einen Service in die Angular-Anwendung einbauen, welcher immer über den aktuellen
-Modus (online oder offline) bescheid weiß und bei einer Änderung allen Komponenten bescheid geben kann.
+Um dies zu bewerkstelligen, muss man einen Service in die Angular-Anwendung einbauen, welcher immer über den aktuellen
+Modus (online oder offline) Bescheid weiß und bei einer Änderung allen Komponenten Bescheid geben kann.
 
 Mit dem folgenden Befehl kann man einen neuen Service in die Angular-Anwendung einbauen.
 
@@ -419,7 +419,7 @@ Die Varibale, die den aktuellen Modus der Internetverbindung hält, definiert ma
 damit weit oben in der Datei. Hier symbolisiert durch die Zeile eins.
 
 Anschließend kann man bei jeder Anfrage an das Backend das in Listing~\ref{ls:umsetzung_angularchecknetwork} auf
-Seite~\pageref{ls:umsetzung_angularchecknetwork} definierte If-Statement nutzen, um zu überprüfen ob aktuell eine
+Seite~\pageref{ls:umsetzung_angularchecknetwork} definierte If-Statement nutzen, um zu überprüfen, ob aktuell eine
 Internetverbindung vorliegt oder nicht. Falls nicht, sollte man den Nutzer über einen gut sichtbaren Hinweis darüber
 informieren, dass aktuell keine Abfrage möglich ist.
 
@@ -432,10 +432,10 @@ informieren, dass aktuell keine Abfrage möglich ist.
 \end{lstlisting}
 
 In der Zeile zwei definiert man den Programmteil, welcher bei aktiver Internetverbindung ausgeführt wird. Also zum
-Beispiel die Abfrage an das Backend. In der vierten Zeile kann man dann die Meldung ausgeben die angezeigt wird, wenn
+Beispiel die Abfrage an das Backend. In der vierten Zeile kann man dann die Meldung ausgeben, die angezeigt wird, wenn
 der Nutzer über keine Internetverbindung verfügt.
 
-Auch wäre es möglich einen dauerhaften Hinweis einzublenden, wenn keine Internetverbindung vorliegt. Dies müsste man
+Auch wäre es möglich, einen dauerhaften Hinweis einzublenden, wenn keine Internetverbindung vorliegt. Dies müsste man
 dann in der \textit{app.component.ts} Datei global machen. Dabei ist entscheidend, dass das nicht mit einem If-Statement
 möglich ist. Man muss dies mit einem Observer lösen.
 
@@ -457,7 +457,7 @@ In einem ersten Schritt muss man die Toolchain jedoch erst anlegen. Dies kann ma
 IBM Cloud machen. Dazu geht man auf das IBM Cloud Dashboard und klickt auf die vorher angelegte Runtime der
 Angular-Anwendung.
 
-Nun öffnet sich das Cloud Foundry Dashboard über das man am unteren Bereich auf den Button \texttt{Aktivieren} in der
+Nun öffnet sich das Cloud Foundry Dashboard, über das man am unteren Bereich auf den Button \texttt{Aktivieren} in der
 Box \texttt{Continous Delivery} klicken kann. Genau wie in Kapitel~\ref{sub:tollchain_einrichten} auf
 Seite~\pageref{sub:tollchain_einrichten} gelangt man damit auf die Konfigurationsseite der Toolchain.
 
@@ -468,7 +468,7 @@ Nach einem kurzen Ladevorgang ist die Toolchain eingerichtet und mit einem leere
 Aktuell ist lediglich die \textit{Delivery Pipeline} interessant, da man hier die Installation der Angular-Anwendung
 spezifizieren muss.
 
-In der aktuellen Konfiguration sind drei \textit{Stages} eingerichtet. Diese muss man nun um zwei weitere Ergänzen,
+In der aktuellen Konfiguration sind drei \textit{Stages} eingerichtet. Diese muss man nun um zwei weitere ergänzen,
 sodass es eine \textit{Build-}, eine \textit{Angular build-}, eine \textit{Copy files-}, eine \textit{Test-} und eine
 \textit{Deploy-}Stage gibt.
 
@@ -498,27 +498,27 @@ des \texttt{dist}-Ordners, alle Dateien und Ordner löschen.
 
 Um die Funktionalität einer Anwendung stetig gewährleisten zu können sollte man Tests für alle Funktionen bereitstellen.
 Die \textbf{Test}-Stage kümmert sich um die Ausführung der Tests. Nur wenn alle erfolgreich durchlaufen, wird der Inhalt
-an das Deployment übergeben um den Cloud Foundry Container zu befüllen.
+an das Deployment übergeben, um den Cloud Foundry Container zu befüllen.
 
 Die definierten Tests in der Angular-Anwendung werden über \textit{ng test} ausgeführt. Dieser Kommandozeilenaufruf
 startet einen Headless-Browser, welcher die einzelnen Testschritte anschließend durchgeht.
 
-Die letzte Stage, \textbf{Deploy Stage}, ist die Stadard-Stage der Toolchain für das Installieren der Anwendung. Auch
+Die letzte Stage, \textbf{Deploy Stage}, ist die Standard-Stage der Toolchain für das Installieren der Anwendung. Auch
 diese kann man aus der Ursprungskonfiguration übernehmen.
 
-Somit ist die Toolchain fertig konfiguriert und man kann den Quellcode in das Git-Repository laden um die Toolchain zu
-starten. Nach wenigen Minuten ist die Anwendung in einem Cloud Foundry Container über ihre Domain im Browser aufrufbar
-und man kann damit beginnen Anfragen an das Backend zu schicken.
+Somit ist die Toolchain fertig konfiguriert, und man kann den Quellcode in das Git-Repository laden, um die Toolchain zu
+starten. Nach wenigen Minuten ist die Anwendung in einem Cloud Foundry Container über ihre Domain im Browser aufrufbar,
+und man kann damit beginnen, Anfragen an das Backend zu schicken.
 
 Da man in Kapitel~\ref{subsec:apiconnect} auf Seite~\pageref{subsec:apiconnect} den API Connect Service mit den beiden
-Backends verbunden hat, kann man nun aus dem Frontend heraus Anfragen an diese stellen und die Vorhergesagten Parameter
+Backends verbunden hat, kann man nun aus dem Frontend heraus Anfragen an diese stellen, und die vorhergesagten Parameter
 werden angezeigt.
 
-Im Weiteren kann man damit beginnen das Frontend in die Smartphone-Apps einzubauen, da es über eine Domain und ein
+Im Weiteren kann man damit beginnen, das Frontend in die Smartphone-Apps einzubauen, da es über eine Domain und ein
 valides SSL-Zertifikat verfügt.
 
-Nur damit ist es Möglich die Webseite in ein WebViewer zu laden und dem Endnutzer anzuzeigen. Auch für die
-Funktion des Service Workers und des offline Modus ist ein SSL-Zertifikat und eine Domain essentiell.
+Nur damit ist es möglich, die Webseite in ein WebViewer zu laden und dem Endnutzer anzuzeigen. Auch für die
+Funktion des Service Workers und des offline Modus sind ein SSL-Zertifikat und eine Domain essentiell.
 
 \subsection{Smartphone-Apps}
 Da das Frontend (Dashboard) nun fertig entwickelt und über eine Domain aufrufbar ist, kann man es im nächsten Schritt
@@ -529,14 +529,14 @@ potentieller Kundenkreis gewonnen werden kann, da diese beiden Systeme die mobil
 dominieren~\cite{online_umsetzung_mobileos}.
 
 In den zwei folgenden Kapiteln werden die Umsetzungen für die beiden Betriebssysteme erläutert. Insbesondere wird auf
-die technischen Unterschiede der Systeme eingegangen um ein WebView-Layout zu nutzen.
+die technischen Unterschiede der Systeme eingegangen, um ein WebView-Layout zu nutzen.
 
-Die Smartphone-Apps kann man anschließend in einem Emulator lokal auf dem Entwicklungsrechner testen um Fehler in der
+Die Smartphone-Apps kann man anschließend in einem Emulator lokal auf dem Entwicklungsrechner testen, um Fehler in der
 gebauten Version auszuschließen.
 
 \subsubsection{Android}
 Für die Erstellung einer Android-App benötigt man die Android Studio IDE. Diese kann man kostenlos auf der
-Developper-Seite\footnote{https://developer.android.com/studio} von Google herunterladen. Die Anwendung steht für
+Developer-Seite\footnote{https://developer.android.com/studio} von Google herunterladen. Die Anwendung steht für
 Windows, Linux und macOS zur Verfügung. Android Studio basiert auf der Community-Edition von IntelliJ und ist kostenlos.
 
 Für die Verwendung von Android Studio benötigt man eine installierte Version des Java-JRE und das Java-JDK. Die JRE
@@ -547,12 +547,12 @@ Nachdem man die IDE und gegebenenfalls Java installiert hat, kann man Android St
 Aufruf muss man das Android-SDK herunterladen sowie einen Emulator konfigurieren. Dabei sollte man jeweils die neuesten
 Versionen auswählen. Mit dem Emulator kann man die App nachher auf dem Rechner starten und live testen.
 
-Es ist möglich eine Android-App mittels \textit{Java}, \textit{Kotlin} und \textit{C\texttt{++}} zu entwicklen. Im
-folgenden wird auf die Verwendung von \textbf{Kotlin} zurückgegriffen, da es den Quellcode sehr schlank macht und
+Es ist möglich, eine Android-App mittels \textit{Java}, \textit{Kotlin} und \textit{C\texttt{++}} zu entwickeln. Im
+Folgenden wird auf die Verwendung von \textbf{Kotlin} zurückgegriffen, da es den Quellcode sehr schlank macht und
 dadurch eine bessere Übersicht bietet.
 
 Im nächsten Schritt muss man ein neues Projekt anlegen. Dazu wird zum Beispiel der Name \textit{Dashboard} ausgewählt.
-Also Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
+Als Projekttyp kann man ein leeres Android-Projekt auswählen. Dadurch werden keine Klassen oder Layouts angelegt.
 
 Die Android-App muss im Ordner \texttt{/res/layout} ein Layout besitzen, welches als Root-Element ein
 \textit{CoordinatorLayout} enthält und als Kind-Element ein einzelnes, natives WebView-Layout. Diesem Layout wird eine
@@ -560,16 +560,16 @@ ID zugeteilt, damit man es aus der Kotlin-Klasse heraus eindeutig identifizieren
 
 Nun kann man im \texttt{/src}-Ordner zwei Kotlin-Klassen anlegen. Eine für die MainActivity, welche die Hauptroutine der
 Anwendung enthält. Die andere ist für den SplashScreen, welcher beim Start der App angezeigt wird. Der Splashscreen
-zeigt das Bosch-Logo und wechselt nach ein paar Sekunden in die Hauptroutine um den WebViewer darzustellen.
+zeigt das Bosch-Logo und wechselt nach ein paar Sekunden in die Hauptroutine, um den WebViewer darzustellen.
 
-Die MainActivity enthält eine unveränderliche Variable vom Typ \textit{Text} um die URL des Frontends zu definieren. In
+Die MainActivity enthält eine unveränderliche Variable vom Typ \textit{Text}, um die URL des Frontends zu definieren. In
 der \textit{onCreate}-Methode kann man dann das WebViewer-Layout konfigurieren, damit die Nutzung von JavaScript möglich
 ist.
 
 Das WebView-Layout, welches von der \textit{Android-WebKit} Klasse erbt, kümmert sich anschließend um das Laden der
 Webseite, die Darstellung und die Interaktion des Nutzers damit.
 
-Wenn man Funktionen der \textit{WebViewClient} überschreibt kann man das Verhalten des WebViews anpassen. So kann man
+Wenn man Funktionen der \textit{WebViewClient} überschreibt, kann man das Verhalten des WebViews anpassen. So kann man
 beispielsweise Einfluss auf den Titel oder andere HTML-Elemente nehmen.
 
 In den beiden Ordnern \texttt{/res/values} und \texttt{/res/values-v21} kann man Farben und Styles definieren. Im Ordner
@@ -592,7 +592,7 @@ Hintergrund des Splashscreens.
 Die \textit{Manifest.xml}-Datei ist Elementar für jede Android-Anwendung. Über diese kann man die Informationen und
 Konfigurationen der gesamten App anpassen.
 
-Zum Beispiel ist es dort möglich zu definieren, welche Activity beim Start der Anwendung geladen werden soll. Weitere
+Zum Beispiel ist es dort möglich, zu definieren, welche Activity beim Start der Anwendung geladen werden soll. Weitere
 Informationen zu dieser Manifest Datei sind in der
 Android-Developer-Seite\footnote{https://developer.android.com/guide/topics/manifest/manifest-intro} verfügbar.
 
@@ -606,26 +606,26 @@ entwickelte Android-App in einem Smartphone-Emulator sichtbar.
     \label{fig:umsetzung_android_app}
 \end{figure}
 
-In dieser Abbildung ist leicht zu sehen, dass die Antroid-Styles direkten Einfluss auf die Darstellung der Menüpunkte
-(am unteren Rand) und die Farbe der Toolbar haben. Beide werden in der selben Farbe wie der Header im Web-Frontend
+In dieser Abbildung ist leicht zu sehen, dass die Android-Styles direkten Einfluss auf die Darstellung der Menüpunkte
+(am unteren Rand) und die Farbe der Toolbar haben. Beide werden in derselben Farbe wie der Header im Web-Frontend
 dargestellt.
 
-Die Android-App ist an dieser Stelle fertig entwickelt und man kann sie in eine APK-Datei exportieren. Dazu muss man
-eine \textit{Signing-Datei} erstellen mit welcher es dann möglich ist, die Anwendung auch in den Play-Store zu laden.
+Die Android-App ist an dieser Stelle fertig entwickelt, und man kann sie in eine APK-Datei exportieren. Dazu muss man
+eine \textit{Signing-Datei} erstellen, mit welcher es dann möglich ist, die Anwendung auch in den Play-Store zu laden.
 
 Alternativ kann man die exportierte Android Package-Datei (kurz APK) auch auf einem echten Smartphone oder Tablet
-installieren um sie unter echten Bedingungen zu testen.
+installieren, um sie unter echten Bedingungen zu testen.
 
 \subsubsection{iOS}
 Um eine App für iOS Geräte zu entwickeln, benötigt man die kostenlose IDE Xcode von Apple. Diese steht lediglich für
-macOS-Geräte zur Verfügung und man kann sie nur im
+macOS-Geräte zur Verfügung, und man kann sie nur im
 App-Store\footnote{https://itunes.apple.com/de/app/xcode/id497799835} herunterladen.
 
 Somit kann man iOS Apps lediglich unter macOS und Xcode schreiben, kompilieren und testen. Dies stellt eine sehr große
 Einschränkung dar.
 
 Nach der erfolgreichen Installation kann man in Xcode anschließend ein neues Projekt anlegen. Die Art des Projektes ist
-\textit{SingleViewApp} und den Namen kann auf \textit{Dashboard} setzen.
+\textit{SingleViewApp}, und den Namen kann man auf \textit{Dashboard} setzen.
 
 In der Abbildung~\ref{fig:umsetzung_ios_ide} auf Seite~\pageref{fig:umsetzung_ios_ide} ist das erstellte Projekt in
 Xcode zu sehen. Der lokale Emulator und die verschiedenen SDKs sind automatisch mitinstalliert.
@@ -637,11 +637,11 @@ Xcode zu sehen. Der lokale Emulator und die verschiedenen SDKs sind automatisch 
     \label{fig:umsetzung_ios_ide}
 \end{figure}
 
-Bei den beiden \texttt{.swift}-Dateien handelt es sich um die ausführbaren Klassen innerhalb der Anwendung. Ihn ihnen
+Bei den beiden \texttt{.swift}-Dateien handelt es sich um die ausführbaren Klassen innerhalb der Anwendung. In ihnen
 kann man die Logik entwickeln, die für die Anwendung notwendig sind.
 
 Dabei übergibt man in der \textit{ViewController}-Datei die genutzte View und konfiguriert diese. Wie in der Abbildung
-zu sehen ist das genutzte View ein WebView-Layout, dem man die URL übergibt.
+zu sehen, ist das genutzte View ein WebView-Layout, dem man die URL übergibt.
 
 In der Datei \textit{AppDelegate} definiert man den Lifecycle der Anwendung. So kann man dort zum Beispiel festlegen,
 dass der genutzte Controller das \textit{LaunchScreen}-Storyboard zugeteilt bekommt.
@@ -666,22 +666,22 @@ Datei"~ und Ordnerstruktur in Xcode abgebildet. Dort sind alle benötigten Datei
 \end{figure}
 
 Die Plist-Datei (Property List Files) beinhaltet die Konfiguration der Anwendung. So kann man hier zum Beispiel
-einstellen, ab welcher iOS-Version die App zur Verfügung steht oder ob es beispielsweise einschränkungen in der
+einstellen, ab welcher iOS-Version die App zur Verfügung steht oder ob es beispielsweise Einschränkungen in der
 Ausrichtung des Bildschirmes gibt.
 
-Außerdem definiert man hier den Namen der Anwendung und das verwendete Icon das auf dem Home-Screen angezeigt werden
+Außerdem definiert man hier den Namen der Anwendung und das verwendete Icon, das auf dem Home-Screen angezeigt werden
 soll.
 
 Anschließend muss man im Storyboard, also der View, ein WebView-Layout anlegen. Dies kann man mit der Programmiersprache
 Swift dann ansprechen und konfigurieren. Ähnlich der Android-App kann man Informationen wie Domain oder Anzeigegröße
-übergeben und das Layout kümmert sich selbstständig um das Laden, das Darstellen und die Interaktion zwischen Nutzer und
-Webseite.
+übergeben, und das Layout kümmert sich selbstständig um das Laden, das Darstellen und die Interaktion zwischen Nutzer
+und Webseite.
 
 Mit einem Klick auf \texttt{Run} (der kleine schwarze Play-Button) in Xcode, kann man den zu nutzenden Emulator
 auswählen, welcher die Anwendung starten soll.
 
 Nach wenigen Augenblicken ist der Emulator gestartet und zeigt die entwickelte App an. Man kann diese so nutzen, als
-würde man sie auf einem echten Smartphone starten. Das Frontend sollte nach wenigen Sekunden ladezeit vollflächig
+würde man sie auf einem echten Smartphone starten. Das Frontend sollte nach wenigen Sekunden Ladezeit vollflächig
 angezeigt sein.
 
 In der Abbildung~\ref{fig:umsetzung_ios_app} auf Seite~\pageref{fig:umsetzung_ios_app} ist die Anwendung im Smartphone

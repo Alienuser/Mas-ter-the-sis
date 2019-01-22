@@ -1,7 +1,7 @@
 \section{Schlauchbeutelmaschine}
-Mit diesem Beispiel kann man die bestehende Architektur durch eine weitere Maschine ergänzen. Es ist problemlos möglich
+Mit diesem Beispiel kann man die bestehende Architektur durch eine weitere Maschine ergänzen. Es ist problemlos möglich,
 weitere oder andere Maschinen oder gar Module einer Maschine einzubinden. Allerdings soll mit diesem Beispiel die
-allgemeine Vorgehensweise erläutert werden und dieses Beispiel veranschaulicht dies.
+allgemeine Vorgehensweise erläutert werden, und dieses Beispiel veranschaulicht dies.
 
 In Abbildung~\ref{fig:siegelmaschinen_vffs} auf Seite~\pageref{fig:siegelmaschinen_vffs} ist der schematische Aufbau der
 vertikalen Schlauchbeutelmaschine abgebildet.
@@ -13,35 +13,35 @@ vertikalen Schlauchbeutelmaschine abgebildet.
     \label{fig:siegelmaschinen_vffs}
 \end{figure}
 
-Dort ist gut zu sehen, dass im oberen Bereich der Abbildung, unter der Nummer 2, dass zu befüllende Produkt einlegt
+Dort ist gut zu sehen, dass im oberen Bereich der Abbildung, unter der Nummer 2, das zu befüllende Produkt einlegt
 wird. Dies fällt dann durch das Rohr mit der Nummer 3. Eine Folie umschließt das Produkt anschließend und wird mit den
 Siegelbacken (Nummer 5) versiegelt. Bei Nummer 6 trennt ein \textit{Trennmesser} den befüllten Beutel von der
-Endlosfolie ab und so kann der befüllte Beutel weiterverarbeitet werden.
+Endlosfolie ab, und so kann der befüllte Beutel weiterverarbeitet werden.
 
 Die wichtigsten Einstellparameter der Maschine betreffen die Siegelung des Beutels. Da zahlreiche Folienarten von
-verschiedenen Anbietern existieren ist es nicht immer einfach, die Folie richtig und korrekt zu versiegeln.
+verschiedenen Anbietern existieren, ist es nicht immer einfach, die Folie richtig und korrekt zu versiegeln.
 
 Die \textit{Siegelnahtfestigkeit} gibt an, welche Kraft notwendig ist, um die verschlossene Siegelnaht wieder zu öffnen.
-Dies ist insbesondere dann Wichtig, wenn es sich bei dem verpackten Produkt um ein Endkunden-Produkt handelt. Der Käufer
+Dies ist insbesondere dann wichtig, wenn es sich bei dem verpackten Produkt um ein Endkunden-Produkt handelt. Der Käufer
 sollte die Verpackung unter normalem Kraftaufwand öffnen können, um an das Produkt gelangen zu können.
 
 Allerdings darf die Siegelnaht nicht zu schwach sein, da sonst Luft oder andere Gase in die Verpackung eindringen
-könnten. Für die vertikalen Schlauchbeutelmaschine ist es entscheidend die richtige Siegelnahtfestigkeit zu erzeugen.
+könnten. Für die vertikale Schlauchbeutelmaschine ist es entscheidend, die richtige Siegelnahtfestigkeit zu erzeugen.
 
 Zur Erzeugung einer Siegelnaht sind Daten zur \textit{Siegeltemperatur}, \textit{Siegelzeit} und \textit{Folienart}
-interessant. Bei der Folienart spielt der Aufbau der Folie (anzahl der Lagen und genutzte Materialien) eine Rolle.
+interessant. Bei der Folienart spielt der Aufbau der Folie (Anzahl der Lagen und genutzte Materialien) eine Rolle.
 
-Der genaue Aufbau von Folien wird von den entsprechenden Herstellern oft geheim gehalten und man muss ihn entweder
+Der genaue Aufbau von Folien wird von den entsprechenden Herstellern oft geheim gehalten, und man muss ihn entweder
 händisch ermitteln oder auf Erfahrungen von Mitarbeitern zurückgreifen.
 
 Aus diversen Tests kann man anhand der eingestellten Parameter für Siegeltemperatur und Siegelzeit und der genutzten
-Folie die Siegelnahtfestigkeiten ableiten, indem man den Kraftaufwand zum öffnen der Siegelnaht misst.
+Folie die Siegelnahtfestigkeiten ableiten, indem man den Kraftaufwand zum Öffnen der Siegelnaht misst.
 
-Für das weitere Beispiel ist es nun interessant die Siegelnahtfestigkeit aus einem neuronalen Netz zu ermitteln, sofern
-die Zusammensetzung der Folie sowie die Siegeltermperatur und Siegelzeit feststeht.
+Für das weitere Beispiel ist es nun interessant, die Siegelnahtfestigkeit aus einem neuronalen Netz zu ermitteln, sofern
+die Zusammensetzung der Folie sowie die Siegeltermperatur und Siegelzeit feststehen.
 
 Ein weiteres Beispiel könnte sein, die Siegelnahtfestigkeit und genutzte Folie vorzugeben und das neuronale Netz
-ermitteln zu lassen, welche Temperatur und welche Zeit für das Siegeln eingeplant werden muss. Dieses Beispiel wird
+ermitteln zu lassen, welche Temperatur und welche Zeit für das Siegeln eingeplant werden müssen. Dieses Beispiel wird
 aktuell aber nicht weiter verfolgt.
 
 \subsection{Daten zusammenstellen}
@@ -73,7 +73,7 @@ aufgebaute Siegelteststand von Herrn Felix Kruppa mit Beschriftungen zu sehen.
 \end{figure}
 
 Die kombinierten Daten aus den Testdurchläufen von Herrn Kruppa sind im Anhang~\ref{sec:schlauchbeutelmaschine}
-auf Seite~\pageref{sec:schlauchbeutelmaschine} zu sehen und man kann diese direkt für das Trainieren des neuronalen
+auf Seite~\pageref{sec:schlauchbeutelmaschine} zu sehen, und man kann diese direkt für das Trainieren des neuronalen
 Netzes in der Cloud oder auch offline nutzen.
 
 \subsection{Neuronales Netz trainieren}
@@ -85,8 +85,8 @@ Dazu werden die Testdaten in den Watson Studio Service hochgeladen und anschlie�
 CSV-Datei umgewandelt. Der Machine Learning Service der IBM Cloud kann aktuell lediglich mit CSV-Dateien zum Trainieren
 von neuronalen Netzen umgehen.
 
-Auch kann man die Datei schon auf dem Entwicklungsrechner in eine CSV-Datei umwandeln um sich die Konvertierung im
-Service zu sparen. So muss man keinen neuer Flow für die Data Refinery anlegen. Es spielt keine Rolle wo man die Datei
+Auch kann man die Datei schon auf dem Entwicklungsrechner in eine CSV-Datei umwandeln, um sich die Konvertierung im
+Service zu sparen. So muss man keinen neuen Flow für die Data Refinery anlegen. Es spielt keine Rolle, wo man die Datei
 konvertiert.
 
 Anschließend muss man einen neuen Modeler Flow anlegen und diesen genau gleich dem Flow in
@@ -119,15 +119,15 @@ Tabelle~\ref{tab:targets_inputs_siegeln} auf Seite~\pageref{tab:targets_inputs_s
     \label{tab:targets_inputs_siegeln}
 \end{table}
 
-Nach erfolgreicher Konfiguration der einzelnen Module kann man das neuronale Netz trainieren lassen um das Modell zu
-erhalten. Diese Modell kann man dann im Weiteren in einem Deployment zur Verfügung stellen.
+Nach erfolgreicher Konfiguration der einzelnen Module kann man das neuronale Netz trainieren lassen, um das Modell zu
+erhalten. Dieses Modell kann man dann im Weiteren in einem Deployment zur Verfügung stellen.
 
 \subsection{Deployment erstellen}
-Um das Deployment für das trainierte Modell zu erstellen muss man das Modell im Modeler Flow mit der rechten Maustaste
+Um das Deployment für das trainierte Modell zu erstellen, muss man das Modell im Modeler Flow mit der rechten Maustaste
 auswählen und \enquote{Save branch as a model} auswählen. Dies speichert das trainierte Modell als eigenständiges Modell
 im Watson Studio ab.
 
-Dies kann man nun über das Watson Studio Dashboard auswählen und über den Reiter \texttt{Deployments} auf alle
+Dies kann man nun über das Watson Studio Dashboard auswählen, und man kann über den Reiter \texttt{Deployments} auf alle
 Webservices des einen Modells zugreifen. Dort sind aktuell aber noch keine vorhanden.
 
 Über die Schaltfläche \texttt{Add Deployment} legt man ein neues an. Dies geschieht genau wie in
@@ -147,7 +147,7 @@ komplette Konfiguration des Deployments für den Webservice ersichtlich.
 \end{figure}
 
 Nun kann man in einem weiteren Schritt den API Connect Service um diesen Endpunkt erweitern, um auch Vorhersagen von
-diesem neuronalen Netz zu beziehen um die Siegelnahtfestigkeit zu ermitteln.
+diesem neuronalen Netz zu beziehen, um die Siegelnahtfestigkeit zu ermitteln.
 
 \subsection{API Connect erweitern}
 Der API Connect Service fungiert als Knotenpunkt zwischen Frontend und den möglichen Vorhersage-Services. Damit das
@@ -162,10 +162,10 @@ Operation besitzen. Diese muss, genau wie alle anderen Operationen der anderen P
 Frontend Daten an den Endpunkt schicken kann.
 
 Da der neue Pfad angelegt ist, kann man die Konfiguration speichern und in den Reiter \texttt{Assemblieren} wechseln.
-Der \textit{Switch} für die Verzweigung je nach gewünschtem Pfad muss man um den gerade eingerichteten neuen Pfad
+Den \textit{Switch} für die Verzweigung je nach gewünschtem Pfad muss man um den gerade eingerichteten neuen Pfad
 erweitern. Somit beinhaltet die Switch-Operation drei Verzweigungen.
 
-Der Inhalt für den neuen Pfad kann man direkt vom Pfad \textit{predict-watson} übernehmen und lediglich die im
+Den Inhalt für den neuen Pfad kann man direkt vom Pfad \textit{predict-watson} übernehmen und lediglich die im
 \textit{Get Prediction} Modul definierte URL für den Webservice anpassen.
 
 Die Abbildung~\ref{fig:siegelmaschinen_apiconnect} auf Seite~\pageref{fig:siegelmaschinen_apiconnect} veranschaulicht
@@ -178,10 +178,10 @@ den angepassten Modeler Flow um den neuen Endpunkt.
     \label{fig:siegelmaschinen_apiconnect}
 \end{figure}
 
-Damit ist der API Connect Service fertig eingerichtet und man kann den neuen Endpunkt zum Beispiel vom Frontend aus
-abrufen. Auch ist es Möglich den Aufruf mittels Postman zu überprüfen.
+Damit ist der API Connect Service fertig eingerichtet, und man kann den neuen Endpunkt zum Beispiel vom Frontend aus
+abrufen. Auch ist es möglich, den Aufruf mittels Postman zu überprüfen.
 
-Ein Test mit einem externen Tool, wie zum Beispiel Postman, sollte die Funktionsweiße des Endpunktes sicherstellen.
+Ein Test mit einem externen Tool, wie zum Beispiel Postman, sollte die Funktionsweise des Endpunktes sicherstellen.
 
 \subsection{Frontend erweitern}
 Im letzten Schritt der Adaptierung der Architektur auf eine neue Maschine oder auf ein neues Modul muss man das Frontend
@@ -189,13 +189,13 @@ um die gewünschten Eingaben der Parameter erweitern, damit das Frontend die Vor
 das Ergebnis darstellen kann.
 
 Dafür kann man eine neue Angular-Komponente anlegen und diese dann mit dem gewünschten neuen Design versehen. Das
-Anlegen einer Komponente in Angular geschieht am Einfachsten über ein Kommando der Angular-CLI.
+Anlegen einer Komponente in Angular geschieht am einfachsten über ein Kommando der Angular-CLI.
 
 \begin{lstlisting}[caption=Erstellen einer neuen Komponente, label=ls:schlauchbeutelmaschine_component]
     ng generate component name
 \end{lstlisting}
 
-Der Parameter \textit{name} dient als Platzhalter und man muss ihn mit einem Namen für die Komponente ersetzen. Dieser
+Der Parameter \textit{name} dient als Platzhalter, und man muss ihn durch einen Namen für die Komponente ersetzen. Dieser
 Name darf durch keine andere Komponente vergeben sein. Die neue Komponente erscheint als Unterordner im Ordner
 \texttt{app}.
 
@@ -203,17 +203,17 @@ Die neue Komponente besteht aus den vier Dateien \textit{*.component.css} für d
 \textit{*.component.html} zur Konfiguration der Darstellung, \textit{*.component.spec.ts} für das Schreiben von Tests
 und \textit{*.component.ts} für die eigentliche Logik.
 
-Der Inhalt der vier Dateien kann man aus der Komponente für die Waage im Ordner \texttt{/app/scales} kopieren und
+Den Inhalt der vier Dateien kann man aus der Komponente für die Waage im Ordner \texttt{/app/scales} kopieren und
 anschließend Stück für Stück anpassen.
 
-In der HTML-Datei muss man das Design auf die neuen Eingabefelder abändern. Dies ist Wichtig, da andere Parameter für
+In der HTML-Datei muss man das Design auf die neuen Eingabefelder abändern. Dies ist wichtig, da andere Parameter für
 den Endpunkt notwendig sind.
 
 In der TS-Datei, in der die Logik der Komponente definiert ist, muss man den REST-Endpunkt auf den neuen Namen abändern
 und die übergebenen Parameter anpassen, damit die Vorhersage auch funktionieren kann.
 
-Auch ist entscheidend, dass man die Abfrage zu leeren Felder auf die richtige Benamung und die definition von
-zufälligen Eingabeparameter auf logische Werte anpasst. So ist es für einen Endnutzer möglich schnell einen Test über
+Auch ist entscheidend, dass man die Abfrage zu leeren Feldern auf die richtige Benamung und die Definition von
+zufälligen Eingabeparameter auf logische Werte anpasst. So ist es für einen Endnutzer möglich, schnell einen Test über
 das Frontend zu starten.
 
 Die CSS-Datei sowie die SPEC-Datei bedürfen keiner zwingenden Änderung, da sie für die Funktionsfähigkeit der Abfrage an
@@ -221,25 +221,25 @@ das Backend keine Rolle spielen. Allerdings sollte man zu einem späteren Zeitpu
 berichtigen.
 
 \subsection{Frontend hochladen}
-Als letzten Schritt muss man das überarbeitete Frontend nun in den Cloud Foundry Container in der Cloud laden, um es den
+Als letzten Schritt muss man das überarbeitete Frontend in den Cloud Foundry Container in der Cloud laden, um es den
 Endkunden zur Verfügung zu stellen.
 
-Dafür genügt ein einfacher commit in das lokale Git-Repository gefolgt von einem push, um es in das Repository in der
-IBM Cloud zu übertragen.
+Dafür genügt ein einfacher \textit{commit} in das lokale Git-Repository, gefolgt von einem push, um es in das Repository
+in der IBM Cloud zu übertragen.
 
 Nach wenigen Sekunden beginnt die Toolchain mit dem Herunterladen des Repositorys und dem Bau der neuen Angular-Seite.
-Nach wenigen Minuten ist das aktualisierte Frontend wieder für alle über die URL Aufrufbar.
+Nach wenigen Minuten ist das aktualisierte Frontend wieder für alle über die URL aufrufbar.
 
 Durch das Hochladen der Änderungen an dem Frontend sind auch die beiden Apps für Android und iOS mit der Aktualisierung
-ausgestattet. Es ist nun auch dort möglich Parameter für die vertikale Schlauchbeutelmaschine zu beziehen.
+ausgestattet. Es ist nun auch dort möglich, Parameter für die vertikale Schlauchbeutelmaschine zu beziehen.
 
 \subsection{Abschluss}
-An diesem Punkt ist die Adaption der erstellen Architektur auf die Siegelmaschine abgeschlossen und man kann damit
+An diesem Punkt ist die Adaption der erstellen Architektur auf die Siegelmaschine abgeschlossen, und man kann damit
 beginnen, neue Vorhersagen des neuen Webservices durch das Frontend zu beziehen. Die Ergebnisse werden anschließend
 ebenfalls auf dem Frontend angezeigt.
 
 Für alle weiteren Anpassungen oder Erweiterungen der Architektur muss man lediglich diese fünf relativ einfachen
-Schritte wiederholen und um die neuen Einstellungen anpassen.
+Schritte wiederholen und die neuen Einstellungen anpassen.
 
-Damit ist gezeigt, dass die gebaute Architektur so modular ist, um sie problemlos zu erweitern und neue Funktionen
-darin einzubauen. Dies galt es als Teilaufgabe in der Arbeit zu zeigen und beweisen.
+Damit ist gezeigt, dass die gebaute Architektur so modular ist, dass sie problemlos zu erweitern ist und neue Funktionen
+darin eingebaut werden können. Dies galt es als Teilaufgabe in der Arbeit zu zeigen und beweisen.

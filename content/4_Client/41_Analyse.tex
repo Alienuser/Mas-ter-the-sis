@@ -1,8 +1,8 @@
 \section{Analyse}
-Dieses Kapitel soll verschiedene Umsetzungsmöglichkeiten für das Frontend als auch für die Smartphone-Apps analysieren
-und eine Einleitung für die präferierte Möglichkeit geben.
+Dieses Kapitel soll verschiedene Umsetzungsmöglichkeiten sowohl für das Frontend als auch für die Smartphone-Apps
+analysieren und eine Einleitung für die präferierte Möglichkeit geben.
 
-Ziel ist es, für sowohl das Frontend als auch für die Smartphone-Apps eine optimale Möglichkeit zu finden, diese
+Ziel ist es, sowohl für das Frontend als auch für die Smartphone-Apps eine optimale Möglichkeit zu finden, diese
 umzusetzen, zu verwalten und in Betrieb zu nehmen.
 
 Die Ergebnisse dienen als Grundlage für die darauffolgenden Kapitel, in denen sie Schritt für Schritt umgesetzt werden.
@@ -13,23 +13,23 @@ Das Model-View-Controler-Pattern (kurz MVC) hat sich in der Vergangenheit großf
 hierzu~\cite{book_grundlagen_mvc}) und soll in diesem Beispiel Verwendung finden.
 
 Einer der größten Vertreter des MVC-Patterns ist Angular oder AngularJS. Ersteres ist die Weiterentwicklung und
-mittlerweile in Version 7 Verfügbar. Neben der sehr schnellen Einarbeitung besitzt Angular zahlreiche und diverse
+mittlerweile in Version 7 verfügbar. Neben der sehr schnellen Einarbeitung besitzt Angular zahlreiche und diverse
 mitgelieferten Funktionen und Erweiterungen.
 
-Es ist darauf spezialisiert Single-Page-Applications (kurz SPA) zu bauen, was einen schnellen Wechsel zwischen den
+Es ist darauf spezialisiert, Single-Page-Applications (kurz SPA) zu bauen, was einen schnellen Wechsel zwischen den
 einzelnen Seiten nach sich zieht. Bei dem zu entwickelnden Frontend soll es sich um eine SPA handeln, da es nicht viele
 Verzweigungen und Untermenüs geben soll.
 
 \subsection{Runtime}
-Um das Frontend in der IBM Cloud einzurichten, benötigt man eine Runtime in der die Anwendung bestehen kann. Zur
+Um das Frontend in der IBM Cloud einzurichten, benötigt man eine Runtime, in der die Anwendung bestehen kann. Zur
 Auswahl stehen neben \textit{Cloud Foundry} auch ein \textit{Docker Container} oder der Service \textit{Object Storage}.
 
-Der Object Storage Service speichert belibige Daten online. Diese kann man dann mittels statischer URLs aufrufen und
-nutzen. Um eine Angular Seite damit zu hosten muss man alle benötigten Daten zuvor hochladen und anschließend
+Der Object Storage Service speichert beliebige Daten online. Diese kann man dann mittels statischer URLs aufrufen und
+nutzen. Um eine Angular Seite damit zu hosten, muss man alle benötigten Daten zuvor hochladen und anschließend
 referenzieren. Dieses Vorgehen ist relativ mühsam, da eine Referenzierung in der lokalen IDE erst dann möglich ist, wenn
 man die Daten hochgeladen hat.
 
-Alternativ kann man die Anwendung auch in ein Docker Container laden und mittels eines Apache oder Nginx Servers
+Alternativ kann man die Anwendung auch in einen Docker Container laden und mittels eines Apache oder Nginx Servers
 ausliefern. Dies bedeutet allerdings, dass man ein Dockerimage bauen muss, welches die Anwendung dann aus einem
 Repository lädt.
 
@@ -38,15 +38,15 @@ Dockerimages, zahlreiche Buildpacks. Ein Buildpack enthält eine Node.js-Runtime
 problemlos ausliefern lassen kann.
 
 Zudem ermöglicht der Cloud Foundry Container vereinfachten Zugriff auf die Cloud Foundry
-Environment-Variablen\footnote{https://docs.run.pivotal.io/devguide/deploy-apps/environment-variable.html} (kurz env)
+Environment-Variablen\footnote{https://docs.run.pivotal.io/devguide/deploy-apps/environment-variable.html} (kurz env),
 die über den VCAP-Namensraum abrufbar sind.
 
-Über diese Variablen kann man zum Beispiel Zugangsdaten für die Verbundenen Cloud Services auslesen, um diese nicht in
+Über diese Variablen kann man zum Beispiel Zugangsdaten für die verbundenen Cloud Services auslesen, um diese nicht in
 die Anwendung eintragen zu müssen.
 
 \subsection{Smartphone-App}
 Eine Möglichkeit ist die Entwicklung nativer Smartphone-Apps mit der jeweiligen Programmiersprache und einer
-anschließenden installation auf einem Endgerät. In diesem Fall müsste man zwei seperate Apps entwickeln.
+anschließenden Installation auf einem Endgerät. In diesem Fall müsste man zwei separate Apps entwickeln.
 
 Der Nachteil der Variante ist die Tatsache, dass man bei jeglicher Änderungen am Design oder Anpassungen der
 REST-Schnittstelle eine neue Version der beiden Apps entwickeln und sie neu im entsprechenden Store veröffentlichen
@@ -60,24 +60,24 @@ Sofern die App ähnlich einer Smartphone-App gebaut und designt ist und sich äh
 Unterschied allenfalls in der Geschwindigkeit der App auffallen. Diese ist gerade beim Start etwas langsamer, da die
 App die komplette Webseite herunterladen muss.
 
-Sofern die Webseite allerdings das erste Mal komplett heruntergeladen ist, wird diese auf dem Smartphone gecached um sie
-schneller zu öffnen. Dabei hilft auch der entwickelte Service Worker, der sich nach dem Start dann nach Aktualisierungen
-der Webseite umschaut und diese gegebenenfalls im Hintergrund nachlädt.
+Sofern die Webseite allerdings das erste Mal komplett heruntergeladen ist, wird diese auf dem Smartphone gecached, um
+sie schneller zu öffnen. Dabei hilft auch der entwickelte Service Worker, der sich nach dem Start dann nach
+Aktualisierungen der Webseite umschaut und diese gegebenenfalls im Hintergrund nachlädt.
 
 Auch der eingerichtete offline Modus ist für die App interessant, da auch dieser hier problemlos funktioniert.
-Allerdings kann man im offline Modus natürlich keine Vorhersagen starten und es wird mit einer Fehlermeldung
+Allerdings kann man im offline Modus natürlich keine Vorhersagen starten, und es wird mit einer Fehlermeldung
 abgebrochen.
 
 Da es sich teilweise um eine native App handelt, kann man diese problemlos in den Store laden. Lediglich eine
 Aktualisierung am Design muss man nicht mit einer neuen Version der App einleiten.
 
-Dies hat den großen Vorteil, dass man kommende Änderungen lediglich an der Webseite umsetzen muss und die beiden Apps
+Dies hat den großen Vorteil, dass man kommende Änderungen nur an der Webseite umsetzen muss, und die beiden Apps
 bekommen diese Aktualisierungen direkt mit und funktionieren weiterhin.
 
 Da es sowohl für Android als auch iOS ein WebView-Layout gibt, kann man beide Apps damit implementieren und so den
 Entwicklungsaufwand auf ein Minimum reduzieren.
 
-In diesem Beispiel wird eine WebView-App entwickelt, da man so dass schon geschriebene Web-Frontend wiederverwenden
+In diesem Beispiel wird eine WebView-App entwickelt, da man so das schon geschriebene Web-Frontend wiederverwenden
 kann und sich dadurch die Entwicklungszeit und Wartung deutlich verkürzt.
 
 \subsection{Frontend-Design}

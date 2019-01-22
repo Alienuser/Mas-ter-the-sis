@@ -2,25 +2,25 @@
 Das neuronale Netz ist an dieser Stelle fertig trainiert und erfolgreich als Modell exportiert. Auch kann man es als
 Deployment über einen Webdienst aufrufen und Vorhersagen triggern.
 
-Mittels internem Onlinetest und über das externe Programm \textit{Postman} wurde der Aufruf des Webdienstes überprüft
+Mittels internem Onlinetest und über das externe Programm \textit{Postman} wurden der Aufruf des Webdienstes überprüft
 und die Parameter verifiziert.
 
 Desweiteren ist das trainierte Modell erfolgreich in einen Node.js Wrapper eingebaut, der eine TensorFlow.js
-Anwendung beherbergt. Diese Anwendung lädt beim Ausführen das aktuelle Modell in den Speicher und parametriesiert es
+Anwendung beherbergt. Diese Anwendung lädt beim Ausführen das aktuelle Modell in den Speicher und parametrisiert es
 mit den Eingabevariablen.
 
-Nach kurzer Zeit werden die vorhergesagten Parameter als Rückgabewert über den Request zurückgegeben und eine Anfrage
+Nach kurzer Zeit werden die vorhergesagten Parameter als Rückgabewert über den Request zurückgegeben, und eine Anfrage
 wurde so erfolgreich durchgeführt.
 
 Sowohl der Webdienst als auch der Node.js Wrapper sind in einem API-Gateway vereint, sodass Aufrufe an die beiden
-Endpunkte vereinfacht werden können. Auch Authentifizierung und Sicherheitsmechanismen laufen über den API-Gateway um
+Endpunkte vereinfacht werden können. Auch Authentifizierung und Sicherheitsmechanismen laufen über den API-Gateway, um
 eine Anpassung zu vereinfachen.
 
 Um dem Endnutzer eine vereinfachte Möglichkeit zu bieten, Anfragen an die beiden Vorhersagemodelle zu schicken, wird
-im nächsten Schritt ein Frontend dafür eingerichtet. Mit diesem ist es Möglich die Inputs für die Bosch KWE einzugeben
+im nächsten Schritt ein Frontend dafür eingerichtet. Mit diesem ist es möglich, die Inputs für die Bosch KWE einzugeben
 und die vorhergesagten Parameter schön darzustellen.
 
-Außerdem ist so ein Test der komplette Architektur mit Webdienst, Node.js Wrapper mit integrierter TensorFlow.js
+Außerdem ist so ein Test der kompletten Architektur mit Webdienst, Node.js Wrapper mit integrierter TensorFlow.js
 Applikation und API Connect möglich.
 
 Denn über das Frontend soll ein Request an den API-Gateway gesendet werden, welcher dann weiter an ein Vorhersagemodell
