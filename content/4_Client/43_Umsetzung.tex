@@ -45,8 +45,8 @@ Gedanken über das Thema \textit{Responsive} machen, also wie sich die gebaute W
 Displaygrößen selbstständig anpasst.
 
 Nachdem man die Webseite dann fertig entwickelt hat, muss man sie noch in einen Container installieren. Dies ist über
-mehrere Varianten möglich. Auch kann man zusätzliche Erweiterungen einbauen, welche das Arbeiten mit der Webseite
-erleichtern oder speziellen Bedürfnissen der Endanwender gerecht wird.
+mehrere Varianten möglich (dazu später mehr). Auch kann man zusätzliche Erweiterungen einbauen, welche das Arbeiten mit
+der Webseite erleichtern oder speziellen Bedürfnissen der Endanwender gerecht wird.
 
 \subsubsection{Use-Cases}
 Als Use-Case kommt zum jetzigen Zeitpunkt lediglich eine Aktion in Frage. Das Erstellen von Vorhersagen für die manuell
@@ -191,7 +191,7 @@ von Angular bauen lassen und sie im Browser ansehen.
 \end{lstlisting}
 
 Durch den Parameter \texttt{open} öffnet sich der Browser selbstständig und zeigt die Standardanwendung an. Darin ist
-ein großes Bild des Angular-Logos mit einer großen Überschrift und ein paar weiteren Kommentaren zu sehen.
+ein Bild des Angular-Logos mit einer größeren Überschrift und ein paar weiteren Kommentaren zu sehen.
 
 Jegliche Änderung am Quellcode der aktuellen Anwendung hat zur Folge, dass die entsprechende Angular-Komponente neu
 gebaut und der Browser neu geladen wird, um die Änderung direkt sichtbar zu machen.
@@ -371,7 +371,7 @@ Damit man im offline Modus nicht auf den angesprochenen Fehler stößt, wenn man
 möchte, soll im Weiteren das Frontend selbstständig auf die verschiedenen Modi (online oder offline) reagieren können.
 
 Beispielhaft soll man sich folgendes Szenario vor Augen führen. Ein Endnutzer öffnet bei aktiver Internetverbindung die
-Webseite, um eine Vorhersage zu tätigen. Damit er die geforderten Eingabeparameter allerdings eingeben kann, muss er bei
+Webseite, um eine Vorhersage zu tätigen. Damit er die geforderten Parameter allerdings eingeben kann, muss er bei
 der betreffenden Maschine die Daten auslesen.
 
 In dem Raum, in dem sich die Maschine befindet, besteht allerdings keine WLAN Verbindung, worauf die Webseite in den
@@ -439,8 +439,8 @@ Auch wäre es möglich, einen dauerhaften Hinweis einzublenden, wenn keine Inter
 dann in der \textit{app.component.ts} Datei global machen. Dabei ist entscheidend, dass das nicht mit einem If-Statement
 möglich ist. Man muss dies mit einem Observer lösen.
 
-Mit einer Snackbar\footnote{https://material.angular.io/components/snack-bar/overview} kann man den entsprechenden
-Hinweis optimal anzeigen und positionieren lassen. Dabei handelt es sich um eine Komponente des Material-Deisgns.
+Mit einer Snackbar\footnote{https://material.angular.io/components/snack-bar/overview} -- Dabei handelt es sich um eine
+Komponente des Material-Deisgns -- kann man den entsprechenden Hinweis optimal anzeigen und positionieren lassen.
 
 \subsubsection{Toolchain einrichten}
 \label{subsec:toolchain_einrichten}
@@ -448,7 +448,7 @@ Im letzten Schritt zur Entwicklung des Frontends muss man die Toolchain einricht
 Quellcode auch automatisiert in einem Cloud Foundry Container in der Cloud installieren kann.
 
 Dabei ist die Konfiguration der Pipeline nicht ganz so einfach wie die beim Erstellen des TensorFlow-Containers, da man
-die Angular-Anwendung bauen muss, bevor man sie in den Container schieben kann.
+die Angular-Anwendung bauen muss, bevor man sie in den Container installieren kann.
 
 Auch ist der gebaute Quellcode in einem anderen Ordner als der Teil, welchen man in das Git-Repository lädt. So sind
 nacheinander wenige Schritte notwendig, damit man die gebaute Anwendung auch richtig in den Container schieben kann.
@@ -652,8 +652,8 @@ benötigt man lediglich eine, welche das Web-Frontend darstellt.
 Die iOS-App erhält in dieser Version keine eigene View mit einem Splashscreen und zeigt nach dem Start direkt das
 WebView-Layout an.
 
-Zum Schluss benötigt man die \texttt{.plist}-Datei, die die Konfiguration der Anwendung übernimmt. Sie ist ähnlich der
-Android-Manifest-Datei und kümmert sich um grundlegende Konfigurationen.
+Zum Schluss benötigt man die \texttt{.plist}-Datei (Property List Files), die die Konfiguration der Anwendung übernimmt.
+Sie ist ähnlich der Android-Manifest-Datei und kümmert sich um grundlegende Konfigurationen.
 
 In der Abbildung~\ref{fig:umsetzung_ios_folder} auf Seite~\pageref{fig:umsetzung_ios_folder} ist die Übersicht der
 Datei"~ und Ordnerstruktur in Xcode abgebildet. Dort sind alle benötigten Dateien für das Projekt zu sehen.

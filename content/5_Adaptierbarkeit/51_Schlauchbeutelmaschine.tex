@@ -32,7 +32,7 @@ Zur Erzeugung einer Siegelnaht sind Daten zur \textit{Siegeltemperatur}, \textit
 interessant. Bei der Folienart spielt der Aufbau der Folie (Anzahl der Lagen und genutzte Materialien) eine Rolle.
 
 Der genaue Aufbau von Folien wird von den entsprechenden Herstellern oft geheim gehalten, und man muss ihn entweder
-händisch ermitteln oder auf Erfahrungen von Mitarbeitern zurückgreifen.
+empirisch ermitteln oder auf Erfahrungen von Mitarbeitern zurückgreifen.
 
 Aus diversen Tests kann man anhand der eingestellten Parameter für Siegeltemperatur und Siegelzeit und der genutzten
 Folie die Siegelnahtfestigkeiten ableiten, indem man den Kraftaufwand zum Öffnen der Siegelnaht misst.
@@ -48,7 +48,7 @@ aktuell aber nicht weiter verfolgt.
 Um an Testdaten für das Aufbauen eines neuronalen Netzes für diesen Maschinentyp zu kommen, sind zahlreiche
 zeitintensive Tests und Versuche notwendig.
 
-Für die Versuche muss man verschiedene Temperaturen mit verschiedenen Siegelzeiten mit verschiedenen Folien kreuzen, was
+Für die Versuche muss man verschiedene Temperaturen mit verschiedenen Siegelzeiten und verschiedenen Folien kreuzen, was
 einen enormen Zeitaufwand bedeutet.
 
 Durch eine Zugprüfmaschine kann man anschließend die Schälfestigkeit bestimmen -- die Kraft, die bei einer schälenden
@@ -157,7 +157,7 @@ entweder über die Erweiterung der JSON-Konfiguration oder über den grafischen 
 Der einfachere Weg ist die Anpassung der Endpunkt über den grafischen Editor. Damit man den neuen Service auch über den
 API Service nutzen kann, muss man im Reiter \texttt{Gestalten} in der Konfiguration \texttt{Pfade} einen neuen anlegen.
 
-Diesen kann man beliebig benamen. Ein Beispiel hierfür ist \textit{predict-seal}. Darüber hinaus muss der Pfad eine
+Diesen kann man beliebig benennen. Ein Beispiel hierfür ist \textit{predict-seal}. Darüber hinaus muss der Pfad eine
 Operation besitzen. Diese muss, genau wie alle anderen Operationen der anderen Pfade, \textit{POST} sein, damit das
 Frontend Daten an den Endpunkt schicken kann.
 
@@ -212,7 +212,7 @@ den Endpunkt notwendig sind.
 In der TS-Datei, in der die Logik der Komponente definiert ist, muss man den REST-Endpunkt auf den neuen Namen abändern
 und die übergebenen Parameter anpassen, damit die Vorhersage auch funktionieren kann.
 
-Auch ist entscheidend, dass man die Abfrage zu leeren Feldern auf die richtige Benamung und die Definition von
+Auch ist entscheidend, dass man die Abfrage zu leeren Feldern auf die richtige Benennung und die Definition von
 zufälligen Eingabeparameter auf logische Werte anpasst. So ist es für einen Endnutzer möglich, schnell einen Test über
 das Frontend zu starten.
 
@@ -241,5 +241,5 @@ ebenfalls auf dem Frontend angezeigt.
 Für alle weiteren Anpassungen oder Erweiterungen der Architektur muss man lediglich diese fünf relativ einfachen
 Schritte wiederholen und die neuen Einstellungen anpassen.
 
-Damit ist gezeigt, dass die gebaute Architektur so modular ist, dass sie problemlos zu erweitern ist und neue Funktionen
-darin eingebaut werden können. Dies galt es als Teilaufgabe in der Arbeit zu zeigen und beweisen.
+Damit ist gezeigt, dass die Architektur so modular gestaltet ist, dass sie problemlos Erweiterbar und mit neuen
+Funktionen ausgestattet werden kann. Dies galt es als Teilaufgabe in der Arbeit zu zeigen und beweisen.

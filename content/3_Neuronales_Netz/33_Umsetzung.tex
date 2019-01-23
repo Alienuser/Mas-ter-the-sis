@@ -59,7 +59,7 @@ Der Parameter \textit{Totzeit} gibt die Zeit an, die gewartet wird, bis der Push
 Signal zum Ausfahren erhalten hat. Über die \textit{Position} wird der Pusher auf der Waage positioniert. Die Angabe
 wird ab dem Mittelpunkt der Wiegeeinheit gerechnet.
 
-Für die Input-Parameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle die
+Für die Input-Parameter, also die Parameter die später die Eingabevariablen des neuronalen Netzes sind, werden alle jene
 genutzt, welche noch zur Verfügung stehen. Dabei handelt es sich um insgesamt 13 Parameter. Sie sind in der
 Tabelle~\ref{tab:targets_inputs} auf Seite~\pageref{tab:targets_inputs} definiert.
 
@@ -100,7 +100,7 @@ Uploadvorgang erfolgreich abgeschlossen, und man kann die Datei im nächsten Sch
 
 \subsubsection{Trainingsdaten umwandeln}
 Da die erstellte Datei mit den Trainigsdaten nun in Watson Studio bereitsteht, ist die Umwandlung in eine CSV-Datei
-möglich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz
+erforderlich. Dieser Schritt ist zwingend notwendig, damit die Datei später als Eingabeparameter für das neuronale Netz
 dienen kann. Ein anderes Format wird als Eingabe zur Zeit nicht unterstützt.
 
 In Watson Studio liegt mit den \textit{Data Refinery flows} ein einfaches Werkzeug bereit, um Dateien in das benötigte
@@ -398,7 +398,7 @@ ein Produkt auch vom Band stoßen zu können. Das Timing ist an dieser Stelle vo
 
 \subsubsection{Deployment erstellen}
 \label{subsec:deployment_erstellen}
-Das in einem vorangegangenen Kapitel erstellte und trainierte Modell kann man im Weiteren in einem Deployment mit einer
+Das im vorangegangenen Kapitel erstellte und trainierte Modell kann man im Weiteren in einem Deployment mit einer
 REST-Schnittstelle als einen Webdienst zur Verfügung stellen.
 
 Dazu ist es erforderlich, das Modell in einen \texttt{Web service} zu installieren. Die spätere Wartung und Verwaltung
@@ -632,7 +632,7 @@ Also kann das System durchaus eine neuere Version herunterladen, stellt aber sic
 kompatibel mit der geforderten ist.
 
 Auch werden in der Datei der Name, eine Beschreibung und die Version des Projektes angegeben. Außerdem kann man Skripte
-definieren, welche man durch kurze Befehle in ein Terminal ausführen kann. Dazu später mehr.
+definieren, welche man durch kurze Befehle in einem Terminal ausführen kann. Dazu später mehr.
 
 In Listing~\ref{ls:umsetzung_package} auf Seite~\pageref{ls:umsetzung_package} ist die vollständige package.json-Datei
 ersichtlich, welche die vier Bibliotheken als Abhängigkeit enthält und ein paar wenige Parameter wie Name, Beschreibung,
@@ -703,8 +703,8 @@ app.listen(80, () => {
 });
 \end{lstlisting}
 
-Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken und man
-diese anschließend auch verwenden kann. Andernfalls müsste man alle Anfragen durch ein API-Gateway gesondert parsen.
+Die siebte Zeile sorgt dafür, dass man \textit{URL-Encoded}-Daten an den entwickelten REST-Endpunkt schicken und diesen
+anschließend auch verwenden kann. Andernfalls müsste man alle Anfragen durch ein API-Gateway gesondert parsen.
 
 Durch die Zeilen neun bis zwölf definiert man einen Endpunkt für den Express-Server, welchen man in einem weiteren
 Schritt mit der TensorFlow.js Logik befüllt. Der Endpunkt bekommt den Namen \textit{predict-tensorflow} und als HTTP-Typ
@@ -740,7 +740,7 @@ In der fünften Zeile werden die übergebenen Daten des REST-Endpunktes an die T
 Vorhersage zu erhalten. Über die letzte Zeile werden die vorhergesagten Parameter wieder zurückgegeben.
 
 Diese Zeilen muss man nun lediglich in die Datei \textit{server.js} in die Zeile elf kopieren, damit die
-REST-Schnittstelle vollkommen ist. Die ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man
+REST-Schnittstelle komplett ist. Die ursprüngliche elfte Zeile mit der Testrückgabe der gesendeten Parameter muss man
 dabei entfernen.
 
 Über den Terminal-Befehl \textit{npm start} startet der Express-Server lokal auf dem Entwicklerrechner.
@@ -1062,7 +1062,7 @@ Studio Deployment. Dazu setzt man das Modul als das Nächste in die Reihe ein. I
 die URL des Deployments eintragen. Diese ist auf der Seite des Deployments ersichtlich.
 
 Damit ist die Konfiguration des Pfades abgeschlossen und kann mit einem Aufruf verifiziert werden. Jetzt kann man den
-zweiten Pfad im Operationsswitch einrichten, um die Konfiguration des API Connects abzuschließen.
+zweiten Pfad im \textit{Operationsswitch} einrichten, um die Konfiguration des API Connects abzuschließen.
 
 \subsubsection*{Pfad für den TensorFlow Container}
 Die Einrichtung des TensorFlow-Pfades ist dem vorherigen Pfad sehr ähnlich. Allerdings bedarf es keines Gateway Scriptes
@@ -1097,8 +1097,8 @@ kann in dem anfangs erstellten Katalog über das Produkt gefunden werden.
 So ist es möglich mehrere APIs für ein Produkt zu definieren. Ein Endnutzer kann ein Produkt dann über den Katalog
 beziehen und die angelegte API nutzen.
 
-Nun kann man mit \texttt{Produkt veröffentlichen} dieses veröffentlichen und nutzbar machen. Dieser Vorgang kann bis zu
-wenige Minuten dauern, da der API Connect Service die Konfiguration neu bauen muss.
+Nun kann man mit \texttt{Produkt veröffentlichen} dieses veröffentlichen und nutzbar machen. Dieser Vorgang kann einige
+Minuten dauern, da der API Connect Service die Konfiguration neu erstellen muss.
 
 Im Anhang~\ref{sec:konfigurationAPIConnect} auf Seite~\pageref{sec:konfigurationAPIConnect} ist die komplette
 Konfiguration des API Connect Services in einer Konfigurationsdatei zu sehen. Diese kann man für die Nutzung direkt
